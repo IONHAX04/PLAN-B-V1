@@ -37,6 +37,7 @@ const ImageGridHero = ({ setSelectedProject }: { setSelectedProject: (p: any) =>
   const img6Y = useTransform(scrollYProgress, [0, 0.62], ['12vh', '0vh']);
 
   const imgScale = useTransform(scrollYProgress, [0, 0.62], [1.12, 1]);
+  const img2Scale = useTransform(scrollYProgress, [0, 0.62], [0.66, 1]);
   const textPointerEvents = useTransform(scrollYProgress, (pos) => (pos > 0.28 ? 'none' : 'auto'));
   return (
     <section ref={targetRef} className="image-grid-hero">
@@ -70,7 +71,7 @@ const ImageGridHero = ({ setSelectedProject }: { setSelectedProject: (p: any) =>
           </motion.div>
 
           <motion.div
-            style={{ x: img2X, y: img2Y, scale: imgScale }}
+            style={{ x: img2X, y: img2Y, scale: img2Scale }}
             className="hero-card card-b"
             onClick={() => setSelectedProject(p[1])}
           >
@@ -165,13 +166,12 @@ const Projects = () => {
                 className="project-card-fashion"
                 onClick={() => setSelectedProject(project)}
               >
-                <div className="card-img-wrapper">
-                  <img src={project.image} alt={project.title} />
-                  <div className="card-overlay-fashion">
-                    <span className="card-cat-tag">{project.category}</span>
-                    <h3>{project.title}</h3>
-                    <div className="view-link">View Project <ChevronRight size={14} /></div>
-                  </div>
+                <div className="card-img-wrapper" style={{ width: '100%', height: '300px', overflow: 'hidden' }}>
+                  <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+                <div className="card-info-box" style={{ padding: '1.5rem', textAlign: 'center', background: '#fff', border: '1px solid #eee', borderTop: 'none' }}>
+                  <h3 style={{ fontSize: '1.2rem', marginBottom: '5px', color: '#000' }}>{project.title}</h3>
+                  <p style={{ fontSize: '0.75rem', color: '#c5a022', textTransform: 'uppercase', letterSpacing: '1px' }}>{project.category}</p>
                 </div>
               </motion.div>
             ))}
