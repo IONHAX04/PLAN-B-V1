@@ -1,16 +1,104 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Parallax, Autoplay, Navigation, Pagination } from 'swiper/modules';
-import { X, Calendar, MapPin, Users, Star, Quote, ArrowLeft, ArrowRight } from 'lucide-react';
+import React, { useMemo, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { X, Calendar, MapPin, Quote, ChevronRight } from 'lucide-react';
 import { projects, projectCategories, testimonials } from '../../data/mockData';
 import './Projects.css';
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/parallax';
+const ImageGridHero = ({ setSelectedProject }: { setSelectedProject: (p: any) => void }) => {
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start start", "end end"]
+  });
+  
+  const textOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+  const textY = useTransform(scrollYProgress, [0, 0.4], [0, -100]);
+  
+  const p = projects.length >= 6 ? projects : [...projects, ...projects, ...projects].slice(0, 6);
+
+  // Scatter images outward at scroll 0, then bring them to 0,0 at scroll 0.6
+  // p[0] - Top Left (col-span-2)
+  const img1X = useTransform(scrollYProgress, [0, 0.6], ["-15vw", "0vw"]);
+  const img1Y = useTransform(scrollYProgress, [0, 0.6], ["-20vh", "0vh"]);
+  
+  // p[2] - Top Right (row-span-2)
+  const img2X = useTransform(scrollYProgress, [0, 0.6], ["15vw", "0vw"]);
+  const img2Y = useTransform(scrollYProgress, [0, 0.6], ["-20vh", "0vh"]);
+  
+  // p[3] - Bottom Left (row-span-2)
+  const img3X = useTransform(scrollYProgress, [0, 0.6], ["-15vw", "0vw"]);
+  const img3Y = useTransform(scrollYProgress, [0, 0.6], ["20vh", "0vh"]);
+
+  // p[1] - Middle Center
+  const img4X = useTransform(scrollYProgress, [0, 0.6], ["0vw", "0vw"]);
+  const img4Y = useTransform(scrollYProgress, [0, 0.6], ["-20vh", "0vh"]);
+  
+  // p[4] - Bottom Center
+  const img5X = useTransform(scrollYProgress, [0, 0.6], ["0vw", "0vw"]);
+  const img5Y = useTransform(scrollYProgress, [0, 0.6], ["25vh", "0vh"]);
+
+  // p[5] - Bottom Right
+  const img6X = useTransform(scrollYProgress, [0, 0.6], ["15vw", "0vw"]);
+  const img6Y = useTransform(scrollYProgress, [0, 0.6], ["25vh", "0vh"]);
+
+  const imgScale = useTransform(scrollYProgress, [0, 0.6], [1.2, 1]);
+  const textPointerEvents = useTransform(scrollYProgress, [0, 0.3], ["auto", "none"]);
+
+  return (
+    <section ref={targetRef} className="pixii-hero relative bg-white">
+      <div className="h-screen sticky top-0 z-0 grid grid-cols-3 grid-rows-3 gap-4 p-4 overflow-hidden">
+        
+        <motion.div style={{ opacity: textOpacity, y: textY, pointerEvents: textPointerEvents as any }} className="absolute px-8 w-full h-screen z-20 flex flex-col items-center justify-center">
+          <h1 className="text-stone-950 text-5xl md:text-7xl font-bold text-center max-w-xl leading-tight">Photo gallery<br/>for artists</h1>
+          <p className="text-stone-600 text-sm md:text-base text-center max-w-xl my-6">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo, minus nisi? Quod praesentium quaerat possimus.</p>
+          <div className="flex items-center gap-4">
+            <button className="px-6 py-3 bg-violet-600 hover:bg-violet-700 transition-colors text-white font-medium rounded-md">Try for free</button>
+            <button className="px-6 py-3 bg-transparent hover:bg-stone-200 transition-colors text-stone-950 font-medium rounded-md">Learn about us</button>
+          </div>
+        </motion.div>
+
+        <motion.div 
+          style={{ x: img1X, y: img1Y, scale: imgScale, backgroundImage: `url(${p[0].image})`, backgroundSize: 'cover', backgroundPosition: 'center center' }} 
+          className="col-span-2 relative z-10 rounded-2xl overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-shadow" 
+          onClick={() => setSelectedProject(p[0])}
+        ></motion.div>
+
+        <motion.div 
+          style={{ x: img2X, y: img2Y, scale: imgScale, backgroundImage: `url(${p[2].image})`, backgroundSize: 'cover', backgroundPosition: 'center center' }} 
+          className="row-span-2 relative z-10 rounded-2xl overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-shadow" 
+          onClick={() => setSelectedProject(p[2])}
+        ></motion.div>
+
+        <motion.div 
+          style={{ x: img3X, y: img3Y, scale: imgScale, backgroundImage: `url(${p[3].image})`, backgroundSize: 'cover', backgroundPosition: 'center center' }} 
+          className="row-span-2 relative z-10 rounded-2xl overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-shadow" 
+          onClick={() => setSelectedProject(p[3])}
+        ></motion.div>
+
+        <motion.div 
+          style={{ x: img4X, y: img4Y, scale: imgScale, backgroundImage: `url(${p[1].image})`, backgroundSize: 'cover', backgroundPosition: 'center center' }} 
+          className="relative z-10 rounded-2xl overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-shadow" 
+          onClick={() => setSelectedProject(p[1])}
+        ></motion.div>
+
+        <motion.div 
+          style={{ x: img5X, y: img5Y, scale: imgScale, backgroundImage: `url(${p[4].image})`, backgroundSize: 'cover', backgroundPosition: 'center center' }} 
+          className="relative z-10 rounded-2xl overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-shadow" 
+          onClick={() => setSelectedProject(p[4])}
+        ></motion.div>
+
+        <motion.div 
+          style={{ x: img6X, y: img6Y, scale: imgScale, backgroundImage: `url(${p[5].image})`, backgroundSize: 'cover', backgroundPosition: 'center center' }} 
+          className="relative z-10 rounded-2xl overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-shadow" 
+          onClick={() => setSelectedProject(p[5])}
+        ></motion.div>
+
+        <div className="w-3/5 max-w-[850px] min-w-[400px] aspect-square border-[8px] border-slate-200 rounded-full absolute z-0 left-0 top-0 -translate-x-[50%] -translate-y-[50%] pointer-events-none"></div>
+        <div className="w-1/2 max-w-[600px] min-w-[300px] aspect-square border-[8px] border-slate-200 rounded-full absolute z-0 right-0 bottom-0 translate-x-[50%] translate-y-[50%] pointer-events-none"></div>
+      </div>
+    </section>
+  );
+};
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = React.useState('All');
@@ -20,220 +108,84 @@ const Projects = () => {
     ? projects 
     : projects.filter(p => p.category === activeCategory);
 
-  const heroProjects = projects.slice(0, 3);
-
   return (
     <motion.div 
       initial={{ opacity: 0 }} 
       animate={{ opacity: 1 }} 
-      className="projects-page"
+      className="projects-page-v2"
     >
-      <section className="projects-hero-slider">
-        <Swiper
-          speed={1200}
-          parallax={true}
-          loop={true}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-            renderBullet: (index, className) => {
-              return `<span class="${className}">0${index + 1}</span>`;
-            },
-          }}
-          navigation={{
-            prevEl: '.projects-prev',
-            nextEl: '.projects-next',
-          }}
-          modules={[Parallax, Autoplay, Navigation, Pagination]}
-          className="hero-swiper"
-        >
-          {heroProjects.map((project) => (
-            <SwiperSlide key={project.id} className="hero-slide">
-              <div 
-                className="slide-bg" 
-                style={{ backgroundImage: `url(${project.image})` }}
-                data-swiper-parallax="50%"
-              ></div>
-              <div className="slide-overlay"></div>
-              <div className="container slide-content">
-                <div className="slide-text-box">
-                  <span data-swiper-parallax="-300" className="slide-cat">
-                    {project.category}
-                  </span>
-                  <h2 data-swiper-parallax="-500" className="slide-title">
-                    {project.title}
-                  </h2>
-                  <p data-swiper-parallax="-700" className="slide-desc">
-                    {project.description.substring(0, 150)}...
-                  </p>
-                  <div data-swiper-parallax="-900">
-                    <button className="btn btn-gold" onClick={() => setSelectedProject(project)}>
-                      View Case Study
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-          
-          <div className="slider-nav">
-            <button className="projects-prev"><ArrowLeft size={24} /></button>
-            <div className="nav-divider"></div>
-            <button className="projects-next"><ArrowRight size={24} /></button>
-          </div>
-        </Swiper>
-      </section>
+      {/* Pixii Inspired Hero */}
+      <ImageGridHero setSelectedProject={setSelectedProject} />
 
-      <div className="container section-padding">
-        <div className="section-header">
-          <h1>Our Projects</h1>
-          <div className="title-divider"></div>
+      {/* Solid Purple Transition (Screenshot 4) */}
+      <div className="purple-transition-section">
+        <h2>Other content here :)</h2>
+      </div>
+
+      {/* Projects Grid Section */}
+      <div className="container grid-section">
+        <div className="grid-header">
+          <div className="decor-line-gold"></div>
+          <h1>Explore Portfolio</h1>
         </div>
 
-        <div className="category-tabs">
-          <button 
-            className={activeCategory === 'All' ? 'active' : ''} 
-            onClick={() => setActiveCategory('All')}
-          >
-            All Events
-          </button>
+        <div className="grid-filters">
+          <button className={activeCategory === 'All' ? 'active' : ''} onClick={() => setActiveCategory('All')}>All</button>
           {projectCategories.map(cat => (
-            <button 
-              key={cat} 
-              className={activeCategory === cat ? 'active' : ''} 
-              onClick={() => setActiveCategory(cat)}
-            >
-              {cat}
-            </button>
+            <button key={cat} className={activeCategory === cat ? 'active' : ''} onClick={() => setActiveCategory(cat)}>{cat}</button>
           ))}
         </div>
 
-        {/* Projects Grid */}
-        <div className="projects-grid">
+        <div className="projects-grid-fashion">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map(project => (
               <motion.div 
                 key={project.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="project-card-large"
+                className="project-card-fashion"
                 onClick={() => setSelectedProject(project)}
               >
-                <div className="project-img-box">
-                  {project.image ? (
-                    <img src={project.image} alt={project.title} className="project-main-img" />
-                  ) : (
-                    <div className="img-placeholder">
-                      <span>{project.category}</span>
-                    </div>
-                  )}
-                </div>
-                <div className="project-overlay-info">
-                  <span className="project-cat">{project.category}</span>
-                  <h3>{project.title}</h3>
-                  <p>{project.description.substring(0, 120)}...</p>
+                <div className="card-img-wrapper">
+                  <img src={project.image} alt={project.title} />
+                  <div className="card-overlay-fashion">
+                    <span className="card-cat-tag">{project.category}</span>
+                    <h3>{project.title}</h3>
+                    <div className="view-link">View Project <ChevronRight size={14} /></div>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
         </div>
 
-        {/* Client Feedback Section */}
-        <div className="testimonials-section section-padding">
-          <div className="section-header">
-            <h2>Client Feedback</h2>
-            <div className="title-divider"></div>
-          </div>
-
-          <div className="testimonials-grid">
-            {testimonials.map(testimonial => (
-              <div className="testimonial-card" key={testimonial.id}>
-                <Quote size={28} className="text-gold" />
-                <p className="testimonial-quote">{testimonial.quote}</p>
-                <div className="testimonial-footer">
-                  <div className="stars">
-                    {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="var(--accent)" stroke="var(--accent)" />)}
-                  </div>
-                  <strong>{testimonial.clientName}</strong>
-                  <span>{testimonial.eventDate} · {testimonial.eventType}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Project Detail Modal */}
+        {/* Modal remains the same */}
         <AnimatePresence>
           {selectedProject && (
-            <motion.div 
-              className="modal-overlay"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedProject(null)}
-            >
-              <motion.div 
-                className="project-modal"
-                initial={{ y: 100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 100, opacity: 0 }}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button className="close-modal" onClick={() => setSelectedProject(null)}>
-                  <X size={24} />
-                </button>
-
-                <div className="modal-hero-placeholder">
-                  <div className="hero-text">
-                    <span className="category-tag">{selectedProject.category}</span>
+            <motion.div className="modal-fashion-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedProject(null)}>
+              <motion.div className="modal-fashion-content" initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 50, opacity: 0 }} onClick={(e) => e.stopPropagation()}>
+                <button className="close-modal-fashion" onClick={() => setSelectedProject(null)}><X size={24} /></button>
+                <div className="modal-top">
+                  <img src={selectedProject.image} alt={selectedProject.title} />
+                  <div className="modal-hero-text">
+                    <span>{selectedProject.category}</span>
                     <h2>{selectedProject.title}</h2>
                   </div>
                 </div>
-
-                <div className="modal-content">
-                  <div className="modal-main-text">
-                    <h3>About the Event</h3>
+                <div className="modal-bottom">
+                  <div className="modal-main">
+                    <h3>Overview</h3>
                     <p>{selectedProject.description}</p>
-                    
-                    <div className="event-meta-grid">
-                      <div className="meta-item">
-                        <Calendar size={20} />
-                        <div>
-                          <strong>Category</strong>
-                          <p>{selectedProject.category}</p>
-                        </div>
-                      </div>
-                      <div className="meta-item">
-                        <MapPin size={20} />
-                        <div>
-                          <strong>Location</strong>
-                          <p>Switzerland</p>
-                        </div>
-                      </div>
-                      <div className="meta-item">
-                        <Users size={20} />
-                        <div>
-                          <strong>Type</strong>
-                          <p>{selectedProject.category}</p>
-                        </div>
-                      </div>
+                    <div className="modal-stats">
+                      <div className="stat"><Calendar size={18} /><span>Switzerland</span></div>
+                      <div className="stat"><MapPin size={18} /><span>{selectedProject.category}</span></div>
                     </div>
                   </div>
-
-                  <div className="modal-side-info">
-                    <div className="side-section">
-                      <h3>Partners Involved</h3>
-                      <div className="partners-chips">
-                        {selectedProject.partners.map((p: string) => (
-                          <span key={p} className="partner-chip">{p}</span>
-                        ))}
-                      </div>
-                    </div>
+                  <div className="modal-side">
+                    <h3>Partners</h3>
+                    <div className="partner-tags">{selectedProject.partners.map((p: string) => (<span key={p}>{p}</span>))}</div>
                   </div>
                 </div>
               </motion.div>

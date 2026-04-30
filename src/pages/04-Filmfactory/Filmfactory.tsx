@@ -1,116 +1,140 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Film, Users, Play, Calendar, Trophy, Clapperboard } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Film, Users, Trophy, Clapperboard, Calendar } from 'lucide-react';
 import { filmfactoryContent } from '../../data/mockData';
 import './Filmfactory.css';
 
+const Column = ({ images, y }: { images: string[], y: any }) => {
+  return (
+    <motion.div style={{ y }} className="ff-column">
+      {images.map((src, i) => (
+        <div key={i} className="ff-image-container">
+          <img src={src} alt="Film" />
+          <div className="ff-image-overlay"></div>
+        </div>
+      ))}
+    </motion.div>
+  );
+};
+
 const Filmfactory = () => {
-  const fadeInUp = {
-    initial: { opacity: 0, y: 30 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
-  };
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ['start start', 'end end']
+  });
+
+  // Text Animations
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.2, 0.3], [1, 1, 0]);
+  const titleScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.9]);
+
+  // Column Parallax
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -1500]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -2500]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, -1200]);
+
+  const imagesColumn1 = [
+    "https://images.unsplash.com/photo-1485846234645-a62644ef7467?q=80&w=2069",
+    "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=2070",
+    "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925",
+    "https://images.unsplash.com/photo-1542204172-83160b9434ca?q=80&w=2070",
+    "https://images.unsplash.com/photo-1517604931442-7e0c8ed0963c?q=80&w=2070"
+  ];
+
+  const imagesColumn2 = [
+    "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1968",
+    "https://images.unsplash.com/photo-1535016120720-40c646bebbfc?q=80&w=2070",
+    "https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=2070",
+    "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2071",
+    "https://images.unsplash.com/photo-1598897349489-0d27ef233e1a?q=80&w=2070"
+  ];
+
+  const imagesColumn3 = [
+    "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2070",
+    "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070",
+    "https://images.unsplash.com/photo-1514306191717-452ec28c7814?q=80&w=2070",
+    "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=2069",
+    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070"
+  ];
 
   return (
-    <motion.div 
-      initial="initial" 
-      animate="animate" 
-      exit={{ opacity: 0 }}
-      className="filmfactory-page"
-    >
-      {/* Hero */}
-      <section className="ff-hero">
-        <div className="ff-hero-content container">
-          <motion.div variants={fadeInUp} className="ff-badge">Sub Company of Plan B</motion.div>
-          <motion.h1 variants={fadeInUp}>FILMFACTORY</motion.h1>
-          <motion.p variants={fadeInUp}>Where Stories Come to Life</motion.p>
-        </div>
-        <div className="ff-hero-video-placeholder">
-          <Play size={64} fill="white" />
-          <span>Watch Highlight Video</span>
-        </div>
-      </section>
-
-      {/* First Take Festival */}
-      <section className="ff-festival section-padding">
-        <div className="container">
-          <div className="ff-section-grid">
-            <div className="ff-text">
-              <motion.h2 variants={fadeInUp}>{filmfactoryContent.firstTake.title}</motion.h2>
-              <motion.p variants={fadeInUp}>
-                {filmfactoryContent.firstTake.description}
-              </motion.p>
-              
-              <div className="ff-stats">
-                {filmfactoryContent.firstTake.stats.map((stat, i) => (
-                  <div className="stat" key={i}>
-                    {i === 0 && <Film size={24} />}
-                    {i === 1 && <Trophy size={24} />}
-                    {i === 2 && <Users size={24} />}
-                    <div>
-                      <strong>{stat.value}</strong>
-                      <span>{stat.label}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+    <div className="filmfactory-wrapper-olivier">
+      <div ref={container} className="ff-scroll-container">
+        {/* Sticky Hero Background (Grid) */}
+        <div className="ff-sticky-3d">
+          <div className="ff-perspective-plane">
+            <div className="ff-columns-container">
+              <Column images={imagesColumn1} y={y1} />
+              <Column images={imagesColumn2} y={y2} />
+              <Column images={imagesColumn3} y={y3} />
             </div>
-            <div className="ff-posters-grid">
-              <div className="poster-item">Poster 2024</div>
-              <div className="poster-item">Poster 2025</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Winners & Gallery */}
-      <section className="ff-gallery section-padding bg-dark">
-        <div className="container">
-          <div className="section-header text-white">
-            <h2>Moments & Milestones</h2>
-            <div className="title-divider"></div>
           </div>
           
-          <div className="ff-gallery-grid">
-            <div className="gallery-item-large">Photo Gallery Placeholder</div>
-            <div className="gallery-item">Winner Photo 1</div>
-            <div className="gallery-item">Winner Photo 2</div>
-            <div className="gallery-item">Event Snap</div>
-            <div className="gallery-item">BTS Shot</div>
-          </div>
+          {/* Centered Text - Fades out */}
+          <motion.div 
+            style={{ opacity: titleOpacity, scale: titleScale }}
+            className="ff-intro-text"
+          >
+            <div className="ff-badge-top">Sub Company of Plan B</div>
+            <h1 className="ff-main-title">FILMFACTORY</h1>
+            <p className="ff-scroll-hint">Scroll to begin the journey</p>
+          </motion.div>
         </div>
-      </section>
+      </div>
 
-      {/* My Frame | My Story Community */}
-      <section className="ff-community section-padding">
-        <div className="container">
-          <div className="community-box">
-            <div className="community-header">
-              <Clapperboard size={48} className="text-gold" />
+      {/* Main Content Section */}
+      <div className="ff-real-content">
+        <section className="ff-festival section-padding">
+          <div className="container">
+            <div className="ff-grid-info">
+              <div className="ff-text-box">
+                <h2>{filmfactoryContent.firstTake.title}</h2>
+                <p>{filmfactoryContent.firstTake.description}</p>
+                <div className="ff-stats-box">
+                  {filmfactoryContent.firstTake.stats.map((stat, i) => (
+                    <div className="stat-card" key={i}>
+                      {i === 0 && <Film size={24} />}
+                      {i === 1 && <Trophy size={24} />}
+                      {i === 2 && <Users size={24} />}
+                      <div className="val">{stat.value}</div>
+                      <div className="lab">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="ff-posters-visual">
+                <div className="poster-2024">First Take 2024</div>
+                <div className="poster-2025">First Take 2025</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Community Section */}
+        <section className="ff-community-box-section section-padding">
+          <div className="container">
+            <div className="premium-community-card">
+              <Clapperboard size={50} className="text-gold" />
               <h2>{filmfactoryContent.myFrame.title}</h2>
               <p>{filmfactoryContent.myFrame.description}</p>
-            </div>
-            
-            <div className="upcoming-events">
-              <h3>Upcoming Workshops</h3>
-              <div className="event-list">
-                {filmfactoryContent.myFrame.workshops.map((workshop, i) => (
-                  <div className="event-item" key={i}>
-                    <Calendar size={18} />
-                    <span>{workshop.title} — {workshop.date}</span>
+              
+              <div className="workshop-list-mini">
+                {filmfactoryContent.myFrame.workshops.map((w, i) => (
+                  <div key={i} className="mini-item">
+                    <Calendar size={14} />
+                    <span>{w.title} — {w.date}</span>
                   </div>
                 ))}
               </div>
-            </div>
 
-            <div className="community-actions">
-              <button className="btn btn-gold">Join Us Now</button>
-              <button className="btn btn-outline">View Community Portfolio</button>
+              <div className="cta-group">
+                <button className="btn-ff">Join Community</button>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </motion.div>
+        </section>
+      </div>
+    </div>
   );
 };
 
