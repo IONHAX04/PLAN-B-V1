@@ -42,7 +42,7 @@ const ImageGridHero = ({ setSelectedProject }: { setSelectedProject: (p: any) =>
   const img6Y = useTransform(scrollYProgress, [0, 0.6], ["25vh", "0vh"]);
 
   const imgScale = useTransform(scrollYProgress, [0, 0.6], [1.2, 1]);
-  const textPointerEvents = useTransform(scrollYProgress, [0, 0.3], ["auto", "none"]);
+  const textPointerEvents = useTransform(scrollYProgress, (pos) => pos > 0.3 ? "none" : "auto");
 
   return (
     <section ref={targetRef} className="pixii-hero relative bg-white">

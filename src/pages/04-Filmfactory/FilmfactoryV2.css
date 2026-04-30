@@ -51,30 +51,60 @@
 }
 
 .v2-carousel {
-  position: relative;
-  width: min(90vw, 1100px);
-  height: min(90vw, 1100px);
+  position: absolute;
+  width: calc(130vh + 10vw);
+  height: calc(130vh + 10vw);
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   transform-style: preserve-3d;
+  transform: rotate(45deg) scale(0.5);
+  opacity: 0;
 }
 
-.v2-card {
+.v2-carousel > div {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: clamp(180px, 22vw, 320px);
-  aspect-ratio: 0.72;
-  margin-top: calc(clamp(180px, 22vw, 320px) * -0.7);
-  margin-left: calc(clamp(180px, 22vw, 320px) * -0.5);
+  width: 60vh;
+  height: 60vh;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   border-radius: 22px;
   overflow: hidden;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  transform-origin: center center;
+  transform-style: preserve-3d;
 }
 
-.v2-card img {
+.v2-carousel > div img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.v2-carousel > div:first-of-type {
+  transform: perspective(1000px) rotateX(-60deg);
+  bottom: auto;
+}
+
+.v2-carousel > div:nth-of-type(2) {
+  transform: perspective(1000px) rotateY(-60deg);
+  left: auto;
+}
+
+.v2-carousel > div:nth-of-type(3) {
+  transform: perspective(1000px) rotateX(60deg);
+  top: auto;
+}
+
+.v2-carousel > div:nth-of-type(4) {
+  transform: perspective(1000px) rotateY(60deg);
+  right: auto;
 }
 
 @media (max-width: 900px) {
@@ -86,7 +116,8 @@
     font-size: clamp(32px, 8vw, 54px);
   }
 
-  .v2-card {
-    width: clamp(140px, 27vw, 220px);
+  .v2-carousel > div {
+    width: 42vh;
+    height: 42vh;
   }
 }
