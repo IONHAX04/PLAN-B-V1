@@ -1,31 +1,98 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar, MapPin, Users, Star, Quote } from 'lucide-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Parallax, Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { X, Calendar, MapPin, Users, Star, Quote, ArrowLeft, ArrowRight } from 'lucide-react';
 import { projects, projectCategories, testimonials } from '../../data/mockData';
 import './Projects.css';
 
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/parallax';
+
 const Projects = () => {
-  const [activeCategory, setActiveCategory] = useState('All');
-  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [activeCategory, setActiveCategory] = React.useState('All');
+  const [selectedProject, setSelectedProject] = React.useState<any>(null);
 
   const filteredProjects = activeCategory === 'All' 
     ? projects 
     : projects.filter(p => p.category === activeCategory);
 
+  const heroProjects = projects.slice(0, 3);
+
   return (
     <motion.div 
       initial={{ opacity: 0 }} 
       animate={{ opacity: 1 }} 
-      className="projects-page section-padding"
+      className="projects-page"
     >
-      <div className="container">
+      <section className="projects-hero-slider">
+        <Swiper
+          speed={1200}
+          parallax={true}
+          loop={true}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+            renderBullet: (index, className) => {
+              return `<span class="${className}">0${index + 1}</span>`;
+            },
+          }}
+          navigation={{
+            prevEl: '.projects-prev',
+            nextEl: '.projects-next',
+          }}
+          modules={[Parallax, Autoplay, Navigation, Pagination]}
+          className="hero-swiper"
+        >
+          {heroProjects.map((project) => (
+            <SwiperSlide key={project.id} className="hero-slide">
+              <div 
+                className="slide-bg" 
+                style={{ backgroundImage: `url(${project.image})` }}
+                data-swiper-parallax="50%"
+              ></div>
+              <div className="slide-overlay"></div>
+              <div className="container slide-content">
+                <div className="slide-text-box">
+                  <span data-swiper-parallax="-300" className="slide-cat">
+                    {project.category}
+                  </span>
+                  <h2 data-swiper-parallax="-500" className="slide-title">
+                    {project.title}
+                  </h2>
+                  <p data-swiper-parallax="-700" className="slide-desc">
+                    {project.description.substring(0, 150)}...
+                  </p>
+                  <div data-swiper-parallax="-900">
+                    <button className="btn btn-gold" onClick={() => setSelectedProject(project)}>
+                      View Case Study
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+          
+          <div className="slider-nav">
+            <button className="projects-prev"><ArrowLeft size={24} /></button>
+            <div className="nav-divider"></div>
+            <button className="projects-next"><ArrowRight size={24} /></button>
+          </div>
+        </Swiper>
+      </section>
+
+      <div className="container section-padding">
         <div className="section-header">
           <h1>Our Projects</h1>
-          <p className="section-subtitle">Excellence in every execution. Explore our portfolio of private, public, and corporate events.</p>
           <div className="title-divider"></div>
         </div>
 
-        {/* Category Tabs */}
         <div className="category-tabs">
           <button 
             className={activeCategory === 'All' ? 'active' : ''} 
@@ -58,9 +125,13 @@ const Projects = () => {
                 onClick={() => setSelectedProject(project)}
               >
                 <div className="project-img-box">
-                  <div className="img-placeholder">
-                    <span>{project.category}</span>
-                  </div>
+                  {project.image ? (
+                    <img src={project.image} alt={project.title} className="project-main-img" />
+                  ) : (
+                    <div className="img-placeholder">
+                      <span>{project.category}</span>
+                    </div>
+                  )}
                 </div>
                 <div className="project-overlay-info">
                   <span className="project-cat">{project.category}</span>

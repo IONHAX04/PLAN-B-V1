@@ -32,14 +32,21 @@ const Partner = () => {
 
         {/* Filters */}
         <div className="partner-filters">
-          <div className="search-box">
-            <Search size={20} />
-            <input 
-              type="text" 
-              placeholder="Search by name..." 
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
+          <div className="search-wrapper">
+            <div className="search-box">
+              <Search size={18} className="search-icon" />
+              <input 
+                type="text" 
+                placeholder="Search partners by name..." 
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              {searchTerm && (
+                <button className="clear-search" onClick={() => setSearchTerm('')}>
+                  <X size={16} />
+                </button>
+              )}
+            </div>
           </div>
           <div className="service-tabs">
             {serviceCategories.map(service => (

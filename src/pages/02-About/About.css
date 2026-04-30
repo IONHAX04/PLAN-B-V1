@@ -1,204 +1,441 @@
-.about-page {
-  padding-top: calc(var(--header-height) + 60px);
+.about-page-reimagined {
+  background: var(--secondary);
+  color: var(--primary);
+  overflow-x: hidden;
 }
 
-.about-sub-nav {
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.dark-bg {
+  background: var(--bg-alt); /* Light gray instead of black */
+}
+
+/* 1. Hero Section - Light Mode */
+.about-hero-alipay {
+  min-height: 90vh;
+  padding-top: var(--header-height);
   display: flex;
-  justify-content: center;
-  gap: 3rem;
-  margin-bottom: 5rem;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 1rem;
+  align-items: center;
+  position: relative;
+  background: radial-gradient(circle at 70% 30%, rgba(197, 160, 34, 0.05), transparent 50%);
 }
 
-.about-sub-nav a {
-  font-weight: 600;
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-year {
+  font-size: 5rem;
+  font-weight: 800;
+  color: #f0f0f0; /* Very light instead of dark gray */
+  margin-bottom: 1rem;
+  letter-spacing: 5px;
+}
+
+.hero-text-left h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  color: var(--primary);
+}
+
+.hero-text-left h1 span {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.hero-desc {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+  max-width: 500px;
+}
+
+.btn-gold-alipay {
+  background: linear-gradient(135deg, #c5a022, #e6c864);
+  color: #fff;
+  padding: 1.2rem 3rem;
+  border: none;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 0.9rem;
-  opacity: 0.5;
+  letter-spacing: 2px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-gold-alipay:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(197, 160, 34, 0.2);
+}
+
+.hero-image-right {
   position: relative;
 }
 
-.about-sub-nav a.active {
-  opacity: 1;
-  color: var(--accent);
+.mascot-placeholder {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
 }
 
-.about-sub-nav a.active::after {
-  content: '';
+.golden-glow {
   position: absolute;
-  bottom: -1rem;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: var(--accent);
+  filter: blur(100px);
+  opacity: 0.15; /* More subtle in light mode */
+  border-radius: 50%;
+}
+
+.mascot-placeholder img {
   width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 10px 30px rgba(197, 160, 34, 0.15));
+}
+
+/* Section Common Titles */
+.section-title-alipay {
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.decor-line {
+  width: 40px;
   height: 2px;
   background: var(--accent);
+  margin: 0 auto 2rem;
 }
 
-/* About Main */
-.about-intro {
-  text-align: center;
-  max-width: 850px;
-  margin: 0 auto;
+.section-title-alipay h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--primary);
 }
 
-.about-quote {
-  margin-bottom: 3rem;
-}
-
-.about-quote h2 {
-  font-size: 2rem;
-  margin-top: 1.5rem;
-  font-style: italic;
-  line-height: 1.5;
-}
-
-.about-founder {
-  font-size: 1.1rem;
+.section-title-alipay p {
   color: var(--text-muted);
-  margin-bottom: 2rem;
-  line-height: 1.8;
 }
 
-.about-extended {
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  margin-bottom: 3rem;
-  line-height: 1.8;
+/* 2. Team Section - Light Mode */
+.about-team-alipay {
+  padding: 10rem 0;
 }
 
-.about-cta-links {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
+.team-slide-alipay {
+  width: 320px;
+  height: 480px;
+  transition: all 0.5s ease;
+  opacity: 0.5;
 }
 
-/* Vision & Mission */
-.vision-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+.team-slide-alipay.swiper-slide-active {
+  opacity: 1;
 }
 
-.vision-card {
-  background: var(--bg-alt);
-  padding: 4rem;
-  text-align: center;
-  border: 1px solid var(--border);
-  transition: var(--transition-smooth);
-}
-
-.vision-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.04);
-}
-
-.vision-card h2 {
-  font-size: 2rem;
-  margin: 1.5rem 0;
-}
-
-.vision-card p {
-  color: var(--text-muted);
-  line-height: 1.8;
-  font-size: 0.95rem;
-}
-
-/* Team */
-.team-intro-text {
-  text-align: center;
-  max-width: 850px;
-  margin: 0 auto 4rem;
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  line-height: 1.8;
-}
-
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2.5rem;
-}
-
-.team-card {
+.slide-card-inner {
+  width: 100%;
+  height: 100%;
   background: var(--secondary);
   border: 1px solid var(--border);
-  padding: 3rem;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.card-image-box {
+  width: 100%;
+  height: 80%;
+  position: relative;
+}
+
+.card-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: 0.5s ease;
+}
+
+.card-info-box {
+  height: 20%;
+  padding: 1.5rem;
   text-align: center;
-  transition: var(--transition-smooth);
+  background: var(--secondary);
 }
 
-.team-card:hover {
+.card-info-box h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: var(--primary);
+}
+
+.card-info-box p {
+  font-size: 0.75rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.swiper-slide-active .card-image-box img {
+  filter: grayscale(0%);
+}
+
+.swiper-slide-active .slide-card-inner {
   border-color: var(--accent);
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+  transform: scale(1.05);
+  box-shadow: 0 20px 50px rgba(197, 160, 34, 0.15);
 }
 
-.team-img-placeholder {
-  width: 120px;
-  height: 120px;
-  background: var(--bg-alt);
+/* 3. Values Section - Light Mode */
+.about-values-alipay {
+  padding: 10rem 0;
+}
+
+.values-grid-alipay {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem;
+}
+
+.value-item {
+  text-align: center;
+  padding: 3rem;
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.value-item:hover {
+  border-color: var(--accent);
+  background: #fff;
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+}
+
+.value-icon {
+  color: var(--accent);
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.value-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--primary);
+}
+
+.value-item p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* 4. Process Timeline - Light Mode */
+.about-process-alipay {
+  padding: 10rem 0;
+}
+
+.process-timeline-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(197, 160, 34, 0.1);
+}
+
+.timeline-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-step {
+  text-align: center;
+}
+
+.step-node {
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border: 2px solid var(--accent);
   border-radius: 50%;
-  margin: 0 auto 2rem;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px rgba(197, 160, 34, 0.3);
+}
+
+.timeline-step:nth-child(even) .step-content {
+  margin-top: 5rem;
+}
+
+.timeline-step:nth-child(odd) .step-content {
+  margin-bottom: 5rem;
+  position: relative;
+  top: -10rem;
+}
+
+.step-date {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--accent);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.step-content h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.step-content p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.final-cta-box {
+  margin-top: 8rem;
+  text-align: center;
+}
+
+/* Modal Styling - Light Mode */
+.team-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent);
+  padding: 2rem;
+  backdrop-filter: blur(10px);
 }
 
-.team-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+.team-modal-content {
+  background: var(--secondary);
+  width: 100%;
+  max-width: 1100px;
+  border: 1px solid var(--border);
+  position: relative;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.1);
 }
 
-.team-card .role {
+.modal-inner {
+  display: grid;
+  grid-template-columns: 450px 1fr;
+}
+
+.modal-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-right {
+  padding: 6rem;
+  color: var(--primary);
+}
+
+.modal-role {
   color: var(--accent);
-  font-weight: 600;
-  text-transform: uppercase;
   font-size: 0.8rem;
-  letter-spacing: 1px;
-  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }
 
-.team-card .bio {
-  font-size: 0.95rem;
+.modal-right h2 {
+  font-size: 3.5rem;
+  margin: 1rem 0 2rem;
+  color: var(--primary);
+}
+
+.modal-bio-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
   color: var(--text-muted);
-  line-height: 1.7;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 
-.team-card .bio.extended {
-  font-style: italic;
-  font-size: 0.9rem;
+.modal-quote {
   border-top: 1px solid var(--border);
-  padding-top: 1rem;
+  padding-top: 2rem;
+  display: flex;
+  gap: 1.5rem;
 }
 
-@media (max-width: 768px) {
-  .vision-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .about-sub-nav {
-    gap: 1.5rem;
-  }
-  
-  .about-sub-nav a {
-    font-size: 0.75rem;
-  }
+.modal-quote p {
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
 
-  .team-grid {
+@media (max-width: 992px) {
+  .hero-grid {
     grid-template-columns: 1fr;
+    text-align: center;
   }
-  
-  .about-quote h2 {
-    font-size: 1.5rem;
+  .hero-desc {
+    margin-left: auto;
+    margin-right: auto;
   }
-  
-  .about-cta-links {
-    flex-direction: column;
-    align-items: center;
+  .values-grid-alipay {
+    grid-template-columns: 1fr 1fr;
+  }
+  .timeline-steps {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  .timeline-line {
+    display: none;
+  }
+  .timeline-step .step-content {
+    margin: 0 !important;
+    top: 0 !important;
+    text-align: left;
+    padding-left: 3rem;
+    border-left: 1px solid var(--accent);
+  }
+  .step-node {
+    left: 0;
   }
 }

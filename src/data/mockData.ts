@@ -3,6 +3,7 @@ export const siteConfig = {
   name: "Plan B",
   fullName: "Plan B – The Event Guide",
   tagline: "We think one step ahead and always have a Plan B",
+  heroImage: "/assets/images/hero.png",
   heroDescription: "Plan B – The Eventguide stands for tailor-made events throughout Switzerland, from weddings and corporate events to cultural events and private celebrations. We combine creative ideas, precise organisation and a strong network of partners to create all-in-one packages that include planning, design, entertainment, exclusive discounts and complete on-site support, so you can enjoy your event to the fullest while we take care of every detail.",
   contact: {
     email: "info@planb-theeventguide.com",
@@ -51,6 +52,7 @@ export const teamMembers = [
   {
     id: 1,
     name: "Abyy P",
+    image: "/assets/images/abyy.png",
     role: "CEO, HR, Designer & Head of Service",
     bio: "Hi, I'm Abyy. As the founder of Plan B, I am the driving force behind everything we do. With passion, love for detail, and the highest level of precision, I ensure that every event meets the highest standards. My commitment to perfection and genuine client satisfaction shapes every decision and every execution.",
     extendedBio: "Plan B is far more than a business to me. It is a big part of who I am. I pour my vision, heart, and dedication into every project. Your event is in safe hands with me, as I guide it with responsibility, passion, and excellence from the very first idea to the flawless final execution."
@@ -213,6 +215,7 @@ export const projects = [
     id: 1,
     category: "Private Events",
     title: "Manoja & Marko",
+    image: "/assets/images/wedding.png",
     description: "For an intimate wedding in a small, lovingly decorated hall, we created a warm and festive atmosphere with atmospheric lighting and elegant floral details. Every moment, from the arrival of the bride and groom to the last dance, was characterised by closeness, emotion and perfect coordination.",
     details: "An intimate wedding celebration that showcased our ability to transform a small venue into a magical experience with atmospheric lighting and elegant floral details.",
     partners: ["Dreamspix", "The Royal's Bar", "Selvam Wedding Event"],
@@ -222,6 +225,7 @@ export const projects = [
     id: 2,
     category: "Public Events",
     title: "The Goat",
+    image: "/assets/images/club.png",
     description: "At an energetic club event with more than 700 guests, we transformed the evening into a spectacle of music, light and pure atmosphere. From the DJ line-up to the perfectly timed show interlude, every minute was a highlight that kept the crowd in a boisterous party mood.",
     details: "A high-energy club event with 700+ guests, featuring a curated DJ line-up, spectacular lighting, and perfectly timed show interludes.",
     partners: ["DJ Jene", "The Crown Entertainment", "Alpha Studios"],
@@ -231,6 +235,7 @@ export const projects = [
     id: 3,
     category: "Corporate Events",
     title: "Neueröffnung Let's Go Travel",
+    image: "/assets/images/corporate.png",
     description: "To mark the reopening of a travel agency at its new location, we organised an inviting event that awakened wanderlust and a spirit of discovery. With elegant decorations, culinary highlights and smooth organisation, we created the perfect setting to inspire guests and make the launch at the new location unforgettable.",
     details: "A grand reopening event for a travel agency at its new location, featuring elegant décor, culinary highlights, and an atmosphere of wanderlust.",
     partners: ["Let's Go Travel", "The Royal's Bar", "Infini Booth"],

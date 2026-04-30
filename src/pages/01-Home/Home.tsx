@@ -31,6 +31,7 @@ const Home = () => {
       <section className="hero-section">
         <div className="hero-overlay"></div>
         <div className="hero-content container">
+          <motion.div variants={fadeInUp} className="hero-decor-title">Exquisite Experiences</motion.div>
           <motion.p variants={fadeInUp} className="hero-subtitle">
             {siteConfig.tagline}
           </motion.p>
