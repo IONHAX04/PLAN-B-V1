@@ -91,12 +91,11 @@ const About = () => {
                 prevEl: '.swiper-button-prev-custom',
                 nextEl: '.swiper-button-next-custom',
               }}
-              pagination={{ clickable: true }}
               breakpoints={{
                 320: { slidesPerView: 1 },
                 1024: { slidesPerView: 3 }
               }}
-              modules={[EffectCoverflow, Navigation, Pagination, Autoplay]}
+              modules={[EffectCoverflow, Navigation, Autoplay]}
               className="team-swiper-alipay"
             >
               {teamMembers.map((member) => (
@@ -104,9 +103,6 @@ const About = () => {
                   <div className="slide-card-inner" onClick={() => setSelectedMember(member)}>
                     <div className="card-image-box">
                       <img src={member.image || '/assets/images/abyy.png'} alt={member.name} />
-                      <div className="card-hover-overlay">
-                        <span>Read Story</span>
-                      </div>
                     </div>
                     <div className="card-info-box">
                       <h3>{member.name}</h3>

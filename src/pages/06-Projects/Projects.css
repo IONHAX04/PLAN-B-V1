@@ -1,105 +1,165 @@
-/* PIXII HERO STYLES */
-.pixii-hero {
-  height: 200vh; /* Scroll length for gathering animation */
-  background: #fff;
+/* Image Grid Hero (hover.dev style) */
+.image-grid-hero {
+  height: 200vh;
+  background: #ffffff;
   position: relative;
 }
 
-.pixii-sticky {
+.image-grid-sticky {
   position: sticky;
   top: 0;
   height: 100vh;
-  width: 100%;
   overflow: hidden;
+  background: #ffffff;
+}
+
+.image-grid-content {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.pixii-curves {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
+  text-align: center;
   pointer-events: none;
 }
 
-.pixii-grid-container {
-  position: relative;
-  width: 90vw;
-  max-width: 1400px;
-  height: 80vh;
-  z-index: 1;
+.image-grid-content h1 {
+  margin: 0;
+  color: #111111;
+  font-size: clamp(3rem, 7.2vw, 6.2rem);
+  line-height: 0.95;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.image-grid-content p {
+  max-width: 640px;
+  margin: 1.8rem auto 2rem;
+  color: #666666;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.image-grid-actions {
   display: flex;
-  gap: 1.5vw;
-  justify-content: center;
+  gap: 0.9rem;
+  pointer-events: auto;
 }
 
-.pixii-col {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5vw;
-  flex: 1;
-}
-
-.middle-col {
-  margin-top: 4vw; /* Offset the middle column down slightly */
-}
-
-.pixii-col-img {
-  width: 100%;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+.hero-btn {
+  border: 0;
+  border-radius: 2px;
+  padding: 0.72rem 1.45rem;
+  font-size: 1.85rem;
+  line-height: 1;
+  font-weight: 700;
   cursor: pointer;
-  position: relative;
-  transition: box-shadow 0.3s ease;
+  transition: opacity 0.25s ease;
+}
+
+.hero-btn:hover {
+  opacity: 0.85;
+}
+
+.hero-btn-primary {
+  background: #7c3aed;
+  color: #ffffff;
+}
+
+.hero-btn-secondary {
+  background: transparent;
+  color: #1a1a1a;
+}
+
+.image-grid-layout {
+  position: absolute;
+  inset: 12px;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 1.12fr 1.1fr 1fr;
+  grid-template-rows: 0.92fr 1fr 0.86fr;
+  gap: 16px;
+}
+
+.hero-card {
+  border-radius: 0;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
   will-change: transform;
 }
 
-.pixii-col-img:hover {
-  box-shadow: 0 30px 60px rgba(0,0,0,0.2);
-  z-index: 5;
-}
-
-.pixii-col-img img {
+.hero-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
   display: block;
+  object-fit: cover;
 }
 
-/* Aspect ratios to match the screenshot layout */
-.pixii-img-1 { aspect-ratio: 16/9; } 
-.pixii-img-4 { aspect-ratio: 1; }     
+.card-a {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
 
-.pixii-img-2 { aspect-ratio: 16/9; }  
-.pixii-img-5 { aspect-ratio: 16/9; } 
+.card-b {
+  grid-column: 2;
+  grid-row: 2;
+  place-self: stretch;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+}
 
-.pixii-img-3 { aspect-ratio: 4/5; }   
-.pixii-img-6 { aspect-ratio: 16/9; }  
+.card-c {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
 
-/* PIXII Logo Top Left */
-.pixii-top-left-logo {
+.card-d {
+  grid-column: 1;
+  grid-row: 2 / span 2;
+}
+
+.card-e {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.card-f {
+  grid-column: 3;
+  grid-row: 3;
+  opacity: 0.42;
+}
+
+.hero-circle {
   position: absolute;
-  top: 15px;
-  left: 15px;
-  color: #fff;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 1.2rem;
-  z-index: 2;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  border: 8px solid #dde2eb;
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-circle-left {
+  width: min(66vw, 860px);
+  height: min(66vw, 860px);
+  left: 0;
+  top: 0;
+  transform: translate(-54%, -54%);
+}
+
+.hero-circle-right {
+  width: min(56vw, 700px);
+  height: min(56vw, 700px);
+  right: 0;
+  bottom: 0;
+  transform: translate(54%, 54%);
 }
 
 /* Solid Purple Transition Section */
 .purple-transition-section {
-  background-color: #7c3aed; /* Purple */
+  background-color: #ffffff;
   height: 80vh;
   display: flex;
   align-items: flex-end;
@@ -108,99 +168,11 @@
 }
 
 .purple-transition-section h2 {
-  color: #fff;
+  color: #111111;
   font-family: var(--font-sans);
   font-weight: 400;
   font-size: 1.5rem;
-}
-
-/* Badge style like Apple/Pixii */
-.pixii-badge {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: #fff;
-  color: #000;
-  padding: 8px 15px;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.pixii-content {
-  position: absolute;
-  z-index: 10;
-  text-align: center;
-  max-width: 800px;
-  padding: 2rem;
-  pointer-events: none;
-}
-
-.pixii-logo-top {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-weight: 900;
-  font-size: 1.2rem;
-  letter-spacing: 2px;
-  margin-bottom: 2rem;
-  color: #000;
-}
-
-.pixii-content h1 {
-  font-size: clamp(3rem, 7vw, 6rem);
-  font-weight: 900;
-  line-height: 0.9;
-  margin-bottom: 2rem;
-  color: #000;
-}
-
-.pixii-content p {
-  font-size: 1.2rem;
-  color: #666;
-  max-width: 600px;
-  margin: 0 auto 3rem;
-}
-
-.pixii-btns {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  pointer-events: all;
-}
-
-.btn-primary-pixii {
-  background: #7c3aed; /* Purple like in screen */
-  color: #fff;
-  padding: 1rem 2.5rem;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 1rem;
-  transition: transform 0.2s ease, background 0.3s ease;
-}
-
-.btn-primary-pixii:hover {
-  transform: translateY(-2px);
-  background: #6d28d9;
-}
-
-.btn-secondary-pixii {
-  background: transparent;
-  color: #000;
-  padding: 1rem 2.5rem;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 1rem;
-  border: 2px solid transparent;
-}
-
-.btn-secondary-pixii:hover {
-  color: #7c3aed;
+  opacity: 0;
 }
 
 /* Ensure global styles don't conflict */
@@ -209,10 +181,27 @@
 }
 
 @media (max-width: 992px) {
-  .pixii-grid {
-    display: none; /* Hide complex grid on mobile for performance */
+  .image-grid-layout {
+    inset: 10px;
+    gap: 10px;
   }
-  .pixii-content h1 {
-    font-size: 3.5rem;
+
+  .image-grid-content h1 {
+    font-size: clamp(2.2rem, 11vw, 3.7rem);
+  }
+
+  .image-grid-content p {
+    font-size: 0.95rem;
+    margin: 1rem auto 1.4rem;
+    padding: 0 1rem;
+  }
+
+  .hero-btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .hero-circle {
+    border-width: 5px;
   }
 }
