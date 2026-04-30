@@ -1,0 +1,204 @@
+.about-page {
+  padding-top: calc(var(--header-height) + 60px);
+}
+
+.about-sub-nav {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+
+.about-sub-nav a {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  opacity: 0.5;
+  position: relative;
+}
+
+.about-sub-nav a.active {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.about-sub-nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* About Main */
+.about-intro {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.about-quote {
+  margin-bottom: 3rem;
+}
+
+.about-quote h2 {
+  font-size: 2rem;
+  margin-top: 1.5rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.about-founder {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.about-extended {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+  line-height: 1.8;
+}
+
+.about-cta-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* Vision & Mission */
+.vision-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.vision-card {
+  background: var(--bg-alt);
+  padding: 4rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  transition: var(--transition-smooth);
+}
+
+.vision-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+}
+
+.vision-card h2 {
+  font-size: 2rem;
+  margin: 1.5rem 0;
+}
+
+.vision-card p {
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+/* Team */
+.team-intro-text {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 4rem;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+}
+
+.team-card {
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  padding: 3rem;
+  text-align: center;
+  transition: var(--transition-smooth);
+}
+
+.team-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+}
+
+.team-img-placeholder {
+  width: 120px;
+  height: 120px;
+  background: var(--bg-alt);
+  border-radius: 50%;
+  margin: 0 auto 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.team-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.team-card .role {
+  color: var(--accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+
+.team-card .bio {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.team-card .bio.extended {
+  font-style: italic;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .vision-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .about-sub-nav {
+    gap: 1.5rem;
+  }
+  
+  .about-sub-nav a {
+    font-size: 0.75rem;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-quote h2 {
+    font-size: 1.5rem;
+  }
+  
+  .about-cta-links {
+    flex-direction: column;
+    align-items: center;
+  }
+}
