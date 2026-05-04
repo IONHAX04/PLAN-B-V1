@@ -885,18 +885,29 @@
 .curation-card {
   grid-column: span 2;
   min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.curation-card .card-top, 
+.curation-card p {
+  max-width: 50%;
+  position: relative;
+  z-index: 2;
 }
 
 .card-bg-decor-film {
   position: absolute;
   top: 50%;
-  right: -5%;
-  transform: translateY(-50%) rotate(-15deg);
-  width: 400px;
-  height: 400px;
-  opacity: 0.08;
+  right: 0;
+  transform: translateY(-50%) rotate(-5deg);
+  width: 450px;
+  height: 450px;
+  opacity: 0.3;
   pointer-events: none;
   mix-blend-mode: multiply;
+  z-index: 1;
 }
 
 .card-bg-decor-film img {
@@ -969,6 +980,16 @@
   }
   .curation-card, .ff-grid-card {
     grid-column: span 1;
+  }
+  .curation-card .card-top, 
+  .curation-card p {
+    max-width: 100%;
+  }
+  .card-bg-decor-film {
+    width: 300px;
+    height: 300px;
+    right: -10%;
+    opacity: 0.1;
   }
   .ff-grid-card {
     flex-direction: column;
