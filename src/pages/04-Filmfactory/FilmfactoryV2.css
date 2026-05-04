@@ -1,7 +1,7 @@
 .v2-smooth-main {
   position: relative;
   height: 700vh;
-  background: #000000;
+  background: #ffffff;
 }
 
 .v2-smooth-sticky {
@@ -10,7 +10,7 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background: #000000;
+  background: #ffffff;
 }
 
 .v2-text-stack {
@@ -33,7 +33,7 @@
 
 .v2-text-container p {
   margin: 0;
-  color: #ffffff;
+  color: #111111;
   font-size: clamp(40px, 6.6vw, 100px);
   line-height: 1;
   font-weight: 500;
@@ -75,7 +75,7 @@
   margin: auto;
   border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
   transform-origin: center center;
   transform-style: preserve-3d;
 }

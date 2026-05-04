@@ -6,7 +6,6 @@ import Footer from './components/Footer';
 import Home from './pages/01-Home/Home';
 import About from './pages/02-About/About';
 import Services from './pages/03-Services/Services';
-import Filmfactory from './pages/04-Filmfactory/Filmfactory';
 import FilmfactoryV2 from './pages/04-Filmfactory/FilmfactoryV2';
 import Partner from './pages/05-Partner/Partner';
 import Projects from './pages/06-Projects/Projects';
@@ -25,7 +24,7 @@ function AppLayout() {
             <Route path="/" element={<Home />} />
             <Route path="/about/*" element={<About />} />
             <Route path="/services" element={<Services />} />
-            <Route path="/filmfactory" element={<Filmfactory />} />
+            <Route path="/filmfactory" element={<FilmfactoryV2 />} />
             <Route path="/v2" element={<FilmfactoryV2 />} />
             <Route path="/partner" element={<Partner />} />
             <Route path="/projects" element={<Projects />} />

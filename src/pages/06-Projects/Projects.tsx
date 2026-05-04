@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { X, Calendar, MapPin, ChevronRight } from 'lucide-react';
+import { X, Calendar, MapPin } from 'lucide-react';
 import { projects, projectCategories } from '../../data/mockData';
 import './Projects.css';
 
@@ -18,26 +18,26 @@ const ImageGridHero = ({ setSelectedProject }: { setSelectedProject: (p: any) =>
   const p = projects.length >= 6 ? projects : [...projects, ...projects, ...projects].slice(0, 6);
 
   // Start scattered then gather to a clean grid.
-  const img1X = useTransform(scrollYProgress, [0, 0.62], ['-16vw', '0vw']);
-  const img1Y = useTransform(scrollYProgress, [0, 0.62], ['-16vh', '0vh']);
+  const img1X = useTransform(scrollYProgress, [0, 0.62], ['-18vw', '0vw']);
+  const img1Y = useTransform(scrollYProgress, [0, 0.62], ['-18vh', '0vh']);
 
   const img2X = useTransform(scrollYProgress, [0, 0.62], ['0vw', '0vw']);
   const img2Y = useTransform(scrollYProgress, [0, 0.62], ['-38vh', '0vh']);
 
-  const img3X = useTransform(scrollYProgress, [0, 0.62], ['16vw', '0vw']);
-  const img3Y = useTransform(scrollYProgress, [0, 0.62], ['-16vh', '0vh']);
+  const img3X = useTransform(scrollYProgress, [0, 0.62], ['18vw', '0vw']);
+  const img3Y = useTransform(scrollYProgress, [0, 0.62], ['-18vh', '0vh']);
 
-  const img4X = useTransform(scrollYProgress, [0, 0.62], ['-14vw', '0vw']);
-  const img4Y = useTransform(scrollYProgress, [0, 0.62], ['11vh', '0vh']);
+  const img4X = useTransform(scrollYProgress, [0, 0.62], ['-16vw', '0vw']);
+  const img4Y = useTransform(scrollYProgress, [0, 0.62], ['13vh', '0vh']);
 
   const img5X = useTransform(scrollYProgress, [0, 0.62], ['0vw', '0vw']);
-  const img5Y = useTransform(scrollYProgress, [0, 0.62], ['13vh', '0vh']);
+  const img5Y = useTransform(scrollYProgress, [0, 0.62], ['15vh', '0vh']);
 
-  const img6X = useTransform(scrollYProgress, [0, 0.62], ['14vw', '0vw']);
-  const img6Y = useTransform(scrollYProgress, [0, 0.62], ['12vh', '0vh']);
+  const img6X = useTransform(scrollYProgress, [0, 0.62], ['16vw', '0vw']);
+  const img6Y = useTransform(scrollYProgress, [0, 0.62], ['14vh', '0vh']);
 
-  const imgScale = useTransform(scrollYProgress, [0, 0.62], [1.12, 1]);
-  const img2Scale = useTransform(scrollYProgress, [0, 0.62], [0.66, 1]);
+  const imgScale = useTransform(scrollYProgress, [0, 0.62], [0.82, 1]);
+  const img2Scale = useTransform(scrollYProgress, [0, 0.62], [0.56, 1]);
   const textPointerEvents = useTransform(scrollYProgress, (pos) => (pos > 0.28 ? 'none' : 'auto'));
   return (
     <section ref={targetRef} className="image-grid-hero">
@@ -46,18 +46,13 @@ const ImageGridHero = ({ setSelectedProject }: { setSelectedProject: (p: any) =>
           style={{ opacity: textOpacity, y: textY, zIndex: textZIndex, pointerEvents: textPointerEvents as any }}
           className="image-grid-content"
         >
-          <h1>
-            Photo gallery
-            <br />
-            for artists
-          </h1>
+          <h1>Exquisite Experiences</h1>
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo, minus nisi? Quod praesentium quaerat
-            possimus.
+            Discover our portfolio of exclusive corporate events, breathtaking weddings, and high-energy club nights across Switzerland.
           </p>
           <div className="image-grid-actions">
-            <button className="hero-btn hero-btn-primary">Try for free</button>
-            <button className="hero-btn hero-btn-secondary">Learn about us</button>
+            <button className="hero-btn hero-btn-primary">Our Services</button>
+            <button className="hero-btn hero-btn-secondary">Get in touch</button>
           </div>
         </motion.div>
 
@@ -135,16 +130,12 @@ const Projects = () => {
       {/* Pixii Inspired Hero */}
       <ImageGridHero setSelectedProject={setSelectedProject} />
 
-      {/* Solid Purple Transition (Screenshot 4) */}
-      <div className="purple-transition-section">
-        <h2>Other content here :)</h2>
-      </div>
-
       {/* Projects Grid Section */}
-      <div className="container grid-section">
-        <div className="grid-header">
-          <div className="decor-line-gold"></div>
+      <div className="container section-padding">
+        <div className="section-header">
+          <div className="decor-line"></div>
           <h1>Explore Portfolio</h1>
+          <p className="section-subtitle">A glimpse into the magical moments we've created.</p>
         </div>
 
         <div className="grid-filters">
@@ -166,12 +157,12 @@ const Projects = () => {
                 className="project-card-fashion"
                 onClick={() => setSelectedProject(project)}
               >
-                <div className="card-img-wrapper" style={{ width: '100%', height: '300px', overflow: 'hidden' }}>
-                  <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div className="card-img-wrapper">
+                  <img src={project.image} alt={project.title} />
                 </div>
-                <div className="card-info-box" style={{ padding: '1.5rem', textAlign: 'center', background: '#fff', border: '1px solid #eee', borderTop: 'none' }}>
-                  <h3 style={{ fontSize: '1.2rem', marginBottom: '5px', color: '#000' }}>{project.title}</h3>
-                  <p style={{ fontSize: '0.75rem', color: '#c5a022', textTransform: 'uppercase', letterSpacing: '1px' }}>{project.category}</p>
+                <div className="card-info-box">
+                  <h3>{project.title}</h3>
+                  <p>{project.category}</p>
                 </div>
               </motion.div>
             ))}
