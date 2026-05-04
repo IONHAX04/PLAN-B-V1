@@ -354,6 +354,46 @@
   color: var(--text-muted);
 }
 
+@media (max-width: 992px) {
+  .zoom-parallax-container {
+    height: auto;
+    padding: 6rem 0 2rem;
+  }
+  
+  .zoom-parallax-sticky {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+
+  .parallax-wrapper {
+    display: none;
+  }
+
+  .parallax-content {
+    pointer-events: auto;
+    padding: 0 1.5rem;
+  }
+
+  .parallax-text h1 {
+    font-size: 2.8rem;
+    line-height: 1.1;
+  }
+
+  .parallax-text .decor-script {
+    font-size: 1.5rem;
+  }
+
+  .parallax-text p {
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+
+  .partner-content-section {
+    padding: 4rem 0;
+  }
+}
+
 @media (max-width: 768px) {
   .partner-filters {
     flex-direction: column;
