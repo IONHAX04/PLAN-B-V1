@@ -1,154 +1,214 @@
-.services-page {
-  background: var(--bg-alt);
+.services-page-v3 {
+  background: var(--bg-main);
   min-height: 100vh;
 }
 
-.section-header {
-  text-align: center;
-  margin-bottom: 6rem;
+.services-hero-minimal {
+  padding: 10rem 0 5rem;
+  background: var(--bg-main);
 }
 
-.decor-script {
-  font-family: var(--font-decor);
-  font-size: 3.5rem;
-  color: var(--accent);
-  margin-bottom: -1rem;
-}
-
-.section-header h1 {
-  font-size: clamp(2.5rem, 8vw, 4rem);
-  margin-bottom: 1.5rem;
-  font-family: var(--font-serif);
-  color: var(--primary);
-}
-
-.title-divider-center {
-  width: 80px;
-  height: 3px;
-  background: var(--accent);
-  margin: 0 auto 2.5rem;
-}
-
-.section-subtitle {
-  font-size: 1.2rem;
-  color: var(--text-muted);
+.hero-description {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 2rem auto 0;
+  font-size: 1.15rem;
   line-height: 1.8;
+  color: var(--text-muted);
+  text-align: center;
 }
 
-.services-detailed-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
+/* Sticky Cards Layout */
+.sticky-cards-main {
+  position: relative;
+  margin-top: 5vh;
+  padding-bottom: 20vh;
 }
 
-.service-card-premium {
-  background: var(--secondary);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.03);
-  transition: var(--transition-smooth);
-}
-
-.service-card-premium:hover {
-  transform: translateY(-5px);
-  border-color: var(--accent);
-  box-shadow: 0 30px 70px rgba(197, 160, 34, 0.1);
-}
-
-.service-card-inner {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  min-height: 400px;
-}
-
-.service-visual {
-  background: var(--bg-alt);
+.sticky-card-container {
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: sticky;
+  top: 0;
+}
+
+.sticky-card {
+  width: 90vw;
+  max-width: 1200px;
+  height: 75vh;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+  transform-origin: top;
+}
+
+.card-content-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  width: 100%;
+  height: 100%;
+}
+
+.card-text-side {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+  color: white;
+}
+
+.service-header-mini {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.service-index {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.service-icon-wrap {
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.card-text-side h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: 1.5rem;
+  font-family: var(--font-serif);
+  line-height: 1.1;
+}
+
+.service-main-desc {
+  font-size: 1.1rem;
+  opacity: 0.7;
+  margin-bottom: 3rem;
+  line-height: 1.7;
+  max-width: 90%;
+}
+
+.service-detailed-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.detail-feature-item h4 {
+  font-size: 0.95rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.detail-feature-item p {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  line-height: 1.6;
+}
+
+.card-footer {
+  margin-top: auto;
+}
+
+.btn-gold-small {
+  padding: 0.8rem 2rem;
+  background: var(--accent);
+  color: black;
+  border: none;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-gold-small:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(197, 160, 34, 0.3);
+}
+
+/* Image Side */
+.card-image-side {
   position: relative;
   overflow: hidden;
 }
 
-.service-number {
+.card-image-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-overlay-gradient {
   position: absolute;
-  top: 2rem;
-  left: 2rem;
-  font-family: var(--font-serif);
-  font-size: 5rem;
-  font-weight: 900;
-  color: var(--accent);
-  opacity: 0.1;
+  inset: 0;
+  background: linear-gradient(to right, #111 0%, transparent 100%);
 }
 
-.service-icon-bg {
-  color: var(--accent);
-  opacity: 0.2;
+/* Final CTA */
+.services-final-cta {
+  padding: 15rem 0;
 }
 
-.service-info {
-  padding: 4rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.service-icon-small {
-  width: 50px;
-  height: 50px;
-  background: var(--bg-alt);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent);
+.services-final-cta h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
   margin-bottom: 2rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.service-info h3 {
-  font-size: 2.2rem;
-  margin-bottom: 1.5rem;
-  font-family: var(--font-serif);
-}
-
-.service-info p {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  line-height: 1.8;
-  margin-bottom: 2.5rem;
-}
-
-.service-features-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
-
-.feature-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-@media (max-width: 992px) {
-  .service-card-inner {
+@media (max-width: 1024px) {
+  .card-content-grid {
     grid-template-columns: 1fr;
   }
-  .service-visual {
-    height: 250px;
+  
+  .card-image-side {
+    display: none;
   }
-  .service-info {
-    padding: 3rem 2rem;
+  
+  .card-text-side {
+    padding: 3rem;
   }
-  .service-features-list {
+
+  .sticky-card {
+    height: 60vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-detailed-features {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
-  .section-header h1 {
-    font-size: 3rem;
+  
+  .sticky-card {
+    height: 80vh;
+    border-radius: 25px;
+  }
+  
+  .card-text-side {
+    padding: 2.5rem 1.5rem;
   }
 }

@@ -2,22 +2,16 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
-  Calendar,
-  MapPin,
-  Palette,
-  Music,
-  HeartHandshake,
-  Mic2,
   Users,
   Film,
   CheckCircle2,
-  CalendarCheck,
   Compass,
   Lock,
   Sparkles
 } from 'lucide-react';
 import { HeroVariant1 } from './HeroVariants';
 import { SwapStory } from './SwapStory';
+import StickyCardsFeatures from './StickyCardsFeatures';
 import { TestimonialCarousel } from './TestimonialCarousel';
 import './TestimonialCarousel.css';
 import {
@@ -29,6 +23,7 @@ import {
 } from '../../data/mockData';
 import './Home.css';
 import './ProjectsEnhancement.css';
+import './StickyCardsFeatures.css';
 
 const Home = () => {
   const fadeInUp = {
@@ -122,48 +117,7 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section className="services-overview section-padding">
-        <div className="container">
-          <div className="section-header">
-            <motion.h2 variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }}>Our Expertise</motion.h2>
-            <motion.div variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }} className="title-divider"></motion.div>
-            <motion.p variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }} className="section-subtitle">
-              We provide all-in-one packages tailored to your specific needs.
-            </motion.p>
-          </div>
-
-          <div className="services-grid">
-            {services.map((service, index) => {
-              const IconComponent = {
-                CalendarCheck,
-                MapPin,
-                Palette,
-                Music,
-                HeartHandshake,
-                Mic2: Mic2
-              }[service.icon] || Calendar;
-
-              return (
-                <motion.div
-                  key={service.id}
-                  variants={fadeInUp}
-                  whileInView="whileInView"
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="service-card"
-                >
-                  <div className="service-icon"><IconComponent size={24} /></div>
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                  <Link to={`/services#${service.id}`} className="read-more">
-                    View Details <ArrowRight size={16} />
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <StickyCardsFeatures items={services} />
 
       {/* Filmfactory Showcase */}
       <section className="ff-home-showcase section-padding dark-section">

@@ -1,77 +1,136 @@
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import * as LucideIcons from 'lucide-react';
 import { services, servicesIntro } from '../../data/mockData';
 import './Services.css';
 
-const Services = () => {
-  const fadeInUp = {
-    initial: { opacity: 0, y: 30 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
-  };
+interface StickyCardProps {
+  service: any;
+  index: number;
+  progress: MotionValue<number>;
+  range: [number, number];
+  targetScale: number;
+}
 
-  const stagger = {
-    animate: {
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
+const StickyCard: React.FC<StickyCardProps> = ({ service, index, progress, range, targetScale }) => {
+  const container = useRef(null);
+  useScroll({
+    target: container,
+    offset: ['start end', 'start start']
+  });
+
+  const scale = useTransform(progress, range, [1, targetScale]);
+  const IconComponent = (LucideIcons as any)[service.icon] || LucideIcons.HelpCircle;
+
+  return (
+    <div ref={container} className="sticky-card-container">
+      <motion.div 
+        style={{ 
+          scale, 
+          top: `calc(10vh + ${index * 40}px)`,
+        }} 
+        className="sticky-card"
+      >
+        <div className="card-content-grid">
+          <div className="card-text-side">
+            <div className="service-header-mini">
+              <span className="service-index">0{index + 1}</span>
+              <div className="service-icon-wrap">
+                <IconComponent size={24} />
+              </div>
+            </div>
+            
+            <h2>{service.title}</h2>
+            <p className="service-main-desc">{service.description}</p>
+            
+            <div className="service-detailed-features">
+              {service.details.map((detail: any, idx: number) => (
+                <div key={idx} className="detail-feature-item">
+                  <h4>{detail.subtitle}</h4>
+                  <p>{detail.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="card-footer">
+              <button className="btn-gold-small">Inquire Now</button>
+            </div>
+          </div>
+
+          <div className="card-image-side">
+            <img src={`/assets/images/services/service_${index + 1}.png`} alt={service.title} />
+            <div className="image-overlay-gradient"></div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
+const Services = () => {
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ['start start', 'end end']
+  });
 
   return (
     <motion.div 
-      initial="initial" 
-      animate="animate" 
+      initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }} 
       exit={{ opacity: 0 }}
-      className="services-page section-padding"
+      className="services-page-v3"
     >
-      <div className="container">
-        <div className="section-header">
-          <motion.div variants={fadeInUp} className="decor-script">Our Expertise</motion.div>
-          <motion.h1 variants={fadeInUp}>Tailor-Made Solutions</motion.h1>
-          <motion.div variants={fadeInUp} className="title-divider-center"></motion.div>
-          <motion.p variants={fadeInUp} className="section-subtitle">
-            {servicesIntro}
-          </motion.p>
+      {/* Intro Header */}
+      <section className="services-hero-minimal">
+        <div className="container">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="section-title-alipay"
+          >
+            <div className="decor-script">Our Expertise</div>
+            <h1>Bespoke <span>Event Solutions</span></h1>
+            <div className="title-divider-center"></div>
+            <p className="hero-description">{servicesIntro}</p>
+          </motion.div>
         </div>
+      </section>
 
-        <motion.div variants={stagger} className="services-detailed-grid">
-          {services.map((service, index) => {
-            const IconComponent = (LucideIcons as any)[service.icon] || LucideIcons.HelpCircle;
-            return (
-              <motion.div 
-                key={service.id} 
-                variants={fadeInUp} 
-                className="service-card-premium"
-              >
-                <div className="service-card-inner">
-                  <div className="service-visual">
-                    <div className="service-number">0{index + 1}</div>
-                    <div className="service-icon-bg">
-                      <IconComponent size={120} strokeWidth={0.5} />
-                    </div>
-                  </div>
-                  <div className="service-info">
-                    <div className="service-icon-small">
-                      <IconComponent size={24} />
-                    </div>
-                    <h3>{service.title}</h3>
-                    <p>{service.description}</p>
-                    <div className="service-features-list">
-                      {service.details.map((detail, idx) => (
-                        <div key={idx} className="feature-item">
-                          <LucideIcons.CheckCircle2 size={16} className="text-gold" />
-                          <span>{detail.subtitle}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+      {/* Sticky Cards Main */}
+      <div ref={container} className="sticky-cards-main">
+        {services.map((service, index) => {
+          const targetScale = 1 - ( (services.length - index) * 0.05);
+          return (
+            <StickyCard 
+              key={service.id} 
+              service={service} 
+              index={index} 
+              progress={scrollYProgress}
+              range={[index * (1 / services.length), 1]}
+              targetScale={targetScale}
+            />
+          );
+        })}
       </div>
+
+      {/* Final CTA */}
+      <section className="services-final-cta section-padding dark-bg">
+        <div className="container text-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2>Ready to transform your vision into an extraordinary event?</h2>
+            <p>Our team is ready to orchestration your next masterpiece.</p>
+            <div className="cta-buttons mt-4">
+              <button className="btn-gold large">Book a Consultation</button>
+              <button className="btn-outline">View Our Projects</button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </motion.div>
   );
 };

@@ -5,6 +5,8 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/01-Home/Home';
 import About from './pages/02-About/About';
+import VisionMission from './pages/02-About/VisionMission';
+import Team from './pages/02-About/Team';
 import Services from './pages/03-Services/Services';
 import FilmfactoryV2 from './pages/04-Filmfactory/FilmfactoryV2';
 import Partner from './pages/05-Partner/Partner';
@@ -22,7 +24,9 @@ function AppLayout() {
         <AnimatePresence mode="wait">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about/*" element={<About />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/about/vision" element={<VisionMission />} />
+            <Route path="/about/team" element={<Team />} />
             <Route path="/services" element={<Services />} />
             <Route path="/filmfactory" element={<FilmfactoryV2 />} />
             <Route path="/v2" element={<FilmfactoryV2 />} />
