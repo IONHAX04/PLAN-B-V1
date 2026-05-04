@@ -11,45 +11,46 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
   const IconComponent = (LucideIcons as any)[service.icon] || LucideIcons.HelpCircle;
+  const themes = ['theme-dark', 'theme-gold-dark', 'theme-black', 'theme-slate'];
+  const themeClass = themes[index % themes.length];
 
   return (
-    <div className="service-screen-wrapper">
-      <div className="service-screen-sticky">
-        <div className="service-card-v4">
-          <div className="card-content-grid">
-            <div className="card-text-side">
-              <div className="service-header-mini">
-                <span className="service-index">Service 0{index + 1}</span>
-                <div className="service-icon-wrap">
-                  <IconComponent size={24} />
-                </div>
-              </div>
-              
-              <h2>{service.title}</h2>
-              <p className="service-main-desc">{service.description}</p>
-              
-              <div className="service-detailed-features">
-                {service.details.map((detail: any, idx: number) => (
-                  <div key={idx} className="detail-feature-item">
-                    <h4>{detail.subtitle}</h4>
-                    <p>{detail.text}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="card-footer">
-                <button className="btn-gold-small">Inquire Now</button>
-              </div>
-            </div>
-
-            <div className="card-image-side">
-              <img src={`/assets/images/services/service_${index + 1}.png`} alt={service.title} />
-              <div className="image-overlay-gradient"></div>
-            </div>
+    <section className={`service-screen-sticky ${themeClass}`}>
+      <div className="service-screen-content">
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.6, 0.05, -0.01, 0.9] as any }}
+          viewport={{ margin: "-10%" }}
+          className="screen-inner-centered"
+        >
+          <div className="screen-icon-box">
+            <IconComponent size={56} strokeWidth={1} />
           </div>
-        </div>
+          
+          <h2 className="screen-title">{service.title}</h2>
+          
+          <p className="screen-description">
+            {service.description}
+          </p>
+          
+          <div className="screen-features-mini">
+            {service.details.slice(0, 4).map((detail: any, idx: number) => (
+              <div key={idx} className="feature-pill">
+                <LucideIcons.Sparkle size={12} className="text-gold" />
+                <span>{detail.subtitle}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="screen-action">
+            <button className="btn-premium-screen">
+              Experience Excellence <LucideIcons.ChevronRight size={20} />
+            </button>
+          </div>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 
@@ -59,26 +60,30 @@ const Services = () => {
       initial={{ opacity: 0 }} 
       animate={{ opacity: 1 }} 
       exit={{ opacity: 0 }}
-      className="services-page-v4"
+      className="services-page-v5"
     >
-      {/* Intro Header - Not sticky, scrolls away */}
-      <section className="services-hero-v4">
+      {/* Intro - Scrolls away */}
+      <section className="services-intro-hero">
         <div className="container">
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="section-title-alipay"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            className="intro-text-center"
           >
             <div className="decor-script">Our Expertise</div>
             <h1>Bespoke <span>Event Solutions</span></h1>
-            <div className="title-divider-center"></div>
-            <p className="hero-description">{servicesIntro}</p>
+            <p className="intro-para">{servicesIntro}</p>
+            <div className="scroll-indicator-gold">
+              <div className="mouse"></div>
+              <span>Scroll to Explore</span>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Sticky Screens Container */}
-      <div className="services-screens-container">
+      {/* Sticky Screens Stack */}
+      <div className="services-screens-stack">
         {services.map((service, index) => (
           <ServiceCard 
             key={service.id} 
@@ -88,19 +93,20 @@ const Services = () => {
         ))}
       </div>
 
-      {/* Final CTA - Scrolls into view after all screens */}
-      <section className="services-final-cta-v4 section-padding dark-bg">
-        <div className="container text-center">
+      {/* Footer CTA */}
+      <section className="services-footer-cta">
+        <div className="container">
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="footer-cta-glass"
           >
-            <h2>Ready to transform your vision into an extraordinary event?</h2>
-            <p>Our team is ready to orchestrate your next masterpiece.</p>
-            <div className="cta-buttons mt-4">
-              <button className="btn-gold large">Book a Consultation</button>
-              <button className="btn-outline">View Our Projects</button>
+            <h2>Ready to plan your next masterpiece?</h2>
+            <p>Connect with our experts today for a bespoke consultation.</p>
+            <div className="cta-actions">
+              <button className="btn-gold">Get in Touch</button>
+              <button className="btn-outline">View Portfolio</button>
             </div>
           </motion.div>
         </div>
