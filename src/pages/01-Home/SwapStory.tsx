@@ -3,6 +3,9 @@ import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { aboutContent } from '../../data/mockData';
+import whoWeAre1 from '../../assets/home/who-we-are1.jpg';
+import whoWeAre2 from '../../assets/home/who-we-are2.jpg';
+import whoWeAre3 from '../../assets/home/who-we-are3.jpg';
 
 const features = [
   {
@@ -11,7 +14,7 @@ const features = [
     description: aboutContent.intro,
     path: "/about",
     linkText: "Learn More",
-    image: "/assets/images/home_our_story_section.png"
+    image: whoWeAre1
   },
   {
     id: 2,
@@ -19,7 +22,7 @@ const features = [
     description: aboutContent.vision,
     path: "/about#vision",
     linkText: "Explore Vision",
-    image: "/assets/images/home_vision_placeholder.png"
+    image: whoWeAre2
   },
   {
     id: 3,
@@ -27,7 +30,7 @@ const features = [
     description: aboutContent.mission,
     path: "/about#mission",
     linkText: "See Mission",
-    image: "/assets/images/home_mission_placeholder.png"
+    image: whoWeAre3
   }
 ];
 

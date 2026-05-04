@@ -41,36 +41,20 @@
 }
 
 .logo {
-  font-family: var(--font-serif);
-  font-size: 1.8rem;
-  font-weight: 700;
   display: flex;
-  flex-direction: column;
-  line-height: 0.8;
+  align-items: center;
+  height: 100%;
 }
 
-.logo-decor {
-  font-family: var(--font-decor);
-  font-size: 0.8rem;
-  color: var(--accent);
-  font-weight: 400;
-  margin-bottom: 2px;
-  letter-spacing: 1px;
+.logo-img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  transition: var(--transition-smooth);
 }
 
-.logo-text {
-  display: flex;
-  gap: 2px;
-}
-
-.logo-location {
-  font-family: var(--font-sans);
-  font-size: 0.6rem;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  color: var(--accent);
-  margin-top: 4px;
-  font-weight: 500;
+.header.scrolled .logo-img {
+  height: 40px;
 }
 
 .hero-v1-content h1 {
@@ -80,14 +64,6 @@
   font-family: var(--font-serif);
   color: var(--primary);
   font-weight: 700;
-}
-
-.logo-p {
-  color: var(--primary);
-}
-
-.logo-b {
-  color: var(--accent);
 }
 
 /* Desktop Nav */

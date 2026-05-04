@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { InstagramIcon, FacebookIcon, LinkedinIcon, YoutubeIcon, TiktokIcon } from './SocialIcons';
 import { navLinks, siteConfig } from '../data/mockData';
+import logo from '../assets/logo/logo.png';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -64,12 +65,7 @@ const Navbar = () => {
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
         <Link to="/" className="logo">
-          <span className="logo-decor">The Eventguide</span>
-          <div className="logo-text">
-            <span className="logo-p">PLAN</span>
-            <span className="logo-b">B</span>
-          </div>
-          <span className="logo-location">Switzerland</span>
+          <img src={logo} alt="Plan B Logo" className="logo-img" />
         </Link>
 
         {/* Desktop Nav */}

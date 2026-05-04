@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import home1 from '../../assets/home/home1.jpg';
+import home2 from '../../assets/home/home2.jpg';
+import home3 from '../../assets/home/home3.jpg';
 
 export const HeroVariant1 = () => {
   return (
@@ -13,7 +16,7 @@ export const HeroVariant1 = () => {
             animate={{ rotate: -10, x: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <img src="/assets/images/hero_gallery_rose.png" alt="Elegance" />
+            <img src={home1} alt="Elegance" />
           </motion.div>
           <motion.div 
             className="polaroid p2"
@@ -21,7 +24,7 @@ export const HeroVariant1 = () => {
             animate={{ rotate: 5, x: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
           >
-            <img src="/assets/images/hero_gallery_interior.png" alt="Architecture" />
+            <img src={home2} alt="Architecture" />
           </motion.div>
         </div>
 
@@ -57,7 +60,7 @@ export const HeroVariant1 = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
           >
-            <img src="/assets/images/hero_gallery_table.png" alt="Details" />
+            <img src={home3} alt="Details" />
           </motion.div>
         </div>
       </div>
