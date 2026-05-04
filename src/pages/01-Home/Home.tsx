@@ -17,10 +17,10 @@ import {
   Sparkles
 } from 'lucide-react';
 import { HeroVariant1 } from './HeroVariants';
+import { SwapStory } from './SwapStory';
 import {
   siteConfig,
   services,
-  aboutContent,
   testimonials,
   projects,
   filmfactoryContent,
@@ -107,7 +107,7 @@ const Home = () => {
       </div>
     </section>
 
-      {/* Three-Part Story Section (About, Vision, Mission) */}
+      {/* Three-Part Story Section (About, Vision, Mission) - Swap Column Style */}
       <section className="home-story-immersive section-padding">
         <div className="container">
           <motion.div {...fadeInUp} className="section-title-center">
@@ -115,42 +115,8 @@ const Home = () => {
              <h2>Who We Are</h2>
              <div className="title-divider-center"></div>
           </motion.div>
-
-          <div className="story-panels-container">
-            {/* Page 1: About */}
-            <motion.div {...fadeInUp} className="story-panel panel-about">
-               <div className="panel-content">
-                  <div className="panel-number">01</div>
-                  <h3>Plan B – The Eventguide</h3>
-                  <p>{aboutContent.intro}</p>
-                  <Link to="/about" className="btn-text-gold">Learn More <ArrowRight size={16} /></Link>
-               </div>
-               <div className="panel-bg-decor"></div>
-            </motion.div>
-
-            {/* Page 2: Vision */}
-            <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="story-panel panel-vision">
-               <div className="panel-content">
-                  <div className="panel-number">02</div>
-                  <h3>Our Vision</h3>
-                  <p>{aboutContent.vision}</p>
-                  <Link to="/about#vision" className="btn-text-gold">Explore Vision <ArrowRight size={16} /></Link>
-               </div>
-               <div className="panel-bg-decor"></div>
-            </motion.div>
-
-            {/* Page 3: Mission */}
-            <motion.div {...fadeInUp} transition={{ delay: 0.4 }} className="story-panel panel-mission">
-               <div className="panel-content">
-                  <div className="panel-number">03</div>
-                  <h3>Our Mission</h3>
-                  <p>{aboutContent.mission}</p>
-                  <Link to="/about#mission" className="btn-text-gold">See Mission <ArrowRight size={16} /></Link>
-               </div>
-               <div className="panel-bg-decor"></div>
-            </motion.div>
-          </div>
         </div>
+        <SwapStory />
       </section>
 
       {/* Services Section */}
