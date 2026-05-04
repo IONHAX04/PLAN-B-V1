@@ -59,7 +59,7 @@ export const SwapStory = () => {
                 animate={{
                   opacity: activeId === feature.id ? 1 : 0,
                   scale: activeId === feature.id ? 1 : 0.92,
-                  filter: activeId === feature.id ? 'blur(0px)' : 'blur(10px)',
+                  filter: activeId === feature.id ? 'blur(0px)' : 'blur(6px)',
                 }}
                 transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
               >
