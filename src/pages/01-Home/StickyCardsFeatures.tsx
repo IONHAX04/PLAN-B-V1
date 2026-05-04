@@ -1,15 +1,16 @@
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
   CalendarCheck,
-  Gauge,
-  HeartHandshake,
   MapPin,
-  Mic2,
+  Palette,
   Music,
-  Palette
+  HeartHandshake,
+  Mic2,
+  Sparkles,
+  Zap,
+  Star
 } from 'lucide-react';
 
 type ServiceItem = {
@@ -25,98 +26,85 @@ const iconMap = {
   Palette,
   Music,
   HeartHandshake,
-  Mic2
+  Mic2,
+  Sparkles,
+  Zap,
+  Star
 } as const;
 
-const cardThemes = ['theme-gold', 'theme-slate', 'theme-plum', 'theme-teal', 'theme-charcoal', 'theme-amber'];
-
-type StepCardProps = {
-  item: ServiceItem;
-  index: number;
-  activeIndex: number;
-  onBecomeActive: (index: number) => void;
-};
-
-const StepCard = ({ item, index, activeIndex, onBecomeActive }: StepCardProps) => {
-  const stepRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(stepRef, { margin: '-40% 0px -40% 0px', amount: 0.35 });
-  const depth = index - activeIndex;
-  const Icon = iconMap[item.icon as keyof typeof iconMap] || Gauge;
-
-  useEffect(() => {
-    if (isInView && activeIndex !== index) {
-      onBecomeActive(index);
-    }
-  }, [activeIndex, index, isInView, onBecomeActive]);
+const ExpertiseCard = ({ item, index }: { item: ServiceItem; index: number }) => {
+  const Icon = iconMap[item.icon as keyof typeof iconMap] || Zap;
+  
+  // Custom sizes for the Bento effect
+  const isLarge = index === 0 || index === 3;
+  const isWide = index === 5;
 
   return (
-    <div ref={stepRef} className="sticky-step">
-      <motion.article
-        className={`sticky-feature-card ${cardThemes[index % cardThemes.length]} ${depth === 0 ? 'active' : ''}`}
-        animate={{
-          scale: depth < 0 ? 0.93 : depth === 0 ? 1 : 0.98,
-          opacity: depth < 0 ? 0.42 : depth === 0 ? 1 : 0.76,
-          filter: depth < 0 ? 'blur(1.5px)' : 'blur(0px)'
-        }}
-        transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
-      >
-        <div className="sticky-card-icon">
-          <Icon size={22} />
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className={`bento-card ${isLarge ? 'bento-large' : ''} ${isWide ? 'bento-wide' : ''}`}
+    >
+      <div className="bento-card-content">
+        <div className="bento-icon-wrapper">
+          <Icon size={24} />
         </div>
-        <h3>{item.title}</h3>
-        <p>{item.description}</p>
-        <Link to={`/services#${item.id}`} className="btn-text-gold">
-          View Details <ArrowRight size={16} />
+        <div className="bento-text">
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </div>
+        <Link to={`/services#${item.id}`} className="bento-link">
+          Explore <ArrowRight size={16} />
         </Link>
-      </motion.article>
-    </div>
+      </div>
+      
+      {/* Visual Accents */}
+      <div className="bento-blur-bg" />
+      <div className="bento-border-glow" />
+    </motion.div>
   );
 };
 
 const StickyCardsFeatures = ({ items }: { items: ServiceItem[] }) => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start']
-  });
-
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [-28, 28]);
-  const parallaxOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.25, 0.5, 0.25]);
-  const progressHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
-
   return (
-    <section ref={sectionRef} className="sticky-features-section">
-      <motion.div className="sticky-features-bg" style={{ y: parallaxY, opacity: parallaxOpacity }} />
-
-      <div className="container sticky-features-container">
-        <div className="sticky-features-header">
-          <span className="decor-script-small">Our Expertise</span>
-          <h2>Built to Deliver Seamless Events</h2>
-          <p>Scroll to explore the services we orchestrate from first consultation to final applause.</p>
+    <section className="expertise-grid-section">
+      <div className="container">
+        <div className="expertise-header">
+          <motion.span 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="decor-script-small"
+          >
+            The Plan B Standard
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            Our Expertise. <br /><span>Built for Excellence.</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            We don't just manage events; we architect experiences. From technical precision to creative vision, we deliver seamless results every time.
+          </motion.p>
         </div>
 
-        <div className="sticky-progress">
-          <div className="sticky-progress-track">
-            <motion.div className="sticky-progress-fill" style={{ height: progressHeight }} />
-          </div>
-          <div className="sticky-progress-dots">
-            {items.map((item, index) => (
-              <span key={item.id} className={`progress-dot ${index === activeIndex ? 'active' : ''}`} />
-            ))}
-          </div>
-        </div>
-
-        <div className="sticky-stack">
+        <div className="bento-grid">
           {items.map((item, index) => (
-            <StepCard
-              key={item.id}
-              item={item}
-              index={index}
-              activeIndex={activeIndex}
-              onBecomeActive={setActiveIndex}
-            />
+            <ExpertiseCard key={item.id} item={item} index={index} />
           ))}
+        </div>
+        
+        <div className="expertise-footer-cta">
+          <Link to="/services" className="btn btn-gold">
+            View All Services <Sparkles size={18} />
+          </Link>
         </div>
       </div>
     </section>

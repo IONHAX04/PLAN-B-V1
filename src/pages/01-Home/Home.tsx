@@ -24,6 +24,9 @@ import {
 import './Home.css';
 import './ProjectsEnhancement.css';
 import './StickyCardsFeatures.css';
+import projectManoja from '../../assets/home/home-project-manoja.jpg';
+import projectGoat from '../../assets/home/home-project-goat.jpg';
+import projectTravel from '../../assets/home/home-project-travel.jpg';
 
 const Home = () => {
   const fadeInUp = {
@@ -183,7 +186,10 @@ const Home = () => {
                 className="project-poster-card"
               >
                 <div className="poster-image">
-                  <img src={`/assets/images/projects/project_${index + 1}.png`} alt={project.title} />
+                  <img 
+                    src={index === 0 ? projectManoja : index === 1 ? projectGoat : projectTravel} 
+                    alt={project.title} 
+                  />
                   <div className="poster-overlay">
                     <div className="poster-info">
                       <span className="project-tag">{project.category}</span>
