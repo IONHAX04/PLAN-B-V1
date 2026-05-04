@@ -18,15 +18,17 @@ import {
 } from 'lucide-react';
 import { HeroVariant1 } from './HeroVariants';
 import { SwapStory } from './SwapStory';
+import { TestimonialCarousel } from './TestimonialCarousel';
+import './TestimonialCarousel.css';
 import {
   siteConfig,
   services,
-  testimonials,
   projects,
   filmfactoryContent,
   partners
 } from '../../data/mockData';
 import './Home.css';
+import './ProjectsEnhancement.css';
 
 const Home = () => {
   const fadeInUp = {
@@ -207,69 +209,79 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Projects Preview */}
-      <section className="projects-home section-padding">
+      {/* Successful Projects Showcase */}
+      <section className="projects-home section-padding bg-main">
         <div className="container">
-          <div className="section-header">
-            <motion.h2 variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }}>Successful Projects</motion.h2>
-            <motion.div variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }} className="title-divider"></motion.div>
+          <div className="section-title-center">
+            <span className="decor-script">Selected Works</span>
+            <h2>Successful Projects</h2>
+            <div className="title-divider-center"></div>
           </div>
 
-          <div className="projects-preview-grid">
-            {projects.slice(0, 3).map((project, index) => (
+          <div className="projects-poster-grid">
+            {projects.map((project, index) => (
               <motion.div
                 key={project.id}
                 variants={fadeInUp}
                 whileInView="whileInView"
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="project-preview-card"
+                className="project-poster-card"
               >
-                <div className="project-image-placeholder">
-                  <span>{project.category}</span>
-                </div>
-                <div className="project-info">
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                  <Link to="/projects" className="read-more">View Project <ArrowRight size={16} /></Link>
+                <div className="poster-image">
+                  <img src={`/assets/images/projects/project_${index + 1}.png`} alt={project.title} />
+                  <div className="poster-overlay">
+                    <div className="poster-info">
+                      <span className="project-tag">{project.category}</span>
+                      <h3>{project.title}</h3>
+                      <Link to="/projects" className="view-project-btn">Explore Case Study <ArrowRight size={16} /></Link>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          <div className="center-cta mt-4">
-            <Link to="/projects" className="btn btn-outline">View All Projects</Link>
+          <div className="center-cta mt-6">
+            <Link to="/projects" className="btn-outline-gold">View Portfolio</Link>
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Private Events Spotlight */}
+      <section className="private-events-spotlight">
+        <div className="spotlight-bg">
+          <img src="/assets/images/projects/project_3.png" alt="Private Events" />
+          <div className="spotlight-overlay"></div>
+        </div>
+        <div className="container">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="spotlight-glass-card"
+          >
+            <div className="decor-script-gold">Exclusively Yours</div>
+            <h2>Private Events</h2>
+            <p>From intimate weddings to ultra-luxury anniversaries, we provide discrete management for high-profile portfolios and private estates. Every detail is orchestrated with absolute privacy, foresight, and the highest level of precision.</p>
+            <div className="spotlight-actions">
+              <Link to="/contact" className="btn-gold">Request Private Access</Link>
+              <Link to="/services" className="btn-text-white">Our Standards <ArrowRight size={16} /></Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials - Client Voice */}
       <section className="testimonials-section section-padding bg-alt">
         <div className="container">
-          <div className="section-header">
-            <motion.h2 variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }}>Client Voice</motion.h2>
-            <motion.div variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }} className="title-divider"></motion.div>
+          <div className="section-title-center">
+            <span className="decor-script">Client Voice</span>
+            <h2>Words From Our Partners</h2>
+            <div className="title-divider-center"></div>
           </div>
 
-          <div className="testimonials-grid">
-            {testimonials.map((t, index) => (
-              <motion.div
-                key={t.id}
-                variants={fadeInUp}
-                whileInView="whileInView"
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="testimonial-card"
-              >
-                <div className="quote-icon">"</div>
-                <p className="quote-text">{t.quote}</p>
-                <div className="client-info">
-                  <span className="client-name">{t.clientName}</span>
-                  <span className="event-type">{t.eventType} — {t.eventDate}</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <TestimonialCarousel />
         </div>
       </section>
 
