@@ -46,7 +46,8 @@ const ImageGridHero = ({ setSelectedProject }: { setSelectedProject: (p: any) =>
           style={{ opacity: textOpacity, y: textY, zIndex: textZIndex, pointerEvents: textPointerEvents as any }}
           className="image-grid-content"
         >
-          <h1>Exquisite Experiences</h1>
+          <div className="decor-script">Exquisite Experiences</div>
+          <h1>Our Portfolio</h1>
           <p>
             Discover our portfolio of exclusive corporate events, breathtaking weddings, and high-energy club nights across Switzerland.
           </p>

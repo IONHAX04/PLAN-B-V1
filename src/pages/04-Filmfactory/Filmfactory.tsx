@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Film, Users, Trophy, Clapperboard, Calendar } from 'lucide-react';
 import { filmfactoryContent } from '../../data/mockData';
@@ -75,8 +75,9 @@ const Filmfactory = () => {
             style={{ opacity: titleOpacity, scale: titleScale }}
             className="ff-intro-text"
           >
-            <div className="ff-badge-top">Sub Company of Plan B</div>
+            <div className="ff-badge-top decor-script-small">Sub Company of Plan B</div>
             <h1 className="ff-main-title">FILMFACTORY</h1>
+            <div className="title-divider-center"></div>
             <p className="ff-scroll-hint">Scroll to begin the journey</p>
           </motion.div>
         </div>

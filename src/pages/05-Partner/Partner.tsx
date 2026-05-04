@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, X, Mail, Phone, ExternalLink, Star } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import { partners, partnersIntro } from '../../data/mockData';
 import './Partner.css';
 
@@ -25,9 +25,10 @@ const Partner = () => {
     >
       <div className="container">
         <div className="section-header">
-          <h1>Our Partners</h1>
+          <div className="decor-script">Our Partners</div>
+          <h1>Strong Collaborations</h1>
+          <div className="title-divider-center"></div>
           <p className="section-subtitle">{partnersIntro}</p>
-          <div className="title-divider"></div>
         </div>
 
         {/* Filters */}

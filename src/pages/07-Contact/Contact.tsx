@@ -50,6 +50,7 @@ const Contact = () => {
       <div className="container">
         <div className="contact-layout">
           <div className="contact-info-section">
+            <div className="decor-script">Get in Touch</div>
             <motion.h1 
               initial={{ x: -30, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}

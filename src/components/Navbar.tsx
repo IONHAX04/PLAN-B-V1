@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -39,7 +39,7 @@ const Navbar = () => {
       scale: 1.1,
       transition: {
         duration: 0.4,
-        ease: [0.4, 0, 0.2, 1],
+        ease: [0.4, 0, 0.2, 1] as any,
         when: "afterChildren"
       }
     },
@@ -48,7 +48,7 @@ const Navbar = () => {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: [0.4, 0, 0.2, 1],
+        ease: [0.4, 0, 0.2, 1] as any,
         staggerChildren: 0.1,
         delayChildren: 0.2
       }
@@ -62,8 +62,9 @@ const Navbar = () => {
 
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="nav-container container">
+      <div className="nav-container">
         <Link to="/" className="logo">
+          <span className="logo-decor">The Eventguide</span>
           <div className="logo-text">
             <span className="logo-p">PLAN</span>
             <span className="logo-b">B</span>
@@ -96,14 +97,18 @@ const Navbar = () => {
           ))}
         </nav>
 
-        {/* Mobile Toggle */}
-        <button 
-          className={`mobile-toggle ${isOpen ? 'active' : ''}`} 
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle Menu"
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        <div className="nav-actions">
+          <Link to="/contact" className="btn-inquire">Inquire Now</Link>
+          
+          {/* Mobile Toggle */}
+          <button 
+            className={`mobile-toggle ${isOpen ? 'active' : ''}`} 
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle Menu"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Overlay */}

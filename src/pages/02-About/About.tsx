@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { EffectCoverflow, Navigation, Autoplay } from 'swiper/modules';
 import { X, Quote, ArrowLeft, ArrowRight, Users, Target, Rocket, Lightbulb, Sprout, ShieldCheck, ChevronRight } from 'lucide-react';
 import { aboutContent, teamMembers } from '../../data/mockData';
 import './About.css';
@@ -31,7 +31,7 @@ const About = () => {
 
   return (
     <div className="about-page-reimagined">
-      {/* 1. Hero Section - Alipay Style */}
+      {/* 1. Hero Section - Overview */}
       <section className="about-hero-alipay">
         <div className="container hero-grid">
           <motion.div 
@@ -40,10 +40,12 @@ const About = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="hero-year">2026</div>
-            <h1>Plan B – The Event Guide<br /><span>Excellence Redefined</span></h1>
+            <div className="decor-script-small">Plan B – The Eventguide</div>
+            <h1>Excellence<br /><span>Redefined</span></h1>
             <p className="hero-desc">{aboutContent.intro}</p>
-            <button className="btn-gold-alipay">Get Started <ChevronRight size={18} /></button>
+            <div className="hero-cta-alipay">
+              <a href="#vision" className="btn-gold-alipay">Explore Our Vision <ChevronRight size={18} /></a>
+            </div>
           </motion.div>
           <motion.div 
             className="hero-image-right"
@@ -59,12 +61,57 @@ const About = () => {
         </div>
       </section>
 
+      {/* 1.1 Founder Note Section */}
+      <section className="founder-note-section section-padding">
+        <div className="container">
+          <div className="founder-grid">
+            <motion.div {...fadeInUp} className="founder-image-box">
+               <div className="founder-img-wrapper">
+                 <img src="/assets/images/abyy.png" alt="Founder" />
+               </div>
+               <div className="founder-label">
+                  <span className="name">Abishana</span>
+                  <span className="role">Founder of Plan B</span>
+               </div>
+            </motion.div>
+            <motion.div {...fadeInUp} className="founder-text-box">
+               <div className="decor-script">A Personal Note</div>
+               <h2>Forward-Thinking Planning</h2>
+               <div className="title-divider"></div>
+               <p>{aboutContent.founderNote}</p>
+               <Quote size={40} className="text-gold-fade" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 1.2 Vision & Mission Sections */}
+      <section id="vision" className="vision-mission-premium-section section-padding dark-bg">
+        <div className="container">
+          <div className="vm-premium-grid">
+            <motion.div {...fadeInUp} className="vm-premium-card">
+               <div className="vm-card-icon"><Target size={40} /></div>
+               <div className="decor-script">Our Vision</div>
+               <h2>Revolutionizing Events</h2>
+               <p>{aboutContent.vision}</p>
+            </motion.div>
+            <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="vm-premium-card">
+               <div className="vm-card-icon"><Rocket size={40} /></div>
+               <div className="decor-script">Our Mission</div>
+               <h2>Unique Experiences</h2>
+               <p>{aboutContent.mission}</p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* 2. Team Carousel Section */}
-      <section className="about-team-alipay dark-bg">
+      <section className="about-team-alipay dark-bg section-padding">
         <div className="container">
           <motion.div {...fadeInUp} className="section-title-alipay">
-            <div className="decor-line"></div>
+            <div className="decor-script">Our Team</div>
             <h2>Meet Our Visionaries</h2>
+            <div className="title-divider-center"></div>
             <p>The driving force behind unforgettable moments</p>
           </motion.div>
           
@@ -119,11 +166,12 @@ const About = () => {
       </section>
 
       {/* 3. Values/Benefits Section */}
-      <section className="about-values-alipay">
+      <section className="about-values-alipay section-padding">
         <div className="container">
           <motion.div {...fadeInUp} className="section-title-alipay">
-            <div className="decor-line"></div>
+            <div className="decor-script">Our Values</div>
             <h2>Core Pillars</h2>
+            <div className="title-divider-center"></div>
           </motion.div>
           
           <div className="values-grid-alipay">

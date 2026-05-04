@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import * as LucideIcons from 'lucide-react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
 import { services, servicesIntro } from '../../data/mockData';
 import './Services.css';
 
 const Services = () => {
-  const [expandedId, setExpandedId] = useState<number | null>(null);
-
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
     animate: { opacity: 1, y: 0 },
@@ -22,10 +18,6 @@ const Services = () => {
     }
   };
 
-  const toggleExpand = (id: number) => {
-    setExpandedId(expandedId === id ? null : id);
-  };
-
   return (
     <motion.div 
       initial="initial" 
@@ -35,58 +27,46 @@ const Services = () => {
     >
       <div className="container">
         <div className="section-header">
-          <motion.h1 variants={fadeInUp}>Our Services</motion.h1>
+          <motion.div variants={fadeInUp} className="decor-script">Our Expertise</motion.div>
+          <motion.h1 variants={fadeInUp}>Tailor-Made Solutions</motion.h1>
+          <motion.div variants={fadeInUp} className="title-divider-center"></motion.div>
           <motion.p variants={fadeInUp} className="section-subtitle">
             {servicesIntro}
           </motion.p>
-          <motion.div variants={fadeInUp} className="title-divider"></motion.div>
         </div>
 
-        <motion.div variants={stagger} className="services-grid">
-          {services.map((service) => {
+        <motion.div variants={stagger} className="services-detailed-grid">
+          {services.map((service, index) => {
             const IconComponent = (LucideIcons as any)[service.icon] || LucideIcons.HelpCircle;
-            const isExpanded = expandedId === service.id;
             return (
               <motion.div 
                 key={service.id} 
                 variants={fadeInUp} 
-                className={`service-card-detailed ${isExpanded ? 'expanded' : ''}`}
-                onClick={() => toggleExpand(service.id)}
+                className="service-card-premium"
               >
-                <div className="service-card-header">
-                  <div className="service-icon-wrapper">
-                    <IconComponent size={40} strokeWidth={1.5} />
+                <div className="service-card-inner">
+                  <div className="service-visual">
+                    <div className="service-number">0{index + 1}</div>
+                    <div className="service-icon-bg">
+                      <IconComponent size={120} strokeWidth={0.5} />
+                    </div>
                   </div>
-                  <div className="service-content">
+                  <div className="service-info">
+                    <div className="service-icon-small">
+                      <IconComponent size={24} />
+                    </div>
                     <h3>{service.title}</h3>
                     <p>{service.description}</p>
-                  </div>
-                  <div className="expand-toggle">
-                    {isExpanded ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+                    <div className="service-features-list">
+                      {service.details.map((detail, idx) => (
+                        <div key={idx} className="feature-item">
+                          <LucideIcons.CheckCircle2 size={16} className="text-gold" />
+                          <span>{detail.subtitle}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-                
-                <AnimatePresence>
-                  {isExpanded && service.details && (
-                    <motion.div 
-                      className="service-details"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <ul>
-                        {service.details.map((detail, idx) => (
-                          <li key={idx}>
-                            <strong>{detail.subtitle}:</strong> {detail.text}
-                          </li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-                
-                <div className="service-card-bg"></div>
               </motion.div>
             );
           })}
