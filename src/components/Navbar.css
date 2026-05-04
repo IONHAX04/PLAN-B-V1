@@ -28,6 +28,18 @@
   padding: 0 4rem;
 }
 
+@media (max-width: 1024px) {
+  .nav-container {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0 1.5rem;
+  }
+}
+
 .logo {
   font-family: var(--font-serif);
   font-size: 1.8rem;
@@ -274,5 +286,32 @@
   
   .mobile-toggle {
     display: block;
+    margin-left: 0;
+  }
+
+  .nav-actions {
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .btn-inquire {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    transform: scale(0.8);
+    transform-origin: left center;
+  }
+  
+  .btn-inquire {
+    display: none;
+  }
+
+  .mobile-toggle {
+    margin-left: auto;
   }
 }

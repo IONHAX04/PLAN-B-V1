@@ -12,7 +12,7 @@
 }
 
 .contact-info-section h1 {
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 8vw, 4rem);
   line-height: 1.1;
   margin-bottom: 2rem;
 }
@@ -154,7 +154,7 @@ input:focus, select:focus, textarea:focus {
   }
   
   .contact-info-section h1 {
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 8vw, 4rem);
   }
 }
 

@@ -65,7 +65,7 @@
 }
 
 .hero-v1-content h1 {
-  font-size: 5rem;
+  font-size: clamp(3rem, 10vw, 5rem);
   margin-bottom: 2rem;
   line-height: 1;
   font-family: var(--font-serif);
@@ -134,7 +134,7 @@
 }
 
 .v2-glass-card h1 {
-  font-size: 5rem;
+  font-size: clamp(2.5rem, 8vw, 5rem);
   margin-bottom: 2rem;
   line-height: 1;
 }
@@ -256,7 +256,7 @@
 
 @media (max-width: 1100px) {
   .v2-glass-card h1 { font-size: 3.5rem; }
-  .v3-text-side h1 { font-size: 4rem; }
+  .v3-text-side h1 { font-size: clamp(2.5rem, 10vw, 4rem); }
 }
 
 @media (max-width: 992px) {
@@ -269,26 +269,34 @@
     grid-template-columns: 1fr;
     text-align: center;
     gap: 4rem;
-    padding: 4rem 0;
+    padding: 2rem 1.5rem;
+    max-width: 100% !important;
   }
   .gallery-left, .gallery-right {
     height: auto;
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem;
     order: 2;
+    padding: 0;
   }
   .polaroid {
     position: static;
     transform: none !important;
-    width: 250px;
+    width: 45%;
+    max-width: 200px;
   }
   .hero-v1-content {
     order: 1;
+    padding: 0;
   }
   .p3 {
-    width: 250px;
+    width: 80%;
+    max-width: 280px;
     padding-bottom: 3rem;
+  }
+  .hero-v1-content h1 {
+    font-size: 3rem;
   }
 }
 
@@ -727,7 +735,7 @@
 }
 
 .cta-content h2 {
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 8vw, 4rem);
   margin-bottom: 1.5rem;
 }
 
@@ -811,6 +819,15 @@
   background: #fdfdfd;
 }
 
+.features-header {
+  margin-bottom: 4rem;
+}
+
+.features-header h2 {
+  font-size: 2.5rem;
+  margin-top: 0.5rem;
+}
+
 .grid-layout {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -870,16 +887,22 @@
   min-height: 350px;
 }
 
-.card-bg-decor-map {
+.card-bg-decor-film {
   position: absolute;
   top: 50%;
-  right: 5%;
-  transform: translateY(-50%);
-  width: 300px;
-  height: 200px;
-  background: url("data:image/svg+xml,%3Csvg width='300' height='200' viewBox='0 0 300 200' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20L50 50M20 50L50 20M250 20L280 50M250 50L280 20' stroke='%23C5A022' stroke-width='2' stroke-opacity='0.1'/%3E%3Cpath d='M150 20C150 20 180 50 180 100C180 150 150 180 150 180' stroke='%23C5A022' stroke-width='4' stroke-opacity='0.1'/%3E%3Ccircle cx='150' cy='180' r='10' stroke='%23C5A022' stroke-width='2' stroke-opacity='0.1'/%3E%3C/svg%3E") no-repeat center;
-  opacity: 0.5;
+  right: -5%;
+  transform: translateY(-50%) rotate(-15deg);
+  width: 400px;
+  height: 400px;
+  opacity: 0.08;
   pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.card-bg-decor-film img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* Absolute Privacy - Small */

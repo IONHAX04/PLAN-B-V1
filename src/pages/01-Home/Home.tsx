@@ -54,7 +54,13 @@ const Home = () => {
 
       {/* Secondary Hero Section - Features Grid */}
       <section className="home-features-grid section-padding">
-        <div className="container grid-layout">
+        <div className="container">
+          <motion.div {...fadeInUp} className="features-header">
+            <span className="decor-script-small">The Method</span>
+            <h2>Precision in Every Detail</h2>
+          </motion.div>
+          
+          <div className="grid-layout">
           {/* Card 1: Strategic Curation */}
           <motion.div {...fadeInUp} className="feature-card large light-card curation-card">
             <div className="card-top">
@@ -62,7 +68,9 @@ const Home = () => {
               <h3>Strategic Curation</h3>
             </div>
             <p>Every event is a unique architectural project. We design not just for the moment, but for the legacy.</p>
-            <div className="card-bg-decor-map"></div>
+            <div className="card-bg-decor-film">
+              <img src="/assets/images/filmRoll.png" alt="" />
+            </div>
           </motion.div>
 
           {/* Card 2: Absolute Privacy */}
@@ -96,7 +104,8 @@ const Home = () => {
             </div>
           </motion.div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Three-Part Story Section (About, Vision, Mission) */}
       <section className="home-story-immersive section-padding">
