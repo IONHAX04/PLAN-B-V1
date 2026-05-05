@@ -855,3 +855,228 @@
     text-align: left !important;
   }
 }
+
+/* 5. Vision & Mission Premium */
+.vision-mission-page {
+  background: var(--secondary);
+}
+
+.philosophy-hero {
+  height: 60vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-image: url('../../assets/home/home1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(255,255,255,0.9) 30%, rgba(255,255,255,0.4));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: clamp(3rem, 8vw, 5rem);
+  line-height: 1;
+  margin: 1.5rem 0;
+  font-family: var(--font-serif);
+}
+
+.hero-content h1 span {
+  color: var(--accent);
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+.vm-dual-pillars {
+  overflow: hidden;
+}
+
+.pillar-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8rem;
+  align-items: center;
+  margin-bottom: 12rem;
+}
+
+.pillar-row.reverse .pillar-image-side {
+  order: 2;
+}
+
+.pillar-row.reverse .pillar-text-side {
+  order: 1;
+  text-align: right;
+}
+
+.pillar-row.reverse .pillar-text-side .pillar-icon {
+  margin-left: auto;
+}
+
+.pillar-img-wrapper {
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.1);
+}
+
+.pillar-img-wrapper img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  display: block;
+}
+
+.pillar-label {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: var(--accent);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  border-radius: 99px;
+}
+
+.pillar-icon {
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.pillar-text-side h2 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: 2rem;
+  font-family: var(--font-serif);
+}
+
+.pillar-text-side p {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+}
+
+.pillar-quote {
+  font-family: var(--font-decor);
+  font-size: 2.5rem;
+  color: var(--accent);
+  opacity: 0.6;
+}
+
+.values-mosaic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.mosaic-item {
+  background: white;
+  padding: 4rem 3rem;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  transition: all 0.4s ease;
+}
+
+.mosaic-item:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent);
+  box-shadow: 0 20px 60px rgba(197, 160, 34, 0.1);
+}
+
+.mosaic-icon-wrap {
+  width: 60px;
+  height: 60px;
+  background: var(--bg-alt);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.mosaic-item h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.mosaic-item p {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.cta-box-premium {
+  background: #0a0a0a;
+  padding: 8rem 4rem;
+  border-radius: 50px;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-box-premium h2 {
+  font-size: 3.5rem;
+  font-family: var(--font-serif);
+  margin-bottom: 1.5rem;
+}
+
+.cta-box-premium p {
+  opacity: 0.7;
+  font-size: 1.2rem;
+  margin-bottom: 4rem;
+}
+
+.cta-btns {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+@media (max-width: 992px) {
+  .pillar-row {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    margin-bottom: 8rem;
+  }
+  .pillar-row.reverse .pillar-text-side {
+    text-align: left;
+  }
+  .pillar-row.reverse .pillar-text-side .pillar-icon {
+    margin-left: 0;
+  }
+  .values-mosaic-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .values-mosaic-grid {
+    grid-template-columns: 1fr;
+  }
+  .cta-btns {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .philosophy-hero {
+    height: 50vh;
+  }
+}
