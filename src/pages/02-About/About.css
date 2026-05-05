@@ -791,6 +791,14 @@
   margin-bottom: 1rem;
 }
 
+.about-story-content p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 1.75rem;
+  text-align: justify;
+}
+
 .about-story-image {
   width: 100%;
   border-radius: 20px;
@@ -827,6 +835,7 @@
   color: var(--text-muted);
   line-height: 1.8;
   margin-bottom: 3rem;
+  text-align: justify;
 }
 
 .btn-text-gold {
@@ -970,6 +979,7 @@
   line-height: 1.9;
   color: var(--text-muted);
   margin-bottom: 3rem;
+  text-align: justify;
 }
 
 .pillar-quote {
@@ -1021,6 +1031,7 @@
 .mosaic-item p {
   color: var(--text-muted);
   line-height: 1.6;
+  text-align: justify;
 }
 
 .cta-box-premium {
