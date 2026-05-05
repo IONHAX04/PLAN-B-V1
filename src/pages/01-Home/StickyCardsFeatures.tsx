@@ -35,9 +35,11 @@ const iconMap = {
 const ExpertiseCard = ({ item, index }: { item: ServiceItem; index: number }) => {
   const Icon = iconMap[item.icon as keyof typeof iconMap] || Zap;
   
-  // Custom sizes for the Bento effect
-  const isLarge = index === 0 || index === 3;
-  const isWide = index === 5;
+  // New Symmetric Alignment Logic:
+  // Row 1: Wide, Normal
+  // Row 2: Normal, Wide
+  // Row 3: Wide, Normal
+  const isWide = index === 0 || index === 3 || index === 4;
 
   return (
     <motion.div
@@ -45,7 +47,7 @@ const ExpertiseCard = ({ item, index }: { item: ServiceItem; index: number }) =>
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className={`bento-card ${isLarge ? 'bento-large' : ''} ${isWide ? 'bento-wide' : ''}`}
+      className={`bento-card ${isWide ? 'bento-wide' : ''}`}
     >
       <div className="bento-card-content">
         <div className="bento-icon-wrapper">

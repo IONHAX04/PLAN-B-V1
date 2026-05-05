@@ -1,5 +1,12 @@
 import { useScroll, useTransform, motion } from 'framer-motion';
 import { useRef } from 'react';
+import partner1 from '../../assets/partners/Partner1.jpg';
+import partner2 from '../../assets/partners/Partner2.jpg';
+import partner3 from '../../assets/partners/Partner3.jpg';
+import partner4 from '../../assets/partners/Partner4.jpg';
+import partner5 from '../../assets/partners/Partner5.jpg';
+import partner6 from '../../assets/partners/Partner6.jpg';
+import partner7 from '../../assets/partners/Partner7.jpg';
 
 export const ZoomParallax = () => {
   const container = useRef(null);
@@ -16,37 +23,37 @@ export const ZoomParallax = () => {
 
   const pictures = [
     {
-      src: '/assets/images/parallax/partner_1.png',
+      src: partner1,
       scale: scale4,
       className: 'parallax-item-1'
     },
     {
-      src: '/assets/images/parallax/partner_2.png',
+      src: partner2,
       scale: scale5,
       className: 'parallax-item-2'
     },
     {
-      src: '/assets/images/parallax/partner_3.png',
+      src: partner3,
       scale: scale6,
       className: 'parallax-item-3'
     },
     {
-      src: '/assets/images/parallax/partner_4.png',
+      src: partner4,
       scale: scale8,
       className: 'parallax-item-4'
     },
     {
-      src: '/assets/images/parallax/partner_5.png',
+      src: partner5,
       scale: scale5,
       className: 'parallax-item-5'
     },
     {
-      src: '/assets/images/parallax/partner_6.png',
+      src: partner6,
       scale: scale6,
       className: 'parallax-item-6'
     },
     {
-      src: '/assets/images/parallax/partner_7.png',
+      src: partner7,
       scale: scale9,
       className: 'parallax-item-7'
     }

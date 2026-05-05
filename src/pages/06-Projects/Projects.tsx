@@ -2,7 +2,15 @@ import React, { useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { X, Calendar, MapPin } from 'lucide-react';
 import { projects, projectCategories } from '../../data/mockData';
+import project1 from '../../assets/projects/Projects1.jpg';
+import project2 from '../../assets/projects/Projects2.jpg';
+import project3 from '../../assets/projects/Projects3.jpg';
+import project4 from '../../assets/projects/Projects4.jpg';
+import project5 from '../../assets/projects/Projects5.jpg';
+import project6 from '../../assets/projects/Projects6.jpg';
 import './Projects.css';
+
+const projectImages = [project1, project2, project3, project4, project5, project6];
 
 const ImageGridHero = ({ setSelectedProject }: { setSelectedProject: (p: any) => void }) => {
   const targetRef = useRef<HTMLElement | null>(null);
@@ -63,7 +71,7 @@ const ImageGridHero = ({ setSelectedProject }: { setSelectedProject: (p: any) =>
             className="hero-card card-a"
             onClick={() => setSelectedProject(p[0])}
           >
-            <img src={p[0].image} alt={p[0].title} />
+            <img src={projectImages[0]} alt={p[0].title} />
           </motion.div>
 
           <motion.div
@@ -71,7 +79,7 @@ const ImageGridHero = ({ setSelectedProject }: { setSelectedProject: (p: any) =>
             className="hero-card card-b"
             onClick={() => setSelectedProject(p[1])}
           >
-            <img src={p[1].image} alt={p[1].title} />
+            <img src={projectImages[1]} alt={p[1].title} />
           </motion.div>
 
           <motion.div
@@ -79,7 +87,7 @@ const ImageGridHero = ({ setSelectedProject }: { setSelectedProject: (p: any) =>
             className="hero-card card-c"
             onClick={() => setSelectedProject(p[2])}
           >
-            <img src={p[2].image} alt={p[2].title} />
+            <img src={projectImages[2]} alt={p[2].title} />
           </motion.div>
 
           <motion.div
@@ -87,7 +95,7 @@ const ImageGridHero = ({ setSelectedProject }: { setSelectedProject: (p: any) =>
             className="hero-card card-d"
             onClick={() => setSelectedProject(p[3])}
           >
-            <img src={p[3].image} alt={p[3].title} />
+            <img src={projectImages[3]} alt={p[3].title} />
           </motion.div>
 
           <motion.div
@@ -95,7 +103,7 @@ const ImageGridHero = ({ setSelectedProject }: { setSelectedProject: (p: any) =>
             className="hero-card card-e"
             onClick={() => setSelectedProject(p[4])}
           >
-            <img src={p[4].image} alt={p[4].title} />
+            <img src={projectImages[4]} alt={p[4].title} />
           </motion.div>
 
           <motion.div
@@ -103,7 +111,7 @@ const ImageGridHero = ({ setSelectedProject }: { setSelectedProject: (p: any) =>
             className="hero-card card-f"
             onClick={() => setSelectedProject(p[5])}
           >
-            <img src={p[5].image} alt={p[5].title} />
+            <img src={projectImages[5]} alt={p[5].title} />
           </motion.div>
         </div>
 
@@ -159,7 +167,10 @@ const Projects = () => {
                 onClick={() => setSelectedProject(project)}
               >
                 <div className="card-img-wrapper">
-                  <img src={project.image} alt={project.title} />
+                  <img 
+                    src={projectImages[(project.id as number - 1) % projectImages.length]} 
+                    alt={project.title} 
+                  />
                 </div>
                 <div className="card-info-box">
                   <h3>{project.title}</h3>
@@ -177,7 +188,10 @@ const Projects = () => {
               <motion.div className="modal-fashion-content" initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 50, opacity: 0 }} onClick={(e) => e.stopPropagation()}>
                 <button className="close-modal-fashion" onClick={() => setSelectedProject(null)}><X size={24} /></button>
                 <div className="modal-top">
-                  <img src={selectedProject.image} alt={selectedProject.title} />
+                  <img 
+                    src={projectImages[(selectedProject.id as number - 1) % projectImages.length]} 
+                    alt={selectedProject.title} 
+                  />
                   <div className="modal-hero-text">
                     <span>{selectedProject.category}</span>
                     <h2>{selectedProject.title}</h2>

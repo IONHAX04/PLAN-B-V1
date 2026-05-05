@@ -27,6 +27,15 @@ import './StickyCardsFeatures.css';
 import projectManoja from '../../assets/home/home-project-manoja.jpg';
 import projectGoat from '../../assets/home/home-project-goat.jpg';
 import projectTravel from '../../assets/home/home-project-travel.jpg';
+import partner1 from '../../assets/partners/Partner1.jpg';
+import partner2 from '../../assets/partners/Partner2.jpg';
+import partner3 from '../../assets/partners/Partner3.jpg';
+import partner4 from '../../assets/partners/Partner4.jpg';
+import partner5 from '../../assets/partners/Partner5.jpg';
+import partner6 from '../../assets/partners/Partner6.jpg';
+import partner7 from '../../assets/partners/Partner7.jpg';
+
+const partnerImages = [partner1, partner2, partner3, partner4, partner5, partner6, partner7];
 
 const Home = () => {
   const fadeInUp = {
@@ -254,21 +263,19 @@ const Home = () => {
               <motion.p variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }}>
                 We cooperate with carefully selected partners in catering, technology, decoration, and more to provide you with exclusive benefits and a seamless experience.
               </motion.p>
-              <div className="partners-mini-grid">
-                {partners.slice(0, 8).map((p, i) => (
+              <div className="partners-logo-scroller">
+                {partnerImages.map((img, i) => (
                   <motion.div
                     key={i}
                     variants={fadeInUp}
                     whileInView="whileInView"
                     viewport={{ once: true }}
-                    className="partner-tag"
+                    transition={{ delay: i * 0.05 }}
+                    className="partner-logo-item"
                   >
-                    <CheckCircle2 size={14} className="text-gold" /> {p.name}
+                    <img src={img} alt={`Partner ${i + 1}`} />
                   </motion.div>
                 ))}
-                <motion.div variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }} className="partner-tag more">
-                  + {partners.length - 8} more
-                </motion.div>
               </div>
               <Link to="/partner" className="btn btn-gold mt-3">Partner Network</Link>
             </div>

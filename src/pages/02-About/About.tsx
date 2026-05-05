@@ -2,7 +2,17 @@ import { motion } from 'framer-motion';
 import { Quote, ChevronRight, Sparkles, ShieldCheck, Heart } from 'lucide-react';
 import { aboutContent } from '../../data/mockData';
 import { Link } from 'react-router-dom';
+import storyImg from '../../assets/home/who-we-are1.jpg';
+import partner1 from '../../assets/partners/Partner1.jpg';
+import partner2 from '../../assets/partners/Partner2.jpg';
+import partner3 from '../../assets/partners/Partner3.jpg';
+import partner4 from '../../assets/partners/Partner4.jpg';
+import partner5 from '../../assets/partners/Partner5.jpg';
+import partner6 from '../../assets/partners/Partner6.jpg';
+import partner7 from '../../assets/partners/Partner7.jpg';
 import './About.css';
+
+const partners = [partner1, partner2, partner3, partner4, partner5, partner6, partner7];
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -17,7 +27,7 @@ const About = () => {
       {/* Hero Section */}
       <section className="about-hero-alipay">
         <div className="container hero-grid">
-          <motion.div 
+          <motion.div
             className="hero-text-left"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -30,7 +40,7 @@ const About = () => {
               <Link to="/about/vision" className="btn-gold-alipay">Explore Our Vision <ChevronRight size={18} /></Link>
             </div>
           </motion.div>
-          <motion.div 
+          <motion.div
             className="hero-image-right"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -49,20 +59,20 @@ const About = () => {
         <div className="container">
           <div className="founder-grid">
             <motion.div {...fadeInUp} className="founder-image-box">
-               <div className="founder-img-wrapper">
-                 <img src="/assets/images/abyy.png" alt="Founder" />
-               </div>
-               <div className="founder-label">
-                  <span className="name">Abishana</span>
-                  <span className="role">Founder of Plan B</span>
-               </div>
+              <div className="founder-img-wrapper">
+                <img src="/assets/images/abyy.png" alt="Founder" />
+              </div>
+              <div className="founder-label">
+                <span className="name">Abishana</span>
+                <span className="role">Founder of Plan B</span>
+              </div>
             </motion.div>
             <motion.div {...fadeInUp} className="founder-text-box">
-               <div className="decor-script">A Personal Note</div>
-               <h2>Forward-Thinking Planning</h2>
-               <div className="title-divider"></div>
-               <p>{aboutContent.founderNote}</p>
-               <Quote size={40} className="text-gold-fade" />
+              <div className="decor-script">A Personal Note</div>
+              <h2>Forward-Thinking Planning</h2>
+              <div className="title-divider"></div>
+              <p>{aboutContent.founderNote}</p>
+              <Quote size={40} className="text-gold-fade" />
             </motion.div>
           </div>
         </div>
@@ -71,45 +81,82 @@ const About = () => {
       {/* Story Extension */}
       <section className="story-extension section-padding dark-bg">
         <div className="container">
-          <div className="story-content-box">
+          <div className="story-content-grid">
             <motion.div {...fadeInUp} className="story-text">
               <div className="decor-script">Our Story</div>
               <h2>Beyond Event Management</h2>
               <p>{aboutContent.extended}</p>
             </motion.div>
-            
-            <div className="story-highlights">
-              <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="highlight-card">
-                <Sparkles className="highlight-icon" />
-                <h3>Creative Vision</h3>
-                <p>Transforming abstract ideas into stunning realities with unique Swiss flair.</p>
+            <motion.div {...fadeInUp} className="story-image">
+              <img src={storyImg} alt="Our Story" />
+              <div className="story-image-decor"></div>
+            </motion.div>
+          </div>
+
+          <div className="story-highlights">
+            <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="highlight-card">
+              <Sparkles className="highlight-icon" />
+              <h3>Creative Vision</h3>
+              <p>Transforming abstract ideas into stunning realities with unique Swiss flair.</p>
+            </motion.div>
+            <motion.div {...fadeInUp} transition={{ delay: 0.4 }} className="highlight-card">
+              <ShieldCheck className="highlight-icon" />
+              <h3>Absolute Reliability</h3>
+              <p>Our "Plan B" philosophy ensures a seamless experience even in the unexpected.</p>
+            </motion.div>
+            <motion.div {...fadeInUp} transition={{ delay: 0.6 }} className="highlight-card">
+              <Heart className="highlight-icon" />
+              <h3>Client Empathy</h3>
+              <p>We listen closely to create moments that resonate deeply with your audience.</p>
+            </motion.div>
+          </div>
+        </div>
+      </section >
+
+      {/* Trusted Partners Section */}
+      <section className="partners-section section-padding">
+        <div className="container">
+          <motion.div {...fadeInUp} className="section-title-alipay">
+            <div className="decor-script">Our Network</div>
+            <h2>Trusted Partners</h2>
+            <div className="title-divider-center"></div>
+            <p>Collaborating with the industry's best to deliver excellence.</p>
+          </motion.div>
+          
+          <div className="partners-grid">
+            {partners.map((partner, index) => (
+              <motion.div 
+                key={index} 
+                className="partner-logo-wrapper"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <img src={partner} alt={`Partner ${index + 1}`} />
               </motion.div>
-              <motion.div {...fadeInUp} transition={{ delay: 0.4 }} className="highlight-card">
-                <ShieldCheck className="highlight-icon" />
-                <h3>Absolute Reliability</h3>
-                <p>Our "Plan B" philosophy ensures a seamless experience even in the unexpected.</p>
-              </motion.div>
-              <motion.div {...fadeInUp} transition={{ delay: 0.6 }} className="highlight-card">
-                <Heart className="highlight-icon" />
-                <h3>Client Empathy</h3>
-                <p>We listen closely to create moments that resonate deeply with your audience.</p>
-              </motion.div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Simple CTA */}
-      <section className="about-simple-cta section-padding">
-        <div className="container text-center">
-          <h2>Ready to experience the Plan B standard?</h2>
-          <div className="cta-row">
-            <Link to="/about/team" className="btn-gold-alipay">Meet the Team</Link>
-            <Link to="/contact" className="btn-outline">Start Planning</Link>
+      < section className="about-final-cta section-padding dark-bg" >
+        <div className="container">
+          <div className="cta-glass-card">
+            <motion.div {...fadeInUp} className="text-center">
+              <div className="decor-script-gold">Join the Experience</div>
+              <h2>Ready to experience the Plan B standard?</h2>
+              <p>Discover the difference that professional planning and cinematic vision can make for your next event.</p>
+              <div className="cta-row-new">
+                <Link to="/about/team" className="btn btn-gold">Meet the Team</Link>
+                <Link to="/contact" className="btn btn-outline">Start Planning</Link>
+              </div>
+            </motion.div>
           </div>
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   );
 };
 

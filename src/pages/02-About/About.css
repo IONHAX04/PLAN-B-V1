@@ -232,6 +232,96 @@
   transform: translateY(-10px);
 }
 
+.story-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+.story-image {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+.story-image img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.6s ease;
+}
+
+.story-image:hover img {
+  transform: scale(1.05);
+}
+
+.story-image-decor {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(197, 160, 34, 0.3);
+  margin: 1.5rem;
+  pointer-events: none;
+}
+
+/* Final CTA */
+.about-final-cta {
+  background: #0a0a0a;
+}
+
+.cta-glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6rem 4rem;
+  border-radius: 40px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+}
+
+.cta-row-new {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.cta-glass-card h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: white;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-serif);
+}
+
+.cta-glass-card p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.1rem;
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+  .story-content-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .story-image {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .cta-row-new {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .cta-glass-card {
+    padding: 4rem 2rem;
+  }
+}
+
 .vm-card-icon {
   width: 80px;
   height: 80px;
@@ -610,5 +700,49 @@
   }
   .step-node {
     left: 0;
+  }
+}
+/* Partners Section */
+.partners-section {
+  background: var(--secondary);
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 3rem;
+  align-items: center;
+  justify-items: center;
+  margin-top: 4rem;
+}
+
+.partner-logo-wrapper {
+  width: 100%;
+  max-width: 160px;
+  aspect-ratio: 3/2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: all 0.4s ease;
+}
+
+.partner-logo-wrapper:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+.partner-logo-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
 }

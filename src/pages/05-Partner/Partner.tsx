@@ -3,7 +3,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Search, X } from 'lucide-react';
 import { partners, partnersIntro } from '../../data/mockData';
 import { ZoomParallax } from './ZoomParallax';
+import partner1 from '../../assets/partners/Partner1.jpg';
+import partner2 from '../../assets/partners/Partner2.jpg';
+import partner3 from '../../assets/partners/Partner3.jpg';
+import partner4 from '../../assets/partners/Partner4.jpg';
+import partner5 from '../../assets/partners/Partner5.jpg';
+import partner6 from '../../assets/partners/Partner6.jpg';
+import partner7 from '../../assets/partners/Partner7.jpg';
 import './Partner.css';
+
+const partnerImages = [partner1, partner2, partner3, partner4, partner5, partner6, partner7];
 
 const Partner = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -75,8 +84,15 @@ const Partner = () => {
                   className="partner-card"
                   onClick={() => setSelectedPartner(partner)}
                 >
-                  <div className="partner-logo-box">
-                    <div className="partner-initial">{partner.name.charAt(0)}</div>
+                  <div className="partner-image-box">
+                    <img 
+                      src={partnerImages[(partner.id as number - 1) % partnerImages.length]} 
+                      alt={partner.name} 
+                      className="partner-card-img"
+                    />
+                    <div className="partner-overlay-info">
+                      <div className="partner-initial">{partner.name.charAt(0)}</div>
+                    </div>
                   </div>
                   <div className="partner-info">
                     <h3>{partner.name}</h3>
@@ -109,7 +125,12 @@ const Partner = () => {
                   </button>
                   
                   <div className="modal-header">
-                    <div className="modal-logo-placeholder">{selectedPartner.name.charAt(0)}</div>
+                    <div className="modal-image-placeholder">
+                      <img 
+                        src={partnerImages[(selectedPartner.id as number - 1) % partnerImages.length]} 
+                        alt={selectedPartner.name} 
+                      />
+                    </div>
                     <div>
                       <h2>{selectedPartner.name}</h2>
                       <span className="text-gold uppercase tracking-widest text-sm">{selectedPartner.service} Partner</span>
