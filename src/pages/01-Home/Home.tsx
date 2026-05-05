@@ -4,7 +4,6 @@ import {
   ArrowRight,
   Users,
   Film,
-  CheckCircle2,
   Compass,
   Lock,
   Sparkles
@@ -18,8 +17,7 @@ import {
   siteConfig,
   services,
   projects,
-  filmfactoryContent,
-  partners
+  filmfactoryContent
 } from '../../data/mockData';
 import './Home.css';
 import './ProjectsEnhancement.css';

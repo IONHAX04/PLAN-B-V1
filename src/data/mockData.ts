@@ -186,6 +186,7 @@ export const filmfactoryContent = {
     subtitle: "Tamil Short Film Festival",
     tagline: "Where Dreams Become Reality",
     description: "An international platform dedicated to showcasing Tamil short films and empowering independent filmmakers across Europe. What started as a one-day competition in 2025 has grown into a multi-day festival, reflecting the strong demand in the Tamil film community. It serves as a bridge between filmmakers and audiences, offering recognition through awards and visibility.",
+    mission: "To discover, showcase, and celebrate independent Tamil cinema, creating a global platform for storytelling and cultural expression.",
     vision: "A curated experience where storytelling, culture, and creativity intersect, providing a professional stage for underrepresented voices.",
     coreValues: "Focuses on authentic storytelling—socially driven, experimental, or entertaining—that reflects identity and lived experiences.",
     stats: [

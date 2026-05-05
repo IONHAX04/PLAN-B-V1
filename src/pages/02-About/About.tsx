@@ -9,7 +9,6 @@ import partner4 from '../../assets/partners/Partner4.jpg';
 import partner5 from '../../assets/partners/Partner5.jpg';
 import partner6 from '../../assets/partners/Partner6.jpg';
 import partner7 from '../../assets/partners/Partner7.jpg';
-import { SwapStory } from '../01-Home/SwapStory';
 import { AboutStory } from './AboutStory';
 import abbyFounder from '../../assets/aboutTeam/abby.png';
 import './About.css';
