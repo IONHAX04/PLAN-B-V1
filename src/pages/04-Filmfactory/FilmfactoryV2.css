@@ -121,3 +121,48 @@
     height: 42vh;
   }
 }
+
+/* Film Posters */
+.ff-posters-visual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.poster-wrapper-v2 {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  transition: transform 0.4s ease;
+  aspect-ratio: 2/3;
+}
+
+.poster-wrapper-v2:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+.poster-wrapper-v2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.poster-label-v2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .ff-posters-visual {
+    grid-template-columns: 1fr;
+  }
+}

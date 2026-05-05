@@ -3,6 +3,12 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Film, Users, Trophy, Clapperboard, Calendar } from 'lucide-react';
 import Lenis from 'lenis';
 import { filmfactoryContent } from '../../data/mockData';
+import poster2024 from '../../assets/filmFactory/First-take-2024.jpg';
+import poster2025 from '../../assets/filmFactory/First-take-2025.jpg';
+import ffImg1 from '../../assets/filmFactory/The-film-factory1.jpg';
+import ffImg2 from '../../assets/filmFactory/The-film-factory2.jpg';
+import ffImg3 from '../../assets/filmFactory/The-film-factory3.jpg';
+import ffImg4 from '../../assets/filmFactory/The-film-factory4.jpg';
 import './Filmfactory.css';
 import './FilmfactoryV2.css';
 
@@ -65,28 +71,16 @@ const FilmfactoryV2 = () => {
               style={{ opacity: carouselOpacity, scale: carouselScale, rotate: carouselRotate }}
             >
               <div>
-                <img
-                  src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1887&auto=format&fit=crop"
-                  alt="Plan B visual 1"
-                />
+                <img src={ffImg1} alt="Plan B Filmfactory 1" />
               </div>
               <div>
-                <img
-                  src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?q=80&w=1887&auto=format&fit=crop"
-                  alt="Plan B visual 2"
-                />
+                <img src={ffImg2} alt="Plan B Filmfactory 2" />
               </div>
               <div>
-                <img
-                  src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1888&auto=format&fit=crop"
-                  alt="Plan B visual 3"
-                />
+                <img src={ffImg3} alt="Plan B Filmfactory 3" />
               </div>
               <div>
-                <img
-                  src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1887&auto=format&fit=crop"
-                  alt="Plan B visual 4"
-                />
+                <img src={ffImg4} alt="Plan B Filmfactory 4" />
               </div>
             </motion.div>
           </div>
@@ -113,8 +107,14 @@ const FilmfactoryV2 = () => {
                 </div>
               </div>
               <div className="ff-posters-visual">
-                <div className="poster-2024">First Take 2024</div>
-                <div className="poster-2025">First Take 2025</div>
+                <div className="poster-wrapper-v2">
+                  <img src={poster2024} alt="First Take 2024" />
+                  <div className="poster-label-v2">First Take 2024</div>
+                </div>
+                <div className="poster-wrapper-v2">
+                  <img src={poster2025} alt="First Take 2025" />
+                  <div className="poster-label-v2">First Take 2025</div>
+                </div>
               </div>
             </div>
           </div>

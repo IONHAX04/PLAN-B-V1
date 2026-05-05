@@ -899,6 +899,38 @@
   }
 }
 
+/* Filmfactory Home Visual */
+.ff-media-visual {
+  width: 100%;
+  aspect-ratio: 4/5;
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+}
+
+.ff-media-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.ff-media-visual:hover img {
+  transform: scale(1.05);
+}
+
+.ff-visual-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent, rgba(0,0,0,0.6));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  opacity: 0.8;
+}
+
 .quote-text {
   font-size: 1.05rem;
   font-style: italic;

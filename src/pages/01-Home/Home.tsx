@@ -34,6 +34,7 @@ import partner4 from '../../assets/partners/Partner4.jpg';
 import partner5 from '../../assets/partners/Partner5.jpg';
 import partner6 from '../../assets/partners/Partner6.jpg';
 import partner7 from '../../assets/partners/Partner7.jpg';
+import ffHero from '../../assets/filmFactory/The-film-factory1.jpg';
 
 const partnerImages = [partner1, partner2, partner3, partner4, partner5, partner6, partner7];
 
@@ -164,11 +165,11 @@ const Home = () => {
               variants={fadeInUp}
               whileInView="whileInView"
               viewport={{ once: true }}
-              className="ff-media-placeholder"
+              className="ff-media-visual"
             >
-              <div className="placeholder-inner">
-                <Film size={64} />
-                <span>Cinematic Excellence</span>
+              <img src={ffHero} alt="Filmfactory Excellence" />
+              <div className="ff-visual-overlay">
+                <Film size={32} />
               </div>
             </motion.div>
           </div>
