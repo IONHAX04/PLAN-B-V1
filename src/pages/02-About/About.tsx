@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
-import { Quote, ChevronRight, Sparkles, ShieldCheck, Heart } from 'lucide-react';
+import { Quote, ChevronRight } from 'lucide-react';
 import { aboutContent } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import storyImg from '../../assets/home/who-we-are1.jpg';
 import partner1 from '../../assets/partners/Partner1.jpg';
 import partner2 from '../../assets/partners/Partner2.jpg';
 import partner3 from '../../assets/partners/Partner3.jpg';
@@ -10,6 +9,7 @@ import partner4 from '../../assets/partners/Partner4.jpg';
 import partner5 from '../../assets/partners/Partner5.jpg';
 import partner6 from '../../assets/partners/Partner6.jpg';
 import partner7 from '../../assets/partners/Partner7.jpg';
+import { SwapStory } from '../01-Home/SwapStory';
 import './About.css';
 
 const partners = [partner1, partner2, partner3, partner4, partner5, partner6, partner7];
@@ -78,40 +78,18 @@ const About = () => {
         </div>
       </section>
 
-      {/* Story Extension */}
-      <section className="story-extension section-padding dark-bg">
+      {/* Immersive Story Section (Swap Column Style) */}
+      <section className="about-story-immersive section-padding dark-bg">
         <div className="container">
-          <div className="story-content-grid">
-            <motion.div {...fadeInUp} className="story-text">
-              <div className="decor-script">Our Story</div>
-              <h2>Beyond Event Management</h2>
-              <p>{aboutContent.extended}</p>
-            </motion.div>
-            <motion.div {...fadeInUp} className="story-image">
-              <img src={storyImg} alt="Our Story" />
-              <div className="story-image-decor"></div>
-            </motion.div>
-          </div>
-
-          <div className="story-highlights">
-            <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="highlight-card">
-              <Sparkles className="highlight-icon" />
-              <h3>Creative Vision</h3>
-              <p>Transforming abstract ideas into stunning realities with unique Swiss flair.</p>
-            </motion.div>
-            <motion.div {...fadeInUp} transition={{ delay: 0.4 }} className="highlight-card">
-              <ShieldCheck className="highlight-icon" />
-              <h3>Absolute Reliability</h3>
-              <p>Our "Plan B" philosophy ensures a seamless experience even in the unexpected.</p>
-            </motion.div>
-            <motion.div {...fadeInUp} transition={{ delay: 0.6 }} className="highlight-card">
-              <Heart className="highlight-icon" />
-              <h3>Client Empathy</h3>
-              <p>We listen closely to create moments that resonate deeply with your audience.</p>
-            </motion.div>
-          </div>
+          <motion.div {...fadeInUp} className="section-title-alipay">
+            <div className="decor-script">Our Story</div>
+            <h2>The Plan B Journey</h2>
+            <div className="title-divider-center"></div>
+          </motion.div>
         </div>
-      </section >
+
+        <SwapStory />
+      </section>
 
       {/* Trusted Partners Section */}
       <section className="partners-section section-padding">

@@ -170,16 +170,27 @@ export const services = [
 export const filmfactoryContent = {
   firstTake: {
     title: "First Take",
-    description: "First Take is Europe's most important Tamil short film competition and a project close to the heart of Plan B – The Eventguide. On 5 April 2025, the Cinema Claudia in Kloten was transformed into a vibrant hub of creativity and passion. Over 300 guests enjoyed 19 impressive films on the big screen and celebrated an unforgettable festival of Tamil filmmaking together with renowned director Mithran R. Jawahar as a member of the jury.",
+    subtitle: "Tamil Short Film Festival",
+    tagline: "Where Dreams Become Reality",
+    description: "An international platform dedicated to showcasing Tamil short films and empowering independent filmmakers across Europe. What started as a one-day competition in 2025 has grown into a multi-day festival, reflecting the strong demand in the Tamil film community. It serves as a bridge between filmmakers and audiences, offering recognition through awards and visibility.",
+    vision: "A curated experience where storytelling, culture, and creativity intersect, providing a professional stage for underrepresented voices.",
+    coreValues: "Focuses on authentic storytelling—socially driven, experimental, or entertaining—that reflects identity and lived experiences.",
     stats: [
-      { label: "Films Screened", value: "50+" },
+      { label: "Films Screened", value: "19+" },
       { label: "Awards Given", value: "10" },
-      { label: "Attendees", value: "500+" }
+      { label: "Attendees", value: "300+" }
     ]
   },
   myFrame: {
     title: "My Frame | My Story",
-    description: "With My Frame | My Story, we have created more than just a platform. We have created a creative home for filmmakers, where directors, screenwriters, actors, editors and visionaries come together. This is where ideas are born, stories come to life and new projects begin.",
+    tagline: "Let’s create powerful stories — together.",
+    description: "A creative space for storytellers, filmmakers, and visionaries (directors, actors, editors, etc.) to collaborate and grow. This is where ideas are born, stories come to life, and new projects begin.",
+    offerings: [
+      { title: "Collaboration & Networking", description: "Finding crews and like-minded creatives for projects." },
+      { title: "Creative Challenges", description: "Monthly film challenges and support for new ideas." },
+      { title: "Workshops", description: "Craft development and feedback sessions from script to final cut." },
+      { title: "Showcase", description: "Platform to present work and gather an audience." }
+    ],
     workshops: [
       { title: "Cinematography Workshop", date: "May 15, 2026" },
       { title: "Screenwriting Basics", date: "June 02, 2026" }
