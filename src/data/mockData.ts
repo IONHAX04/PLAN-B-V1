@@ -20,6 +20,14 @@ export const siteConfig = {
   }
 };
 
+// Team Images
+import abbyImg from '../assets/aboutTeam/abby.png';
+import abinashImg from '../assets/aboutTeam/abinash.png';
+import akeshaImg from '../assets/aboutTeam/akesha.png';
+import banuImg from '../assets/aboutTeam/banu.png';
+import prathikkaImg from '../assets/aboutTeam/prathikka.png';
+import thanuImg from '../assets/aboutTeam/thanu.png';
+
 // ─── NAV LINKS ──────────────────────────────────────────────────────────────
 export const navLinks = [
   { name: "Home", path: "/" },
@@ -52,7 +60,7 @@ export const teamMembers = [
   {
     id: 1,
     name: "Abyy P",
-    image: "/assets/images/abyy.png",
+    image: abbyImg,
     role: "CEO, HR, Designer & Head of Service",
     bio: "Hi, I'm Abyy. As the founder of Plan B, I am the driving force behind everything we do. With passion, love for detail, and the highest level of precision, I ensure that every event meets the highest standards. My commitment to perfection and genuine client satisfaction shapes every decision and every execution.",
     extendedBio: "Plan B is far more than a business to me. It is a big part of who I am. I pour my vision, heart, and dedication into every project. Your event is in safe hands with me, as I guide it with responsibility, passion, and excellence from the very first idea to the flawless final execution."
@@ -60,6 +68,7 @@ export const teamMembers = [
   {
     id: 2,
     name: "Banu P",
+    image: banuImg,
     role: "B2B Manager, Artist Manager & Head of Filmfactory",
     bio: "Hey, I am Banu. I am responsible for building, managing, and expanding strong B2B relationships while representing and coordinating with artists across various projects. As the B2B Manager, Artist Manager, and CEO of Plan B The Filmfactory, I work closely with corporate clients, vendors, and creative talents to create sustainable partnerships and meaningful collaborations.",
     extendedBio: "With a strong focus on business development and talent management, I play a key role in growing our client base and securing new opportunities in both the corporate and entertainment sectors. I am the brain behind First Take and the driving force of our film community, where strategy, creativity, and vision come together to build platforms with long term impact."
@@ -67,6 +76,7 @@ export const teamMembers = [
   {
     id: 3,
     name: "Abinash V",
+    image: abinashImg,
     role: "CAO & CFO",
     bio: "Hello, I am Abinash. As the co-founder of Plan B, I am responsible for managing the company's strategic direction and financial health. With a sharp eye for detail and a strong focus on business development, I play a crucial role in shaping the company's growth and long-term success.",
     extendedBio: "I ensure smooth and efficient operations across all areas, from financial management to internal and operational processes. My goal is to build a stable, scalable foundation that allows Plan B to grow sustainably while maintaining the highest standards of professionalism and performance."
@@ -74,6 +84,7 @@ export const teamMembers = [
   {
     id: 4,
     name: "Thanu R",
+    image: thanuImg,
     role: "Marketing Manager & Content Creator",
     bio: "Hey, I'm Thanu. As the Marketing Manager at Plan B, I lead the planning and execution of our marketing efforts across all channels. I focus on creating impactful campaigns that align with each event and strengthen our overall brand presence.",
     extendedBio: "Alongside my role in marketing, I am also responsible for video editing and content creation. By combining creative visuals with strategic thinking in both digital and traditional marketing, I help ensure that Plan B remains visible, relevant, and engaging for our target audience."
@@ -81,6 +92,7 @@ export const teamMembers = [
   {
     id: 5,
     name: "Akesha T",
+    image: akeshaImg,
     role: "Allrounder",
     bio: "Hey, I'm Akesha. As an Allrounder at Plan B, I support various areas of the business, from event coordination and logistics to on site assistance, ensuring that every event runs smoothly and seamlessly.",
     extendedBio: "I handle every customer with care, empathy, and full attention because your needs truly matter to me. I take the time to understand what you want and what you need, so I can support you in the best possible way. My goal is to make you feel heard, comfortable, and confident, knowing that your event is being handled with dedication, understanding, and genuine care from start to finish."
@@ -88,6 +100,7 @@ export const teamMembers = [
   {
     id: 6,
     name: "Prathikka Y",
+    image: prathikkaImg,
     role: "Allrounder",
     bio: "Hey, I'm Prathikka. As an Allrounder at Plan B, I'm involved wherever support is needed, from coordinating event details and handling logistics to assisting on site to ensure everything flows smoothly.",
     extendedBio: "For me, taking care of you as a customer comes first. I listen closely, ask the right questions, and make sure your wishes and expectations are clearly understood. My focus is on creating a positive and reassuring experience, so you feel supported, respected, and confident that your event is being handled with attention, reliability, and genuine commitment."

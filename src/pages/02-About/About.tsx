@@ -10,6 +10,8 @@ import partner5 from '../../assets/partners/Partner5.jpg';
 import partner6 from '../../assets/partners/Partner6.jpg';
 import partner7 from '../../assets/partners/Partner7.jpg';
 import { SwapStory } from '../01-Home/SwapStory';
+import { AboutStory } from './AboutStory';
+import abbyFounder from '../../assets/aboutTeam/abby.png';
 import './About.css';
 
 const partners = [partner1, partner2, partner3, partner4, partner5, partner6, partner7];
@@ -60,7 +62,7 @@ const About = () => {
           <div className="founder-grid">
             <motion.div {...fadeInUp} className="founder-image-box">
               <div className="founder-img-wrapper">
-                <img src="/assets/images/abyy.png" alt="Founder" />
+                <img src={abbyFounder} alt="Founder" />
               </div>
               <div className="founder-label">
                 <span className="name">Abishana</span>
@@ -88,7 +90,7 @@ const About = () => {
           </motion.div>
         </div>
 
-        <SwapStory />
+        <AboutStory />
       </section>
 
       {/* Trusted Partners Section */}
