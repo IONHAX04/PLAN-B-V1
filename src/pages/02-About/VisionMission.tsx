@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
-import { Target, Rocket, Lightbulb, ShieldCheck, Users, Zap, Award, Heart } from 'lucide-react';
+import { Target, Rocket, Lightbulb, ShieldCheck, Users, Zap, Award, Heart, Quote } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { aboutContent } from '../../data/mockData';
-import visionImg from '../../assets/home/home1.jpg';
+import visionImg from '../../assets/contents/about.jpeg';
 import missionImg from '../../assets/home/home2.jpg';
 import './About.css';
 
@@ -15,12 +15,9 @@ const fadeInUp = {
 
 const VisionMission = () => {
   const values = [
-    { icon: <Lightbulb />, title: "Innovation", desc: "Always thinking one step ahead with a reliable Plan B." },
-    { icon: <ShieldCheck />, title: "Precision", desc: "Meticulous calculation in every operational detail." },
-    { icon: <Users />, title: "Empathy", desc: "Putting human connection at the heart of every event." },
-    { icon: <Zap />, title: "Energy", desc: "Injecting passion and vitality into every project." },
-    { icon: <Award />, title: "Excellence", desc: "Setting the gold standard in the Swiss event industry." },
-    { icon: <Heart />, title: "Dedication", desc: "Absolute commitment to your unique vision." }
+    { icon: <ShieldCheck />, title: "Reliability", desc: "Trust is the foundation of any successful partnership. We pride ourselves on being a reliable partner, handling all aspects of event planning with precision and care." },
+    { icon: <Lightbulb />, title: "Creativity", desc: "Innovation is the cornerstone of our work. We constantly push boundaries to develop creative, bespoke concepts for each event." },
+    { icon: <Users />, title: "Customer Proximity", desc: "At the core of our business is the strong relationship we build with our clients, ensuring their vision comes to life with a personalized approach." }
   ];
 
   return (
@@ -88,7 +85,7 @@ const VisionMission = () => {
           </motion.div>
 
           <div className="values-mosaic-grid">
-            {values.map((val, idx) => (
+            {aboutContent.pillars && aboutContent.pillars.map((val, idx) => (
               <motion.div 
                 key={idx}
                 className="mosaic-item"
@@ -97,12 +94,28 @@ const VisionMission = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
-                <div className="mosaic-icon-wrap">{val.icon}</div>
+                <div className="mosaic-icon-wrap">
+                  {idx === 0 && <Rocket size={24} />}
+                  {idx === 1 && <Heart size={24} />}
+                  {idx === 2 && <Users size={24} />}
+                </div>
                 <h3>{val.title}</h3>
-                <p>{val.desc}</p>
+                <p>{val.description}</p>
               </motion.div>
             ))}
           </div>
+
+          {aboutContent.quote && (
+            <motion.div 
+              className="vision-quote-full section-padding"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+            >
+              <Quote className="quote-icon" size={40} />
+              <blockquote>{aboutContent.quote}</blockquote>
+            </motion.div>
+          )}
         </div>
       </section>
 

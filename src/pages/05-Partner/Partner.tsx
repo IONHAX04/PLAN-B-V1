@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, ExternalLink, Award, Users } from 'lucide-react';
 import { partners, partnersIntro } from '../../data/mockData';
 import partner1 from '../../assets/partners/Partner1.jpg';
 import partner2 from '../../assets/partners/Partner2.jpg';
@@ -16,64 +16,84 @@ const partnerImages = [partner1, partner2, partner3, partner4, partner5, partner
 const Partner = () => {
   const [selectedPartner, setSelectedPartner] = useState<any>(null);
 
-  const serviceCategories = useMemo(
-    () => Array.from(new Set(partners.map((partner) => partner.service))),
-    []
-  );
+  const groupedPartners = useMemo(() => {
+    return partners.reduce((acc, partner) => {
+      if (!acc[partner.service]) {
+        acc[partner.service] = [];
+      }
+      acc[partner.service].push(partner);
+      return acc;
+    }, {} as Record<string, typeof partners>);
+  }, []);
+
+  const categories = Object.keys(groupedPartners);
 
   return (
     <div className="partner-page">
-      <section className="partners-gallery-hero">
+      <section className="partners-hero">
         <div className="container">
           <motion.div
             className="section-header"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
           >
-            <div className="decor-script">Our Partners</div>
-            <h1>Partner Gallery</h1>
+            <div className="decor-script">Our Network</div>
+            <h1>The Partner List</h1>
             <div className="title-divider-center"></div>
             <p className="section-subtitle">{partnersIntro}</p>
           </motion.div>
+        </div>
+      </section>
 
-          <div className="partner-service-chips">
-            {serviceCategories.map((service) => (
-              <span key={service} className="partner-service-chip">
-                {service}
-              </span>
-            ))}
-          </div>
+      <section className="partners-list-section">
+        <div className="container">
+          {categories.map((category, catIndex) => (
+            <motion.div 
+              key={category} 
+              className="category-group"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: catIndex * 0.1 }}
+            >
+              <div className="category-header">
+                <div className="category-title-wrap">
+                  <span className="category-number">0{catIndex + 1}</span>
+                  <h2>{category}</h2>
+                </div>
+                <div className="category-line"></div>
+              </div>
 
-          <div className="partners-gallery-grid">
-            <AnimatePresence>
-              {partners.map((partner, index) => (
-                <motion.button
-                  key={partner.id}
-                  type="button"
-                  className="partner-gallery-card"
-                  onClick={() => setSelectedPartner(partner)}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: index * 0.05 }}
-                  whileHover={{ y: -6 }}
-                >
-                  <div className="partner-gallery-image">
-                    <img
-                      src={partnerImages[(partner.id as number - 1) % partnerImages.length]}
-                      alt={partner.name}
-                    />
-                  </div>
-                  <div className="partner-gallery-meta">
-                    <h3>{partner.name}</h3>
-                    <span>{partner.service}</span>
-                  </div>
-                </motion.button>
-              ))}
-            </AnimatePresence>
-          </div>
+              <div className="partners-category-grid">
+                {groupedPartners[category].map((partner, index) => (
+                  <motion.div
+                    key={partner.id}
+                    className="partner-minimal-card"
+                    whileHover={{ y: -5 }}
+                    onClick={() => setSelectedPartner(partner)}
+                  >
+                    <div className="partner-card-inner">
+                      <div className="partner-card-image">
+                        <img
+                          src={partnerImages[(partner.id as number - 1) % partnerImages.length]}
+                          alt={partner.name}
+                        />
+                        <div className="partner-card-overlay">
+                          <ExternalLink size={20} />
+                        </div>
+                      </div>
+                      <div className="partner-card-content">
+                        <h3>{partner.name}</h3>
+                        <p>{category}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
@@ -88,46 +108,60 @@ const Partner = () => {
           >
             <motion.div
               className="partner-modal"
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 30, opacity: 0 }}
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
               <button className="close-modal" onClick={() => setSelectedPartner(null)}>
                 <X size={24} />
               </button>
 
-              <div className="modal-header">
-                <div className="modal-image-placeholder">
-                  <img
-                    src={partnerImages[(selectedPartner.id as number - 1) % partnerImages.length]}
-                    alt={selectedPartner.name}
-                  />
+              <div className="modal-inner">
+                <div className="modal-left">
+                  <div className="modal-main-image">
+                    <img
+                      src={partnerImages[(selectedPartner.id as number - 1) % partnerImages.length]}
+                      alt={selectedPartner.name}
+                    />
+                  </div>
                 </div>
-                <div>
-                  <h2>{selectedPartner.name}</h2>
-                  <span className="text-gold uppercase tracking-widest text-sm">
-                    {selectedPartner.service} Partner
-                  </span>
-                </div>
-              </div>
+                <div className="modal-right">
+                  <div className="modal-content-header">
+                    <span className="partner-tag">Certified Partner</span>
+                    <h2>{selectedPartner.name}</h2>
+                    <p className="partner-category-text">{selectedPartner.service}</p>
+                  </div>
 
-              <div className="modal-body">
-                <div className="modal-section">
-                  <h3>About Our Collaboration</h3>
-                  <p>
-                    We have worked with {selectedPartner.name} on several successful projects,
-                    ensuring the highest quality of {selectedPartner.service.toLowerCase()} for our
-                    clients.
-                  </p>
-                </div>
+                  <div className="modal-info-grid">
+                    <div className="info-item">
+                      <Award className="text-gold" size={20} />
+                      <div>
+                        <h4>Premium Quality</h4>
+                        <p>Vetted for excellence in event services.</p>
+                      </div>
+                    </div>
+                    <div className="info-item">
+                      <Users className="text-gold" size={20} />
+                      <div>
+                        <h4>Collaboration</h4>
+                        <p>Trusted partner for Plan B's signature events.</p>
+                      </div>
+                    </div>
+                  </div>
 
-                <div className="modal-section">
-                  <h3>Partner Benefits</h3>
-                  <p>
-                    Through our partnership, clients gain access to exclusive benefits, attractive
-                    discounts, and premium service reserved for Plan B customers.
-                  </p>
+                  <div className="modal-description">
+                    <p>
+                      We have worked with <strong>{selectedPartner.name}</strong> on several successful projects,
+                      ensuring the highest quality of {selectedPartner.service.toLowerCase()} for our
+                      clients. Through our partnership, clients gain access to exclusive benefits, 
+                      attractive discounts, and premium service reserved for Plan B customers.
+                    </p>
+                  </div>
+
+                  <button className="btn-gold-outline" onClick={() => setSelectedPartner(null)}>
+                    Inquire About This Partner
+                  </button>
                 </div>
               </div>
             </motion.div>
@@ -139,3 +173,4 @@ const Partner = () => {
 };
 
 export default Partner;
+

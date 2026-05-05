@@ -171,14 +171,46 @@ const Projects = () => {
                     src={projectImages[(project.id as number - 1) % projectImages.length]} 
                     alt={project.title} 
                   />
+                  <div className="project-date-badge">{project.date}</div>
                 </div>
                 <div className="card-info-box">
+                  <div className="card-client-name">{project.client}</div>
                   <h3>{project.title}</h3>
                   <p>{project.category}</p>
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
+        </div>
+
+        {/* Vertical Timeline Section */}
+        <div className="projects-timeline-section section-padding">
+          <div className="section-header-center">
+            <div className="decor-script">History</div>
+            <h2>Project Timeline</h2>
+            <div className="title-divider-center"></div>
+          </div>
+          <div className="timeline-container">
+            <div className="timeline-line"></div>
+            {projects.map((project, idx) => (
+              <motion.div 
+                key={project.id}
+                className={`timeline-item ${idx % 2 === 0 ? 'left' : 'right'}`}
+                initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+              >
+                <div className="timeline-dot"></div>
+                <div className="timeline-content">
+                  <span className="timeline-date">{project.date}</span>
+                  <h3>{project.title}</h3>
+                  <div className="timeline-client">{project.client}</div>
+                  <p>{project.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* Modal remains the same */}

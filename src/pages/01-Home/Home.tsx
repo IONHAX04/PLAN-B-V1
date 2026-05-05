@@ -17,7 +17,8 @@ import {
   siteConfig,
   services,
   projects,
-  filmfactoryContent
+  filmfactoryContent,
+  targetGroups
 } from '../../data/mockData';
 import './Home.css';
 import './ProjectsEnhancement.css';
@@ -240,8 +241,37 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Target Groups Section */}
+      <section className="target-groups-section section-padding bg-alt">
+        <div className="container">
+          <div className="section-title-center">
+            <span className="decor-script">Who We Serve</span>
+            <h2>Our Target Groups</h2>
+            <div className="title-divider-center"></div>
+          </div>
+          <div className="target-groups-grid">
+            {targetGroups && targetGroups.map((group, i) => (
+              <motion.div 
+                key={i}
+                {...fadeInUp}
+                transition={{ delay: i * 0.1 }}
+                className="target-group-card"
+              >
+                <div className="group-icon-box">
+                  {i === 0 && <Users size={32} />}
+                  {i === 1 && <Compass size={32} />}
+                  {i === 2 && <Sparkles size={32} />}
+                </div>
+                <h3>{group.title}</h3>
+                <p>{group.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials - Client Voice */}
-      <section className="testimonials-section section-padding bg-alt">
+      <section className="testimonials-section section-padding bg-main">
         <div className="container">
           <div className="section-title-center">
             <span className="decor-script">Client Voice</span>
@@ -254,7 +284,7 @@ const Home = () => {
       </section>
 
       {/* Partner Network */}
-      <section className="partners-home-section section-padding">
+      <section className="partners-home-section section-padding bg-alt">
         <div className="container">
           <div className="partners-home-layout">
             <div className="partners-content">
@@ -286,7 +316,7 @@ const Home = () => {
             >
               <div className="visual-circle">
                 <Users size={48} />
-                <span className="circle-text">14+ Trusted Partners</span>
+                <span className="circle-text">42+ Trusted Partners</span>
               </div>
             </motion.div>
           </div>

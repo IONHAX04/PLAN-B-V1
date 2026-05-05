@@ -111,6 +111,14 @@ const Team = () => {
                 <div className="modal-right">
                   <span className="modal-role">{selectedMember.role}</span>
                   <h2>{selectedMember.name}</h2>
+                  <div className="modal-meta-info">
+                    <div className="meta-item">
+                      <strong>Languages:</strong> {selectedMember.languages}
+                    </div>
+                    <div className="meta-item">
+                      <strong>Skills:</strong> {selectedMember.skills}
+                    </div>
+                  </div>
                   <p className="modal-bio-text">{selectedMember.bio}</p>
                   {selectedMember.extendedBio && (
                     <div className="modal-quote">
