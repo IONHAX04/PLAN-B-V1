@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Target, Rocket, Lightbulb, ShieldCheck, Users, Zap, Award, Heart, Quote } from 'lucide-react';
+import { Target, Rocket, Users, Heart, Quote } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { aboutContent } from '../../data/mockData';
 import visionImg from '../../assets/contents/about.jpeg';
@@ -14,11 +14,6 @@ const fadeInUp = {
 };
 
 const VisionMission = () => {
-  const values = [
-    { icon: <ShieldCheck />, title: "Reliability", desc: "Trust is the foundation of any successful partnership. We pride ourselves on being a reliable partner, handling all aspects of event planning with precision and care." },
-    { icon: <Lightbulb />, title: "Creativity", desc: "Innovation is the cornerstone of our work. We constantly push boundaries to develop creative, bespoke concepts for each event." },
-    { icon: <Users />, title: "Customer Proximity", desc: "At the core of our business is the strong relationship we build with our clients, ensuring their vision comes to life with a personalized approach." }
-  ];
 
   return (
     <div className="vision-mission-page">

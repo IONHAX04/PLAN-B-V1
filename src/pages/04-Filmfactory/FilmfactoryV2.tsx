@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
-import { Film, Users, Trophy, Clapperboard, Calendar, Target, Eye, Star } from 'lucide-react';
+import { Film, Users, Trophy, Clapperboard } from 'lucide-react';
 import Lenis from 'lenis';
 import { filmfactoryContent } from '../../data/mockData';
-import poster2024 from '../../assets/filmFactory/First-take-2024.jpg';
 import poster2025 from '../../assets/filmFactory/First-take-2025.jpg';
 import firstTakeImg from '../../assets/contents/first-take.jpeg';
 import galleryImg from '../../assets/contents/gallery.jpeg';

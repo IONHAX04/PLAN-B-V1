@@ -67,7 +67,7 @@ const Partner = () => {
               </div>
 
               <div className="partners-category-grid">
-                {groupedPartners[category].map((partner, index) => (
+                {groupedPartners[category].map((partner) => (
                   <motion.div
                     key={partner.id}
                     className="partner-minimal-card"

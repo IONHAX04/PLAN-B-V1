@@ -43,12 +43,15 @@ export const navLinks = [
   { name: "The Filmfactory", path: "/filmfactory" },
   { name: "Partner", path: "/partner" },
   { name: "Projects", path: "/projects" },
+  { name: "Gallery", path: "/gallery" },
   { name: "Contact", path: "/contact" }
 ];
 
 // ─── ABOUT ──────────────────────────────────────────────────────────────────
 export const aboutContent = {
   intro: "Plan B - The Eventguide is a Switzerland-based event management company focused on delivering high-quality, culturally driven experiences. The company specializes in the planning, production, and execution of events that connect communities, creatives, and audiences in meaningful ways.",
+  extended: "Plan B – The Eventguide stands for tailor-made events throughout Switzerland, from weddings and corporate events to cultural events and private celebrations. We combine creative ideas, precise organisation and a strong network of partners to create all-in-one packages.",
+  founderNote: "As the founder, my vision was always to create more than just an event agency. I wanted to build a bridge between creative vision and flawless execution, especially for the Tamil community in Europe. Every project we take on is a commitment to excellence.",
   filmfactoryIntro: "With the growth, recognition, and continued success of First Take - Tamil Short Film Festival Switzerland, Plan B has expanded its structure by establishing a dedicated sub-brand: Plan B - The Filmfactory.",
   filmfactoryDescription: "This specialized division focuses on film-related initiatives, including the development, production, and promotion of cinematic projects and platforms. It serves as a strategic extension of Plan B's vision to support and elevate independent filmmakers, particularly within the Tamil creative community in Europe.",
   philosophy: "Through this evolution, Plan B is not only organizing events but actively building a sustainable ecosystem for film, storytelling, and creative talent - positioning itself at the intersection of culture, community, and cinema.",
@@ -255,6 +258,11 @@ export const filmfactoryContent = {
       { title: "Creative Challenges", description: "Monthly film challenges and support for new ideas." },
       { title: "Workshops", description: "Craft development and feedback sessions from script to final cut." },
       { title: "Showcase", description: "Platform to present work and gather an audience." }
+    ],
+    workshops: [
+      { title: "Cinematography Masterclass", date: "TBA 2025" },
+      { title: "Screenwriting Workshop", date: "TBA 2025" },
+      { title: "Editing & Post-Production", date: "TBA 2025" }
     ]
   }
 };

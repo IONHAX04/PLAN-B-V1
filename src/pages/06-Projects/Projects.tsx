@@ -200,6 +200,8 @@ const Projects = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
+                onClick={() => setSelectedProject(project)}
+                style={{ cursor: 'pointer' }}
               >
                 <div className="timeline-dot"></div>
                 <div className="timeline-content">
@@ -225,7 +227,7 @@ const Projects = () => {
                     alt={selectedProject.title} 
                   />
                   <div className="modal-hero-text">
-                    <span>{selectedProject.category}</span>
+                    <span>{selectedProject.category || 'Event'}</span>
                     <h2>{selectedProject.title}</h2>
                   </div>
                 </div>
@@ -234,13 +236,15 @@ const Projects = () => {
                     <h3>Overview</h3>
                     <p>{selectedProject.description}</p>
                     <div className="modal-stats">
-                      <div className="stat"><Calendar size={18} /><span>Switzerland</span></div>
-                      <div className="stat"><MapPin size={18} /><span>{selectedProject.category}</span></div>
+                      <div className="stat"><Calendar size={18} /><span>{selectedProject.date || 'Switzerland'}</span></div>
+                      <div className="stat"><MapPin size={18} /><span>{selectedProject.category || 'Portfolio'}</span></div>
                     </div>
                   </div>
                   <div className="modal-side">
                     <h3>Partners</h3>
-                    <div className="partner-tags">{selectedProject.partners.map((p: string) => (<span key={p}>{p}</span>))}</div>
+                    <div className="partner-tags">
+                      {selectedProject.partners?.map((p: string) => (<span key={p}>{p}</span>)) || <span>Plan B Network</span>}
+                    </div>
                   </div>
                 </div>
               </motion.div>

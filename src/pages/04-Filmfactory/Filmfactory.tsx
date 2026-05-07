@@ -120,7 +120,7 @@ const Filmfactory = () => {
               <p>{filmfactoryContent.myFrame.description}</p>
               
               <div className="workshop-list-mini">
-                {filmfactoryContent.myFrame.workshops.map((w, i) => (
+                {filmfactoryContent.myFrame.workshops.map((w: any, i: number) => (
                   <div key={i} className="mini-item">
                     <Calendar size={14} />
                     <span>{w.title} — {w.date}</span>
