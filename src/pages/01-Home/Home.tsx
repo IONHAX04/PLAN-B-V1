@@ -23,8 +23,8 @@ import {
 import './Home.css';
 import './ProjectsEnhancement.css';
 import './StickyCardsFeatures.css';
-// Import all project images
-const projectLogoModules = import.meta.glob('../../assets/projects/Projects*.{png,jpg,jpeg,webp}', { eager: true });
+// Import all project images from homeProjects folder
+const projectLogoModules = import.meta.glob('../../assets/homeProjects/*.{png,jpg,jpeg,webp}', { eager: true });
 const projectDisplayImages = Object.values(projectLogoModules).map((mod: any) => mod.default || mod);
 
 // Import all logos from the partnerlogo folder
