@@ -1621,10 +1621,67 @@
   }
 }
 
-/* Decorated Partners Home Section */
+/* ==========================================================================
+   CINEMATIC THEME SYSTEM
+   ========================================================================== */
+
+.light-section {
+  background: #ffffff;
+  color: #111;
+}
+
+.grey-section {
+  background: #f7f8fb; /* Elegant Modern Grey */
+  color: #111;
+}
+
+.dark-section {
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
+.dark-section .section-title,
+.dark-section h2,
+.dark-section .serif-title {
+  color: #ffffff !important;
+}
+
+.dark-section p,
+.dark-section .section-subtitle,
+.dark-section .decor-script {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.dark-section .decor-script-gold {
+  color: var(--accent);
+}
+
+/* Specific Section Adjustments */
+.final-cta.dark-section {
+  background: #000; /* Deepest black for final impact */
+}
+
+.final-cta .btn-outline {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.final-cta .btn-outline:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.projects-home.dark-section {
+  background: #111;
+}
+
+.partners-home-section.grey-section {
+  background: #f0f1f4;
+}
+
+/* Updated Decorated Partners Home Section */
 .partners-home-section {
   position: relative;
-  background: #fff;
   overflow: hidden;
 }
 

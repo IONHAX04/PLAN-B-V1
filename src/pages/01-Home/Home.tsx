@@ -56,8 +56,8 @@ const Home = () => {
       */}
       <HeroVariant1 />
 
-      {/* Secondary Hero Section - Features Grid */}
-      <section className="home-features-grid section-padding">
+      {/* Secondary Hero Section - Features Grid (Grey Tone) */}
+      <section className="home-features-grid section-padding grey-section">
         <div className="container">
           <motion.div {...fadeInUp} className="features-header">
             <span className="decor-script-small">The Method</span>
@@ -111,8 +111,8 @@ const Home = () => {
       </div>
     </section>
 
-      {/* Three-Part Story Section (About, Vision, Mission) - Swap Column Style */}
-      <section className="home-story-immersive section-padding">
+      {/* Three-Part Story Section - Who We Are (Light Tone) */}
+      <section className="home-story-immersive section-padding light-section">
         <div className="container">
           <motion.div {...fadeInUp} className="section-title-center">
              <div className="decor-script">Our Story</div>
@@ -123,10 +123,12 @@ const Home = () => {
         <SwapStory />
       </section>
 
-      {/* Services Section */}
-      <StickyCardsFeatures items={services} />
+      {/* Services Section (Grey Tone) */}
+      <div className="grey-section">
+        <StickyCardsFeatures items={services} />
+      </div>
 
-      {/* Filmfactory Showcase */}
+      {/* Filmfactory Showcase (Dark Tone) */}
       <section className="ff-home-showcase section-padding dark-section">
         <div className="container">
           <div className="ff-home-content">
@@ -170,8 +172,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Successful Projects Showcase */}
-      <section className="projects-home section-padding bg-main">
+      {/* Successful Projects Showcase (Light Tone) */}
+      <section className="projects-home section-padding light-section">
         <div className="container">
           <div className="section-title-center">
             <span className="decor-script">Selected Works</span>
@@ -236,8 +238,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Target Groups Section */}
-      <section className="target-groups-section section-padding bg-alt">
+      {/* Target Groups Section (Grey Tone) */}
+      <section className="target-groups-section section-padding grey-section">
         <div className="container">
           <div className="section-title-center">
             <span className="decor-script">Who We Serve</span>
@@ -265,8 +267,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials - Client Voice */}
-      <section className="testimonials-section section-padding bg-main">
+      {/* Testimonials - Client Voice (Light Tone) */}
+      <section className="testimonials-section section-padding light-section">
         <div className="container">
           <div className="section-title-center">
             <span className="decor-script">Client Voice</span>
@@ -278,8 +280,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Partner Network */}
-      <section className="partners-home-section section-padding">
+      {/* Partner Network (Grey Tone) */}
+      <section className="partners-home-section section-padding grey-section">
         <div className="container">
           <div className="partners-home-wrapper">
             <div className="partners-text-area">
@@ -309,7 +311,7 @@ const Home = () => {
         <div className="bg-decor-text-partners">NETWORK</div>
       </section>
 
-      {/* Contact CTA */}
+      {/* Contact CTA (Dark Tone) */}
       <section className="final-cta section-padding dark-section">
         <div className="container">
           <div className="cta-content">
