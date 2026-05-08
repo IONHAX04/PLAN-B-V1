@@ -50,14 +50,6 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="footer-newsletter">
-          <h3>Stay Updated</h3>
-          <p>Subscribe to our newsletter for event tips and news.</p>
-          <form className="newsletter-form">
-            <input type="email" placeholder="Your Email" required />
-            <button type="submit">Join</button>
-          </form>
-        </div>
       </div>
       <div className="footer-bottom container">
         <p>&copy; {new Date().getFullYear()} {siteConfig.fullName}. All rights reserved.</p>
