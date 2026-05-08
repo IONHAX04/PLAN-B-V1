@@ -84,20 +84,14 @@ const FilmfactoryV2 = () => {
                 </div>
               </div>
               <div className="ff-posters-visual">
-                <div className="ff-collage-grid">
-                  <div className="collage-item large">
+                <div className="ff-decorative-images">
+                  <div className="decorative-item main">
                     <img src={poster2025} alt="First Take 2025" />
-                    <div className="collage-label">2025 EDITION</div>
+                    <div className="item-badge">2025</div>
                   </div>
-                  <div className="collage-item medium">
+                  <div className="decorative-item secondary">
                     <img src={poster2026} alt="First Take 2026" />
-                    <div className="collage-label">2026 PREVIEW</div>
-                  </div>
-                  <div className="collage-item small">
-                    <img src={galleryImages[0] as string} alt="Gallery 1" />
-                  </div>
-                  <div className="collage-item small">
-                    <img src={galleryImages[1] as string} alt="Gallery 2" />
+                    <div className="item-badge">2026</div>
                   </div>
                 </div>
               </div>
@@ -120,24 +114,36 @@ const FilmfactoryV2 = () => {
               </div>
             </div>
 
-            {/* Gallery Section - Updated to match screenshot template */}
-            <div className="ff-gallery-section-v2 section-padding">
-              <div className="section-header-v2">
-                <h1 className="massive-title-ff">GALLERY</h1>
-                <p className="subtitle-ff">PHOTOS & HIGHLIGHTS</p>
-                <div className="title-divider-center"></div>
-              </div>
-              <div className="masonry-grid-ff">
-                {galleryImages.map((img, index) => (
+          </div>
+        </section>
+
+        {/* Full-width Gallery Section */}
+        <section className="ff-gallery-section-v2 section-padding">
+          <div className="container-fluid px-4">
+            <div className="section-header-v2">
+              <h1 className="massive-title-ff">GALLERY</h1>
+              <p className="subtitle-ff">PHOTOS & HIGHLIGHTS</p>
+              <div className="title-divider-center"></div>
+            </div>
+            <div className="ff-collage-masonry">
+              {galleryImages.map((img, index) => {
+                // Logic to create a collaged look: 
+                // Every 7th item is large, every 5th is tall, every 3rd is wide
+                let sizeClass = "";
+                if (index % 7 === 0) sizeClass = "large";
+                else if (index % 5 === 0) sizeClass = "tall";
+                else if (index % 3 === 0) sizeClass = "wide";
+
+                return (
                   <div 
-                    className="masonry-item-ff" 
+                    className={`collage-item-ff ${sizeClass}`} 
                     key={index}
                     onClick={() => setSelectedIdx(index)}
                   >
                     <img src={img as string} alt={`Gallery ${index + 1}`} loading="lazy" />
                   </div>
-                ))}
-              </div>
+                );
+              })}
             </div>
           </div>
         </section>
