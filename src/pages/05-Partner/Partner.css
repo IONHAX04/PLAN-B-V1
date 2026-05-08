@@ -6,29 +6,106 @@
 
 /* Hero Section */
 .partners-hero {
-  padding: 8rem 0 4rem;
-  background: linear-gradient(to bottom, rgba(13, 13, 13, 0.8), var(--bg-main)),
-              url('../../assets/partners/Partner1.jpg') center/cover no-repeat;
-  background-attachment: fixed;
+  padding: 10rem 0 6rem;
+  background: #fdfdfd;
   position: relative;
-}
-
-.partners-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
+  overflow: hidden;
 }
 
 .partners-hero .container {
   position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-title-area {
+  text-align: left;
+}
+
+.partners-hero .decor-script {
+  font-family: var(--font-script);
+  color: var(--accent);
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.partners-hero h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: #111;
+  line-height: 0.85;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: -3px;
+}
+
+.hero-info-area {
+  padding-left: 2rem;
+  border-left: 2px solid var(--accent);
+}
+
+.partners-hero .section-subtitle {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #555;
+  margin: 0;
+  max-width: 500px;
+}
+
+.partners-hero::after {
+  content: 'PARTNERS';
+  position: absolute;
+  right: -5%;
+  bottom: -10%;
+  font-size: 25vw;
+  font-weight: 900;
+  color: rgba(0,0,0,0.02);
   z-index: 1;
+  pointer-events: none;
+  letter-spacing: -15px;
 }
 
 /* Category Sections */
 .partners-list-section {
-  padding: 4rem 0 10rem;
+  padding: 2rem 0 10rem;
+}
+
+.partners-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 5rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 50px;
+  border: 1px solid var(--border);
+}
+
+.filter-btn {
+  padding: 0.6rem 1.4rem;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  color: #fff;
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
 }
 
 .category-group {
@@ -61,6 +138,7 @@
   margin: 0;
   white-space: nowrap;
   letter-spacing: -0.02em;
+  color: #111;
 }
 
 .category-line {
@@ -78,7 +156,7 @@
 
 .partner-minimal-card {
   cursor: pointer;
-  background: var(--secondary);
+  background: #fff;
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
@@ -97,14 +175,16 @@
 
 .partner-card-image {
   position: relative;
-  height: 200px;
+  height: 180px;
   overflow: hidden;
+  background: #f9f9f9;
 }
 
 .partner-card-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 1rem;
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -138,13 +218,18 @@
 }
 
 .partner-card-content {
-  padding: 1.5rem;
+  padding: 1.2rem;
 }
 
 .partner-card-content h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  color: #111;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-weight: 700;
 }
 
 .partner-card-content p {
@@ -169,7 +254,7 @@
 }
 
 .partner-modal {
-  background: var(--secondary);
+  background: #fff;
   width: 100%;
   max-width: 1000px;
   border-radius: 24px;
@@ -208,7 +293,10 @@
 .modal-left {
   flex: 1;
   max-width: 450px;
-  background: var(--bg-alt);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal-main-image {
@@ -219,7 +307,8 @@
 .modal-main-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 2rem;
 }
 
 .modal-right {
@@ -251,6 +340,7 @@
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
   line-height: 1.1;
+  color: #111;
 }
 
 .partner-category-text {
@@ -273,7 +363,7 @@
 .info-item h4 {
   font-size: 0.9rem;
   margin-bottom: 0.25rem;
-  color: #fff;
+  color: #111;
 }
 
 .info-item p {
@@ -296,7 +386,7 @@
 }
 
 .modal-description strong {
-  color: #fff;
+  color: #111;
 }
 
 .btn-gold-outline {

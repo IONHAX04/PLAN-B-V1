@@ -2,19 +2,21 @@ import { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Award, Users } from 'lucide-react';
 import { partners, partnersIntro } from '../../data/mockData';
-import partner1 from '../../assets/partners/Partner1.jpg';
-import partner2 from '../../assets/partners/Partner2.jpg';
-import partner3 from '../../assets/partners/Partner3.jpg';
-import partner4 from '../../assets/partners/Partner4.jpg';
-import partner5 from '../../assets/partners/Partner5.jpg';
-import partner6 from '../../assets/partners/Partner6.jpg';
-import partner7 from '../../assets/partners/Partner7.jpg';
-import './Partner.css';
+// Import all logos from the partnerlogo folder
+const logoModules = import.meta.glob('../../assets/partnerlogo/Partners*.{png,jpg,jpeg,webp}', { eager: true });
+// Extract the numbers from the filenames to sort them correctly
+const logoPaths = Object.keys(logoModules).sort((a, b) => {
+  const numA = parseInt(a.match(/Partners(\d+)/)?.[1] || "0");
+  const numB = parseInt(b.match(/Partners(\d+)/)?.[1] || "0");
+  return numA - numB;
+});
+const partnerImages = logoPaths.map((path: string) => (logoModules[path] as any).default || logoModules[path]);
 
-const partnerImages = [partner1, partner2, partner3, partner4, partner5, partner6, partner7];
+import './Partner.css';
 
 const Partner = () => {
   const [selectedPartner, setSelectedPartner] = useState<any>(null);
+  const [activeCategory, setActiveCategory] = useState<string>('All');
 
   const groupedPartners = useMemo(() => {
     return partners.reduce((acc, partner) => {
@@ -27,40 +29,48 @@ const Partner = () => {
   }, []);
 
   const categories = Object.keys(groupedPartners);
+  const filterCategories = ['All', ...categories];
+
+  const filteredCategories = activeCategory === 'All' 
+    ? categories 
+    : [activeCategory];
 
   return (
     <div className="partner-page">
       <section className="partners-hero">
         <div className="container">
-          <motion.div
-            className="section-header"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
+          <div className="hero-title-area">
             <div className="decor-script">Our Network</div>
             <h1>The Partner List</h1>
-            <div className="title-divider-center"></div>
+          </div>
+          <div className="hero-info-area">
             <p className="section-subtitle">{partnersIntro}</p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       <section className="partners-list-section">
         <div className="container">
-          {categories.map((category, catIndex) => (
-            <motion.div 
+          <div className="partners-filter-bar">
+            {filterCategories.map((cat) => (
+              <button 
+                key={cat}
+                className={`filter-btn ${activeCategory === cat ? 'active' : ''}`}
+                onClick={() => setActiveCategory(cat)}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {filteredCategories.map((category, catIndex) => (
+            <div 
               key={category} 
               className="category-group"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: catIndex * 0.1 }}
             >
               <div className="category-header">
                 <div className="category-title-wrap">
-                  <span className="category-number">0{catIndex + 1}</span>
+                  <span className="category-number">0{categories.indexOf(category) + 1}</span>
                   <h2>{category}</h2>
                 </div>
                 <div className="category-line"></div>
@@ -92,7 +102,7 @@ const Partner = () => {
                   </motion.div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>

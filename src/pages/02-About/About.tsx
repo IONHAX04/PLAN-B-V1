@@ -2,18 +2,27 @@ import { motion } from 'framer-motion';
 import { Quote, ChevronRight } from 'lucide-react';
 import { aboutContent } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import partner1 from '../../assets/partners/Partner1.jpg';
-import partner2 from '../../assets/partners/Partner2.jpg';
-import partner3 from '../../assets/partners/Partner3.jpg';
-import partner4 from '../../assets/partners/Partner4.jpg';
-import partner5 from '../../assets/partners/Partner5.jpg';
-import partner6 from '../../assets/partners/Partner6.jpg';
-import partner7 from '../../assets/partners/Partner7.jpg';
+// Import assets from the about folder
+const aboutAssets = import.meta.glob('../../assets/about/*.{png,jpg,jpeg,webp}', { eager: true });
+const aboutImages = Object.keys(aboutAssets).reduce((acc, path) => {
+  const fileName = path.split('/').pop()?.split('.')[0] || '';
+  acc[fileName] = (aboutAssets[path] as any).default || aboutAssets[path];
+  return acc;
+}, {} as Record<string, string>);
+
 import { AboutStory } from './AboutStory';
 import abbyFounder from '../../assets/aboutTeam/abby.png';
 import './About.css';
 
-const partners = [partner1, partner2, partner3, partner4, partner5, partner6, partner7];
+const partners = [
+  aboutImages['Partners1'],
+  aboutImages['Partners2'],
+  aboutImages['Partners3'],
+  aboutImages['Partners4'],
+  aboutImages['Partners5'],
+  aboutImages['Partners6'],
+  aboutImages['Partners7']
+];
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },

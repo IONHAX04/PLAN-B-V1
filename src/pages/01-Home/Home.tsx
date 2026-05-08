@@ -23,19 +23,14 @@ import {
 import './Home.css';
 import './ProjectsEnhancement.css';
 import './StickyCardsFeatures.css';
-import projectManoja from '../../assets/home/home-project-manoja.jpg';
-import projectGoat from '../../assets/home/home-project-goat.jpg';
-import projectTravel from '../../assets/home/home-project-travel.jpg';
-import partner1 from '../../assets/partners/Partner1.jpg';
-import partner2 from '../../assets/partners/Partner2.jpg';
-import partner3 from '../../assets/partners/Partner3.jpg';
-import partner4 from '../../assets/partners/Partner4.jpg';
-import partner5 from '../../assets/partners/Partner5.jpg';
-import partner6 from '../../assets/partners/Partner6.jpg';
-import partner7 from '../../assets/partners/Partner7.jpg';
-import ffHero from '../../assets/filmFactory/The-film-factory1.jpg';
+// Import all project images
+const projectLogoModules = import.meta.glob('../../assets/projects/Projects*.{png,jpg,jpeg,webp}', { eager: true });
+const projectDisplayImages = Object.values(projectLogoModules).map((mod: any) => mod.default || mod);
 
-const partnerImages = [partner1, partner2, partner3, partner4, partner5, partner6, partner7];
+// Import all logos from the partnerlogo folder
+const logoModules = import.meta.glob('../../assets/partnerlogo/Partners*.{png,jpg,jpeg,webp}', { eager: true });
+const partnerImages = Object.values(logoModules).map((mod: any) => mod.default || mod).slice(0, 15); // Show first 15 on home
+import ffHero from '../../assets/filmFactory/The-film-factory1.jpg';
 
 const Home = () => {
   const fadeInUp = {
@@ -196,7 +191,7 @@ const Home = () => {
               >
                 <div className="poster-image">
                   <img 
-                    src={index === 0 ? projectManoja : index === 1 ? projectGoat : projectTravel} 
+                    src={projectDisplayImages[index % projectDisplayImages.length]} 
                     alt={project.title} 
                   />
                   <div className="poster-overlay">
@@ -284,43 +279,34 @@ const Home = () => {
       </section>
 
       {/* Partner Network */}
-      <section className="partners-home-section section-padding bg-alt">
+      <section className="partners-home-section section-padding">
         <div className="container">
-          <div className="partners-home-layout">
-            <div className="partners-content">
-              <motion.h2 variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }}>Our Professional Network</motion.h2>
-              <motion.p variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }}>
+          <div className="partners-home-wrapper">
+            <div className="partners-text-area">
+              <span className="decor-script-small">Synergy</span>
+              <h2>Our Professional Network</h2>
+              <div className="title-divider"></div>
+              <p>
                 We cooperate with carefully selected partners in catering, technology, decoration, and more to provide you with exclusive benefits and a seamless experience.
-              </motion.p>
-              <div className="partners-logo-scroller">
-                {partnerImages.map((img, i) => (
-                  <motion.div
-                    key={i}
-                    variants={fadeInUp}
-                    whileInView="whileInView"
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.05 }}
-                    className="partner-logo-item"
-                  >
-                    <img src={img} alt={`Partner ${i + 1}`} />
-                  </motion.div>
-                ))}
-              </div>
-              <Link to="/partner" className="btn btn-gold mt-3">Partner Network</Link>
+              </p>
+              <Link to="/partner" className="btn btn-gold">View Partner Network</Link>
             </div>
-            <motion.div
-              variants={fadeInUp}
-              whileInView="whileInView"
-              viewport={{ once: true }}
-              className="partners-visual"
-            >
-              <div className="visual-circle">
-                <Users size={48} />
-                <span className="circle-text">42+ Trusted Partners</span>
-              </div>
-            </motion.div>
+            
+            <div className="partners-logo-grid-home">
+              {partnerImages.map((img, i) => (
+                <div
+                  key={i}
+                  className="partner-logo-box-home"
+                >
+                  <img src={img} alt={`Partner ${i + 1}`} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+        
+        {/* Background Decorative Text */}
+        <div className="bg-decor-text-partners">NETWORK</div>
       </section>
 
       {/* Contact CTA */}
