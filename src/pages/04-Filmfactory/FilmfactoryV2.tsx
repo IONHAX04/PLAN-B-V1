@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
-import { Film, Users, Trophy, Clapperboard } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Film, Users, Trophy, Clapperboard, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
 import { filmfactoryContent } from '../../data/mockData';
 import poster2025 from '../../assets/filmFactory/First-take-2025.jpg';
@@ -8,7 +9,13 @@ import galleryImg from '../../assets/contents/gallery.jpeg';
 import './Filmfactory.css';
 import './FilmfactoryV2.css';
 
+// Import all images from the gallery folder
+const imageModules = import.meta.glob('../../assets/gallery/*.{png,jpg,jpeg,webp}', { eager: true });
+const galleryImages = Object.values(imageModules).map((mod: any) => mod.default || mod);
+
 const FilmfactoryV2 = () => {
+  const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
+
   useEffect(() => {
     const lenis = new Lenis();
     let animationFrameId = 0;
@@ -24,6 +31,20 @@ const FilmfactoryV2 = () => {
       lenis.destroy();
     };
   }, []);
+
+  const nextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedIdx !== null) {
+      setSelectedIdx((selectedIdx + 1) % galleryImages.length);
+    }
+  };
+
+  const prevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedIdx !== null) {
+      setSelectedIdx((selectedIdx - 1 + galleryImages.length) % galleryImages.length);
+    }
+  };
 
   return (
     <div className="v2-page">
@@ -92,19 +113,74 @@ const FilmfactoryV2 = () => {
               </div>
             </div>
 
-            {/* Gallery Section */}
-            <div className="ff-gallery-section section-padding">
-              <div className="section-header-center">
-                <div className="decor-script">Moments</div>
-                <h2>Festival Gallery</h2>
+            {/* Gallery Section - Updated to match screenshot template */}
+            <div className="ff-gallery-section-v2 section-padding">
+              <div className="section-header-v2">
+                <h1 className="massive-title-ff">GALLERY</h1>
+                <p className="subtitle-ff">PHOTOS & HIGHLIGHTS</p>
                 <div className="title-divider-center"></div>
               </div>
-              <div className="ff-gallery-full">
-                <img src={galleryImg} alt="First Take Festival Gallery" className="gallery-wide-img" />
+              <div className="masonry-grid-ff">
+                {galleryImages.map((img, index) => (
+                  <div 
+                    className="masonry-item-ff" 
+                    key={index}
+                    onClick={() => setSelectedIdx(index)}
+                  >
+                    <img src={img as string} alt={`Gallery ${index + 1}`} loading="lazy" />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
+
+        {/* Lightbox Modal for FF Gallery */}
+        <AnimatePresence>
+          {selectedIdx !== null && (
+            <motion.div 
+              className="lightbox-overlay-v2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedIdx(null)}
+            >
+              <motion.button 
+                className="close-btn-v2"
+                onClick={() => setSelectedIdx(null)}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <X size={32} />
+              </motion.button>
+
+              <button className="nav-btn-v2 prev" onClick={prevImage}>
+                <ChevronLeft size={48} />
+              </button>
+
+              <motion.div 
+                className="lightbox-img-container"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <img 
+                  src={galleryImages[selectedIdx] as string} 
+                  alt={`Gallery Large ${selectedIdx + 1}`} 
+                />
+              </motion.div>
+
+              <button className="nav-btn-v2 next" onClick={nextImage}>
+                <ChevronRight size={48} />
+              </button>
+
+              <div className="lightbox-counter">
+                {selectedIdx + 1} / {galleryImages.length}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <section className="ff-community-box-section section-padding">
           <div className="container">
@@ -135,3 +211,4 @@ const FilmfactoryV2 = () => {
 };
 
 export default FilmfactoryV2;
+

@@ -222,13 +222,22 @@
   }
 }
 
-/* Explore Portfolio Section */
-.grid-filters {
+.section-header.center {
+  text-align: center;
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 3rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem; /* Reduced space after subtitle */
+}
+
+.section-header h1 {
+  color: var(--primary);
+  margin-bottom: 1rem; /* Added spacing in Explore Portfolio */
+}
+
+.section-subtitle {
+  color: var(--text-muted) !important;
+  margin-bottom: 0;
 }
 
 .grid-filters button {
@@ -265,6 +274,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
 
 .project-card-fashion:hover {
@@ -363,7 +373,7 @@
 
 .timeline-content {
   width: 45%;
-  background: var(--bg-alt);
+  background: #fff;
   padding: 2.5rem;
   border-radius: 20px;
   border: 1px solid var(--border);
@@ -470,7 +480,7 @@
 }
 
 .modal-fashion-content {
-  background: var(--bg-main);
+  background: #ffffff;
   width: 100%;
   max-width: 1000px;
   max-height: 90vh;
@@ -519,8 +529,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 3rem;
-  background: linear-gradient(to top, var(--bg-main), transparent);
+  padding: 2rem 3rem;
+  background: linear-gradient(to top, #ffffff 20%, transparent);
 }
 
 .modal-hero-text span {
@@ -532,9 +542,11 @@
 }
 
 .modal-hero-text h2 {
-  font-size: 3rem;
-  color: #fff;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  color: #111;
   margin-top: 0.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .modal-bottom {
@@ -545,9 +557,11 @@
 }
 
 .modal-main h3, .modal-side h3 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-bottom: 1.5rem;
-  color: var(--secondary);
+  color: #111;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .modal-main p {
@@ -570,7 +584,7 @@
 }
 
 .stat span {
-  color: var(--secondary);
+  color: #111;
   font-weight: 600;
 }
 
@@ -581,7 +595,7 @@
 }
 
 .partner-tags span {
-  background: var(--bg-alt);
+  background: #fff;
   border: 1px solid var(--border);
   padding: 0.5rem 1rem;
   border-radius: 8px;

@@ -141,17 +141,10 @@ const Projects = () => {
 
       {/* Projects Grid Section */}
       <div className="container section-padding">
-        <div className="section-header">
+        <div className="section-header center">
           <div className="decor-line"></div>
           <h1>Explore Portfolio</h1>
           <p className="section-subtitle">A glimpse into the magical moments we've created.</p>
-        </div>
-
-        <div className="grid-filters">
-          <button className={activeCategory === 'All' ? 'active' : ''} onClick={() => setActiveCategory('All')}>All</button>
-          {projectCategories.map(cat => (
-            <button key={cat} className={activeCategory === cat ? 'active' : ''} onClick={() => setActiveCategory(cat)}>{cat}</button>
-          ))}
         </div>
 
         <div className="projects-grid-fashion">
