@@ -63,7 +63,7 @@ const Partner = () => {
             ))}
           </div>
 
-          {filteredCategories.map((category, catIndex) => (
+          {filteredCategories.map((category) => (
             <div 
               key={category} 
               className="category-group"

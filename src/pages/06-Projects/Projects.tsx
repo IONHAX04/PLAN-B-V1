@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { X, Calendar, MapPin } from 'lucide-react';
-import { projects, projectCategories } from '../../data/mockData';
+import { projects } from '../../data/mockData';
 import project1 from '../../assets/projects/Projects1.jpg';
 import project2 from '../../assets/projects/Projects2.jpg';
 import project3 from '../../assets/projects/Projects3.jpg';
@@ -123,7 +123,7 @@ const ImageGridHero = ({ setSelectedProject }: { setSelectedProject: (p: any) =>
 };
 
 const Projects = () => {
-  const [activeCategory, setActiveCategory] = React.useState('All');
+  const [activeCategory] = React.useState('All');
   const [selectedProject, setSelectedProject] = React.useState<any>(null);
 
   const filteredProjects = activeCategory === 'All' 

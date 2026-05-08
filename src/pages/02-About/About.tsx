@@ -58,7 +58,7 @@ const About = () => {
           >
             <div className="mascot-placeholder">
               <div className="golden-glow"></div>
-              <img src="/assets/images/hero.png" alt="Plan B Trophy" />
+              <img src={aboutImages['01']} alt="Plan B Trophy" />
             </div>
           </motion.div>
         </div>

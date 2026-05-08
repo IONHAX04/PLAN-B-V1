@@ -1,0 +1,303 @@
+.vision-mission-reimagined {
+  background: #fff;
+  color: #111;
+  overflow-x: hidden;
+}
+
+/* Hero V2 */
+.philosophy-hero-v2 {
+  padding: 10rem 0 5rem;
+  background: #fdfdfd;
+}
+
+.hero-v2-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.hero-v2-text h1 {
+  font-size: clamp(3rem, 8vw, 4.5rem);
+  line-height: 1.1;
+  margin: 1.5rem 0 2.5rem;
+  font-family: var(--font-serif);
+  color: #111;
+}
+
+.hero-v2-text h1 span {
+  color: var(--accent);
+}
+
+.hero-v2-text p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  max-width: 500px;
+}
+
+.hero-v2-visual {
+  position: relative;
+}
+
+.visual-stack {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+}
+
+.main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+}
+
+.glass-accent {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  opacity: 0.05;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.text-decor-side {
+  position: absolute;
+  bottom: 40px;
+  right: -60px;
+  transform: rotate(90deg);
+  font-size: 0.8rem;
+  letter-spacing: 5px;
+  font-weight: 800;
+  color: var(--accent);
+  opacity: 0.5;
+  z-index: 3;
+}
+
+/* Philosophy Overlap */
+.philosophy-overlap {
+  background: #fff;
+}
+
+.overlap-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 8rem;
+  align-items: center;
+  margin-bottom: 12rem;
+}
+
+.overlap-row.reverse {
+  grid-template-columns: 1fr 1.2fr;
+}
+
+.overlap-row.reverse .overlap-img-box {
+  order: 2;
+}
+
+.overlap-row.reverse .overlap-content-box {
+  order: 1;
+}
+
+.overlap-img-box {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.08);
+}
+
+.overlap-img-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.overlap-img-box:hover img {
+  transform: scale(1.05);
+}
+
+.img-caption {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  background: #fff;
+  padding: 0.8rem 2rem;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.overlap-content-box .serif-title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin: 1.5rem 0 2rem;
+  font-family: var(--font-serif);
+  line-height: 1.2;
+}
+
+.overlap-content-box p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 2.5rem;
+}
+
+.icon-accent {
+  color: var(--accent);
+}
+
+.pillar-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--accent);
+  padding-left: 2rem;
+  border-left: 2px solid var(--accent);
+}
+
+/* DNA Pillars */
+.dna-pillars-section {
+  background: #f9f9f9;
+}
+
+.dna-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin-top: 5rem;
+}
+
+.dna-card {
+  background: #fff;
+  padding: 4rem 3rem;
+  border-radius: 24px;
+  border: 1px solid rgba(0,0,0,0.03);
+  text-align: center;
+  transition: all 0.4s ease;
+}
+
+.dna-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+}
+
+.dna-icon {
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.dna-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-serif);
+}
+
+.dna-card p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Quote Banner */
+.quote-banner-premium {
+  padding: 10rem 0;
+  background: #111;
+  color: #fff;
+  text-align: center;
+}
+
+.quote-content-premium {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.quote-icon-lg {
+  color: var(--accent);
+  margin-bottom: 3rem;
+  opacity: 0.5;
+}
+
+.quote-content-premium blockquote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.4;
+  margin-bottom: 2rem;
+}
+
+.quote-content-premium cite {
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+/* Final CTA */
+.vision-final-cta {
+  background: #fff;
+}
+
+.cta-premium-box {
+  background: #fdfdfd;
+  border: 1px solid rgba(0,0,0,0.05);
+  padding: 8rem 4rem;
+  border-radius: 40px;
+  text-align: center;
+}
+
+.cta-premium-box h2 {
+  font-size: clamp(2.5rem, 6vw, 3.8rem);
+  margin-bottom: 1.5rem;
+}
+
+.cta-premium-box p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 3.5rem;
+}
+
+.cta-group {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .hero-v2-grid, .overlap-row {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    text-align: center;
+  }
+  
+  .hero-v2-text p, .overlap-content-box p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .overlap-row.reverse .overlap-img-box {
+    order: -1;
+  }
+  
+  .dna-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}

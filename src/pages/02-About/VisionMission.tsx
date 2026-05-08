@@ -1,10 +1,14 @@
 import { motion } from 'framer-motion';
-import { Target, Rocket, Users, Heart, Quote } from 'lucide-react';
+import { Target, Rocket, Quote, Shield, Zap, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { aboutContent } from '../../data/mockData';
-import visionImg from '../../assets/contents/about.jpeg';
-import missionImg from '../../assets/home/home2.jpg';
+
+import visionImg from '../../assets/home/home2.jpg';
+import missionImg from '../../assets/home/home3.jpg';
+import heroImg from '../../assets/home/home1.jpg';
+
 import './About.css';
+import './VisionMission.css';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 40 },
@@ -14,55 +18,63 @@ const fadeInUp = {
 };
 
 const VisionMission = () => {
-
   return (
-    <div className="vision-mission-page">
-      {/* Cinematic Hero */}
-      <section className="philosophy-hero">
-        <div className="hero-bg-overlay"></div>
-        <div className="container hero-content">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
-            <div className="decor-script-gold">The Philosophy</div>
-            <h1>The Architecture <br />of <span>Excellence</span></h1>
-            <p>We don't just plan events; we architect legacies and curate unforgettable Swiss experiences.</p>
-          </motion.div>
+    <div className="vision-mission-reimagined">
+      {/* Premium Decorative Hero */}
+      <section className="philosophy-hero-v2">
+        <div className="container">
+          <div className="hero-v2-grid">
+            <motion.div 
+              className="hero-v2-text"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <span className="decor-script-gold">Our Essence</span>
+              <h1>The Architecture of <span>Excellence</span></h1>
+              <div className="title-divider"></div>
+              <p>We don't just plan events; we architect legacies and curate unforgettable Swiss experiences with precision and passion.</p>
+            </motion.div>
+            <motion.div 
+              className="hero-v2-visual"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2 }}
+            >
+              <div className="visual-stack">
+                <img src={heroImg} alt="Hero Decoration" className="main-img" />
+                <div className="glass-accent"></div>
+                <div className="text-decor-side">EST. 2012</div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Vision & Mission - Dual Pillars */}
-      <section className="vm-dual-pillars section-padding">
+      {/* Philosophy Overlap Section */}
+      <section className="philosophy-overlap section-padding">
         <div className="container">
-          <div className="pillar-row">
-            <motion.div {...fadeInUp} className="pillar-image-side">
-              <div className="pillar-img-wrapper">
-                <img src={visionImg} alt="Our Vision" />
-                <div className="pillar-label">Vision 2030</div>
-              </div>
+          <div className="overlap-row">
+            <motion.div {...fadeInUp} className="overlap-img-box">
+              <img src={visionImg} alt="Vision" />
+              <div className="img-caption">The Vision</div>
             </motion.div>
-            <motion.div {...fadeInUp} className="pillar-text-side">
-              <Target className="pillar-icon" size={48} />
-              <div className="decor-script">The Vision</div>
-              <h2>Setting New <br />Global Standards</h2>
+            <motion.div {...fadeInUp} className="overlap-content-box">
+              <Target className="icon-accent" size={40} />
+              <h2 className="serif-title">Setting New Global <br />Standards</h2>
               <p>{aboutContent.vision}</p>
               <div className="pillar-quote">"Innovation is our compass."</div>
             </motion.div>
           </div>
 
-          <div className="pillar-row reverse">
-            <motion.div {...fadeInUp} className="pillar-image-side">
-              <div className="pillar-img-wrapper">
-                <img src={missionImg} alt="Our Mission" />
-                <div className="pillar-label">Execution</div>
-              </div>
+          <div className="overlap-row reverse">
+            <motion.div {...fadeInUp} className="overlap-img-box">
+              <img src={missionImg} alt="Mission" />
+              <div className="img-caption">The Mission</div>
             </motion.div>
-            <motion.div {...fadeInUp} className="pillar-text-side">
-              <Rocket className="pillar-icon" size={48} />
-              <div className="decor-script">The Mission</div>
-              <h2>Crafting The <br />Extraordinary</h2>
+            <motion.div {...fadeInUp} className="overlap-content-box">
+              <Rocket className="icon-accent" size={40} />
+              <h2 className="serif-title">Crafting The <br />Extraordinary</h2>
               <p>{aboutContent.mission}</p>
               <div className="pillar-quote">"Precision is our signature."</div>
             </motion.div>
@@ -70,61 +82,62 @@ const VisionMission = () => {
         </div>
       </section>
 
-      {/* Values Mosaic Grid */}
-      <section className="values-mosaic-section section-padding bg-alt">
+      {/* DNA Pillars - Decorative Grid */}
+      <section className="dna-pillars-section section-padding">
         <div className="container">
-          <motion.div {...fadeInUp} className="section-header-center">
-            <div className="decor-script">Our DNA</div>
-            <h2>Core Pillars of Plan B</h2>
+          <div className="section-header-center">
+            <span className="decor-script-gold">Core Values</span>
+            <h2 className="serif-title">The Plan B DNA</h2>
             <div className="title-divider-center"></div>
-          </motion.div>
-
-          <div className="values-mosaic-grid">
-            {aboutContent.pillars && aboutContent.pillars.map((val, idx) => (
-              <motion.div 
-                key={idx}
-                className="mosaic-item"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-              >
-                <div className="mosaic-icon-wrap">
-                  {idx === 0 && <Rocket size={24} />}
-                  {idx === 1 && <Heart size={24} />}
-                  {idx === 2 && <Users size={24} />}
-                </div>
-                <h3>{val.title}</h3>
-                <p>{val.description}</p>
-              </motion.div>
-            ))}
           </div>
 
-          {aboutContent.quote && (
-            <motion.div 
-              className="vision-quote-full section-padding"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              <Quote className="quote-icon" size={40} />
-              <blockquote>{aboutContent.quote}</blockquote>
+          <div className="dna-grid">
+            <motion.div {...fadeInUp} className="dna-card">
+              <Shield className="dna-icon" size={32} />
+              <h3>Integrity</h3>
+              <p>Unwavering commitment to honesty and transparency in every collaboration.</p>
             </motion.div>
-          )}
+            <motion.div {...fadeInUp} transition={{ delay: 0.1 }} className="dna-card">
+              <Zap className="dna-icon" size={32} />
+              <h3>Precision</h3>
+              <p>Swiss-level accuracy from technical planning to final execution.</p>
+            </motion.div>
+            <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="dna-card">
+              <Sparkles className="dna-icon" size={32} />
+              <h3>Excellence</h3>
+              <p>Striving for results that transcend expectations and define standards.</p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Simple Process Footer */}
-      <section className="vision-cta-footer section-padding">
+      {/* Quote Banner */}
+      <section className="quote-banner-premium">
         <div className="container">
-          <motion.div {...fadeInUp} className="cta-box-premium">
-             <h2>Experience the Standard</h2>
-             <p>Ready to bring your vision to life with the precision of Plan B?</p>
-             <div className="cta-btns">
-                <Link to="/contact" className="btn btn-gold">Plan Your Event</Link>
-                <Link to="/about/team" className="btn btn-outline">Meet Our Team</Link>
-             </div>
+          <motion.div 
+            className="quote-content-premium"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <Quote className="quote-icon-lg" size={60} />
+            <blockquote>{aboutContent.quote || "To be the guiding star in the universe of events, where every detail is a masterpiece of precision and every moment a legacy of excellence."}</blockquote>
+            <cite>— The Plan B Philosophy</cite>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Final Action */}
+      <section className="vision-final-cta section-padding">
+        <div className="container">
+          <div className="cta-premium-box">
+            <h2 className="serif-title">Experience the Standard</h2>
+            <p>Ready to bring your vision to life with the precision of Plan B?</p>
+            <div className="cta-group">
+              <Link to="/contact" className="btn btn-gold">Let's Plan Your Event</Link>
+              <Link to="/about/team" className="btn btn-outline">Meet The Architects</Link>
+            </div>
+          </div>
         </div>
       </section>
     </div>
