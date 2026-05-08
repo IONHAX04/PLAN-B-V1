@@ -3,14 +3,13 @@ import { Film, Users, Trophy, Clapperboard, X, ChevronLeft, ChevronRight } from 
 import { motion, AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
 import { filmfactoryContent } from '../../data/mockData';
-import poster2025 from '../../assets/filmFactory/First-take-2025.jpg';
-import firstTakeImg from '../../assets/contents/first-take.jpeg';
-import galleryImg from '../../assets/contents/gallery.jpeg';
+import poster2025 from '../../assets/filmFactory/2025.jpg';
+import poster2026 from '../../assets/filmFactory/2026.jpg';
 import './Filmfactory.css';
 import './FilmfactoryV2.css';
 
-// Import all images from the gallery folder
-const imageModules = import.meta.glob('../../assets/gallery/*.{png,jpg,jpeg,webp}', { eager: true });
+// Import all images from the filmFactory folder for the gallery
+const imageModules = import.meta.glob('../../assets/filmFactory/Gallery*.{png,jpg,jpeg,webp}', { eager: true });
 const galleryImages = Object.values(imageModules).map((mod: any) => mod.default || mod);
 
 const FilmfactoryV2 = () => {
@@ -85,13 +84,21 @@ const FilmfactoryV2 = () => {
                 </div>
               </div>
               <div className="ff-posters-visual">
-                <div className="poster-wrapper-v2">
-                  <img src={firstTakeImg} alt="First Take Live" />
-                  <div className="poster-label-v2">Live Event 2025</div>
-                </div>
-                <div className="poster-wrapper-v2">
-                  <img src={poster2025} alt="First Take 2025 Poster" />
-                  <div className="poster-label-v2">Official Poster</div>
+                <div className="ff-collage-grid">
+                  <div className="collage-item large">
+                    <img src={poster2025} alt="First Take 2025" />
+                    <div className="collage-label">2025 EDITION</div>
+                  </div>
+                  <div className="collage-item medium">
+                    <img src={poster2026} alt="First Take 2026" />
+                    <div className="collage-label">2026 PREVIEW</div>
+                  </div>
+                  <div className="collage-item small">
+                    <img src={galleryImages[0] as string} alt="Gallery 1" />
+                  </div>
+                  <div className="collage-item small">
+                    <img src={galleryImages[1] as string} alt="Gallery 2" />
+                  </div>
                 </div>
               </div>
             </div>
