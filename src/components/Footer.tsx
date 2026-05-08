@@ -7,7 +7,7 @@ import './Footer.css';
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="container footer-grid">
+      <div className="footer-grid">
         <div className="footer-brand">
           <Link to="/" className="footer-logo">
             <span className="logo-p">PLAN</span>
@@ -51,7 +51,7 @@ const Footer = () => {
         </div>
 
       </div>
-      <div className="footer-bottom container">
+      <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} {siteConfig.fullName}. All rights reserved.</p>
         <div className="footer-legal">
           <Link to="/privacy">Privacy Policy</Link>
