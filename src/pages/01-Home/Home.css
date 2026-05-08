@@ -1635,13 +1635,10 @@
 
 .partner-logo-box-home {
   aspect-ratio: 1;
-  background: #f9f9f9;
-  border: 1px solid rgba(0,0,0,0.03);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
-  border-radius: 12px;
+  padding: 0.2rem;
   transition: all 0.3s ease;
 }
 
@@ -1656,8 +1653,6 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.7;
   transition: all 0.3s ease;
 }
 
