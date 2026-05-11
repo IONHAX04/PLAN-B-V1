@@ -23,14 +23,12 @@ import {
 import './Home.css';
 import './ProjectsEnhancement.css';
 import './StickyCardsFeatures.css';
-// Import all project images from homeProjects folder
-const projectLogoModules = import.meta.glob('../../assets/homeProjects/*.{png,jpg,jpeg,webp}', { eager: true });
-const projectDisplayImages = Object.values(projectLogoModules).map((mod: any) => mod.default || mod);
 
 // Import all logos from the partnerlogo folder
 const logoModules = import.meta.glob('../../assets/partnerlogo/Partners*.{png,jpg,jpeg,webp}', { eager: true });
 const partnerImages = Object.values(logoModules).map((mod: any) => mod.default || mod).slice(0, 15); // Show first 15 on home
 import ffHero from '../../assets/filmFactory/The-film-factory1.jpg';
+import penImage from '../../assets/home/pen.png';
 
 const Home = () => {
   const fadeInUp = {
@@ -72,8 +70,8 @@ const Home = () => {
               <h3>Strategic Curation</h3>
             </div>
             <p>Every event is a unique architectural project. We design not just for the moment, but for the legacy.</p>
-            <div className="card-bg-decor-film">
-              <img src="/assets/images/filmRoll.png" alt="" />
+            <div className="card-bg-decor-pen">
+              <img src={penImage} alt="" />
             </div>
           </motion.div>
 
@@ -133,27 +131,21 @@ const Home = () => {
         <div className="container">
           <div className="ff-home-content">
             <div className="ff-text">
-              <motion.div variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }} className="ff-label">Sub-Company</motion.div>
-              <motion.h2 variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }}>The Filmfactory</motion.h2>
-              <motion.h3 variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }}>{filmfactoryContent.firstTake.title}</motion.h3>
-              <motion.p variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }}>
-                {filmfactoryContent.firstTake.description}
-              </motion.p>
-              <div className="ff-stats">
-                {filmfactoryContent.firstTake.stats.map((stat, i) => (
-                  <motion.div
-                    key={i}
-                    variants={fadeInUp}
-                    whileInView="whileInView"
-                    viewport={{ once: true }}
-                    className="stat-item"
-                  >
-                    <span className="stat-value">{stat.value}</span>
-                    <span className="stat-label">{stat.label}</span>
-                  </motion.div>
-                ))}
-              </div>
-              <motion.div variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }}>
+              <motion.div variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }} className="ff-label italic-gold">Where Vision Meets the Frame</motion.div>
+              <motion.h2 variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }}>Plan B – The Filmfactory</motion.h2>
+              <motion.div variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }} className="ff-description-wrapper">
+                <p>
+                  Plan B – The Filmfactory is the dedicated cinematic arm of Plan B – The Eventguide. Born out of a passion for visual storytelling, we were established to bridge the gap between aspiring creators and the professional film industry. We don’t just host events; we build a sanctuary for rising talents to refine their craft, share their voices, and see their stories come to life on the big screen.
+                </p>
+                <p className="mt-4">
+                  Through our two core pillars, we turn artistic potential into cinematic reality:
+                </p>
+                <ul className="ff-pillars-list">
+                  <li><span>1.</span> First Take</li>
+                  <li><span>2.</span> My Frame | My Story</li>
+                </ul>
+              </motion.div>
+              <motion.div variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }} className="mt-6">
                 <Link to="/filmfactory" className="btn btn-gold">Explore Filmfactory</Link>
               </motion.div>
             </div>
@@ -193,7 +185,7 @@ const Home = () => {
               >
                 <div className="poster-image">
                   <img 
-                    src={projectDisplayImages[index % projectDisplayImages.length]} 
+                    src={(project as any).image} 
                     alt={project.title} 
                   />
                   <div className="poster-overlay">

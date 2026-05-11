@@ -987,31 +987,48 @@
   margin-bottom: 1rem;
 }
 
+.ff-label.italic-gold {
+  text-transform: none;
+  font-style: italic;
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+
 .ff-text h2 {
   font-size: 4.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 2rem;
   letter-spacing: -1px;
 }
 
-.ff-text h3 {
-  font-size: 2rem;
-  color: var(--accent);
-  margin-bottom: 2rem;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.ff-text p {
+.ff-description-wrapper p {
   font-size: 1.1rem;
-  margin-bottom: 3rem;
+  line-height: 1.8;
   opacity: 0.8;
-  max-width: 600px;
+  max-width: 650px;
 }
 
-.ff-stats {
+.ff-pillars-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
   display: flex;
-  gap: 3rem;
-  margin-bottom: 3rem;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ff-pillars-list li {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ff-pillars-list li span {
+  font-family: var(--font-serif);
+  opacity: 0.6;
 }
 
 .stat-item {
@@ -1515,7 +1532,7 @@
   z-index: 2;
 }
 
-.card-bg-decor-film {
+.card-bg-decor-pen {
   position: absolute;
   top: 50%;
   right: 0;
@@ -1528,7 +1545,7 @@
   z-index: 1;
 }
 
-.card-bg-decor-film img {
+.card-bg-decor-pen img {
   width: 100%;
   height: 100%;
   object-fit: contain;

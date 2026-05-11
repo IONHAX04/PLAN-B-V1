@@ -28,6 +28,13 @@ import banuImg from '../assets/aboutTeam/banu.png';
 import prathikkaImg from '../assets/aboutTeam/prathikka.png';
 import thanuImg from '../assets/aboutTeam/thanu.png';
 
+// Project Images
+import goatImg from '../assets/homeProjects/Goat.jpg';
+import mayilehImg from '../assets/homeProjects/Mayieh.jpg';
+import premgiImg from '../assets/homeProjects/Premji.jpg';
+import ffImg from '../assets/homeProjects/The-film-factory.jpg';
+import othersImg from '../assets/homeProjects/Others.jpg';
+
 // ─── NAV LINKS ──────────────────────────────────────────────────────────────
 export const navLinks = [
   { name: "Home", path: "/" },
@@ -325,6 +332,7 @@ export const projects = [
     title: "MAYILEH - CLUBEVENT",
     date: "20th June 2024",
     client: "GR EVENTS",
+    image: mayilehImg,
     description: "Back-Office management, flyer design & comprehensive promotion.",
     partners: ["GR Events"]
   },
@@ -334,6 +342,7 @@ export const projects = [
     title: "PREMGI - CONCERT",
     date: "9th August 2024",
     client: "GETAM ENTERTAINMENT",
+    image: premgiImg,
     description: "Targeted promotion & professional artist support.",
     partners: ["Getam Entertainment"]
   },
@@ -343,6 +352,7 @@ export const projects = [
     title: "WARRIORS BACK TO 90's",
     date: "7th September 2024",
     client: "The Crown Entertainment",
+    image: othersImg,
     description: "Effective media campaign & innovative promotion.",
     partners: ["The Crown Entertainment"]
   },
@@ -352,6 +362,7 @@ export const projects = [
     title: "THE GOAT - CLUBEVENT",
     date: "28th September 2024",
     client: "GR EVENTS",
+    image: goatImg,
     description: "Comprehensively managed the event with organization, promotion and artist support.",
     partners: ["GR Events", "Alpha Studios", "DJ Jene"]
   },
@@ -361,6 +372,7 @@ export const projects = [
     title: "MOVING ON - COMEDY SHOW",
     date: "18th & 19th October 2024",
     client: "OPTIMEYE GMBH",
+    image: ffImg,
     description: "Planned, coordinated and perfectly implemented.",
     partners: ["Optimeye"]
   },
@@ -370,6 +382,7 @@ export const projects = [
     title: "VIVAHAA WEDDING SHOW",
     date: "1st & 2nd March 2025",
     client: "BUDGET EVENT x OPTIMEYE GMBH",
+    image: othersImg,
     description: "Trade fair with on-site coordination.",
     partners: ["Optimeye", "Budget Event"]
   },
@@ -379,6 +392,7 @@ export const projects = [
     title: "ALT + TAB - COMEDY SHOW",
     date: "12th & 16th March 2025",
     client: "OPTIMEYE GMBH",
+    image: othersImg,
     description: "Thought-out planning and realization.",
     partners: ["Optimeye"]
   }
