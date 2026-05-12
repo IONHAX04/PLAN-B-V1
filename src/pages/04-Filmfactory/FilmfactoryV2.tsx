@@ -1,10 +1,26 @@
 import { useEffect, useState } from 'react';
-import { Film, Users, Trophy, Clapperboard, X, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { 
+  Film, 
+  Users, 
+  Trophy, 
+  Clapperboard, 
+  X, 
+  ChevronLeft, 
+  ChevronRight, 
+  Quote, 
+  ArrowDown,
+  Download,
+  ExternalLink,
+  Play
+} from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
 import { filmfactoryContent, aboutContent } from '../../data/mockData';
 import poster2025 from '../../assets/filmFactory/2025.jpg';
 import poster2026 from '../../assets/filmFactory/2026.jpg';
+import ffLogo from '../../assets/home/plan-b-film-factory.png';
+import firstTakeIntroVideo from '../../assets/video/home.mp4';
+import newsPaperPdf from '../../assets/video/newsPaper.pdf';
 import './Filmfactory.css';
 import './FilmfactoryV2.css';
 
@@ -31,6 +47,13 @@ const FilmfactoryV2 = () => {
     };
   }, []);
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const nextImage = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (selectedIdx !== null) {
@@ -47,73 +70,225 @@ const FilmfactoryV2 = () => {
 
   return (
     <div className="v2-page">
-      {/* Hero section hidden for now as per user request */}
-      
-      <div className="ff-real-content" style={{ paddingTop: '120px' }}>
-        <section className="ff-festival section-padding">
+      {/* Hero Section with Video Background */}
+      <section className="ff-hero-video-section">
+        <div className="video-background">
+          <video autoPlay muted loop playsInline className="bg-video">
+            <source src={firstTakeIntroVideo} type="video/mp4" />
+          </video>
+          <div className="video-overlay"></div>
+        </div>
+        
+        <div className="container ff-hero-content">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="ff-hero-text-box"
+          >
+            <div className="ff-logo-branded-wrap">
+              <img src={ffLogo} alt="Plan B - The Filmfactory" className="ff-hero-logo" />
+            </div>
+            <motion.h1
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              {filmfactoryContent.hero.title}
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+            >
+              {filmfactoryContent.hero.description}
+            </motion.p>
+            
+            <motion.div 
+              className="ff-pillars-nav"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.1 }}
+            >
+              <p className="pillars-intro">{filmfactoryContent.hero.pillarsIntro}</p>
+              <div className="pillars-links">
+                {filmfactoryContent.hero.pillars.map((pillar) => (
+                  <div key={pillar.id} className="pillar-link-card" onClick={() => scrollToSection(pillar.id)}>
+                    <h3>{pillar.title}</h3>
+                    <p>{pillar.description}</p>
+                    <span className="scroll-hint">Explore <ArrowDown size={14} /></span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      <div className="ff-real-content">
+        {/* About First Take Section */}
+        <section id="first-take" className="ff-about-first-take section-padding">
           <div className="container">
             <div className="ff-header-v2">
-              <span className="ff-badge">{filmfactoryContent.firstTake.subtitle}</span>
-              <h1>{filmfactoryContent.firstTake.title}</h1>
-              <p className="ff-tagline">{filmfactoryContent.firstTake.tagline}</p>
+              <span className="ff-badge">{filmfactoryContent.aboutFirstTake.tagline}</span>
+              <h1>{filmfactoryContent.aboutFirstTake.title}</h1>
+              <div className="title-divider-center"></div>
             </div>
+            <div className="ff-about-desc-wrapper">
+              <p className="main-desc-v2">{filmfactoryContent.aboutFirstTake.description}</p>
+            </div>
+          </div>
+        </section>
 
-            <div className="ff-grid-info">
-              <div className="ff-text-box">
-                <p className="main-desc">{filmfactoryContent.firstTake.description}</p>
+        {/* First Take 2025 History */}
+        <section className="ff-festival-history section-padding">
+          <div className="container">
+            <div className="ff-history-grid">
+              <div className="ff-history-text">
+                <span className="year-label">Established 2025</span>
+                <h2>{filmfactoryContent.firstTake.year2025.title}</h2>
+                <p>{filmfactoryContent.firstTake.year2025.description}</p>
                 
-                <div className="ff-highlights">
-                  {filmfactoryContent.firstTake.highlights.map((h, i) => (
-                    <div key={i} className="highlight-item">
-                      <h3>{h.title}</h3>
-                      <p>{h.description}</p>
+                <div className="ff-stats-row">
+                  {filmfactoryContent.firstTake.year2025.stats.map((stat, i) => (
+                    <div className="stat-pill" key={i}>
+                      <span className="val">{stat.value}</span>
+                      <span className="lab">{stat.label}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="ff-stats-box">
-                  {filmfactoryContent.firstTake.stats.map((stat, i) => (
-                    <div className="stat-card" key={i}>
-                      {i === 0 && <Film size={24} />}
-                      {i === 1 && <Clapperboard size={24} />}
-                      {i === 2 && <Users size={24} />}
-                      <div className="val">{stat.value}</div>
-                      <div className="lab">{stat.label}</div>
-                    </div>
-                  ))}
+                {/* Winners Table */}
+                <div className="ff-winners-grid-v2">
+                  <h3>2025 Award Winners</h3>
+                  <div className="winners-mini-list">
+                    {filmfactoryContent.firstTake.year2025.winners.slice(0, 6).map((w, i) => (
+                      <div key={i} className="winner-row">
+                        <span className="cat">{w.category}</span>
+                        <span className="name">{w.winner}</span>
+                      </div>
+                    ))}
+                    <div className="and-more">...and 7 more categories</div>
+                  </div>
                 </div>
               </div>
-              <div className="ff-posters-visual">
-                <div className="ff-decorative-images">
-                  <div className="decorative-item main">
-                    <img src={poster2025} alt="First Take 2025" />
-                    <div className="item-badge">2025</div>
-                  </div>
-                  <div className="decorative-item secondary">
-                    <img src={poster2026} alt="First Take 2026" />
-                    <div className="item-badge">2026</div>
-                  </div>
+              <div className="ff-history-visual">
+                <div className="poster-stack">
+                  <img src={poster2025} alt="2025 Poster" className="poster-main" />
                 </div>
               </div>
             </div>
 
-            {/* Winners Section */}
-            <div className="ff-winners-section section-padding">
-              <div className="ff-section-header-minimal">
-                <Trophy size={40} className="text-gold" />
-                <h2>First Take 2025 <span>Winners</span></h2>
+            {/* Jury 2025 */}
+            <div className="ff-jury-section">
+              <div className="jury-header">
+                <h3>The 2025 Jury</h3>
+                <div className="jury-divider"></div>
               </div>
-              <div className="winners-grid">
-                {filmfactoryContent.firstTake.winners.map((w, i) => (
-                  <div key={i} className="winner-card">
-                    <div className="winner-cat">{w.category}</div>
-                    <div className="winner-name">{w.winner}</div>
-                    <div className="winner-film">"{w.film}"</div>
+              {filmfactoryContent.firstTake.year2025.jury.map((jury, i) => (
+                <div key={i} className="jury-card-v2">
+                  <div className="jury-img-box">
+                    <div className="placeholder-jury-img"><Users size={40} /></div>
+                  </div>
+                  <div className="jury-info-v2">
+                    <h4>{jury.name}</h4>
+                    <span className="jury-credits">{jury.credits}</span>
+                    <p>{jury.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* First Take 2026 Expansion */}
+        <section className="ff-festival-history section-padding alt-bg">
+          <div className="container">
+            <div className="ff-history-grid reverse">
+              <div className="ff-history-text">
+                <span className="year-label">The Bern Edition</span>
+                <h2>{filmfactoryContent.firstTake.year2026.title}</h2>
+                <p className="ff-tagline-v2">{filmfactoryContent.firstTake.year2026.tagline}</p>
+                <p>{filmfactoryContent.firstTake.year2026.description}</p>
+                
+                <div className="ff-stats-row">
+                  {filmfactoryContent.firstTake.year2026.stats.map((stat, i) => (
+                    <div className="stat-pill gold" key={i}>
+                      <span className="val">{stat.value}</span>
+                      <span className="lab">{stat.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="ff-history-visual">
+                <div className="poster-stack">
+                  <img src={poster2026} alt="2026 Poster" className="poster-main" />
+                </div>
+              </div>
+            </div>
+
+            {/* Jury 2026 */}
+            <div className="ff-jury-section">
+              <div className="jury-header">
+                <h3>The 2026 Jury</h3>
+                <div className="jury-divider"></div>
+              </div>
+              <div className="jury-grid-v2">
+                {filmfactoryContent.firstTake.year2026.jury.map((jury, i) => (
+                  <div key={i} className="jury-card-v2 small">
+                    <div className="jury-img-box">
+                      <div className="placeholder-jury-img"><Users size={30} /></div>
+                    </div>
+                    <div className="jury-info-v2">
+                      <h4>{jury.name}</h4>
+                      <span className="jury-credits">{jury.credits}</span>
+                      <p>{jury.description}</p>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
+          </div>
+        </section>
 
+        {/* Newspaper Download Section */}
+        <section className="ff-newspaper-section section-padding">
+          <div className="container">
+            <div className="newspaper-glass-card">
+              <div className="news-icon"><Download size={40} /></div>
+              <h2>In the Headlines</h2>
+              <p>Download our official First Take Newspaper featuring deep dives into the films, exclusive interviews, and festival highlights.</p>
+              <a href={newsPaperPdf} download className="btn btn-gold">
+                Download PDF Newspaper <Download size={18} />
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* My Frame | My Story Section */}
+        <section id="my-frame" className="ff-community-box-section section-padding">
+          <div className="container">
+            <div className="premium-community-card">
+              <Clapperboard size={60} className="text-gold" />
+              <h2>{filmfactoryContent.myFrame.title}</h2>
+              <p className="ff-tagline-community">{filmfactoryContent.myFrame.tagline}</p>
+              <p className="community-desc">{filmfactoryContent.myFrame.description}</p>
+
+              <div className="community-offerings-grid">
+                {filmfactoryContent.myFrame.offerings.map((offering, i) => (
+                  <div key={i} className="offering-card">
+                    <h3>{offering.title}</h3>
+                    <p>{offering.description}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="cta-group">
+                <a href={filmfactoryContent.links.joinCommunity} target="_blank" rel="noopener noreferrer" className="btn btn-gold">
+                  Join Community <ExternalLink size={18} />
+                </a>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -146,8 +321,6 @@ const FilmfactoryV2 = () => {
             </div>
             <div className="ff-collage-masonry">
               {galleryImages.map((img, index) => {
-                // Logic to create a collaged look: 
-                // Every 7th item is large, every 5th is tall, every 3rd is wide
                 let sizeClass = "";
                 if (index % 7 === 0) sizeClass = "large";
                 else if (index % 5 === 0) sizeClass = "tall";
@@ -213,30 +386,6 @@ const FilmfactoryV2 = () => {
             </motion.div>
           )}
         </AnimatePresence>
-
-        <section className="ff-community-box-section section-padding">
-          <div className="container">
-            <div className="premium-community-card">
-              <Clapperboard size={60} className="text-gold" />
-              <h2>{filmfactoryContent.myFrame.title}</h2>
-              <p className="ff-tagline-community">{filmfactoryContent.myFrame.tagline}</p>
-              <p className="community-desc">{filmfactoryContent.myFrame.description}</p>
-
-              <div className="community-offerings-grid">
-                {filmfactoryContent.myFrame.offerings.map((offering, i) => (
-                  <div key={i} className="offering-card">
-                    <h3>{offering.title}</h3>
-                    <p>{offering.description}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="cta-group">
-                <button className="btn-ff">Join Community</button>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
   );

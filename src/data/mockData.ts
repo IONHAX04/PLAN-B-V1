@@ -250,35 +250,84 @@ export const services = [
 
 // ─── FILMFACTORY ────────────────────────────────────────────────────────────
 export const filmfactoryContent = {
-  firstTake: {
-    title: "First Take",
-    subtitle: "Tamil Short Film Festival",
-    tagline: "Where Dreams Become Reality",
-    description: "The first edition of First Take took place on 5th April 2025, at Cinema Claudia in Kloten. What began as a bold idea quickly became a milestone for the Tamil cultural scene in Europe. It was more than just a film screening; it was a vibrant space for connection. Over 300+ guests — including filmmakers, families, artists, and media professionals — filled the sold-out cinema to witness an event that had never existed in this form before.",
-    highlights: [
-      { title: "19 Stories, One Identity", description: "At the heart of the day were 19 short films capturing the broad spectrum of Tamil life: migration, generational conflicts, love, loss, and identity." },
-      { title: "A Visit from South India", description: "Renowned director Mithran R. Jawahar served as our guest of honor and jury head, providing professional feedback to young filmmakers." }
-    ],
-    winners: [
-      { category: "BEST SHORT FILM", winner: "Jenu K. Siva", film: "Kadanthu Sellavaa" },
-      { category: "BEST DIRECTOR", winner: "Nirojan Karunakaran", film: "Loop of Death" },
-      { category: "BEST SCREENPLAY", winner: "Prasshanna Selvarajah", film: "Arjun" },
-      { category: "BEST CINEMATOGRAPHER", winner: "Kanish Uruthirasingam", film: "The Real Life" },
-      { category: "BEST EDITOR", winner: "Parthipan Sivanantharajah", film: "Kathir" },
-      { category: "BEST ORIGINAL SCORE", winner: "Pratheev Kanagalingam", film: "Rakshakar" },
-      { category: "BEST SOUND DESIGNER", winner: "Parthipan Sivanantharajah", film: "Kathir" },
-      { category: "BEST ACTOR", winner: "Nesan Yogeswaran", film: "Maiyal" },
-      { category: "BEST ACTRESS", winner: "Reshmah Devadas / Shapena Kuganathan", film: "Vinai / Kadanthu Sellavaa" },
-      { category: "AUDIENCE CHOICE AWARD", winner: "Jenu K. Siva", film: "Kadanthu Sellavaa" },
-      { category: "BEST SOCIAL MESSAGE", winner: "Tharushanth Thayaskumar", film: "Adimai" },
-      { category: "MOST PROMISING FILMMAKER", winner: "Prunthan Vadivel", film: "Maiyal" },
-      { category: "BEST CREATIVE CONCEPT", winner: "Januthan Logathas", film: "Un Mugam Endrum Marayadhe" }
-    ],
-    stats: [
-      { label: "Films Screened", value: "19" },
-      { label: "Submissions", value: "26" },
-      { label: "Attendees", value: "300+" }
+  hero: {
+    title: "Where Vision Meets the Frame",
+    description: "Plan B – The Filmfactory is the dedicated cinematic arm of Plan B – The Eventguide. Born out of a passion for visual storytelling, we were established to bridge the gap between aspiring creators and the professional film industry. We don’t just host events; we build a sanctuary for rising talents to refine their craft, share their voices, and see their stories come to life on the big screen.",
+    pillarsIntro: "Through our two core pillars, we turn artistic potential into cinematic reality:",
+    pillars: [
+      { 
+        id: "first-take", 
+        title: "First Take", 
+        subtitle: "Tamil Short Film Festival Switzerland",
+        description: "A premier platform celebrating the depth and diversity of Tamil cinema. We provide a professional stage for filmmakers to showcase their work to a global audience."
+      },
+      { 
+        id: "my-frame", 
+        title: "My Frame | My Story", 
+        subtitle: "Individual Creator Initiative",
+        description: "An initiative focused on the individual creator. Through workshops and talent development, we empower the next generation to master the 'frame' and tell their unique 'story.'"
+      }
     ]
+  },
+  aboutFirstTake: {
+    title: "About First Take – Tamil Short Film Festival",
+    tagline: "Empowering Voices. Celebrating Stories. Connecting Cultures.",
+    description: "First Take is Switzerland’s premier platform dedicated to the art of Tamil filmmaking. Launched in 2025, our mission is to provide emerging creative talents across Europe with a professional stage to showcase their work, tell their unique stories, and connect with a global audience.\n\nWhat began as a local competition has rapidly evolved into a structured, high-energy film festival. By bridging the gap between local talent and the international film industry, First Take fosters a diverse and inclusive cinematic ecosystem. We believe that storytelling is a shared experience—one that strengthens identity, builds community, and inspires the next generation of filmmakers."
+  },
+  firstTake: {
+    year2025: {
+      title: "First Take 2025",
+      description: "The first edition of First Take took place on 5th April 2025, at Cinema Claudia in Kloten. What began as a bold idea quickly became a milestone for the Tamil cultural scene in Europe. It was more than just a film screening; it was a vibrant space for connection. Over 300+ guests — including filmmakers, families, artists, and media professionals — filled the sold-out cinema to witness an event that had never existed in this form before.",
+      stats: [
+        { label: "Films Screened", value: "19" },
+        { label: "Submissions", value: "26" },
+        { label: "Attendees", value: "300+" }
+      ],
+      winners: [
+        { category: "BEST SHORT FILM", winner: "Jenu K. Siva", film: "Kadanthu Sellavaa" },
+        { category: "BEST DIRECTOR", winner: "Nirojan Karunakaran", film: "Loop of Death" },
+        { category: "BEST SCREENPLAY", winner: "Prasshanna Selvarajah", film: "Arjun" },
+        { category: "BEST CINEMATOGRAPHER", winner: "Kanish Uruthirasingam", film: "The Real Life" },
+        { category: "BEST EDITOR", winner: "Parthipan Sivanantharajah", film: "Kathir" },
+        { category: "BEST ORIGINAL SCORE", winner: "Pratheev Kanagalingam", film: "Rakshakar" },
+        { category: "BEST SOUND DESIGNER", winner: "Parthipan Sivanantharajah", film: "Kathir" },
+        { category: "BEST ACTOR", winner: "Nesan Yogeswaran", film: "Maiyal" },
+        { category: "BEST ACTRESS", winner: "Reshmah Devadas / Shapena Kuganathan", film: "Vinai / Kadanthu Sellavaa" },
+        { category: "AUDIENCE CHOICE AWARD", winner: "Jenu K. Siva", film: "Kadanthu Sellavaa" },
+        { category: "BEST SOCIAL MESSAGE", winner: "Tharushanth Thayaskumar", film: "Adimai" },
+        { category: "MOST PROMISING FILMMAKER", winner: "Prunthan Vadivel", film: "Maiyal" },
+        { category: "BEST CREATIVE CONCEPT", winner: "Januthan Logathas", film: "Un Mugam Endrum Marayadhe" }
+      ],
+      jury: [
+        {
+          name: "Director Mithran R Jawahar",
+          credits: "Director of Thiruchitrambalam, Yaaradi Nee Mohini, & Uthamaputhiran, Kutty and more",
+          description: "A veteran filmmaker with a golden touch for family dramas and romantic comedies, Mithran R Jawahar is celebrated for his ability to capture the pulse of the general audience. His record-breaking success with Thiruchitrambalam (2022) solidified his position as a director who balances star power with grounded, relatable storytelling. His presence on our jury provided our filmmakers with insights into large-scale production, audience relatability, and the art of crafting evergreen cinema."
+        }
+      ]
+    },
+    year2026: {
+      title: "First Take 2026",
+      tagline: "Expanding Horizons & Elevating Tamil Cinema in Switzerland",
+      description: "Building on the incredible momentum of our debut, First Take 2026 marked a major milestone in our journey. Moving to the city of Bern, the event evolved from a single-day competition into a comprehensive two-day Tamil Short Film Festival, doubling our impact and reach.\n\nA Growing Community: We welcomed over 750 attendees, creating a vibrant atmosphere of cultural exchange and cinematic passion.\n\nCurated Excellence: The program showcased 15 officially selected short films on the opening day, followed by an expanded second day featuring a total of 20 films.",
+      stats: [
+        { label: "Films screened", value: "20" },
+        { label: "Submissions", value: "40" },
+        { label: "Attendees", value: "750+" }
+      ],
+      jury: [
+        {
+          name: "Director Tamizh",
+          credits: "Director of Taanakkaran, Marshall & Writer of Sirai",
+          description: "A former police officer turned filmmaker, Director Tamizh took the industry by storm with his critically acclaimed debut, Taanakkaran. Known for his raw, authentic storytelling and uncompromising realism, he brought a deep understanding of narrative grit and character depth to our jury panel."
+        },
+        {
+          name: "Director Ganesh K Babu",
+          credits: "Director of Dada & Karate Babu",
+          description: "With the blockbuster success of Dada, Ganesh K Babu established himself as a master of modern emotions and soulful storytelling. His ability to blend humor with heart and his keen eye for performances provided our participants with invaluable perspective on commercial viability and emotional resonance."
+        }
+      ]
+    }
   },
   myFrame: {
     title: "My Frame | My Story",
@@ -289,12 +338,10 @@ export const filmfactoryContent = {
       { title: "Creative Challenges", description: "Monthly film challenges and support for new ideas." },
       { title: "Workshops", description: "Craft development and feedback sessions from script to final cut." },
       { title: "Showcase", description: "Platform to present work and gather an audience." }
-    ],
-    workshops: [
-      { title: "Cinematography Masterclass", date: "TBA 2025" },
-      { title: "Screenwriting Workshop", date: "TBA 2025" },
-      { title: "Editing & Post-Production", date: "TBA 2025" }
     ]
+  },
+  links: {
+    joinCommunity: "https://form.jotform.com/251186328795367"
   }
 };
 
