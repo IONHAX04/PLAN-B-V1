@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 .v2-smooth-main {
   position: relative;
   height: 700vh;
@@ -843,7 +845,7 @@
   font-style: italic;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 
 .ff-gallery-section-v2 {
   background: #000;

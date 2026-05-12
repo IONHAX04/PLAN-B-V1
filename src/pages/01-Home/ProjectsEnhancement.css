@@ -327,7 +327,7 @@
 
 @media (max-width: 768px) {
   .projects-poster-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     padding: 0 1rem;
   }
   

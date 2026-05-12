@@ -59,7 +59,7 @@ const Team = () => {
               coverflowEffect={{
                 rotate: 30,
                 stretch: 0,
-                depth: 200,
+                depth: 100,
                 modifier: 1,
                 slideShadows: true,
               }}
@@ -68,8 +68,9 @@ const Team = () => {
                 nextEl: '.swiper-button-next-custom',
               }}
               breakpoints={{
-                320: { slidesPerView: 1 },
-                1024: { slidesPerView: 3 }
+                320: { slidesPerView: 1.5, spaceBetween: 20 },
+                768: { slidesPerView: 2.2, spaceBetween: 30 },
+                1024: { slidesPerView: 3, spaceBetween: 50 }
               }}
               modules={[EffectCoverflow, Navigation, Autoplay]}
               className="team-swiper-alipay"

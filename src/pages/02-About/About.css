@@ -407,10 +407,15 @@
 }
 
 .team-slide-alipay {
-  width: 320px;
   height: 480px;
   transition: all 0.5s ease;
   opacity: 0.5;
+}
+
+@media (min-width: 1024px) {
+  .team-slide-alipay {
+    width: 320px;
+  }
 }
 
 .team-slide-alipay.swiper-slide-active {
@@ -1210,7 +1215,36 @@
   
   .swiper-button-prev-custom,
   .swiper-button-next-custom {
-    display: none; /* Hide custom nav arrows on small mobile to save space */
+    display: flex;
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--accent);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .swiper-button-prev-custom {
+    left: 5px;
+  }
+
+  .swiper-button-next-custom {
+    right: 5px;
+  }
+
+  .swiper-container-outer {
+    padding: 0 5px;
+  }
+
+  .team-slide-alipay {
+    height: 380px;
+  }
+
+  .slide-card-inner {
+    border-radius: 15px;
+  }
+
+  .card-info-box h3 {
+    font-size: 1rem;
   }
 
   .cta-row-new {

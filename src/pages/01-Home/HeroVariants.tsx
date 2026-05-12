@@ -45,14 +45,7 @@ export const HeroVideo = () => {
             We think one step ahead <br /> 
             and always have a <span className="text-gold">Plan B</span>
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1, duration: 1 }}
-          >
-            Exquisite event management for those who demand absolute perfection. 
-            From weddings to high-profile corporate gatherings across Switzerland.
-          </motion.p>
+
           <motion.div 
             className="hero-video-actions"
             initial={{ opacity: 0, y: 20 }}
