@@ -1,8 +1,8 @@
 /* Successful Projects - Poster Grid */
 .projects-poster-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
   margin-top: 4rem;
 }
 
@@ -193,6 +193,7 @@
   max-width: 60ch;
   margin-left: auto;
   margin-right: auto;
+  text-align: justify;
 }
 
 .spotlight-actions {
@@ -262,6 +263,7 @@
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.1rem;
   line-height: 1.7;
+  text-align: justify;
 }
 
 .public-text-box .highlight {
@@ -325,7 +327,7 @@
 
 @media (max-width: 768px) {
   .projects-poster-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     padding: 0 1rem;
   }
   

@@ -484,6 +484,7 @@
   line-height: 1.8;
   margin-bottom: 3rem;
   max-width: 90%;
+  text-align: justify;
 }
 
 .zigzag-link {
@@ -705,6 +706,7 @@
 .target-group-card p {
   color: var(--text-muted);
   line-height: 1.7;
+  text-align: justify;
 }
 
 @media (max-width: 768px) {
@@ -1121,6 +1123,7 @@
   opacity: 0.9;
   max-width: 650px;
   color: var(--text-muted);
+  text-align: justify;
 }
 
 .ff-pillars-list {
@@ -1839,21 +1842,25 @@
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 3rem;
+  text-align: justify;
 }
 
 .partners-logo-grid-home {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
 }
 
 .partner-logo-box-home {
-  aspect-ratio: 1;
+  aspect-ratio: 1.5 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.2rem;
+  padding: 0.1rem;
   transition: all 0.3s ease;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 8px;
 }
 
 .partner-logo-box-home:hover {
@@ -1864,8 +1871,8 @@
 }
 
 .partner-logo-box-home img {
-  max-width: 100%;
-  max-height: 100%;
+  width: 98%;
+  height: 98%;
   object-fit: contain;
   transition: all 0.3s ease;
 }

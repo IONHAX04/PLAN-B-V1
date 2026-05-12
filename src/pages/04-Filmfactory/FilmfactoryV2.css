@@ -113,12 +113,12 @@
   }
 
   .v2-text-container p {
-    font-size: clamp(32px, 8vw, 54px);
+    font-size: clamp(28px, 8vw, 48px);
   }
 
   .v2-carousel > div {
-    width: 42vh;
-    height: 42vh;
+    width: 35vh;
+    height: 35vh;
   }
 }
 
@@ -203,6 +203,7 @@
   line-height: 1.7;
   color: #333;
   margin-top: 1.5rem;
+  text-align: justify;
 }
 
 .pillars-intro-v2 {
@@ -271,6 +272,7 @@
   line-height: 1.8;
   color: var(--text-muted);
   white-space: pre-line;
+  text-align: justify;
 }
 
 .ff-history-grid {
@@ -310,6 +312,7 @@
   line-height: 1.7;
   color: var(--text-muted);
   margin-bottom: 2rem;
+  text-align: justify;
 }
 
 .ff-tagline-v2 {
@@ -483,6 +486,12 @@
   justify-content: center;
 }
 
+.jury-info-v2 p {
+  text-align: justify;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
 .jury-card-v2.small .jury-info-v2 {
   padding: 2rem;
 }
@@ -560,6 +569,7 @@
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 2.5rem;
+  text-align: justify;
 }
 
 .news-features {
@@ -690,6 +700,10 @@
 }
 
 @media (max-width: 1024px) {
+  .ff-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
   .ff-history-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
