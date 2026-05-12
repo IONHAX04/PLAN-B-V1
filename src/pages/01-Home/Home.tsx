@@ -28,6 +28,7 @@ import './StickyCardsFeatures.css';
 const logoModules = import.meta.glob('../../assets/partnerlogo/Partners*.{png,jpg,jpeg,webp}', { eager: true });
 const partnerImages = Object.values(logoModules).map((mod: any) => mod.default || mod).slice(0, 15); // Show first 15 on home
 import ffHero from '../../assets/filmFactory/The-film-factory1.jpg';
+import goat2 from '../../assets/events/goat_2.jpg';
 import penImage from '../../assets/home/pen.png';
 import ffBrandedLogo from '../../assets/home/plan-b-film-factory.png';
 
@@ -168,12 +169,66 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Public Events Showcase (High Energy) */}
+      <section className="public-events-spotlight">
+        <div className="spotlight-accent-light"></div>
+        <div className="container">
+          <div className="public-grid-layout">
+            <motion.div 
+              className="public-text-box"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="decor-script-gold">Public Power</span>
+              <h2>Scale. Energy. <span className="highlight">Unforgettable.</span></h2>
+              <p className="mb-4">
+                From high-energy concerts and stand-up comedy tours to cultural festivals and exclusive club nights. We bring the vision, the crowd, and the flawless execution.
+              </p>
+              
+              <div className="public-stats">
+                <div className="stat-item">
+                  <span className="number">700+</span>
+                  <span className="label">Guests / Event</span>
+                </div>
+                <div className="stat-item">
+                  <span className="number">10+</span>
+                  <span className="label">Major Tours</span>
+                </div>
+              </div>
+
+              <div className="spotlight-actions">
+                <Link to="/projects?category=Public%20Events" className="btn btn-gold">View Public Portfolio</Link>
+                <Link to="/contact" className="btn-text-white">Partner With Us <ArrowRight size={18} /></Link>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              className="public-image-collage"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="collage-img large">
+                <img src={projects.find(p => p.id === 13)?.image as string} alt="The GOAT Tour" />
+              </div>
+              <div className="collage-img">
+                <img src={goat2} alt="The GOAT Highlights" />
+              </div>
+              <div className="collage-img">
+                <img src={projects.find(p => p.id === 12)?.image as string} alt="Premgi Concert" />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Successful Projects Showcase (Light Tone) */}
       <section className="projects-home section-padding light-section">
         <div className="container">
           <div className="section-title-center">
             <span className="decor-script">Selected Works</span>
-            <h2>Successful Projects</h2>
+            <h2>Portfolio Highlights</h2>
             <div className="title-divider-center"></div>
           </div>
 
@@ -196,8 +251,10 @@ const Home = () => {
                     <div className="poster-info">
                       <span className="project-tag">{project.category}</span>
                       <h3>{project.title}</h3>
-                      <span className="project-date">{project.date}</span>
-                      <Link to="/projects" className="view-project-btn">Explore Events <ArrowRight size={16} /></Link>
+                      <div className="project-date-row">
+                        <span className="project-date">{project.date}</span>
+                      </div>
+                      <Link to="/projects" className="view-project-btn">View Details <ArrowRight size={16} /></Link>
                     </div>
                   </div>
                 </div>

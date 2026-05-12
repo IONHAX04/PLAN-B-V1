@@ -199,7 +199,10 @@ const Projects = () => {
                 <div className="card-info-box">
                   <div className="card-client-name">{project.client}</div>
                   <h3>{project.title}</h3>
-                  <p>{project.category}</p>
+                  <div className="card-meta-row">
+                    <span className="card-category">{project.category}</span>
+                    <span className="card-date">{project.date}</span>
+                  </div>
                 </div>
               </motion.div>
             ))}

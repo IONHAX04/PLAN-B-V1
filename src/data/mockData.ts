@@ -55,6 +55,7 @@ import witpImg from '../assets/events/witp.png';
 import subinthanVithujaImg from '../assets/events/subinthan_vithuja.jpg';
 import kathushanThenukaImg from '../assets/events/kathushan_thenuka.jpg';
 import tharshanMaunikaImg from '../assets/events/tharshan_maunika.jpg';
+import mehendiImg from '../assets/events/mehendi.jpg';
 
 // ─── NAV LINKS ──────────────────────────────────────────────────────────────
 export const navLinks = [
@@ -444,6 +445,7 @@ export const projects = [
     date: "23.05.2025",
     client: "Pritthiya",
     description: "For Pritthiya’s Mehendi function, we focused on the nuances that make traditional events so special. We provided a complete setup that balanced vibrant aesthetics with functional coordination. By managing the timeline and the \"small details\" on-site, we ensured a flawless execution that honored the beauty of the ceremony. Another beautiful chapter in our journey with Pritthiya, delivered with the signature Plan B touch.",
+    image: mehendiImg,
     partners: ["Plan B Team"]
   },
   {
@@ -482,7 +484,7 @@ export const projects = [
     id: 13,
     category: "Public Events",
     title: "The GOAT x Thean Kudikka Tour",
-    date: "29.09.2024",
+    date: "28.09.2024",
     client: "The GOAT",
     description: "The Goat was a showcase of Plan B’s ability to handle high-level complexity. We were responsible for the complete lifecycle of the event—starting with creative flyer design and ending with the final staffing and on-site coordination. Most importantly, we led the Artist Management, providing a personal touch that included everything from airport transfers to local guiding. When we say \"fully organized,\" we mean every single detail is covered.",
     image: publicEvent,
