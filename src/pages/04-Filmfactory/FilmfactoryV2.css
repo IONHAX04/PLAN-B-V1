@@ -127,11 +127,17 @@
 /* Hero Video Section */
 .ff-hero-video-section {
   position: relative;
-  height: 100vh;
+  height: 85vh; /* Reduced height for mobile feel */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .ff-hero-video-section {
+    height: 70vh; /* Even shorter for small mobile like S8 */
+  }
 }
 
 .ff-hero-content {
@@ -731,25 +737,167 @@
 }
 
 @media (max-width: 768px) {
-  .pillars-links {
+  .ff-intro-section,
+  .ff-history-section,
+  .ff-winners-section,
+  .ff-jury-section,
+  .ff-gallery-section-v2,
+  .ff-quote-banner-v2,
+  .ff-about-first-take,
+  .ff-festival-history,
+  .ff-newspaper-section,
+  .ff-community-box-section {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+
+  .ff-hero-video-section {
+    height: 70vh;
+  }
+
+  .ff-hero-scroll-indicator {
+    bottom: 20px;
+  }
+
+  .decor-script-gold {
+    font-size: 1.8rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .ff-intro-grid {
+    gap: 1.5rem;
+  }
+
+  .ff-intro-text p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-top: 0.25rem;
+  }
+
+  .pillars-intro-v2 {
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+  }
+
+  .pillars-links-v2 {
+    gap: 0.5rem;
+  }
+
+  .pillar-link-card-v2 {
+    padding: 1.25rem;
+  }
+
+  .pillar-link-card-v2 h3 {
+    font-size: 1.2rem;
+  }
+
+  .pillar-link-card-v2 p {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .ff-history-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .ff-history-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: left;
+  }
+
+  .ff-stats-row {
     flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .stat-pill {
+    width: 100%;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
   }
-  .pillar-link-card {
-    width: 100%;
-  }
-  .stat-pill {
-    flex: 1;
-    padding: 1rem;
-  }
+
   .stat-pill .val {
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+
+  .stat-pill .lab {
+    font-size: 0.9rem;
+  }
+
+  .ff-history-visual {
+    margin-top: 2.5rem;
+  }
+
+  .ff-winners-showcase-v2 {
+    margin-top: 3.5rem;
+    padding: 2.5rem 1.25rem;
+    border-radius: 20px;
+  }
+
+  .showcase-header h3 {
     font-size: 1.5rem;
   }
-  .winners-mini-list {
+
+  .winners-grid-v3 {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
-  .newspaper-glass-card {
-    padding: 3rem 1.5rem;
+
+  .jury-card-v2 {
+    flex-direction: column;
+    min-height: auto;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+  }
+
+  .jury-img-box {
+    width: 100% !important;
+    height: 250px;
+  }
+
+  .jury-info-v2 {
+    padding: 1.5rem 1rem;
+    text-align: left;
+  }
+
+  .jury-info-v2 h4 {
+    font-size: 1.4rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .jury-credits {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .jury-info-v2 p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .ff-section-header-minimal {
+    margin-bottom: 2rem;
+  }
+
+  .ff-section-header-minimal h2 {
+    font-size: 1.8rem;
+  }
+
+  .jury-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .jury-header h3 {
+    font-size: 1.4rem;
   }
 }
 
@@ -921,14 +1069,156 @@
 }
 
 @media (max-width: 768px) {
+  .ff-intro-section,
+  .ff-history-section,
+  .ff-winners-section,
+  .ff-jury-section,
+  .ff-gallery-section-v2,
+  .ff-quote-banner-v2,
+  .ff-about-first-take,
+  .ff-festival-history,
+  .ff-newspaper-section,
+  .ff-community-box-section {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
   .ff-collage-masonry {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     grid-auto-rows: 150px;
     gap: 0.5rem;
   }
-  .collage-item-ff.large {
-    grid-column: span 2;
-    grid-row: span 2;
+
+  .ff-hero-video-section {
+    height: 65vh;
+  }
+
+  .ff-intro-grid {
+    gap: 1rem;
+  }
+
+  .pillars-links-v2 {
+    gap: 0.5rem;
+  }
+
+  .pillar-link-card-v2 {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .jury-card-v2, 
+  .jury-card-v2.reverse {
+    flex-direction: column !important;
+    min-height: auto;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+  }
+
+  .jury-img-box {
+    width: 100% !important;
+    height: 240px;
+  }
+
+  .jury-info-v2 {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .jury-info-v2 p {
+    font-size: 0.85rem;
+    text-align: left;
+  }
+
+  .stat-pill {
+    padding: 1rem;
+  }
+
+  .newspaper-premium-card {
+    grid-template-columns: 1fr;
+    border-radius: 16px;
+    min-height: auto;
+  }
+
+  .newspaper-content {
+    padding: 2.5rem 1.25rem;
+    text-align: left;
+  }
+
+  .newspaper-content h2 {
+    font-size: 2rem;
+    word-wrap: break-word;
+  }
+
+  .newspaper-content p {
+    font-size: 0.95rem;
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+
+  .news-features {
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .newspaper-visual {
+    display: none; /* Hide complex visual on small mobile to prioritize text and download */
+  }
+
+  .news-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 1rem;
+  }
+
+  /* Community Card Mobile Fixes */
+  .premium-community-card {
+    padding: 2.5rem 1rem !important;
+    border-radius: 24px;
+    margin: 0 !important;
+  }
+
+  .premium-community-card h2 {
+    font-size: 2rem !important;
+    margin: 1.5rem 0 0.5rem !important;
+  }
+
+  .ff-tagline-community {
+    font-size: 1rem !important;
+    margin-bottom: 1.25rem !important;
+    line-height: 1.4;
+  }
+
+  .community-desc {
+    font-size: 0.95rem !important;
+    margin-bottom: 2rem !important;
+    line-height: 1.6;
+  }
+
+  .community-offerings-grid {
+    gap: 1rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+
+  .offering-card {
+    padding: 1.5rem 1rem !important;
+    border-radius: 12px;
+  }
+
+  .offering-card h3 {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .offering-card p {
+    font-size: 0.85rem !important;
+  }
+
+  .premium-community-card svg {
+    width: 40px;
+    height: 40px;
   }
 }
 

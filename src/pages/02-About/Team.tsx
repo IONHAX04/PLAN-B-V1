@@ -68,7 +68,7 @@ const Team = () => {
                 nextEl: '.swiper-button-next-custom',
               }}
               breakpoints={{
-                320: { slidesPerView: 1.5, spaceBetween: 20 },
+                320: { slidesPerView: 1.1, spaceBetween: 15 },
                 768: { slidesPerView: 2.2, spaceBetween: 30 },
                 1024: { slidesPerView: 3, spaceBetween: 50 }
               }}
@@ -89,8 +89,10 @@ const Team = () => {
                 </SwiperSlide>
               ))}
             </Swiper>
-            <button className="swiper-button-prev-custom"><ArrowLeft size={24} /></button>
-            <button className="swiper-button-next-custom"><ArrowRight size={24} /></button>
+            <div className="swiper-nav-wrapper-mobile">
+              <button className="swiper-button-prev-custom"><ArrowLeft size={24} /></button>
+              <button className="swiper-button-next-custom"><ArrowRight size={24} /></button>
+            </div>
           </div>
         </div>
       </section>
