@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, ArrowUp } from 'lucide-react';
-import { siteConfig } from '../../data/mockData';
+import { siteConfig } from '../data/mockData';
 import './FloatingActions.css';
 
 const FloatingActions = () => {

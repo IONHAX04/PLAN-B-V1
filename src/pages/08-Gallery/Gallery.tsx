@@ -5,7 +5,6 @@ import './Gallery.css';
 
 // Import all images from the gallery folder
 const imageModules = import.meta.glob('../../assets/gallery/*.{png,jpg,jpeg,webp}', { eager: true });
-const galleryImages = Object.values(imageModules).map((mod: any) => mod.default || mod);
 
 const galleryMetadata: Record<string, { title: string, date: string }> = {
   'anojan': { title: '60th Birthday - Anojan', date: '14.07.2024' },

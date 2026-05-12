@@ -26,7 +26,7 @@
 }
 
 .fab-btn.whatsapp {
-  background: #25d366;
+  background: var(--accent, #c5a022);
   color: white;
 }
 
