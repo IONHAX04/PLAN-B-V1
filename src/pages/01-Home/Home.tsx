@@ -250,17 +250,9 @@ const Home = () => {
       </section>
 
 
-      {/* Testimonials - Client Voice (Light Tone) */}
-      <section className="testimonials-section section-padding light-section">
-        <div className="container">
-          <div className="section-title-center">
-            <span className="decor-script">Client Voice</span>
-            <h2>Words From Our Partners</h2>
-            <div className="title-divider-center"></div>
-          </div>
-
-          <TestimonialCarousel />
-        </div>
+      {/* Testimonials - Client Voice (Full Width Immersive) */}
+      <section className="testimonials-section-immersive">
+        <TestimonialCarousel />
       </section>
 
       {/* Partner Network (Grey Tone) */}

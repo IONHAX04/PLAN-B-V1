@@ -550,23 +550,74 @@ export const targetGroups = [
 export const testimonials = [
   {
     id: 1,
-    clientName: "GR Events",
-    eventDate: "28.09.2024",
-    eventType: "Club Concert",
-    quote: "Hey Plan B Team, Wow, what a night! With 700+ guests, it was a massive success, and we seriously couldn't have done it without you guys! We were completely blown away by your planning, creative ideas, and marketing. Any problem that came up, you had a solution ready before we could even finish the sentence. And the way you took care of the artists was amazing. It was so genuine but also super professional. A huge thank you for everything! You're the best!"
+    clientName: "LETS GO TRAVEL AG",
+    eventDate: "14.04.2025",
+    eventType: "GRAND OPENING",
+    image: "/src/assets/partnerlogo/Partners32.jpg",
+    quote: "Dear Plan B - The Eventguide We are grateful to the entire team for organizing our Grand Opening at the new location. Every detail was handled with great care, professionalism, and passion. Our guests felt welcomed, enjoyed a delicious apéro, and had the chance to connect in a warm atmosphere. It was a memorable celebration that perfectly marked the start of this new chapter. Keep growing, keep shining!"
   },
   {
     id: 2,
-    clientName: "Subinthan & Vithuja",
-    eventDate: "01.09.2024",
-    eventType: "Proposal",
-    quote: "Thank you Plan B Team. We're so happy that we chose Plan B for our proposal. The team was kind and patient, & delivered exactly what we wanted in a short time. The décor was stunning! Thank you for everything! We couldn't have done it without you. You went beyond our expectations. You're truly amazing!"
+    clientName: "GR EVENTS",
+    eventDate: "28.09.2024",
+    eventType: "CLUB CONCERT",
+    image: "/src/assets/partnerlogo/Partners1.jpg",
+    quote: "Hey Plan B Team, Wow, what a night! With 700+ guests, it was a massive success, and we seriously couldn't have done it without you guys! We were completely blown away by your planning, creative ideas, and marketing. Any problem that came up, you had a solution ready before we could even finish the sentence. And the way you took care of the artists was amazing. It was so genuine but also super professional. A huge thank you for everything! You're the best!"
   },
   {
     id: 3,
-    clientName: "Let's Go Travel AG",
-    eventDate: "14.04.2025",
-    eventType: "Grand Opening",
-    quote: "Dear Plan B - The Eventguide. We are grateful to the entire team for organizing our Grand Opening at the new location. Every detail was handled with great care, professionalism, and passion. Our guests felt welcomed, enjoyed a delicious apéro, and had the chance to connect in a warm atmosphere. It was a memorable celebration that perfectly marked the start of this new chapter. Keep growing, keep shining!"
+    clientName: "GR EVENTS",
+    eventDate: "29.06.2024",
+    eventType: "CLUB PARTY",
+    image: "/src/assets/partnerlogo/Partners1.jpg",
+    quote: "Dear Plan B Team, We are truly grateful for your support during the preparations for the \"MAYILEH\" event! Your expertise and professionalism made the entire process so much smoother, and we were thrilled with the final result. Thank you for guiding us and designing our flyers. We look forward to working with you again for our upcoming events. This cooperation will surely continue!"
+  },
+  {
+    id: 4,
+    clientName: "MARCO & MANOJA",
+    eventDate: "03.05.2025",
+    eventType: "WEDDING PARTY",
+    image: "/src/assets/projects/Projects1.jpg",
+    quote: "We booked Plan B for our wedding party. They handled the complete organization of the party. A young team full of energy. Everything went perfectly and nothing was missing. The Plan B team is very flexible and took all of our wishes into account during the planning and execution, and they skillfully implemented even our last-minute requests. Our guests were very satisfied. We are happy to recommend Plan B - The Eventguide!"
+  },
+  {
+    id: 5,
+    clientName: "THILA & PRITTHI",
+    eventDate: "23.05.2025",
+    eventType: "MEHENDI",
+    image: "/src/assets/projects/Projects2.jpg",
+    quote: "Hey, I just wanted to thank you again for your amazing organization at my Mehendi. You put so much effort into making sure my wishes were implemented exactly as I had envisioned and I truly appreciate that. Especially the great setup and the fact that everything was ready right on time as I wanted, it was wonderful. Your outstanding commitment during the Mehendi also stood out to me, it was so kind and absolutely commendable. So keep it up and always stay this amazing."
+  },
+  {
+    id: 6,
+    clientName: "JACI & RUBA",
+    eventDate: "09.08.2025",
+    eventType: "30TH BIRTHDAY",
+    image: "/src/assets/projects/Projects3.jpg",
+    quote: "Dear Plan B, I can't thank you enough for everything you did. From the beautiful decoration to organizing the bar and taking care of all the little details. The whole process was so easy with you, and for a surprise party, I truly couldn't have wished for a better planner. What I appreciated the most was that you didn't just act as a planner in a professional sense. You were also personally very helpful and supportive. Everything turned out even more perfect than I had imagined, and I'm so grateful for the care you put into making this day so special."
+  },
+  {
+    id: 7,
+    clientName: "BABU & GOWRY",
+    eventDate: "22.02.2025",
+    eventType: "30TH WEDDING ANNIVERSARY",
+    image: "/src/assets/projects/Projects4.jpg",
+    quote: "Deaf Plan B, Plan B planned, organized, and coordinated the event with passion and precision. Every decision was made with care and attention to detail. From welcoming our guests to providing entertainment, everything was perfectly timed and seamlessly executed. Thanks Fam!"
+  },
+  {
+    id: 8,
+    clientName: "PRITTHIYA",
+    eventDate: "15.06.2024",
+    eventType: "25TH BIRTHDAY",
+    image: "/src/assets/projects/Projects5.jpg",
+    quote: "Dear Plan B Team! Thank you so much for your great engagement!!!! Everything was set up exactly how I wanted it & you exceeded my expectations! It looked simple & subtle, and I've received great feedback about the décor and everything around it. Thank you so much, especially for all your time, being on site and delegating everything smoothly. I definitely won't be booking you for the last time"
+  },
+  {
+    id: 9,
+    clientName: "THASMIJA",
+    eventDate: "10.08.2024",
+    eventType: "21ST BIRTHDAY",
+    image: "/src/assets/projects/Projects6.jpg",
+    quote: "A big thank you to the Plan B Team for organizing my 21st birthday party! You picked the perfect theme and took care of everything – from the decorations to the food – so I didn't have to worry about a thing. I could just enjoy and celebrate with my loved ones. Thanks Fam, You're amazing!"
   }
 ];
