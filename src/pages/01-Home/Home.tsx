@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
-  Users,
   Film,
   Compass,
   Lock,
@@ -16,9 +15,7 @@ import './TestimonialCarousel.css';
 import {
   siteConfig,
   services,
-  projects,
-  filmfactoryContent,
-  targetGroups
+  projects
 } from '../../data/mockData';
 import './Home.css';
 import './ProjectsEnhancement.css';

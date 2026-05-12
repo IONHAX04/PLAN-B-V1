@@ -28,13 +28,6 @@ import banuImg from '../assets/aboutTeam/banu.png';
 import prathikkaImg from '../assets/aboutTeam/prathikka.png';
 import thanuImg from '../assets/aboutTeam/thanu.png';
 
-// Project Images
-import goatImg from '../assets/homeProjects/Goat.jpg';
-import mayilehImg from '../assets/homeProjects/Mayieh.jpg';
-import premgiImg from '../assets/homeProjects/Premji.jpg';
-import ffImg from '../assets/homeProjects/The-film-factory.jpg';
-import othersImg from '../assets/homeProjects/Others.jpg';
-
 // Event Category Images (from OneDrive)
 import corpEvent from '../assets/events/corporate.jpg';
 import privateEvent from '../assets/events/private.jpg';

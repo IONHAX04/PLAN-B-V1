@@ -76,7 +76,7 @@
 .service-screen-sticky {
   position: sticky;
   top: 0;
-  height: 100vh;
+  height: 80vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -85,12 +85,9 @@
 }
 
 /* Ensure later screens slide over earlier ones */
-.service-screen-sticky:nth-child(1) { z-index: 1; }
-.service-screen-sticky:nth-child(2) { z-index: 2; }
-.service-screen-sticky:nth-child(3) { z-index: 3; }
-.service-screen-sticky:nth-child(4) { z-index: 4; }
-.service-screen-sticky:nth-child(5) { z-index: 5; }
-.service-screen-sticky:nth-child(6) { z-index: 6; }
+.service-screen-sticky {
+  z-index: 1; /* Default, will be overridden by inline styles if needed */
+}
 
 .service-screen-content {
   width: 100%;
@@ -152,25 +149,52 @@
 }
 
 .btn-premium-screen {
-  padding: 1.2rem 4rem;
+  padding: 1rem 2.5rem;
   background: var(--accent);
   color: black;
   border: none;
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
+  gap: 0.75rem;
+  border-radius: 4px;
 }
 
 .btn-premium-screen:hover {
   background: white;
-  letter-spacing: 5px;
-  padding-right: 3rem;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(197, 160, 34, 0.2);
+}
+
+.btn-outline-screen {
+  padding: 1rem 2.5rem;
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border-radius: 4px;
+}
+
+.btn-outline-screen:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(197, 160, 34, 0.05);
+  transform: translateY(-3px);
 }
 
 /* THEMES */
@@ -181,8 +205,8 @@
 
 /* FOOTER CTA */
 .services-footer-cta {
-  padding: 15rem 0;
-  background: var(--bg-main);
+  padding: 8rem 0;
+  background: #0a0a0a;
   position: relative;
   z-index: 100;
 }
@@ -191,14 +215,14 @@
   text-align: center;
   background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(20px);
-  padding: 8rem 4rem;
+  padding: 5rem 4rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 50px;
 }
 
 .footer-cta-glass h2 {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   font-family: var(--font-serif);
 }
 
@@ -206,7 +230,7 @@
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
 @media (max-width: 768px) {

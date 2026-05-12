@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import FloatingActions from './components/FloatingActions';
 import Home from './pages/01-Home/Home';
 import About from './pages/02-About/About';
 import VisionMission from './pages/02-About/VisionMission';
@@ -39,6 +40,7 @@ function AppLayout() {
         </AnimatePresence>
       </main>
       {!isV2Route && <Footer />}
+      <FloatingActions />
     </div>
   );
 }

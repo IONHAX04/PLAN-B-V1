@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import * as LucideIcons from 'lucide-react';
 import { services, servicesIntro } from '../../data/mockData';
 import './Services.css';
@@ -15,7 +16,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
   const themeClass = themes[index % themes.length];
 
   return (
-    <section className={`service-screen-sticky ${themeClass}`}>
+    <section 
+      className={`service-screen-sticky ${themeClass}`}
+      style={{ zIndex: index + 1 }}
+    >
       <div className="service-screen-content">
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
@@ -44,9 +48,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
           </div>
 
           <div className="screen-action">
-            <button className="btn-premium-screen">
-              Experience Excellence <LucideIcons.ChevronRight size={20} />
-            </button>
+            <Link to="/contact" className="btn-premium-screen">
+              Get in Touch <LucideIcons.MessageSquare size={20} />
+            </Link>
+            <Link to="/projects" className="btn-outline-screen">
+              View Portfolio <LucideIcons.ArrowRight size={20} />
+            </Link>
           </div>
         </motion.div>
       </div>
