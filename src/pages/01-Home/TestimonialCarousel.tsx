@@ -53,9 +53,9 @@ export const TestimonialCarousel = () => {
       'Thanks Fam, You\'re amazing!'
     ];
     
-    let parts: (string | JSX.Element)[] = [text];
+    let parts: (string | React.ReactNode)[] = [text];
     boldKeywords.forEach(keyword => {
-      let newParts: (string | JSX.Element)[] = [];
+      let newParts: (string | React.ReactNode)[] = [];
       parts.forEach(part => {
         if (typeof part === 'string') {
           const splitPart = part.split(keyword);

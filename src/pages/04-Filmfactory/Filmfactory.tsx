@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Film, Users, Trophy, Clapperboard, Calendar } from 'lucide-react';
+import { Film, Users, Trophy, Clapperboard } from 'lucide-react';
 import { filmfactoryContent } from '../../data/mockData';
 import './Filmfactory.css';
 
@@ -89,10 +89,10 @@ const Filmfactory = () => {
           <div className="container">
             <div className="ff-grid-info">
               <div className="ff-text-box">
-                <h2>{filmfactoryContent.firstTake.title}</h2>
-                <p>{filmfactoryContent.firstTake.description}</p>
+                <h2>{filmfactoryContent.firstTake.year2025.title}</h2>
+                <p>{filmfactoryContent.firstTake.year2025.description}</p>
                 <div className="ff-stats-box">
-                  {filmfactoryContent.firstTake.stats.map((stat, i) => (
+                  {filmfactoryContent.firstTake.year2025.stats.map((stat: any, i: number) => (
                     <div className="stat-card" key={i}>
                       {i === 0 && <Film size={24} />}
                       {i === 1 && <Trophy size={24} />}
@@ -119,15 +119,6 @@ const Filmfactory = () => {
               <h2>{filmfactoryContent.myFrame.title}</h2>
               <p>{filmfactoryContent.myFrame.description}</p>
               
-              <div className="workshop-list-mini">
-                {filmfactoryContent.myFrame.workshops.map((w: any, i: number) => (
-                  <div key={i} className="mini-item">
-                    <Calendar size={14} />
-                    <span>{w.title} — {w.date}</span>
-                  </div>
-                ))}
-              </div>
-
               <div className="cta-group">
                 <button className="btn-ff">Join Community</button>
               </div>

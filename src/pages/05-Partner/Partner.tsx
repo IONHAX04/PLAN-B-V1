@@ -5,12 +5,12 @@ import { partners, partnersIntro } from '../../data/mockData';
 // Import all logos from the partnerlogo folder
 const logoModules = import.meta.glob('../../assets/partnerlogo/Partners*.{png,jpg,jpeg,webp}', { eager: true });
 // Extract the numbers from the filenames to sort them correctly
-const logoPaths = Object.keys(logoModules).sort((a, b) => {
-  const numA = parseInt(a.match(/Partners(\d+)/)?.[1] || "0");
-  const numB = parseInt(b.match(/Partners(\d+)/)?.[1] || "0");
-  return numA - numB;
-});
-const partnerImages = logoPaths.map((path: string) => (logoModules[path] as any).default || logoModules[path]);
+const logoPaths = Object.keys(logoModules);
+const partnerImagesMap = logoPaths.reduce((acc, path) => {
+  const num = parseInt(path.match(/Partners(\d+)/)?.[1] || "0");
+  acc[num] = (logoModules[path] as any).default || logoModules[path];
+  return acc;
+}, {} as Record<number, string>);
 
 import './Partner.css';
 
@@ -87,7 +87,7 @@ const Partner = () => {
                     <div className="partner-card-inner">
                       <div className="partner-card-image">
                         <img
-                          src={partnerImages[(partner.id as number - 1) % partnerImages.length]}
+                          src={partnerImagesMap[partner.id] || '/assets/images/logo.png'}
                           alt={partner.name}
                         />
                         <div className="partner-card-overlay">
@@ -131,7 +131,7 @@ const Partner = () => {
                 <div className="modal-left">
                   <div className="modal-main-image">
                     <img
-                      src={partnerImages[(selectedPartner.id as number - 1) % partnerImages.length]}
+                      src={partnerImagesMap[selectedPartner.id] || '/assets/images/logo.png'}
                       alt={selectedPartner.name}
                     />
                   </div>

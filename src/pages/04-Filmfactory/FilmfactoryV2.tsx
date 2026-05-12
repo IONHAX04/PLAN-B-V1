@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { 
-  Film, 
-  Users, 
   Trophy, 
   Clapperboard, 
   X, 
@@ -21,6 +19,9 @@ import poster2026 from '../../assets/filmFactory/2026.jpg';
 import ffLogo from '../../assets/home/plan-b-film-factory.png';
 import firstTakeIntroVideo from '../../assets/video/home.mp4';
 import newsPaperPdf from '../../assets/video/newsPaper.pdf';
+import mithranImg from '../../assets/directors/mithram-r-jawahar.jpeg';
+import tamizhImg from '../../assets/directors/tamizh.jpeg';
+import ganeshImg from '../../assets/directors/ganesh-k-babu.jpeg';
 import './Filmfactory.css';
 import './FilmfactoryV2.css';
 
@@ -70,7 +71,7 @@ const FilmfactoryV2 = () => {
 
   return (
     <div className="v2-page">
-      {/* Hero Section with Video Background */}
+      {/* Hero Section - Simplified & Professional */}
       <section className="ff-hero-video-section">
         <div className="video-background">
           <video autoPlay muted loop playsInline className="bg-video">
@@ -83,49 +84,70 @@ const FilmfactoryV2 = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
             className="ff-hero-text-box"
           >
             <div className="ff-logo-branded-wrap">
               <img src={ffLogo} alt="Plan B - The Filmfactory" className="ff-hero-logo" />
             </div>
             <motion.h1
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5, duration: 1 }}
             >
               {filmfactoryContent.hero.title}
             </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-            >
-              {filmfactoryContent.hero.description}
-            </motion.p>
-            
-            <motion.div 
-              className="ff-pillars-nav"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.1 }}
-            >
-              <p className="pillars-intro">{filmfactoryContent.hero.pillarsIntro}</p>
-              <div className="pillars-links">
-                {filmfactoryContent.hero.pillars.map((pillar) => (
-                  <div key={pillar.id} className="pillar-link-card" onClick={() => scrollToSection(pillar.id)}>
-                    <h3>{pillar.title}</h3>
-                    <p>{pillar.description}</p>
-                    <span className="scroll-hint">Explore <ArrowDown size={14} /></span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
           </motion.div>
         </div>
+
+        <motion.div 
+          className="ff-hero-scroll-indicator"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 1 }}
+          onClick={() => scrollToSection('ff-intro')}
+        >
+          <span className="scroll-text">Explore Filmfactory</span>
+          <motion.div 
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+          >
+            <ArrowDown size={24} />
+          </motion.div>
+        </motion.div>
       </section>
 
       <div className="ff-real-content">
+        {/* New Intro & Pillars Section - "Next Page" look */}
+        <section id="ff-intro" className="ff-intro-section section-padding">
+          <div className="container">
+            <div className="ff-intro-grid">
+              <motion.div 
+                className="ff-intro-text"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <span className="decor-script-gold">The Cinematic Arm</span>
+                <p>{filmfactoryContent.hero.description}</p>
+              </motion.div>
+              
+              <div className="ff-pillars-nav-v2">
+                <p className="pillars-intro-v2">{filmfactoryContent.hero.pillarsIntro}</p>
+                <div className="pillars-links-v2">
+                  {filmfactoryContent.hero.pillars.map((pillar) => (
+                    <div key={pillar.id} className="pillar-link-card-v2" onClick={() => scrollToSection(pillar.id)}>
+                      <h3>{pillar.title}</h3>
+                      <p>{pillar.description}</p>
+                      <span className="scroll-hint-v2">Explore Section <ArrowDown size={14} /></span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* About First Take Section */}
         <section id="first-take" className="ff-about-first-take section-padding">
           <div className="container">
@@ -157,25 +179,28 @@ const FilmfactoryV2 = () => {
                     </div>
                   ))}
                 </div>
-
-                {/* Winners Table */}
-                <div className="ff-winners-grid-v2">
-                  <h3>2025 Award Winners</h3>
-                  <div className="winners-mini-list">
-                    {filmfactoryContent.firstTake.year2025.winners.slice(0, 6).map((w, i) => (
-                      <div key={i} className="winner-row">
-                        <span className="cat">{w.category}</span>
-                        <span className="name">{w.winner}</span>
-                      </div>
-                    ))}
-                    <div className="and-more">...and 7 more categories</div>
-                  </div>
-                </div>
               </div>
               <div className="ff-history-visual">
                 <div className="poster-stack">
                   <img src={poster2025} alt="2025 Poster" className="poster-main" />
                 </div>
+              </div>
+            </div>
+
+            {/* Dedicated Winners Showcase */}
+            <div className="ff-winners-showcase-v2">
+              <div className="showcase-header">
+                <Trophy size={32} className="text-gold" />
+                <h3>First Take 2025 <span>Award Winners</span></h3>
+              </div>
+              <div className="winners-grid-v3">
+                {filmfactoryContent.firstTake.year2025.winners.map((w, i) => (
+                  <div key={i} className="winner-card-v3">
+                    <span className="cat">{w.category}</span>
+                    <span className="name">{w.winner}</span>
+                    <span className="film">"{w.film}"</span>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -188,7 +213,11 @@ const FilmfactoryV2 = () => {
               {filmfactoryContent.firstTake.year2025.jury.map((jury, i) => (
                 <div key={i} className="jury-card-v2">
                   <div className="jury-img-box">
-                    <div className="placeholder-jury-img"><Users size={40} /></div>
+                    <img 
+                      src={jury.name.includes('Mithran') ? mithranImg : jury.name.includes('Tamizh') ? tamizhImg : ganeshImg} 
+                      alt={jury.name} 
+                      className="jury-actual-img" 
+                    />
                   </div>
                   <div className="jury-info-v2">
                     <h4>{jury.name}</h4>
@@ -233,11 +262,15 @@ const FilmfactoryV2 = () => {
                 <h3>The 2026 Jury</h3>
                 <div className="jury-divider"></div>
               </div>
-              <div className="jury-grid-v2">
+              <div className="jury-list-v2">
                 {filmfactoryContent.firstTake.year2026.jury.map((jury, i) => (
-                  <div key={i} className="jury-card-v2 small">
+                  <div key={i} className={`jury-card-v2 ${i % 2 !== 0 ? 'reverse' : ''}`}>
                     <div className="jury-img-box">
-                      <div className="placeholder-jury-img"><Users size={30} /></div>
+                      <img 
+                        src={jury.name.includes('Tamizh') ? tamizhImg : ganeshImg} 
+                        alt={jury.name} 
+                        className="jury-actual-img" 
+                      />
                     </div>
                     <div className="jury-info-v2">
                       <h4>{jury.name}</h4>
@@ -251,17 +284,43 @@ const FilmfactoryV2 = () => {
           </div>
         </section>
 
-        {/* Newspaper Download Section */}
+        {/* Newspaper Download Section - Enhanced */}
         <section className="ff-newspaper-section section-padding">
           <div className="container">
-            <div className="newspaper-glass-card">
-              <div className="news-icon"><Download size={40} /></div>
-              <h2>In the Headlines</h2>
-              <p>Download our official First Take Newspaper featuring deep dives into the films, exclusive interviews, and festival highlights.</p>
-              <a href={newsPaperPdf} download className="btn btn-gold">
-                Download PDF Newspaper <Download size={18} />
-              </a>
-            </div>
+            <motion.div 
+              className="newspaper-premium-card"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="newspaper-content">
+                <div className="news-badge">Festival Exclusive</div>
+                <h2>The First Take <span>Chronicle</span></h2>
+                <p>Dive deep into the stories behind the frames. Our official festival newspaper features exclusive interviews with the 2025 jury, detailed breakdowns of the 19 screened films, and a look at the future of Tamil cinema in Europe.</p>
+                
+                <div className="news-features">
+                  <div className="n-feat"><Play size={16} /> Jury Insights</div>
+                  <div className="n-feat"><Play size={16} /> Film Breakdowns</div>
+                  <div className="n-feat"><Play size={16} /> Event Gallery</div>
+                </div>
+
+                <a href={newsPaperPdf} download className="btn btn-gold news-btn">
+                  Download Digital Edition <Download size={18} />
+                </a>
+              </div>
+
+              <div className="newspaper-visual">
+                <div className="newspaper-mockup">
+                  <div className="mock-page front">
+                    <img src={poster2025} alt="Newspaper Preview" />
+                    <div className="mock-overlay"></div>
+                    <div className="mock-header">THE CHRONICLE</div>
+                  </div>
+                  <div className="mock-page back"></div>
+                  <div className="mock-floating-icon"><Download size={30} /></div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 

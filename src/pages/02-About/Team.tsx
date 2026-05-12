@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Navigation, Autoplay } from 'swiper/modules';
 import { X, Quote, ArrowLeft, ArrowRight } from 'lucide-react';
 import { teamMembers } from '../../data/mockData';
+import teamBg from '../../assets/about/aboutUsBg.jpeg';
 import './About.css';
 
 import 'swiper/css';
@@ -16,17 +17,26 @@ const Team = () => {
   return (
     <div className="about-page-reimagined">
       {/* Team Header */}
-      <section className="about-hero-alipay team-hero-special">
+      <section 
+        className="about-hero-alipay team-hero-special"
+        style={{ 
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${teamBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      >
         <div className="container">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="section-title-alipay"
+            style={{ color: '#fff' }}
           >
-            <div className="decor-script">Our People</div>
-            <h1>Meet Our <span>Visionaries</span></h1>
-            <div className="title-divider-center"></div>
-            <p>The driving force behind unforgettable moments across Switzerland.</p>
+            <div className="decor-script" style={{ color: 'var(--accent)' }}>Our People</div>
+            <h1 style={{ color: '#fff' }}>Meet Our <span style={{ color: 'var(--accent)' }}>Visionaries</span></h1>
+            <div className="title-divider-center" style={{ background: 'var(--accent)' }}></div>
+            <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '1.2rem', fontWeight: 500 }}>The driving force behind unforgettable moments across Switzerland.</p>
           </motion.div>
         </div>
       </section>
