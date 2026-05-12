@@ -1902,3 +1902,54 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* Responsive Button Stacking and Text Handling */
+@media (max-width: 768px) {
+  .hero-video-actions, 
+  .v2-actions, 
+  .spotlight-actions, 
+  .cta-buttons,
+  .center-cta {
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: stretch !important;
+  }
+
+  .btn, 
+  .btn-gold, 
+  .btn-outline-white, 
+  .btn-outline-gold, 
+  .btn-outline,
+  .btn-text-white {
+    width: 100% !important;
+    text-align: center;
+    justify-content: center;
+    white-space: normal; /* Allow wrapping to 2 lines if needed */
+    padding: 1rem 1.5rem !important;
+    font-size: 0.85rem !important;
+    line-height: 1.3 !important;
+    display: flex !important;
+    align-items: center;
+    height: auto;
+    min-height: 50px;
+  }
+  
+  .btn-text-white {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+  }
+
+  .video-text-box h1 {
+    font-size: 2.8rem;
+    padding: 0 1rem;
+  }
+
+  .video-text-box br {
+    display: none; /* Avoid awkward line breaks in mobile */
+  }
+}
