@@ -16,8 +16,7 @@ import Lenis from 'lenis';
 import { filmfactoryContent, aboutContent } from '../../data/mockData';
 import poster2025 from '../../assets/filmFactory/2025.jpg';
 import poster2026 from '../../assets/filmFactory/2026.jpg';
-import ffLogo from '../../assets/home/plan-b-film-factory.png';
-import firstTakeIntroVideo from '../../assets/video/home.mp4';
+import firstTakeIntroVideo from '../../assets/video/filmFactory.mp4';
 import newsPaperPdf from '../../assets/video/newsPaper.pdf';
 import mithranImg from '../../assets/directors/mithram-r-jawahar.jpeg';
 import tamizhImg from '../../assets/directors/tamizh.jpeg';
@@ -87,9 +86,6 @@ const FilmfactoryV2 = () => {
             transition={{ duration: 1.2, ease: "easeOut" }}
             className="ff-hero-text-box"
           >
-            <div className="ff-logo-branded-wrap">
-              <img src={ffLogo} alt="Plan B - The Filmfactory" className="ff-hero-logo" />
-            </div>
             <motion.h1
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}

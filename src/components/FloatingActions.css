@@ -33,7 +33,7 @@
 .fab-btn.scroll-top {
   background: var(--primary, #000);
   color: var(--accent, #c5a022);
-  border: 1px solid rgba(197, 160, 34, 0.3);
+  border: 2px solid var(--accent, #c5a022);
   backdrop-filter: blur(10px);
 }
 
