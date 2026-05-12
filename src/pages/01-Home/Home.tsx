@@ -8,7 +8,7 @@ import {
   Lock,
   Sparkles
 } from 'lucide-react';
-import { HeroVariant1 } from './HeroVariants';
+import { HeroVideo } from './HeroVariants';
 import { SwapStory } from './SwapStory';
 import StickyCardsFeatures from './StickyCardsFeatures';
 import { TestimonialCarousel } from './TestimonialCarousel';
@@ -53,7 +53,7 @@ const Home = () => {
         <HeroVariant2 /> - Immersive full-screen
         <HeroVariant3 /> - Dynamic split screen
       */}
-      <HeroVariant1 />
+      <HeroVideo />
 
       {/* Secondary Hero Section - Features Grid (Grey Tone) */}
       <section className="home-features-grid section-padding grey-section">

@@ -4,6 +4,79 @@ import { ArrowRight } from 'lucide-react';
 import home1 from '../../assets/home/home1.jpg';
 import home2 from '../../assets/home/home2.jpg';
 import home3 from '../../assets/home/home3.jpg';
+import homeVideo from '../../assets/video/home.mp4';
+
+export const HeroVideo = () => {
+  return (
+    <section className="hero-video-section">
+      <div className="video-background">
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline 
+          className="bg-video"
+        >
+          <source src={homeVideo} type="video/mp4" />
+        </video>
+        <div className="video-overlay"></div>
+      </div>
+      
+      <div className="container hero-video-content">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="video-text-box"
+        >
+          <motion.div 
+            className="decor-script-gold"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            Since 2017
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 1 }}
+          >
+            We think one step ahead <br /> 
+            and always have a <span className="text-gold">Plan B</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.1, duration: 1 }}
+          >
+            Exquisite event management for those who demand absolute perfection. 
+            From weddings to high-profile corporate gatherings across Switzerland.
+          </motion.p>
+          <motion.div 
+            className="hero-video-actions"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.4, duration: 0.8 }}
+          >
+            <Link to="/contact" className="btn btn-gold">Plan Your Event</Link>
+            <Link to="/projects" className="btn btn-outline-white">Explore Projects</Link>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      <div className="scroll-indicator">
+        <motion.div 
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          className="mouse"
+        >
+          <div className="wheel"></div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 export const HeroVariant1 = () => {
   return (
