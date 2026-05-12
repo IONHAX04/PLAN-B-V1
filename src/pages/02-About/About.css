@@ -1157,8 +1157,7 @@
 .target-group-card p {
   color: var(--text-muted);
   line-height: 1.8;
-  font-size: 1rem;
-  text-align: justify;
+  text-align: left;
 }
 
 @media (max-width: 768px) {
@@ -1284,7 +1283,7 @@
   }
 
   .card-info-box h3 {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .cta-row-new {

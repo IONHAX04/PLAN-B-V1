@@ -98,6 +98,13 @@ img {
   .section-padding {
     padding: 60px 0;
   }
+  body {
+    font-size: 14px;
+  }
+  p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
 }
 
 /* Custom Scrollbar */
