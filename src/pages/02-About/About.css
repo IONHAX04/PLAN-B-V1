@@ -1091,3 +1091,69 @@
     height: 50vh;
   }
 }
+
+/* Target Groups Section (Restored on About Page) */
+.target-groups-section {
+  background: var(--bg-alt); /* Subtle grey background */
+}
+
+.target-groups-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.target-group-card {
+  background: white;
+  padding: 3.5rem 2.5rem;
+  border-radius: 30px;
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.target-group-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(197, 160, 34, 0.1);
+}
+
+.group-icon-box {
+  width: 90px;
+  height: 90px;
+  background: rgba(197, 160, 34, 0.08);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2.5rem;
+  color: var(--accent);
+  transition: all 0.4s ease;
+}
+
+.target-group-card:hover .group-icon-box {
+  background: var(--accent);
+  color: white;
+  transform: rotate(10deg);
+}
+
+.target-group-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1.25rem;
+  color: var(--primary);
+  font-family: var(--font-serif);
+}
+
+.target-group-card p {
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .target-groups-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -971,6 +971,11 @@
 }
 
 /* Filmfactory Showcase */
+.ff-home-showcase {
+  background: #ffffff;
+  color: var(--primary);
+}
+
 .ff-home-content {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -987,6 +992,18 @@
   margin-bottom: 1rem;
 }
 
+.ff-logo-wrap {
+  margin-bottom: 2rem;
+}
+
+.ff-logo-branded {
+  height: 80px; /* Increased size */
+  width: auto;
+  object-fit: contain;
+  /* Logo is already black, so no need for invert on white background */
+  opacity: 1;
+}
+
 .ff-label.italic-gold {
   text-transform: none;
   font-style: italic;
@@ -996,16 +1013,18 @@
 }
 
 .ff-text h2 {
-  font-size: 4.5rem;
-  margin-bottom: 2rem;
+  font-size: 3rem; /* Reduced size */
+  margin-bottom: 1.5rem;
   letter-spacing: -1px;
+  color: var(--primary);
 }
 
 .ff-description-wrapper p {
   font-size: 1.1rem;
   line-height: 1.8;
-  opacity: 0.8;
+  opacity: 0.9;
   max-width: 650px;
+  color: var(--text-muted);
 }
 
 .ff-pillars-list {
@@ -1787,4 +1806,4 @@
   .partners-logo-grid-home {
     grid-template-columns: repeat(3, 1fr);
   }
-}
+}

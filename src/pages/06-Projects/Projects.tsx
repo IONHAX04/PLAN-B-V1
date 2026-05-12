@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { X, Calendar, MapPin } from 'lucide-react';
-import { projects } from '../../data/mockData';
+import { projects, projectCategories } from '../../data/mockData';
 import project1 from '../../assets/projects/Projects1.jpg';
 import project2 from '../../assets/projects/Projects2.jpg';
 import project3 from '../../assets/projects/Projects3.jpg';
@@ -9,6 +9,8 @@ import project4 from '../../assets/projects/Projects4.jpg';
 import project5 from '../../assets/projects/Projects5.jpg';
 import project6 from '../../assets/projects/Projects6.jpg';
 import './Projects.css';
+
+import { useSearchParams } from 'react-router-dom';
 
 const projectImages = [project1, project2, project3, project4, project5, project6];
 
@@ -122,9 +124,18 @@ const ImageGridHero = ({ setSelectedProject }: { setSelectedProject: (p: any) =>
   );
 };
 
+
 const Projects = () => {
-  const [activeCategory] = React.useState('All');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeCategory = searchParams.get('category') || 'All';
   const [selectedProject, setSelectedProject] = React.useState<any>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (activeCategory !== 'All' && gridRef.current) {
+      gridRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [activeCategory]);
 
   const filteredProjects = activeCategory === 'All' 
     ? projects 
@@ -140,11 +151,30 @@ const Projects = () => {
       <ImageGridHero setSelectedProject={setSelectedProject} />
 
       {/* Projects Grid Section */}
-      <div className="container section-padding">
+      <div ref={gridRef} className="container section-padding">
         <div className="section-header center">
           <div className="decor-line"></div>
-          <h1>Explore Portfolio</h1>
-          <p className="section-subtitle">A glimpse into the magical moments we've created.</p>
+          <h1>{activeCategory === 'All' ? 'Explore Portfolio' : activeCategory}</h1>
+          <p className="section-subtitle">
+            {activeCategory === 'All' 
+              ? "A glimpse into the magical moments we've created."
+              : `Discover our exceptional ${activeCategory.toLowerCase()} across Switzerland.`}
+          </p>
+        </div>
+
+        <div className="category-filter-bar">
+          {['All', ...projectCategories].map(cat => (
+            <button
+              key={cat}
+              className={`filter-btn ${activeCategory === cat ? 'active' : ''}`}
+              onClick={() => {
+                if (cat === 'All') setSearchParams({});
+                else setSearchParams({ category: cat });
+              }}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
 
         <div className="projects-grid-fashion">
@@ -176,37 +206,6 @@ const Projects = () => {
           </AnimatePresence>
         </div>
 
-        {/* Vertical Timeline Section */}
-        <div className="projects-timeline-section section-padding">
-          <div className="section-header-center">
-            <div className="decor-script">History</div>
-            <h2>Project Timeline</h2>
-            <div className="title-divider-center"></div>
-          </div>
-          <div className="timeline-container">
-            <div className="timeline-line"></div>
-            {projects.map((project, idx) => (
-              <motion.div 
-                key={project.id}
-                className={`timeline-item ${idx % 2 === 0 ? 'left' : 'right'}`}
-                initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                onClick={() => setSelectedProject(project)}
-                style={{ cursor: 'pointer' }}
-              >
-                <div className="timeline-dot"></div>
-                <div className="timeline-content">
-                  <span className="timeline-date">{project.date}</span>
-                  <h3>{project.title}</h3>
-                  <div className="timeline-client">{project.client}</div>
-                  <p>{project.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
 
         {/* Modal remains the same */}
         <AnimatePresence>

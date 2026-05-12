@@ -29,6 +29,7 @@ const logoModules = import.meta.glob('../../assets/partnerlogo/Partners*.{png,jp
 const partnerImages = Object.values(logoModules).map((mod: any) => mod.default || mod).slice(0, 15); // Show first 15 on home
 import ffHero from '../../assets/filmFactory/The-film-factory1.jpg';
 import penImage from '../../assets/home/pen.png';
+import ffBrandedLogo from '../../assets/home/plan-b-film-factory.png';
 
 const Home = () => {
   const fadeInUp = {
@@ -126,11 +127,14 @@ const Home = () => {
         <StickyCardsFeatures items={services} />
       </div>
 
-      {/* Filmfactory Showcase (Dark Tone) */}
-      <section className="ff-home-showcase section-padding dark-section">
+      {/* Filmfactory Showcase (Light Tone) */}
+      <section className="ff-home-showcase section-padding light-section">
         <div className="container">
           <div className="ff-home-content">
             <div className="ff-text">
+              <motion.div variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }} className="ff-logo-wrap">
+                <img src={ffBrandedLogo} alt="Plan B - The Filmfactory" className="ff-logo-branded" />
+              </motion.div>
               <motion.div variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }} className="ff-label italic-gold">Where Vision Meets the Frame</motion.div>
               <motion.h2 variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }}>Plan B – The Filmfactory</motion.h2>
               <motion.div variants={fadeInUp} whileInView="whileInView" viewport={{ once: true }} className="ff-description-wrapper">
@@ -192,7 +196,8 @@ const Home = () => {
                     <div className="poster-info">
                       <span className="project-tag">{project.category}</span>
                       <h3>{project.title}</h3>
-                      <Link to="/projects" className="view-project-btn">Explore Case Study <ArrowRight size={16} /></Link>
+                      <span className="project-date">{project.date}</span>
+                      <Link to="/projects" className="view-project-btn">Explore Events <ArrowRight size={16} /></Link>
                     </div>
                   </div>
                 </div>
@@ -220,44 +225,30 @@ const Home = () => {
             className="spotlight-glass-card"
           >
             <div className="decor-script-gold">Exclusively Yours</div>
-            <h2>Private Events</h2>
-            <p>From intimate weddings to ultra-luxury anniversaries, we provide discrete management for high-profile portfolios and private estates. Every detail is orchestrated with absolute privacy, foresight, and the highest level of precision.</p>
+            <h2>Our Core Pillars</h2>
+            <div className="spotlight-pillars">
+              <div className="pillar-item">
+                <span className="pillar-dot"></span>
+                <span>Private Events</span>
+              </div>
+              <div className="pillar-item">
+                <span className="pillar-dot"></span>
+                <span>Public Events</span>
+              </div>
+              <div className="pillar-item">
+                <span className="pillar-dot"></span>
+                <span>Corporate Events</span>
+              </div>
+            </div>
+            <p>From intimate weddings to large-scale public festivals and professional corporate gatherings, we provide seamless management for every occasion. Every detail is orchestrated with absolute foresight, creativity, and the highest level of precision.</p>
             <div className="spotlight-actions">
-              <Link to="/contact" className="btn-gold">Request Private Access</Link>
-              <Link to="/services" className="btn-text-white">Our Standards <ArrowRight size={16} /></Link>
+              <Link to="/contact" className="btn-gold">Let's plan your Event</Link>
+              <Link to="/services" className="btn-text-white">Our Services <ArrowRight size={16} /></Link>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Target Groups Section (Grey Tone) */}
-      <section className="target-groups-section section-padding grey-section">
-        <div className="container">
-          <div className="section-title-center">
-            <span className="decor-script">Who We Serve</span>
-            <h2>Our Target Groups</h2>
-            <div className="title-divider-center"></div>
-          </div>
-          <div className="target-groups-grid">
-            {targetGroups && targetGroups.map((group, i) => (
-              <motion.div 
-                key={i}
-                {...fadeInUp}
-                transition={{ delay: i * 0.1 }}
-                className="target-group-card"
-              >
-                <div className="group-icon-box">
-                  {i === 0 && <Users size={32} />}
-                  {i === 1 && <Compass size={32} />}
-                  {i === 2 && <Sparkles size={32} />}
-                </div>
-                <h3>{group.title}</h3>
-                <p>{group.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Testimonials - Client Voice (Light Tone) */}
       <section className="testimonials-section section-padding light-section">

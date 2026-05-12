@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { Quote, ChevronRight } from 'lucide-react';
-import { aboutContent } from '../../data/mockData';
+import { Quote, ChevronRight, Users, Compass, Sparkles } from 'lucide-react';
+import { aboutContent, targetGroups } from '../../data/mockData';
 import { Link } from 'react-router-dom';
 // Import assets from the about folder
 const aboutAssets = import.meta.glob('../../assets/about/*.{png,jpg,jpeg,webp}', { eager: true });
@@ -99,6 +99,35 @@ const About = () => {
         </div>
 
         <AboutStory />
+      </section>
+
+      {/* Target Groups Section (Restored on About Page) */}
+      <section className="target-groups-section section-padding grey-section">
+        <div className="container">
+          <div className="section-title-alipay">
+            <div className="decor-script">Who We Serve</div>
+            <h2>Our Target Groups</h2>
+            <div className="title-divider-center"></div>
+          </div>
+          <div className="target-groups-grid">
+            {targetGroups && targetGroups.map((group, i) => (
+              <motion.div 
+                key={i}
+                {...fadeInUp}
+                transition={{ delay: i * 0.1 }}
+                className="target-group-card"
+              >
+                <div className="group-icon-box">
+                  {i === 0 && <Users size={32} />}
+                  {i === 1 && <Compass size={32} />}
+                  {i === 2 && <Sparkles size={32} />}
+                </div>
+                <h3>{group.title}</h3>
+                <p>{group.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Trusted Partners Section */}

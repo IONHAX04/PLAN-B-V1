@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { aboutContent } from '../../data/mockData';
 import whoWeAre1 from '../../assets/home/who-we-are1.jpg';
 import whoWeAre2 from '../../assets/home/who-we-are2.jpeg';
-import whoWeAre3 from '../../assets/home/who-we-are3.jpg';
+import whoWeAre3 from '../../assets/home/who-we-are3.jpeg';
 
 const features = [
   {

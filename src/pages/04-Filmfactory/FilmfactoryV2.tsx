@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Film, Users, Trophy, Clapperboard, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Film, Users, Trophy, Clapperboard, X, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
-import { filmfactoryContent } from '../../data/mockData';
+import { filmfactoryContent, aboutContent } from '../../data/mockData';
 import poster2025 from '../../assets/filmFactory/2025.jpg';
 import poster2026 from '../../assets/filmFactory/2026.jpg';
 import './Filmfactory.css';
@@ -114,6 +114,25 @@ const FilmfactoryV2 = () => {
               </div>
             </div>
 
+          </div>
+        </section>
+
+        {/* Philosophy Quote Banner */}
+        <section className="ff-quote-banner-v2">
+          <div className="container">
+            <motion.div 
+              className="ff-quote-content-v2"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <Quote className="quote-icon-v2" size={50} />
+              <blockquote className="ff-quote-text-v2">
+                {aboutContent.filmfactoryQuote}
+              </blockquote>
+              <cite className="ff-quote-cite-v2">— The Plan B Philosophy</cite>
+            </motion.div>
           </div>
         </section>
 

@@ -10,10 +10,10 @@ const Footer = () => {
       <div className="footer-grid">
         <div className="footer-brand">
           <Link to="/" className="footer-logo">
-            <span className="logo-p">PLAN</span>
+            <span className="logo-p">PLAN</span>{' '}
             <span className="logo-b">B</span>
           </Link>
-          <p className="footer-tagline">The Event Guide</p>
+          <p className="footer-tagline">The Eventguide</p>
           <div className="social-links">
             <a href={siteConfig.contact.socials.instagram} target="_blank" rel="noreferrer" title="Instagram"><InstagramIcon size={20} /></a>
             <a href={siteConfig.contact.socials.facebook} target="_blank" rel="noreferrer" title="Facebook"><FacebookIcon size={20} /></a>
