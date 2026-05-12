@@ -235,6 +235,7 @@
   background: radial-gradient(circle, rgba(var(--accent-rgb), 0.1) 0%, transparent 70%);
   filter: blur(100px);
   z-index: 0;
+  pointer-events: none;
 }
 
 .public-spotlight-content {
@@ -254,6 +255,13 @@
   font-family: var(--font-serif);
   line-height: 1.1;
   margin-bottom: 2rem;
+  color: #ffffff;
+}
+
+.public-text-box p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  line-height: 1.7;
 }
 
 .public-text-box .highlight {
@@ -278,7 +286,7 @@
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  opacity: 0.6;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .public-image-collage {

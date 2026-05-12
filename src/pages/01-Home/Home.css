@@ -1092,8 +1092,9 @@
 }
 
 .ff-logo-branded {
-  height: 80px; /* Increased size */
+  height: 220px; /* Maximized size */
   width: auto;
+  max-width: 100%;
   object-fit: contain;
   /* Logo is already black, so no need for invert on white background */
   opacity: 1;
