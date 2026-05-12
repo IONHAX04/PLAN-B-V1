@@ -178,7 +178,7 @@ const Home = () => {
           </div>
 
           <div className="projects-poster-grid">
-            {projects.map((project, index) => (
+            {projects.filter(p => (p as any).image).map((project, index) => (
               <motion.div
                 key={project.id}
                 variants={fadeInUp}

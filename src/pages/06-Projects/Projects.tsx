@@ -191,7 +191,7 @@ const Projects = () => {
               >
                 <div className="card-img-wrapper">
                   <img 
-                    src={projectImages[(project.id as number - 1) % projectImages.length]} 
+                    src={project.image || projectImages[(project.id as number - 1) % projectImages.length]} 
                     alt={project.title} 
                   />
                   <div className="project-date-badge">{project.date}</div>
@@ -215,7 +215,7 @@ const Projects = () => {
                 <button className="close-modal-fashion" onClick={() => setSelectedProject(null)}><X size={24} /></button>
                 <div className="modal-top">
                   <img 
-                    src={projectImages[(selectedProject.id as number - 1) % projectImages.length]} 
+                    src={selectedProject.image || projectImages[(selectedProject.id as number - 1) % projectImages.length]} 
                     alt={selectedProject.title} 
                   />
                   <div className="modal-hero-text">
