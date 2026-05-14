@@ -886,7 +886,12 @@
   background-image: url('../../assets/home/home1.jpg');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+}
+
+@media (min-width: 1025px) {
+  .philosophy-hero {
+    background-attachment: fixed;
+  }
 }
 
 .hero-bg-overlay {
@@ -1292,3 +1297,16 @@
     align-items: stretch;
   }
 }
+
+.team-hero-special {
+  background-attachment: fixed;
+}
+
+/* Mobile Fix for Background Fixed on iOS */
+@media (max-width: 1024px) {
+  .team-hero-special {
+    background-attachment: scroll !important;
+    background-position: center !important;
+  }
+}
+

@@ -18,7 +18,7 @@ import poster2025 from '../../assets/filmFactory/2025.jpg';
 import poster2026 from '../../assets/filmFactory/2026.jpg';
 import firstTakeIntroVideo from '../../assets/video/filmFactory.mp4';
 import newsPaperPdf from '../../assets/video/newsPaper.pdf';
-import mithranImg from '../../assets/directors/mithram-r-jawahar.jpeg';
+import mithranImg from '../../assets/directors/mithran.jpeg';
 import tamizhImg from '../../assets/directors/tamizh.jpeg';
 import ganeshImg from '../../assets/directors/ganesh-k-babu.jpeg';
 import './Filmfactory.css';
@@ -231,7 +231,7 @@ const FilmfactoryV2 = () => {
           <div className="container">
             <div className="ff-history-grid reverse">
               <div className="ff-history-text">
-                <span className="year-label">The Bern Edition</span>
+                <span className="year-label">The Festival Upgrade</span>
                 <h2>{filmfactoryContent.firstTake.year2026.title}</h2>
                 <p className="ff-tagline-v2">{filmfactoryContent.firstTake.year2026.tagline}</p>
                 <p>{filmfactoryContent.firstTake.year2026.description}</p>

@@ -49,6 +49,7 @@ import subinthanVithujaImg from '../assets/events/subinthan_vithuja.jpg';
 import kathushanThenukaImg from '../assets/events/kathushan_thenuka.jpg';
 import tharshanMaunikaImg from '../assets/events/tharshan_maunika.jpg';
 import mehendiImg from '../assets/events/mehendi.jpg';
+import vivaahaImg from '../assets/events/vivaaha.jpeg';
 
 // ─── NAV LINKS ──────────────────────────────────────────────────────────────
 export const navLinks = [
@@ -806,6 +807,7 @@ export const projects = [
     date: "01.03.2025 & 02.03.2025",
     client: "Vivaaha",
     description: "For Switzerland’s branded South Asian wedding exhibition, Plan B provided comprehensive on-site coordination across two high-energy days. Managing a project of this scale requires precision, quick thinking, and a deep understanding of the wedding industry. We ensured that every vendor, speaker, and guest experienced a perfectly organized event.",
+    image: vivaahaImg,
     partners: ["Plan B", "Eventbudget", "Optimeye", "Tom & Jerry Emcee"]
   },
   {

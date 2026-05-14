@@ -12,6 +12,7 @@ const aboutImages = Object.keys(aboutAssets).reduce((acc, path) => {
 
 import { AboutStory } from './AboutStory';
 import abbyFounder from '../../assets/aboutTeam/abby.png';
+import mainLogo from '../../assets/logo/logo.png';
 import './About.css';
 
 const partners = [
@@ -58,7 +59,7 @@ const About = () => {
           >
             <div className="mascot-placeholder">
               <div className="golden-glow"></div>
-              <img src={aboutImages['01']} alt="Plan B Trophy" />
+              <img src={mainLogo} alt="Plan B Eventguide" />
             </div>
           </motion.div>
         </div>

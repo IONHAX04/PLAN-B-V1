@@ -220,8 +220,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Successful Projects Showcase (Light Tone) */}
-      <section className="projects-home section-padding light-section">
+      {/* Combined Portfolio & Pillars Section */}
+      <section className="portfolio-pillars-section section-padding light-section">
         <div className="container">
           <div className="section-title-center">
             <span className="decor-script">Selected Works</span>
@@ -230,7 +230,11 @@ const Home = () => {
           </div>
 
           <div className="projects-poster-grid">
-            {projects.filter(p => (p as any).image).map((project, index) => (
+            {[
+              projects.find(p => p.category === "Private Events" && (p as any).image),
+              projects.find(p => p.category === "Public Events" && (p as any).image),
+              projects.find(p => p.category === "Corporate Events" && (p as any).image)
+            ].filter(Boolean).map((project: any, index) => (
               <motion.div
                 key={project.id}
                 variants={fadeInUp}
@@ -262,42 +266,36 @@ const Home = () => {
           <div className="center-cta mt-6">
             <Link to="/projects" className="btn-outline-gold">View Portfolio</Link>
           </div>
-        </div>
-      </section>
 
-      {/* Private Events Spotlight */}
-      <section className="private-events-spotlight">
-        <div className="spotlight-bg">
-          <img src="/assets/images/projects/project_3.png" alt="Private Events" />
-          <div className="spotlight-overlay"></div>
-        </div>
-        <div className="container">
+          {/* Integrated Core Pillars (Exclusively Yours) Panel */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="spotlight-glass-card"
+            className="pillars-integrated-panel"
           >
-            <div className="decor-script-gold">Exclusively Yours</div>
-            <h2>Our Core Pillars</h2>
-            <div className="spotlight-pillars">
-              <div className="pillar-item">
-                <span className="pillar-dot"></span>
-                <span>Private Events</span>
+            <div className="pillars-panel-content">
+              <div className="decor-script-gold">Exclusively Yours</div>
+              <h2>Our Core Pillars</h2>
+              <div className="spotlight-pillars">
+                <div className="pillar-item">
+                  <span className="pillar-dot"></span>
+                  <span>Private Events</span>
+                </div>
+                <div className="pillar-item">
+                  <span className="pillar-dot"></span>
+                  <span>Public Events</span>
+                </div>
+                <div className="pillar-item">
+                  <span className="pillar-dot"></span>
+                  <span>Corporate Events</span>
+                </div>
               </div>
-              <div className="pillar-item">
-                <span className="pillar-dot"></span>
-                <span>Public Events</span>
+              <p>From intimate weddings to large-scale public festivals and professional corporate gatherings, we provide seamless management for every occasion. Every detail is orchestrated with absolute foresight, creativity, and the highest level of precision.</p>
+              <div className="spotlight-actions">
+                <Link to="/contact" className="btn btn-gold">Let's plan your Event</Link>
+                <Link to="/services" className="btn-text-gold">Our Services <ArrowRight size={16} /></Link>
               </div>
-              <div className="pillar-item">
-                <span className="pillar-dot"></span>
-                <span>Corporate Events</span>
-              </div>
-            </div>
-            <p>From intimate weddings to large-scale public festivals and professional corporate gatherings, we provide seamless management for every occasion. Every detail is orchestrated with absolute foresight, creativity, and the highest level of precision.</p>
-            <div className="spotlight-actions">
-              <Link to="/contact" className="btn-gold">Let's plan your Event</Link>
-              <Link to="/services" className="btn-text-white">Our Services <ArrowRight size={16} /></Link>
             </div>
           </motion.div>
         </div>

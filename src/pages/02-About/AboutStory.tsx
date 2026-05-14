@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { aboutContent } from '../../data/mockData';
-import whoWeAre1 from '../../assets/home/who-we-are1.jpg';
-import whoWeAre2 from '../../assets/home/who-we-are2.jpeg';
-import whoWeAre3 from '../../assets/home/who-we-are3.jpeg';
+import eventGuideImg from '../../assets/about/eventGuide.jpeg';
+import visionImg from '../../assets/about/vision.jpeg';
+import missionImg from '../../assets/about/mission.jpeg';
 
 const features = [
   {
@@ -13,7 +13,7 @@ const features = [
     description: aboutContent.extended,
     path: "/about",
     linkText: "Learn More",
-    image: whoWeAre1
+    image: eventGuideImg
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const features = [
     description: aboutContent.vision,
     path: "/about#vision",
     linkText: "Explore Vision",
-    image: whoWeAre2
+    image: visionImg
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const features = [
     description: aboutContent.mission,
     path: "/about#mission",
     linkText: "See Mission",
-    image: whoWeAre3
+    image: missionImg
   }
 ];
 
