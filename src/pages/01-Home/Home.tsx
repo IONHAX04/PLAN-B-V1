@@ -22,7 +22,7 @@ import './ProjectsEnhancement.css';
 import './StickyCardsFeatures.css';
 
 // Import all logos from the partnerlogo folder
-const logoModules = import.meta.glob('../../assets/partnerlogo/Partners*.{png,jpg,jpeg,webp}', { eager: true });
+const logoModules = import.meta.glob('../../assets/partnerlogo/*.{png,jpg,jpeg,webp}', { eager: true });
 const partnerImages = Object.values(logoModules).map((mod: any) => mod.default || mod).slice(0, 16); // Show first 16 on home
 import ffHero from '../../assets/filmFactory/The-film-factory1.jpg';
 import goat2 from '../../assets/events/goat_2.jpg';

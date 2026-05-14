@@ -346,14 +346,13 @@
 }
 
 .card-category {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--accent);
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   font-weight: 700;
-  background: rgba(197, 160, 34, 0.1);
-  padding: 4px 10px;
-  border-radius: 4px;
+  line-height: 1.4;
+  max-width: 100%;
 }
 
 .card-date {

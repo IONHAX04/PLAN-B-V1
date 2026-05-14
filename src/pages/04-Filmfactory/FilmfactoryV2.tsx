@@ -251,6 +251,23 @@ const FilmfactoryV2 = () => {
                 </div>
               </div>
             </div>
+            
+            {/* Dedicated Winners Showcase 2026 */}
+            <div className="ff-winners-showcase-v2">
+              <div className="showcase-header">
+                <Trophy size={32} className="text-gold" />
+                <h3>First Take 2026 <span>Award Winners</span></h3>
+              </div>
+              <div className="winners-grid-v3">
+                {filmfactoryContent.firstTake.year2026.winners?.map((w, i) => (
+                  <div key={i} className="winner-card-v3">
+                    <span className="cat">{w.category}</span>
+                    <span className="name">{w.winner}</span>
+                    <span className="film">"{w.film}"</span>
+                  </div>
+                ))}
+              </div>
+            </div>
 
             {/* Jury 2026 */}
             <div className="ff-jury-section">

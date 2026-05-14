@@ -275,29 +275,102 @@
 
 /* Responsive */
 @media (max-width: 992px) {
-  .hero-v2-grid, .overlap-row {
-    grid-template-columns: 1fr;
-    gap: 4rem;
+  .hero-v2-grid, 
+  .overlap-row,
+  .overlap-row.reverse {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
     text-align: center;
   }
   
-  .hero-v2-text p, .overlap-content-box p {
-    margin-left: auto;
-    margin-right: auto;
+  .philosophy-hero-v2 {
+    padding: 6rem 0 3rem;
   }
-  
+
+  .hero-v2-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-v2-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .overlap-row {
+    margin-bottom: 6rem;
+  }
+
   .overlap-row.reverse .overlap-img-box {
     order: -1;
   }
-  
+
+  .overlap-img-box {
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .overlap-content-box .serif-title {
+    font-size: 2rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .overlap-content-box p {
+    font-size: 1rem;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+
+  .hero-v2-visual {
+    margin-top: 2rem;
+  }
+
+  .visual-stack {
+    aspect-ratio: 4/3;
+    max-width: 100%;
+  }
+
+  .text-decor-side {
+    display: none;
+  }
+
+  .dna-pillars-section {
+    padding: 4rem 0;
+  }
+
   .dna-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
   }
-  
+
+  .dna-card {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .quote-banner-premium {
+    padding: 5rem 0;
+  }
+
+  .quote-content-premium blockquote {
+    font-size: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .cta-premium-box {
+    padding: 4rem 1.5rem;
+    border-radius: 24px;
+  }
+
   .cta-group {
     flex-direction: column;
-    align-items: stretch;
-    max-width: 300px;
+    gap: 1rem;
+    max-width: 280px;
     margin: 0 auto;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
   }
 }

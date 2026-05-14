@@ -200,7 +200,7 @@ const Projects = () => {
                   <div className="card-client-name">{project.client}</div>
                   <h3>{project.title}</h3>
                   <div className="card-meta-row">
-                    <span className="card-category">{project.category}</span>
+                    <span className="card-category">{project.partners?.join(", ")}</span>
                     <span className="card-date">{project.date}</span>
                   </div>
                 </div>

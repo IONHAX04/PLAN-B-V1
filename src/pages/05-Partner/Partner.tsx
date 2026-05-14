@@ -3,12 +3,30 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Award, Users } from 'lucide-react';
 import { partners, partnersIntro } from '../../data/mockData';
 // Import all logos from the partnerlogo folder
-const logoModules = import.meta.glob('../../assets/partnerlogo/Partners*.{png,jpg,jpeg,webp}', { eager: true });
+const logoModules = import.meta.glob('../../assets/partnerlogo/*.{png,jpg,jpeg,webp}', { eager: true });
 // Extract the numbers from the filenames to sort them correctly
 const logoPaths = Object.keys(logoModules);
 const partnerImagesMap = logoPaths.reduce((acc, path) => {
-  const num = parseInt(path.match(/Partners(\d+)/)?.[1] || "0");
-  acc[num] = (logoModules[path] as any).default || logoModules[path];
+  const filename = path.split('/').pop() || "";
+  
+  // Handle PartnersN pattern
+  const numMatch = filename.match(/Partners(\d+)/);
+  if (numMatch) {
+    acc[parseInt(numMatch[1])] = (logoModules[path] as any).default || logoModules[path];
+  }
+  
+  // Handle specific named logos from the user request
+  if (filename.toLowerCase().includes('mandram')) acc[28] = (logoModules[path] as any).default || logoModules[path];
+  if (filename.toLowerCase().includes('sakthi')) acc[29] = (logoModules[path] as any).default || logoModules[path];
+  if (filename.toLowerCase().includes('thecrown')) {
+    acc[3] = (logoModules[path] as any).default || logoModules[path];
+    acc[40] = (logoModules[path] as any).default || logoModules[path];
+  }
+  if (filename.toLowerCase().includes('tvs')) {
+    acc[20] = (logoModules[path] as any).default || logoModules[path];
+    acc[39] = (logoModules[path] as any).default || logoModules[path];
+  }
+  
   return acc;
 }, {} as Record<number, string>);
 
@@ -71,7 +89,7 @@ const Partner = () => {
               <div className="category-header">
                 <div className="category-title-wrap">
                   <span className="category-number">0{categories.indexOf(category) + 1}</span>
-                  <h2>{category}</h2>
+                  <h2>{category.toUpperCase()}</h2>
                 </div>
                 <div className="category-line"></div>
               </div>
@@ -162,10 +180,14 @@ const Partner = () => {
 
                   <div className="modal-description">
                     <p>
-                      We have worked with <strong>{selectedPartner.name}</strong> on several successful projects,
-                      ensuring the highest quality of {selectedPartner.service.toLowerCase()} for our
-                      clients. Through our partnership, clients gain access to exclusive benefits, 
-                      attractive discounts, and premium service reserved for Plan B customers.
+                      {selectedPartner.description || (
+                        <>
+                          We have worked with <strong>{selectedPartner.name}</strong> on several successful projects,
+                          ensuring the highest quality of {selectedPartner.service.toLowerCase()} for our
+                          clients. Through our partnership, clients gain access to exclusive benefits, 
+                          attractive discounts, and premium service reserved for Plan B customers.
+                        </>
+                      )}
                     </p>
                   </div>
 
@@ -178,6 +200,7 @@ const Partner = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
     </div>
   );
 };
