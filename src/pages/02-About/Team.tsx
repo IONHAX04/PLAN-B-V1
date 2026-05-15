@@ -14,6 +14,18 @@ import 'swiper/css/navigation';
 const Team = () => {
   const [selectedMember, setSelectedMember] = React.useState<any>(null);
 
+  // Lock scroll when modal is open
+  React.useEffect(() => {
+    if (selectedMember) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedMember]);
+
   return (
     <div className="about-page-reimagined">
       {/* Team Header */}
@@ -46,10 +58,12 @@ const Team = () => {
           <div className="swiper-container-outer">
             <Swiper
               effect={'coverflow'}
-              grabCursor={true}
               centeredSlides={true}
               slidesPerView={'auto'}
               loop={true}
+              observer={true}
+              observeParents={true}
+              slideToClickedSlide={true}
               autoplay={{
                 delay: 2500,
                 disableOnInteraction: false,

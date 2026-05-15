@@ -5,6 +5,14 @@ import * as LucideIcons from 'lucide-react';
 import { services, servicesIntro } from '../../data/mockData';
 import './Services.css';
 
+// Import carousel images
+import img1 from '../../assets/ourServiceCarousel/img1.jpeg';
+import img2 from '../../assets/ourServiceCarousel/img2.jpeg';
+import img3 from '../../assets/ourServiceCarousel/img3.jpeg';
+import img4 from '../../assets/ourServiceCarousel/img4.jpeg';
+
+const serviceImages = [img1, img2, img3, img4];
+
 interface ServiceCardProps {
   service: any;
   index: number;
@@ -12,14 +20,17 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
   const IconComponent = (LucideIcons as any)[service.icon] || LucideIcons.HelpCircle;
-  const themes = ['theme-dark', 'theme-gold-dark', 'theme-black', 'theme-slate'];
-  const themeClass = themes[index % themes.length];
+  const backgroundImage = serviceImages[index % serviceImages.length];
 
   return (
     <section 
-      className={`service-screen-sticky ${themeClass}`}
-      style={{ zIndex: index + 1 }}
+      className="service-screen-sticky"
+      style={{ 
+        zIndex: index + 1,
+        backgroundImage: `url(${backgroundImage})`
+      }}
     >
+      <div className="service-screen-overlay"></div>
       <div className="service-screen-content">
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
@@ -112,8 +123,8 @@ const Services = () => {
             <h2>Ready to plan your next masterpiece?</h2>
             <p>Connect with our experts today for a bespoke consultation.</p>
             <div className="cta-actions">
-              <button className="btn-gold">Get in Touch</button>
-              <button className="btn-outline">View Portfolio</button>
+              <Link to="/contact" className="btn-gold">Get in Touch</Link>
+              <Link to="/projects" className="btn-outline">View Portfolio</Link>
             </div>
           </motion.div>
         </div>
@@ -123,3 +134,4 @@ const Services = () => {
 };
 
 export default Services;
+
