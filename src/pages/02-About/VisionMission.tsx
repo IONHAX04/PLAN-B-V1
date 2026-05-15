@@ -3,9 +3,9 @@ import { Target, Rocket, Quote, Shield, Zap, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { aboutContent } from '../../data/mockData';
 
-import visionImg from '../../assets/home/home2.jpg';
-import missionImg from '../../assets/home/home3.jpg';
-import heroImg from '../../assets/home/home1.jpg';
+import visionImg from '../../assets/visionMission/newGlobal.jpeg';
+import missionImg from '../../assets/visionMission/crafting.jpeg';
+import heroImg from '../../assets/visionMission/architecture.jpeg';
 
 import './About.css';
 import './VisionMission.css';

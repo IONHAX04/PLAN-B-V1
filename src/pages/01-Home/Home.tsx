@@ -29,6 +29,11 @@ import goat2 from '../../assets/events/goat_2.jpg';
 import penImage from '../../assets/home/pen.png';
 import ffBrandedLogo from '../../assets/home/plan-b-film-factory.png';
 
+// Project Images for Editorial Section
+import privateEvent from '../../assets/events/private.jpg';
+import mayilehImgEvent from '../../assets/events/mayileh.jpg';
+import painteraImg from '../../assets/events/paintera.jpg';
+
 const Home = () => {
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
@@ -220,84 +225,120 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Combined Portfolio & Pillars Section */}
-      <section className="portfolio-pillars-section section-padding light-section">
+      {/* Integrated Pillars & Portfolio Section */}
+      <section className="integrated-experience-section section-padding light-section">
         <div className="container">
-          <div className="section-title-center">
-            <span className="decor-script">Selected Works</span>
-            <h2>Portfolio Highlights</h2>
-            <div className="title-divider-center"></div>
-          </div>
-
-          <div className="projects-poster-grid">
-            {[
-              projects.find(p => p.category === "Private Events" && (p as any).image),
-              projects.find(p => p.category === "Public Events" && (p as any).image),
-              projects.find(p => p.category === "Corporate Events" && (p as any).image)
-            ].filter(Boolean).map((project: any, index) => (
-              <motion.div
-                key={project.id}
-                variants={fadeInUp}
-                whileInView="whileInView"
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="project-poster-card"
-              >
-                <div className="poster-image">
-                  <img 
-                    src={(project as any).image} 
-                    alt={project.title} 
-                  />
-                  <div className="poster-overlay">
-                    <div className="poster-info">
-                      <span className="project-tag">{project.category}</span>
-                      <h3>{project.title}</h3>
-                      <div className="project-date-row">
-                        <span className="project-date">{project.date}</span>
-                      </div>
-                      <Link to="/projects" className="view-project-btn">View Details <ArrowRight size={16} /></Link>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="center-cta mt-6">
-            <Link to="/projects" className="btn-outline-gold">View Portfolio</Link>
-          </div>
-
-          {/* Integrated Core Pillars (Exclusively Yours) Panel */}
+          
+          {/* 1. Core Pillars Hero - Now First */}
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="pillars-integrated-panel"
+            className="pillars-hero-v2"
           >
-            <div className="pillars-panel-content">
-              <div className="decor-script-gold">Exclusively Yours</div>
-              <h2>Our Core Pillars</h2>
-              <div className="spotlight-pillars">
-                <div className="pillar-item">
-                  <span className="pillar-dot"></span>
-                  <span>Private Events</span>
-                </div>
-                <div className="pillar-item">
-                  <span className="pillar-dot"></span>
-                  <span>Public Events</span>
-                </div>
-                <div className="pillar-item">
-                  <span className="pillar-dot"></span>
-                  <span>Corporate Events</span>
-                </div>
+            <div className="decor-script-gold">Exclusively Yours</div>
+            <h2 className="section-massive-title">Our Core Pillars</h2>
+            <div className="spotlight-pillars">
+              <div className="pillar-item">
+                <span className="pillar-dot"></span>
+                <span>Private Events</span>
               </div>
-              <p>From intimate weddings to large-scale public festivals and professional corporate gatherings, we provide seamless management for every occasion. Every detail is orchestrated with absolute foresight, creativity, and the highest level of precision.</p>
-              <div className="spotlight-actions">
-                <Link to="/contact" className="btn btn-gold">Let's plan your Event</Link>
-                <Link to="/services" className="btn-text-gold">Our Services <ArrowRight size={16} /></Link>
+              <div className="pillar-item">
+                <span className="pillar-dot"></span>
+                <span>Public Events</span>
+              </div>
+              <div className="pillar-item">
+                <span className="pillar-dot"></span>
+                <span>Corporate Events</span>
               </div>
             </div>
+            <p className="pillars-summary-p">
+              From intimate weddings to large-scale public festivals and professional corporate gatherings, we provide seamless management for every occasion. Every detail is orchestrated with absolute foresight, creativity, and the highest level of precision.
+            </p>
+            <div className="pillars-actions-v2">
+              <Link to="/contact" className="btn btn-gold">Let's plan your Event</Link>
+              <Link to="/services" className="btn-text-gold">Our Services <ArrowRight size={16} /></Link>
+            </div>
           </motion.div>
+
+          <div className="section-divider-luxe"></div>
+
+          {/* 2. Selected Works Showcase - Now Second */}
+          <div className="portfolio-showcase-v2">
+            <div className="section-title-center">
+              <span className="decor-script">Selected Works</span>
+              <h2>Portfolio Highlights</h2>
+              <div className="title-divider-center"></div>
+            </div>
+
+            <div className="editorial-projects-grid">
+              {/* Project 1: Pritthiya */}
+              <motion.div 
+                variants={fadeInUp}
+                whileInView="whileInView"
+                viewport={{ once: true }}
+                className="editorial-project-card"
+              >
+                <div className="editorial-image-wrapper">
+                  <img src={privateEvent} alt="25th Birthday - Pritthiya" />
+                  <div className="editorial-tag">Private Events</div>
+                </div>
+                <div className="editorial-info">
+                  <h3>25th Birthday - Pritthiya</h3>
+                  <span className="editorial-date">15.06.2024</span>
+                  <Link to="/projects" className="editorial-link-btn">
+                    View Details <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </motion.div>
+
+              {/* Project 2: Mayileh */}
+              <motion.div 
+                variants={fadeInUp}
+                whileInView="whileInView"
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="editorial-project-card"
+              >
+                <div className="editorial-image-wrapper">
+                  <img src={mayilehImgEvent} alt="Mayileh - Club Event" />
+                  <div className="editorial-tag">Public Events</div>
+                </div>
+                <div className="editorial-info">
+                  <h3>Mayileh - Club Event</h3>
+                  <span className="editorial-date">28.06.2024</span>
+                  <Link to="/projects" className="editorial-link-btn">
+                    View Details <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </motion.div>
+
+              {/* Project 3: PaintEra */}
+              <motion.div 
+                variants={fadeInUp}
+                whileInView="whileInView"
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="editorial-project-card"
+              >
+                <div className="editorial-image-wrapper">
+                  <img src={painteraImg} alt="PaintEra - Grand Opening" />
+                  <div className="editorial-tag">Corporate Events</div>
+                </div>
+                <div className="editorial-info">
+                  <h3>PaintEra - Grand Opening</h3>
+                  <span className="editorial-date">02.11.2024</span>
+                  <Link to="/projects" className="editorial-link-btn">
+                    View Details <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </motion.div>
+            </div>
+
+            <div className="center-cta mt-8">
+              <Link to="/projects" className="btn-outline-gold">View Portfolio</Link>
+            </div>
+          </div>
         </div>
       </section>
 
