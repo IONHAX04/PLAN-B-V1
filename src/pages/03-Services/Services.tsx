@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import * as LucideIcons from 'lucide-react';
 import { services, servicesIntro } from '../../data/mockData';
@@ -20,17 +20,12 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
   const IconComponent = (LucideIcons as any)[service.icon] || LucideIcons.HelpCircle;
-  const backgroundImage = serviceImages[index % serviceImages.length];
 
   return (
     <section 
       className="service-screen-sticky"
-      style={{ 
-        zIndex: index + 1,
-        backgroundImage: `url(${backgroundImage})`
-      }}
+      style={{ zIndex: index + 1 }}
     >
-      <div className="service-screen-overlay"></div>
       <div className="service-screen-content">
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
@@ -73,6 +68,15 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
 };
 
 const Services = () => {
+  const [currentImg, setCurrentImg] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImg((prev) => (prev + 1) % serviceImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <motion.div 
       initial={{ opacity: 0 }} 
@@ -80,16 +84,32 @@ const Services = () => {
       exit={{ opacity: 0 }}
       className="services-page-v5"
     >
-      {/* Intro - Scrolls away */}
+      {/* Intro - Hero with Carousel */}
       <section className="services-intro-hero">
+        <div className="hero-carousel-bg">
+          <AnimatePresence initial={false}>
+            <motion.img
+              key={currentImg}
+              src={serviceImages[currentImg]}
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ duration: 1.2, ease: [0.6, 0.05, -0.01, 0.9] as any }}
+              className="carousel-img"
+              style={{ position: 'absolute' }}
+            />
+          </AnimatePresence>
+          <div className="hero-overlay"></div>
+        </div>
+
         <div className="container">
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             className="intro-text-center"
           >
-            <div className="decor-script">Our Expertise</div>
+            <div className="decor-script-gold">Our Expertise</div>
             <h1>Bespoke <span>Event Solutions</span></h1>
             <p className="intro-para">{servicesIntro}</p>
             <div className="scroll-indicator-gold">

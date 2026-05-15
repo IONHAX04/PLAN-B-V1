@@ -35,7 +35,7 @@ export const HeroVideo = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
           >
-            Since 2017
+            Since 2024
           </motion.div>
           <motion.h1
             initial={{ opacity: 0 }}

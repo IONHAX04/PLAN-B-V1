@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, CheckCircle2 } from 'lucide-react';
-import { services, projectCategories, siteConfig } from '../../data/mockData';
+import { Send, CheckCircle2, ExternalLink } from 'lucide-react';
+import { services, projectCategories, siteConfig, filmfactoryContent } from '../../data/mockData';
+import { InstagramIcon, FacebookIcon, LinkedinIcon, YoutubeIcon, TiktokIcon, TwitterIcon } from '../../components/SocialIcons';
 import './Contact.css';
 
 const Contact = () => {
@@ -45,9 +46,26 @@ const Contact = () => {
       initial={{ opacity: 0 }} 
       animate={{ opacity: 1 }} 
       exit={{ opacity: 0 }}
-      className="contact-page section-padding"
+      className="contact-page"
     >
-      <div className="container">
+      {/* Announcement Banner */}
+      <div className="contact-announcement-banner">
+        <div className="container">
+          <div className="banner-inner">
+            <span className="banner-text">Interested in joining our creative community?</span>
+            <a 
+              href={filmfactoryContent.links.joinCommunity} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn-join-banner"
+            >
+              Join Now <ExternalLink size={16} />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="container section-padding">
         <div className="contact-layout">
           <div className="contact-info-section">
             <div className="decor-script">Get in Touch</div>
@@ -78,6 +96,33 @@ const Contact = () => {
               <div className="detail-item">
                 <h3>Call Us</h3>
                 <p>{siteConfig.contact.phone}</p>
+              </div>
+            </div>
+
+            <div className="contact-socials-wrapper">
+              <h3>Follow Our Journey</h3>
+              <div className="contact-socials-grid">
+                <a href={siteConfig.contact.socials.instagram} target="_blank" rel="noreferrer" className="contact-social-link">
+                  <InstagramIcon size={20} /> <span>Plan B – The Eventguide</span>
+                </a>
+                <a href={siteConfig.contact.socials.instagramFilmfactory} target="_blank" rel="noreferrer" className="contact-social-link">
+                  <InstagramIcon size={20} /> <span>Plan B – The Filmfactory</span>
+                </a>
+                <a href={siteConfig.contact.socials.facebook} target="_blank" rel="noreferrer" className="contact-social-link">
+                  <FacebookIcon size={20} /> <span>Plan B – The Eventguide</span>
+                </a>
+                <a href={siteConfig.contact.socials.linkedin} target="_blank" rel="noreferrer" className="contact-social-link">
+                  <LinkedinIcon size={20} /> <span>Plan B – The Eventguide</span>
+                </a>
+                <a href={siteConfig.contact.socials.youtube} target="_blank" rel="noreferrer" className="contact-social-link">
+                  <YoutubeIcon size={20} /> <span>Plan B – The Eventguide</span>
+                </a>
+                <a href={siteConfig.contact.socials.tiktok} target="_blank" rel="noreferrer" className="contact-social-link">
+                  <TiktokIcon size={20} /> <span>Plan B – The Eventguide</span>
+                </a>
+                <a href={siteConfig.contact.socials.x} target="_blank" rel="noreferrer" className="contact-social-link">
+                  <TwitterIcon size={20} /> <span>Plan B – The Eventguide</span>
+                </a>
               </div>
             </div>
           </div>

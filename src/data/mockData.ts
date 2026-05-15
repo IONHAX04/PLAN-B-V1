@@ -10,12 +10,13 @@ export const siteConfig = {
     phone: "+41 78 704 76 25",
     address: "Baumschulweg 6, 3252 Worben, Switzerland",
     socials: {
-      instagram: "https://instagram.com/planb_theeventguide",
-      instagramFilmfactory: "https://instagram.com/planb_thefilmfactory",
-      facebook: "https://facebook.com/planbtheeventguide",
-      linkedin: "https://linkedin.com/company/planb-the-eventguide",
-      youtube: "https://youtube.com/@planb_theeventguide",
-      tiktok: "https://tiktok.com/@planb_theeventguide"
+      instagram: "https://www.instagram.com/planb_theeventguide?igsh=MTRxNXNxMGx2czRocg==",
+      instagramFilmfactory: "https://www.instagram.com/planb_thefilmfactory?igsh=MXNnZzNpZ2Q0am96OQ==",
+      facebook: "https://www.facebook.com/share/18dazkuGhW/",
+      linkedin: "https://www.linkedin.com/in/planb-theeventguide?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+      youtube: "https://youtube.com/@planb_theeventguide?si=0eNODYii_Gjs-SyQ",
+      tiktok: "https://www.tiktok.com/@planb_theeventguide?_r=1&_t=ZN-96NEMKcKkJ4",
+      x: "https://x.com/planbeventguide?s=21"
     }
   }
 };

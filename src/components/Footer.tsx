@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import { InstagramIcon, FacebookIcon, LinkedinIcon, YoutubeIcon, TiktokIcon } from './SocialIcons';
+import { InstagramIcon, FacebookIcon, LinkedinIcon, YoutubeIcon, TiktokIcon, TwitterIcon } from './SocialIcons';
 import { siteConfig, navLinks } from '../data/mockData';
 import './Footer.css';
 
@@ -14,12 +14,22 @@ const Footer = () => {
             <span className="logo-b">B</span>
           </Link>
           <p className="footer-tagline">The Eventguide</p>
-          <div className="social-links">
-            <a href={siteConfig.contact.socials.instagram} target="_blank" rel="noreferrer" title="Instagram"><InstagramIcon size={20} /></a>
-            <a href={siteConfig.contact.socials.facebook} target="_blank" rel="noreferrer" title="Facebook"><FacebookIcon size={20} /></a>
-            <a href={siteConfig.contact.socials.linkedin} target="_blank" rel="noreferrer" title="LinkedIn"><LinkedinIcon size={20} /></a>
-            <a href={siteConfig.contact.socials.youtube} target="_blank" rel="noreferrer" title="YouTube"><YoutubeIcon size={20} /></a>
-            <a href={siteConfig.contact.socials.tiktok} target="_blank" rel="noreferrer" title="TikTok"><TiktokIcon size={20} /></a>
+          <div className="footer-social-section">
+            <div className="instagram-accounts">
+              <a href={siteConfig.contact.socials.instagram} target="_blank" rel="noreferrer" className="insta-link">
+                <InstagramIcon size={18} /> <span>Plan B – The Eventguide</span>
+              </a>
+              <a href={siteConfig.contact.socials.instagramFilmfactory} target="_blank" rel="noreferrer" className="insta-link">
+                <InstagramIcon size={18} /> <span>Plan B – The Filmfactory</span>
+              </a>
+            </div>
+            <div className="other-socials">
+              <a href={siteConfig.contact.socials.facebook} target="_blank" rel="noreferrer" title="Facebook"><FacebookIcon size={20} /></a>
+              <a href={siteConfig.contact.socials.linkedin} target="_blank" rel="noreferrer" title="LinkedIn"><LinkedinIcon size={20} /></a>
+              <a href={siteConfig.contact.socials.youtube} target="_blank" rel="noreferrer" title="YouTube"><YoutubeIcon size={20} /></a>
+              <a href={siteConfig.contact.socials.tiktok} target="_blank" rel="noreferrer" title="TikTok"><TiktokIcon size={20} /></a>
+              <a href={siteConfig.contact.socials.x} target="_blank" rel="noreferrer" title="X (Twitter)"><TwitterIcon size={20} /></a>
+            </div>
           </div>
         </div>
 
