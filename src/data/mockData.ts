@@ -921,7 +921,7 @@ export const testimonials = [
     clientName: "MARCO & MANOJA",
     eventDate: "03.05.2025",
     eventType: "WEDDING PARTY",
-    image: "/src/assets/projects/Projects1.jpg",
+    image: manojaMarkoImg,
     quote: "We booked Plan B for our wedding party. They handled the complete organization of the party. A young team full of energy. Everything went perfectly and nothing was missing. The Plan B team is very flexible and took all of our wishes into account during the planning and execution, and they skillfully implemented even our last-minute requests. Our guests were very satisfied. We are happy to recommend Plan B - The Eventguide!"
   },
   {
