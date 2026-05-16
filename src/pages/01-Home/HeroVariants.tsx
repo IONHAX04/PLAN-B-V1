@@ -15,6 +15,8 @@ export const HeroVideo = () => {
           muted 
           loop 
           playsInline 
+          preload="auto"
+          poster={home1}
           className="bg-video"
         >
           <source src={homeVideo} type="video/mp4" />

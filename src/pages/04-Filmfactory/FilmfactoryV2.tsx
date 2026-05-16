@@ -21,6 +21,7 @@ import newsPaperPdf from '../../assets/video/newsPaper.pdf';
 import mithranImg from '../../assets/directors/mithran.jpeg';
 import tamizhImg from '../../assets/directors/tamizh.jpeg';
 import ganeshImg from '../../assets/directors/ganesh-k-babu.jpeg';
+import ffHeroPoster from '../../assets/filmFactory/The-film-factory1.jpg';
 import './Filmfactory.css';
 import './FilmfactoryV2.css';
 
@@ -73,7 +74,15 @@ const FilmfactoryV2 = () => {
       {/* Hero Section - Simplified & Professional */}
       <section className="ff-hero-video-section">
         <div className="video-background">
-          <video autoPlay muted loop playsInline className="bg-video">
+          <video 
+            autoPlay 
+            muted 
+            loop 
+            playsInline 
+            preload="auto"
+            poster={ffHeroPoster}
+            className="bg-video"
+          >
             <source src={firstTakeIntroVideo} type="video/mp4" />
           </video>
           <div className="video-overlay"></div>

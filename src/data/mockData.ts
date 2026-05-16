@@ -32,7 +32,6 @@ import thanuImg from '../assets/aboutTeam/thanu.png';
 // Event Category Images (from OneDrive)
 import corpEvent from '../assets/events/corporate.jpg';
 import privateEvent from '../assets/events/private.jpg';
-import publicEvent from '../assets/events/public.jpg';
 import painteraImg from '../assets/events/paintera.jpg';
 import ayeshaImg from '../assets/events/ayesha.jpg';
 import anojanImg from '../assets/events/anojan.jpg';
@@ -42,6 +41,7 @@ import manojaMarkoImg from '../assets/events/manoja_marko.jpg';
 import jaciImg from '../assets/events/jaci.jpg';
 import avvvImg from '../assets/events/avvv.jpg';
 import mayilehImgEvent from '../assets/events/mayileh.jpg';
+import goatImg from '../assets/events/goat_2.jpg';
 import mervynImg from '../assets/events/mervyn.jpg';
 import monikaImg from '../assets/events/monika.png';
 import premgiImgEvent from '../assets/events/premgi.jpg';
@@ -51,6 +51,8 @@ import kathushanThenukaImg from '../assets/events/kathushan_thenuka.jpg';
 import tharshanMaunikaImg from '../assets/events/tharshan_maunika.jpg';
 import mehendiImg from '../assets/events/mehendi.jpg';
 import vivaahaImg from '../assets/events/vivaaha.jpeg';
+
+
 
 // ─── NAV LINKS ──────────────────────────────────────────────────────────────
 export const navLinks = [
@@ -788,7 +790,7 @@ export const projects = [
     date: "28.09.2024",
     client: "The GOAT",
     description: "The Goat was a showcase of Plan B’s ability to handle high-level complexity. We were responsible for the complete lifecycle of the event—starting with creative flyer design and ending with the final staffing and on-site coordination. Most importantly, we led the Artist Management, providing a personal touch that included everything from airport transfers to local guiding. When we say \"fully organized,\" we mean every single detail is covered.",
-    image: publicEvent,
+    image: goatImg,
     partners: ["Plan B", "GR Events", "Queens Eventlocation", "Tom & Jerry Emcee", "Dream To Creation"]
   },
   {
@@ -905,7 +907,7 @@ export const testimonials = [
     clientName: "GR EVENTS",
     eventDate: "28.09.2024",
     eventType: "CLUB CONCERT",
-    image: publicEvent,
+    image: goatImg,
     quote: "Hey Plan B Team, Wow, what a night! With 700+ guests, it was a massive success, and we seriously couldn't have done it without you guys! We were completely blown away by your planning, creative ideas, and marketing. Any problem that came up, you had a solution ready before we could even finish the sentence. And the way you took care of the artists was amazing. It was so genuine but also super professional. A huge thank you for everything! You're the best!"
   },
   {
@@ -913,7 +915,7 @@ export const testimonials = [
     clientName: "GR EVENTS",
     eventDate: "29.06.2024",
     eventType: "CLUB PARTY",
-    image: "/src/assets/partnerlogo/Partners1.jpg",
+    image: mayilehImgEvent,
     quote: "Dear Plan B Team, We are truly grateful for your support during the preparations for the \"MAYILEH\" event! Your expertise and professionalism made the entire process so much smoother, and we were thrilled with the final result. Thank you for guiding us and designing our flyers. We look forward to working with you again for our upcoming events. This cooperation will surely continue!"
   },
   {
@@ -929,7 +931,7 @@ export const testimonials = [
     clientName: "THILA & PRITTHI",
     eventDate: "23.05.2025",
     eventType: "MEHENDI",
-    image: "/src/assets/projects/Projects2.jpg",
+    image: mehendiImg,
     quote: "Hey, I just wanted to thank you again for your amazing organization at my Mehendi. You put so much effort into making sure my wishes were implemented exactly as I had envisioned and I truly appreciate that. Especially the great setup and the fact that everything was ready right on time as I wanted, it was wonderful. Your outstanding commitment during the Mehendi also stood out to me, it was so kind and absolutely commendable. So keep it up and always stay this amazing."
   },
   {
@@ -937,7 +939,7 @@ export const testimonials = [
     clientName: "JACI & RUBA",
     eventDate: "09.08.2025",
     eventType: "30TH BIRTHDAY",
-    image: "/src/assets/projects/Projects3.jpg",
+    image: jaciImg,
     quote: "Dear Plan B, I can't thank you enough for everything you did. From the beautiful decoration to organizing the bar and taking care of all the little details. The whole process was so easy with you, and for a surprise party, I truly couldn't have wished for a better planner. What I appreciated the most was that you didn't just act as a planner in a professional sense. You were also personally very helpful and supportive. Everything turned out even more perfect than I had imagined, and I'm so grateful for the care you put into making this day so special."
   },
   {
@@ -945,8 +947,8 @@ export const testimonials = [
     clientName: "BABU & GOWRY",
     eventDate: "22.02.2025",
     eventType: "30TH WEDDING ANNIVERSARY",
-    image: "/src/assets/projects/Projects4.jpg",
-    quote: "Deaf Plan B, Plan B planned, organized, and coordinated the event with passion and precision. Every decision was made with care and attention to detail. From welcoming our guests to providing entertainment, everything was perfectly timed and seamlessly executed. Thanks Fam!"
+    image: babuGowryImg,
+    quote: "Dear Plan B, Plan B planned, organized, and coordinated the event with passion and precision. Every decision was made with care and attention to detail. From welcoming our guests to providing entertainment, everything was perfectly timed and seamlessly executed. Thanks Fam!"
   },
   {
     id: 8,
@@ -961,7 +963,7 @@ export const testimonials = [
     clientName: "THASMIJA",
     eventDate: "10.08.2024",
     eventType: "21ST BIRTHDAY",
-    image: "/src/assets/projects/Projects6.jpg",
+    image: thasmijaImg,
     quote: "A big thank you to the Plan B Team for organizing my 21st birthday party! You picked the perfect theme and took care of everything – from the decorations to the food – so I didn't have to worry about a thing. I could just enjoy and celebrate with my loved ones. Thanks Fam, You're amazing!"
   }
 ];
