@@ -25,7 +25,7 @@ import './StickyCardsFeatures.css';
 const logoModules = import.meta.glob('../../assets/partnerlogo/*.{png,jpg,jpeg,webp}', { eager: true });
 const partnerImages = Object.values(logoModules).map((mod: any) => mod.default || mod).slice(0, 16); // Show first 16 on home
 import ffHero from '../../assets/filmFactory/The-film-factory1.jpg';
-import goat2 from '../../assets/events/goat_2.jpg';
+
 import penImage from '../../assets/home/pen.png';
 import ffBrandedLogo from '../../assets/home/plan-b-film-factory.png';
 
@@ -215,7 +215,7 @@ const Home = () => {
                 <img src={projects.find(p => p.id === 13)?.image as string} alt="The GOAT Tour" />
               </div>
               <div className="collage-img">
-                <img src={goat2} alt="The GOAT Highlights" />
+                <img src={projects.find(p => p.id === 11)?.image as string} alt="Mayileh Club Event" />
               </div>
               <div className="collage-img">
                 <img src={projects.find(p => p.id === 12)?.image as string} alt="Premgi Concert" />
