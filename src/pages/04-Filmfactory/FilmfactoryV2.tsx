@@ -22,7 +22,6 @@ import mithranImg from '../../assets/directors/mithran.jpeg';
 import tamizhImg from '../../assets/directors/tamizh.jpeg';
 import ganeshImg from '../../assets/directors/ganesh-k-babu.jpeg';
 import ffHeroPoster from '../../assets/filmFactory/The-film-factory1.jpg';
-import './Filmfactory.css';
 import './FilmfactoryV2.css';
 
 // Import all images from the filmFactory folder for the gallery
@@ -33,17 +32,21 @@ const FilmfactoryV2 = () => {
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
 
   useEffect(() => {
-    const lenis = new Lenis();
-    let animationFrameId = 0;
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      smoothWheel: true,
+    });
 
     function raf(time: number) {
       lenis.raf(time);
-      animationFrameId = requestAnimationFrame(raf);
+      requestAnimationFrame(raf);
     }
 
-    animationFrameId = requestAnimationFrame(raf);
+    requestAnimationFrame(raf);
+
     return () => {
-      cancelAnimationFrame(animationFrameId);
       lenis.destroy();
     };
   }, []);
@@ -80,7 +83,6 @@ const FilmfactoryV2 = () => {
             loop 
             playsInline 
             preload="auto"
-            poster={ffHeroPoster}
             className="bg-video"
           >
             <source src={firstTakeIntroVideo} type="video/mp4" />
@@ -92,7 +94,7 @@ const FilmfactoryV2 = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             className="ff-hero-text-box"
           >
             <motion.h1
@@ -188,6 +190,7 @@ const FilmfactoryV2 = () => {
               <div className="ff-history-visual">
                 <div className="poster-stack">
                   <img src={poster2025} alt="2025 Poster" className="poster-main" />
+                  <img src={ffHeroPoster} alt="Stack Accent" className="poster-accent" />
                 </div>
               </div>
             </div>
@@ -257,6 +260,7 @@ const FilmfactoryV2 = () => {
               <div className="ff-history-visual">
                 <div className="poster-stack">
                   <img src={poster2026} alt="2026 Poster" className="poster-main" />
+                  <img src={galleryImages[0] as string} alt="Stack Accent" className="poster-accent" />
                 </div>
               </div>
             </div>
@@ -334,7 +338,7 @@ const FilmfactoryV2 = () => {
               <div className="newspaper-visual">
                 <div className="newspaper-mockup">
                   <div className="mock-page front">
-                    <img src={poster2025} alt="Newspaper Preview" />
+                    <img src={ffHeroPoster} alt="Newspaper Preview" />
                     <div className="mock-overlay"></div>
                     <div className="mock-header">THE CHRONICLE</div>
                   </div>

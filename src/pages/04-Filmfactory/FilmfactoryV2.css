@@ -1,142 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
-.v2-smooth-main {
+.v2-page {
+  background: var(--bg-main);
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
+  color: var(--text-main);
   position: relative;
-  height: 700vh;
-  background: #ffffff;
 }
 
-.v2-smooth-sticky {
-  position: sticky;
-  top: 0;
+.ff-real-content {
+  position: relative;
+  z-index: 20;
+  background: var(--bg-main);
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  background: #ffffff;
-}
-
-.v2-text-stack {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  z-index: 5;
-}
-
-.v2-text-container {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.v2-text-container p {
-  margin: 0;
-  color: #111111;
-  font-size: clamp(40px, 6.6vw, 100px);
-  line-height: 1;
-  font-weight: 500;
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-}
-
-.v2-carousel-container {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  perspective: 1200px;
-  z-index: 2;
-}
-
-.v2-carousel {
-  position: absolute;
-  width: calc(130vh + 10vw);
-  height: calc(130vh + 10vw);
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  transform-style: preserve-3d;
-  transform: rotate(45deg) scale(0.5);
-  opacity: 0;
-}
-
-.v2-carousel > div {
-  position: absolute;
-  width: 60vh;
-  height: 60vh;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  border-radius: 22px;
-  overflow: hidden;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
-  transform-origin: center center;
-  transform-style: preserve-3d;
-}
-
-.v2-carousel > div img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.v2-carousel > div:first-of-type {
-  transform: perspective(1000px) rotateX(-60deg);
-  bottom: auto;
-}
-
-.v2-carousel > div:nth-of-type(2) {
-  transform: perspective(1000px) rotateY(-60deg);
-  left: auto;
-}
-
-.v2-carousel > div:nth-of-type(3) {
-  transform: perspective(1000px) rotateX(60deg);
-  top: auto;
-}
-
-.v2-carousel > div:nth-of-type(4) {
-  transform: perspective(1000px) rotateY(60deg);
-  right: auto;
-}
-
-@media (max-width: 900px) {
-  .v2-smooth-main {
-    height: 620vh;
-  }
-
-  .v2-text-container p {
-    font-size: clamp(28px, 8vw, 48px);
-  }
-
-  .v2-carousel > div {
-    width: 35vh;
-    height: 35vh;
-  }
 }
 
 /* Hero Video Section */
 .ff-hero-video-section {
   position: relative;
-  height: 85vh; /* Reduced height for mobile feel */
+  height: 85vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background: #000;
 }
 
-@media (max-width: 768px) {
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+@media (max-width: 1024px) {
   .ff-hero-video-section {
-    height: 70vh; /* Even shorter for small mobile like S8 */
+    height: 75vh;
   }
 }
 
@@ -191,6 +107,14 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 700;
+}
+
+.decor-script-gold {
+  font-family: var(--font-decor);
+  font-size: 3.5rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
 /* Intro Section - The "Next Page" Content */
@@ -362,10 +286,43 @@
   opacity: 0.6;
 }
 
+.poster-stack {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  aspect-ratio: 1/1.4;
+}
+
 .poster-main {
   width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  position: relative;
+  z-index: 2;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.poster-accent {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  opacity: 0.4;
+  z-index: 1;
+  filter: grayscale(0.5) blur(2px);
+  transform: rotate(-3deg);
+  transition: all 0.5s ease;
+}
+
+.poster-stack:hover .poster-accent {
+  transform: rotate(-6deg) translate(-10px, -5px);
+  opacity: 0.6;
 }
 
 /* Winners Showcase */
@@ -692,22 +649,21 @@
 @media (max-width: 1024px) {
   .newspaper-premium-card {
     grid-template-columns: 1fr;
+    border-radius: 20px;
   }
   .newspaper-visual {
-    height: 400px;
-    padding: 3rem;
+    height: 350px;
+    padding: 2rem;
   }
   .newspaper-content {
-    padding: 3rem;
+    padding: 3rem 2rem;
     text-align: center;
   }
   .news-badge, .news-features {
     margin-left: auto;
     margin-right: auto;
   }
-}
-
-@media (max-width: 1024px) {
+  
   .ff-intro-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -732,7 +688,7 @@
   }
   .jury-info-v2 {
     padding: 2rem;
-    text-align: center;
+    text-align: left;
   }
 }
 
@@ -1026,8 +982,8 @@
 
 .ff-collage-masonry {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-auto-rows: 250px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: 300px;
   grid-auto-flow: dense;
   gap: 1.5rem;
   margin-top: 3rem;
@@ -1078,16 +1034,16 @@
   .ff-festival-history,
   .ff-newspaper-section,
   .ff-community-box-section {
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
-    padding-top: 2rem !important;
-    padding-bottom: 2rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
   }
 
   .ff-collage-masonry {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    grid-auto-rows: 150px;
-    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 200px;
+    gap: 1rem;
   }
 
   .ff-hero-video-section {
