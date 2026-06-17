@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Send, CheckCircle2, ExternalLink } from 'lucide-react';
-import { services, projectCategories, siteConfig, filmfactoryContent } from '../../data/mockData';
+import { services, projectCategories, siteConfig } from '../../data/mockData';
 import { InstagramIcon, FacebookIcon, LinkedinIcon, YoutubeIcon, TiktokIcon, TwitterIcon } from '../../components/SocialIcons';
 import './Contact.css';
 
