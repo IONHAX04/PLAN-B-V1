@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   Trophy, 
   Clapperboard, 
@@ -369,9 +370,9 @@ const FilmfactoryV2 = () => {
               </div>
 
               <div className="cta-group">
-                <a href={filmfactoryContent.links.joinCommunity} target="_blank" rel="noopener noreferrer" className="btn btn-gold">
-                  Join Community <ExternalLink size={18} />
-                </a>
+                <Link to="/register" className="btn btn-gold">
+                  Register Now <ExternalLink size={18} />
+                </Link>
               </div>
             </div>
           </div>

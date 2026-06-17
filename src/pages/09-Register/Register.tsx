@@ -2,79 +2,19 @@ import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Upload, CheckCircle2, AlertTriangle, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import myFrameMyStoryLogo from '../../assets/filmFactory/myFrameMyStory.png';
 import './Register.css';
-
-const expertiseOptions = [
-  'Director',
-  'Writer',
-  'Actor/Actress',
-  'Videography',
-  'Photography',
-  'Editor',
-  'Designer',
-  'Soundmixing',
-  'Music Composer',
-  'Singer',
-  'Dancer/Choreographer',
-  'Make-Up Artist',
-  'Costume Designer'
-];
-
-const countries = [
-  'Switzerland',
-  'Germany',
-  'Austria',
-  'Liechtenstein',
-  'France',
-  'Italy',
-  'United Kingdom',
-  'United States',
-  'Spain',
-  'Netherlands',
-  'Belgium',
-  'Canada',
-  'Australia',
-  'Other'
-];
-
-// Generate birth date lists
-const days = Array.from({ length: 31 }, (_, i) => String(i + 1));
-const months = [
-  { name: 'January', value: '1' },
-  { name: 'February', value: '2' },
-  { name: 'March', value: '3' },
-  { name: 'April', value: '4' },
-  { name: 'May', value: '5' },
-  { name: 'June', value: '6' },
-  { name: 'July', value: '7' },
-  { name: 'August', value: '8' },
-  { name: 'September', value: '9' },
-  { name: 'October', value: '10' },
-  { name: 'November', value: '11' },
-  { name: 'December', value: '12' }
-];
-const currentYear = new Date().getFullYear();
-const years = Array.from({ length: currentYear - 1920 + 1 }, (_, i) => String(currentYear - i));
 
 const Register = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    birthDay: '',
-    birthMonth: '',
-    birthYear: '',
-    gender: '',
     streetAddress: '',
     city: '',
     postalCode: '',
-    country: '',
+    dob: '', // Date of Birth YYYY-MM-DD
     email: '',
-    countryCode: '',
-    phoneNumber: '',
+    phoneNumber: '', // Masked format (000) 000-0000
     instagramId: '',
-    expertise: [] as string[],
-    otherExpertise: '',
     agreeDataProcessing: false
   });
 
@@ -87,27 +27,40 @@ const Register = () => {
   
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value, type } = e.target;
+  // Auto-format phone number to (000) 000-0000 as the user types
+  const formatPhone = (value: string) => {
+    const cleaned = value.replace(/\D/g, '');
+    const match = cleaned.match(/^(\d{0,3})(\d{0,3})(\d{0,4})$/);
+    if (!match) return value;
+    
+    let formatted = '';
+    if (match[1]) {
+      formatted += `(${match[1]}`;
+      if (match[1].length === 3) {
+        formatted += ') ';
+      }
+    }
+    if (match[2]) {
+      formatted += match[2];
+      if (match[2].length === 3) {
+        formatted += '-';
+      }
+    }
+    if (match[3]) {
+      formatted += match[3];
+    }
+    return formatted;
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, type, checked } = e.target;
     if (type === 'checkbox') {
-      const checked = (e.target as HTMLInputElement).checked;
       setFormData(prev => ({ ...prev, [name]: checked }));
+    } else if (name === 'phoneNumber') {
+      setFormData(prev => ({ ...prev, phoneNumber: formatPhone(value) }));
     } else {
       setFormData(prev => ({ ...prev, [name]: value }));
     }
-  };
-
-  const handleExpertiseChange = (option: string) => {
-    setFormData(prev => {
-      const current = [...prev.expertise];
-      const index = current.indexOf(option);
-      if (index > -1) {
-        current.splice(index, 1);
-      } else {
-        current.push(option);
-      }
-      return { ...prev, expertise: current };
-    });
   };
 
   const handleDrag = (e: React.DragEvent) => {
@@ -142,10 +95,10 @@ const Register = () => {
       setPhotoFile(null);
       return;
     }
-    const allowedExtensions = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'txt', 'rtf', 'html', 'zip', 'mp3', 'wma', 'mpg', 'flv', 'avi', 'jpg', 'jpeg', 'png', 'gif'];
+    const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'pdf'];
     const ext = file.name.split('.').pop()?.toLowerCase() || '';
     if (!allowedExtensions.includes(ext)) {
-      setFileError("File type not supported. Allowed formats: images, pdf, zip, word/excel documents.");
+      setFileError("Please upload a valid image (JPG, PNG, GIF) or PDF.");
       setPhotoFile(null);
       return;
     }
@@ -162,25 +115,33 @@ const Register = () => {
     setErrorMsg('');
     setFileError('');
 
-    // Field level checks
+    // Validations
     if (!formData.firstName.trim() || !formData.lastName.trim()) {
       setErrorMsg('First name and Last name are required.');
       return;
     }
-    if (!formData.birthDay || !formData.birthMonth || !formData.birthYear) {
-      setErrorMsg('Please fill in your complete Birth Date.');
+    if (!formData.streetAddress.trim() || !formData.city.trim() || !formData.postalCode.trim()) {
+      setErrorMsg('Please fill in your complete Address.');
       return;
     }
-    if (!formData.streetAddress.trim() || !formData.city.trim() || !formData.postalCode.trim() || !formData.country) {
-      setErrorMsg('Please fill in all address details.');
+    if (!formData.dob) {
+      setErrorMsg('Please select your Date of Birth.');
       return;
     }
-    if (!formData.email.trim() || !formData.phoneNumber.trim() || !formData.countryCode.trim()) {
-      setErrorMsg('Email and phone numbers are required.');
+    if (!formData.email.trim()) {
+      setErrorMsg('Email address is required.');
       return;
     }
-    if (formData.expertise.length === 0 && !formData.otherExpertise.trim()) {
-      setErrorMsg('Please select at least one Area of Expertise.');
+    
+    // Verify phone format: (000) 000-0000
+    const phoneRegex = /^\(\d{3}\)\s\d{3}-\d{4}$/;
+    if (!phoneRegex.test(formData.phoneNumber)) {
+      setErrorMsg('Please enter a valid phone number in format: (000) 000-0000.');
+      return;
+    }
+
+    if (!formData.instagramId.trim()) {
+      setErrorMsg('Instagram ID is required.');
       return;
     }
     if (!photoFile) {
@@ -188,7 +149,7 @@ const Register = () => {
       return;
     }
     if (!formData.agreeDataProcessing) {
-      setErrorMsg('You must consent to data processing to join the community.');
+      setErrorMsg('You must agree to the data processing terms.');
       return;
     }
 
@@ -198,25 +159,24 @@ const Register = () => {
       const data = new FormData();
       data.append('firstName', formData.firstName.trim());
       data.append('lastName', formData.lastName.trim());
-      data.append('birthDay', formData.birthDay);
-      data.append('birthMonth', formData.birthMonth);
-      data.append('birthYear', formData.birthYear);
-      data.append('gender', formData.gender);
       data.append('streetAddress', formData.streetAddress.trim());
       data.append('city', formData.city.trim());
       data.append('postalCode', formData.postalCode.trim());
-      data.append('country', formData.country);
+      
+      // Convert dob from YYYY-MM-DD to DD-MM-YYYY
+      const [year, month, day] = formData.dob.split('-');
+      const formattedDob = `${day}-${month}-${year}`;
+      data.append('dob', formattedDob);
+      
       data.append('email', formData.email.trim());
-      data.append('countryCode', formData.countryCode.trim());
       data.append('phoneNumber', formData.phoneNumber.trim());
       data.append('instagramId', formData.instagramId.trim());
-      data.append('expertise', JSON.stringify(formData.expertise));
-      data.append('otherExpertise', formData.otherExpertise.trim());
       data.append('photo', photoFile);
 
       const API_BASE_URL = import.meta.env.DEV 
         ? (import.meta.env.VITE_API_URL || 'http://127.0.0.1:5001') 
         : (import.meta.env.VITE_API_URL || '');
+        
       const response = await fetch(`${API_BASE_URL}/api/register`, {
         method: 'POST',
         body: data
@@ -244,8 +204,8 @@ const Register = () => {
     >
       <div className="container section-padding">
         <div className="back-nav">
-          <Link to="/contact" className="back-link">
-            <ArrowLeft size={16} /> Back to Contact
+          <Link to="/filmfactory" className="back-link">
+            <ArrowLeft size={16} /> Back to Filmfactory
           </Link>
         </div>
 
@@ -257,25 +217,25 @@ const Register = () => {
               animate={{ scale: 1, opacity: 1 }}
             >
               <CheckCircle2 size={72} className="text-gold animate-pulse" />
-              <h2>Community Registration Submitted</h2>
+              <h2>Registration Submitted Successfully</h2>
               <p className="success-subtitle">
-                Thank you for applying to join <strong>"My Frame - My Story"</strong>! We've received your details and photo.
+                Thank you for registering for the <strong>"First Take"</strong> Tamil Short Film Festival Switzerland!
               </p>
               <div className="success-info">
-                <p>A confirmation email request has been sent, and our curation team will review your application soon.</p>
+                <p>We have received your details and photo. Our festival curation team will review your application soon.</p>
               </div>
               <div className="success-actions">
                 <Link to="/" className="btn btn-gold">Back to Homepage</Link>
-                <Link to="/contact" className="btn btn-outline">Go to Contact</Link>
+                <Link to="/filmfactory" className="btn btn-outline">Back to Filmfactory</Link>
               </div>
             </motion.div>
           ) : (
             <>
-              {/* Header section matching PDF */}
+              {/* Header section matching First Take */}
               <div className="register-header">
-                <img src={myFrameMyStoryLogo} alt="My Frame My Story Logo" className="register-logo" />
-                <h1>Join Community</h1>
-                <p className="register-subtitle">Fill out the form carefully for registration</p>
+                <div className="decor-script-gold">First Take</div>
+                <h1>First Take</h1>
+                <p className="register-subtitle">Tamil Short Film Festival Switzerland</p>
               </div>
 
               {errorMsg && (
@@ -288,7 +248,7 @@ const Register = () => {
               <form className="register-form" onSubmit={handleSubmit}>
                 {/* Full Name Section */}
                 <div className="form-section-block">
-                  <h3 className="section-title">Name <span className="required-asterisk">*</span></h3>
+                  <h3 className="section-title">Full Name <span className="required-asterisk">*</span></h3>
                   <div className="form-row">
                     <div className="form-group">
                       <input 
@@ -312,58 +272,6 @@ const Register = () => {
                       />
                       <span className="field-sublabel">Last Name</span>
                     </div>
-                  </div>
-                </div>
-
-                {/* Birth Date and Gender Section */}
-                <div className="form-row">
-                  <div className="form-section-block">
-                    <h3 className="section-title">Birth Date <span className="required-asterisk">*</span></h3>
-                    <div className="birthdate-selects">
-                      <select 
-                        name="birthDay" 
-                        value={formData.birthDay} 
-                        onChange={handleInputChange}
-                        required
-                      >
-                        <option value="">Day</option>
-                        {days.map(d => <option key={d} value={d}>{d}</option>)}
-                      </select>
-
-                      <select 
-                        name="birthMonth" 
-                        value={formData.birthMonth} 
-                        onChange={handleInputChange}
-                        required
-                      >
-                        <option value="">Month</option>
-                        {months.map(m => <option key={m.value} value={m.value}>{m.name}</option>)}
-                      </select>
-
-                      <select 
-                        name="birthYear" 
-                        value={formData.birthYear} 
-                        onChange={handleInputChange}
-                        required
-                      >
-                        <option value="">Year</option>
-                        {years.map(y => <option key={y} value={y}>{y}</option>)}
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="form-section-block">
-                    <h3 className="section-title">Gender</h3>
-                    <select 
-                      name="gender" 
-                      value={formData.gender} 
-                      onChange={handleInputChange}
-                    >
-                      <option value="">Please Select</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                      <option value="N/A">N/A</option>
-                    </select>
                   </div>
                 </div>
 
@@ -405,24 +313,27 @@ const Register = () => {
                       <span className="field-sublabel">Postal / Zip Code</span>
                     </div>
                   </div>
-                  <div className="form-group margin-top-sm">
-                    <select 
-                      name="country" 
-                      value={formData.country} 
+                </div>
+
+                {/* Date of Birth */}
+                <div className="form-section-block">
+                  <h3 className="section-title">Date of Birth <span className="required-asterisk">*</span></h3>
+                  <div className="form-group">
+                    <input 
+                      type="date" 
+                      name="dob" 
+                      value={formData.dob} 
                       onChange={handleInputChange}
                       required
-                    >
-                      <option value="">Please Select Country</option>
-                      {countries.map(c => <option key={c} value={c}>{c}</option>)}
-                    </select>
-                    <span className="field-sublabel">Country</span>
+                    />
+                    <span className="field-sublabel">DD-MM-YYYY Date</span>
                   </div>
                 </div>
 
-                {/* Email and Mobile Phone */}
+                {/* Email and Phone */}
                 <div className="form-row">
                   <div className="form-section-block">
-                    <h3 className="section-title">E-Mail <span className="required-asterisk">*</span></h3>
+                    <h3 className="section-title">Email Address <span className="required-asterisk">*</span></h3>
                     <input 
                       type="email" 
                       name="email" 
@@ -435,97 +346,37 @@ const Register = () => {
                   </div>
 
                   <div className="form-section-block">
-                    <h3 className="section-title">Mobile Number <span className="required-asterisk">*</span></h3>
-                    <div className="phone-row">
-                      <input 
-                        type="text" 
-                        name="countryCode" 
-                        value={formData.countryCode}
-                        onChange={handleInputChange} 
-                        placeholder="+41" 
-                        className="phone-code"
-                        required 
-                      />
-                      <input 
-                        type="tel" 
-                        name="phoneNumber" 
-                        value={formData.phoneNumber}
-                        onChange={handleInputChange} 
-                        placeholder="78 000 00 00" 
-                        className="phone-num"
-                        required 
-                      />
-                    </div>
-                    <div className="phone-labels">
-                      <span className="field-sublabel font-mono">Country Code</span>
-                      <span className="field-sublabel font-mono">Phone Number</span>
-                    </div>
+                    <h3 className="section-title">Phone Number <span className="required-asterisk">*</span></h3>
+                    <input 
+                      type="text" 
+                      name="phoneNumber" 
+                      value={formData.phoneNumber}
+                      onChange={handleInputChange} 
+                      placeholder="(000) 000-0000" 
+                      maxLength={14}
+                      required 
+                    />
+                    <span className="field-sublabel">Please enter a valid phone number. Format: (000) 000-0000.</span>
                   </div>
                 </div>
 
                 {/* Instagram ID */}
                 <div className="form-section-block">
-                  <h3 className="section-title">Instagram ID</h3>
+                  <h3 className="section-title">Instagram ID <span className="required-asterisk">*</span></h3>
                   <input 
                     type="text" 
                     name="instagramId" 
                     value={formData.instagramId}
                     onChange={handleInputChange} 
                     placeholder="@username" 
+                    required
                   />
                   <span className="field-sublabel">@exampl_</span>
                 </div>
 
-                {/* Area of Expertise */}
-                <div className="form-section-block">
-                  <h3 className="section-title">Area(s) of Expertise <span className="required-asterisk">*</span></h3>
-                  <div className="expertise-grid">
-                    {expertiseOptions.map(option => (
-                      <label key={option} className="checkbox-item">
-                        <input 
-                          type="checkbox" 
-                          checked={formData.expertise.includes(option)}
-                          onChange={() => handleExpertiseChange(option)} 
-                        />
-                        <span className="checkmark"></span>
-                        <span className="label-text">{option}</span>
-                      </label>
-                    ))}
-                  </div>
-                  <div className="expertise-other-wrapper">
-                    <label className="checkbox-item">
-                      <input 
-                        type="checkbox"
-                        checked={!!formData.otherExpertise || formData.expertise.includes('Other')}
-                        onChange={() => {
-                          if (formData.expertise.includes('Other')) {
-                            handleExpertiseChange('Other');
-                            setFormData(prev => ({ ...prev, otherExpertise: '' }));
-                          } else {
-                            handleExpertiseChange('Other');
-                          }
-                        }}
-                      />
-                      <span className="checkmark"></span>
-                      <span className="label-text">Other</span>
-                    </label>
-                    {(formData.expertise.includes('Other') || !!formData.otherExpertise) && (
-                      <input 
-                        type="text"
-                        name="otherExpertise"
-                        value={formData.otherExpertise}
-                        onChange={handleInputChange}
-                        placeholder="Please type another option here"
-                        className="other-expertise-input animate-fade-in"
-                        required
-                      />
-                    )}
-                  </div>
-                </div>
-
                 {/* Photo Upload Section */}
                 <div className="form-section-block">
-                  <h3 className="section-title">Upload a Photo of yourself <span className="required-asterisk">*</span></h3>
+                  <h3 className="section-title">Upload Photo <span className="required-asterisk">*</span></h3>
                   <div 
                     className={`upload-zone ${dragActive ? 'active' : ''} ${photoFile ? 'has-file' : ''} ${fileError ? 'error' : ''}`}
                     onDragEnter={handleDrag}
@@ -556,6 +407,7 @@ const Register = () => {
                       </div>
                     )}
                   </div>
+                  <span className="upload-tip-text">The picture will be used for posters & flyers</span>
                   {fileError && <span className="field-error-text">{fileError}</span>}
                 </div>
 
@@ -572,7 +424,7 @@ const Register = () => {
                     />
                     <span className="checkmark"></span>
                     <span className="label-text consent-text">
-                      I agree that my personal data may be processed as part of the “My Frame – my Story” project.
+                      I agree that my personal data may be processed as part of the “First Take” short film festival project.
                     </span>
                   </label>
                 </div>
@@ -584,7 +436,7 @@ const Register = () => {
                     className="btn btn-gold btn-full btn-submit"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? 'Processing Entry...' : 'Enter the Community "My Frame - My Story"'}
+                    {isSubmitting ? 'Registering...' : 'Register'}
                   </button>
                 </div>
               </form>

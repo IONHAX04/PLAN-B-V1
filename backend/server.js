@@ -104,26 +104,18 @@ app.post('/api/register', upload.single('photo'), async (req, res) => {
     const {
       firstName,
       lastName,
-      birthDay,
-      birthMonth,
-      birthYear,
-      gender,
       streetAddress,
       city,
       postalCode,
-      country,
+      dob,
       email,
-      countryCode,
       phoneNumber,
-      instagramId,
-      expertise,
-      otherExpertise
+      instagramId
     } = req.body;
 
     // 1. Validate required inputs
-    if (!firstName || !lastName || !birthDay || !birthMonth || !birthYear || 
-        !streetAddress || !city || !postalCode || !country || 
-        !email || !countryCode || !phoneNumber) {
+    if (!firstName || !lastName || !streetAddress || !city || !postalCode || 
+        !dob || !email || !phoneNumber || !instagramId) {
       
       if (file) cleanupFile(file.path);
       return res.status(400).json({ error: 'Required text inputs are missing.' });
@@ -133,22 +125,6 @@ app.post('/api/register', upload.single('photo'), async (req, res) => {
       return res.status(400).json({ error: 'Photo upload is required.' });
     }
 
-    // Parse expertise
-    let parsedExpertise = [];
-    try {
-      if (expertise) {
-        parsedExpertise = JSON.parse(expertise);
-      }
-    } catch (e) {
-      parsedExpertise = [expertise];
-    }
-
-    // Clean up "Other" representation
-    const expertiseString = parsedExpertise.filter(item => item !== 'Other').join(', ');
-    const finalExpertise = otherExpertise 
-      ? (expertiseString ? `${expertiseString}, Other (${otherExpertise})` : `Other (${otherExpertise})`)
-      : expertiseString;
-
     // 2. Configure mail details
     const emailTo = process.env.EMAIL_TO || 'info@planb-theeventguide.ch';
     const smtpHost = process.env.SMTP_HOST;
@@ -156,11 +132,11 @@ app.post('/api/register', upload.single('photo'), async (req, res) => {
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
 
-    const subject = `New Community Application: ${firstName} ${lastName}`;
+    const subject = `First Take Festival Application: ${firstName} ${lastName}`;
     const htmlBody = `
       <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; border: 1px solid #c5a022; padding: 20px; border-radius: 8px;">
-        <h2 style="color: #c5a022; border-bottom: 2px solid #c5a022; padding-bottom: 10px;">Community Entry Application</h2>
-        <p>A new applicant has submitted their registration for the <strong>"My Frame - My Story"</strong> community.</p>
+        <h2 style="color: #c5a022; border-bottom: 2px solid #c5a022; padding-bottom: 10px;">First Take Festival Entry</h2>
+        <p>A new applicant has registered for the <strong>"First Take"</strong> Tamil Short Film Festival Switzerland.</p>
         
         <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
           <tr>
@@ -168,37 +144,29 @@ app.post('/api/register', upload.single('photo'), async (req, res) => {
             <td style="padding: 8px; border-bottom: 1px solid #eee;">${firstName} ${lastName}</td>
           </tr>
           <tr>
-            <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Birth Date</td>
-            <td style="padding: 8px; border-bottom: 1px solid #eee;">${birthDay}/${birthMonth}/${birthYear}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Gender</td>
-            <td style="padding: 8px; border-bottom: 1px solid #eee;">${gender || 'N/A'}</td>
+            <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Date of Birth</td>
+            <td style="padding: 8px; border-bottom: 1px solid #eee;">${dob}</td>
           </tr>
           <tr>
             <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Address</td>
-            <td style="padding: 8px; border-bottom: 1px solid #eee;">${streetAddress}, ${postalCode} ${city}, ${country}</td>
+            <td style="padding: 8px; border-bottom: 1px solid #eee;">${streetAddress}, ${postalCode} ${city}</td>
           </tr>
           <tr>
-            <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">E-Mail</td>
+            <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Email Address</td>
             <td style="padding: 8px; border-bottom: 1px solid #eee;"><a href="mailto:${email}">${email}</a></td>
           </tr>
           <tr>
-            <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Mobile Number</td>
-            <td style="padding: 8px; border-bottom: 1px solid #eee;">${countryCode} ${phoneNumber}</td>
+            <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Phone Number</td>
+            <td style="padding: 8px; border-bottom: 1px solid #eee;">${phoneNumber}</td>
           </tr>
           <tr>
             <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Instagram ID</td>
             <td style="padding: 8px; border-bottom: 1px solid #eee;">${instagramId ? `<a href="https://instagram.com/${instagramId.replace('@', '')}">${instagramId}</a>` : 'N/A'}</td>
           </tr>
-          <tr>
-            <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Area(s) of Expertise</td>
-            <td style="padding: 8px; border-bottom: 1px solid #eee; color: #c5a022; font-weight: bold;">${finalExpertise || 'None Selected'}</td>
-          </tr>
         </table>
         
         <p style="margin-top: 25px; font-size: 0.85em; color: #888; border-top: 1px solid #eee; padding-top: 10px;">
-          This email contains the photo submitted by the applicant as an attachment.
+          This email contains the photo submitted by the applicant as an attachment. The picture will be used for posters and flyers.
         </p>
       </div>
     `;
@@ -214,7 +182,7 @@ app.post('/api/register', upload.single('photo'), async (req, res) => {
       console.warn('Printing registration details to local console instead:');
       console.warn(`TO: ${emailTo}`);
       console.warn(`SUBJECT: ${subject}`);
-      console.warn(`DATA: Name: ${firstName} ${lastName}, Email: ${email}, Phone: ${countryCode} ${phoneNumber}, Expertise: ${finalExpertise}`);
+      console.warn(`DATA: Name: ${firstName} ${lastName}, Email: ${email}, Phone: ${phoneNumber}, Dob: ${dob}`);
       console.warn(`ATTACHED FILE TEMP PATH: ${file.path}`);
       console.warn('--------------------------------------------------');
       
@@ -240,7 +208,7 @@ app.post('/api/register', upload.single('photo'), async (req, res) => {
 
     // Send the email
     await transporter.sendMail({
-      from: `"Plan B Community Registration" <${smtpUser}>`,
+      from: `"First Take Festival Registration" <${smtpUser}>`,
       to: emailTo,
       subject: subject,
       html: htmlBody,
@@ -257,13 +225,13 @@ app.post('/api/register', upload.single('photo'), async (req, res) => {
     // Clean up uploaded file
     cleanupFile(file.path);
 
-    res.status(200).json({ success: true, message: 'Community registration submitted successfully.' });
+    res.status(200).json({ success: true, message: 'First Take registration submitted successfully.' });
 
   } catch (error) {
     // Make sure we clean up the file in case of error
     if (file) cleanupFile(file.path);
 
-    console.error('Error handling community application submit:', error);
+    console.error('Error handling First Take application submit:', error);
     
     // Send generic client response, prevent leaking internal stack trace
     res.status(500).json({ error: 'An internal error occurred while processing registration.' });
