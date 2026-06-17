@@ -94,6 +94,7 @@ const Navbar = () => {
         </nav>
 
         <div className="nav-actions">
+          <Link to="/register" className="btn-register">Register Now</Link>
           <Link to="/contact" className="btn-inquire">Inquire Now</Link>
           
           {/* Mobile Toggle */}
@@ -138,6 +139,10 @@ const Navbar = () => {
                     )}
                   </motion.div>
                 ))}
+                <motion.div variants={itemVariants} className="mobile-actions-wrapper">
+                  <Link to="/register" className="btn-register font-sans">Register Now</Link>
+                  <Link to="/contact" className="btn-inquire font-sans">Inquire Now</Link>
+                </motion.div>
               </nav>
 
               <motion.div className="mobile-menu-footer" variants={itemVariants}>

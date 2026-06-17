@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Send, CheckCircle2, ExternalLink } from 'lucide-react';
 import { services, projectCategories, siteConfig, filmfactoryContent } from '../../data/mockData';
 import { InstagramIcon, FacebookIcon, LinkedinIcon, YoutubeIcon, TiktokIcon, TwitterIcon } from '../../components/SocialIcons';
@@ -53,14 +54,12 @@ const Contact = () => {
         <div className="container">
           <div className="banner-inner">
             <span className="banner-text">Interested in joining our creative community?</span>
-            <a 
-              href={filmfactoryContent.links.joinCommunity} 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <Link 
+              to="/register" 
               className="btn-join-banner"
             >
               Join Now <ExternalLink size={16} />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -141,6 +140,15 @@ const Contact = () => {
               </motion.div>
             ) : (
               <form className="contact-form" onSubmit={handleSubmit}>
+                <div className="form-info-card">
+                  <p>
+                    Looking to join our creative community <strong>"My Frame - My Story"</strong>?
+                  </p>
+                  <Link to="/register" className="btn-register-link">
+                    Register as a Creator <ExternalLink size={14} />
+                  </Link>
+                </div>
+
                 <div className="form-group">
                   <label>Full Name</label>
                   <input 

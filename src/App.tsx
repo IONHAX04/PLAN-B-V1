@@ -14,6 +14,7 @@ import Partner from './pages/05-Partner/Partner';
 import Projects from './pages/06-Projects/Projects';
 import Contact from './pages/07-Contact/Contact';
 import Gallery from './pages/08-Gallery/Gallery';
+import Register from './pages/09-Register/Register';
 
 function AppLayout() {
   const location = useLocation();
@@ -36,6 +37,7 @@ function AppLayout() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </AnimatePresence>
       </main>

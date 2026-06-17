@@ -246,3 +246,39 @@ input:focus, select:focus, textarea:focus {
     padding: 2rem;
   }
 }
+
+/* Community Registration Prompt Card */
+.form-info-card {
+  background: #fcf9f2;
+  border-left: 4px solid var(--accent);
+  padding: 1.2rem;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.form-info-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+
+.btn-register-link {
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+}
+
+.btn-register-link:hover {
+  color: var(--accent-light);
+  transform: translateX(4px);
+}
