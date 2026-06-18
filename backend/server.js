@@ -132,6 +132,9 @@ app.post('/api/register', upload.single('photo'), async (req, res) => {
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
 
+    // Safe path basename validation
+    const safeAttachmentName = path.basename(file.originalname);
+
     const subject = `First Take Festival Application: ${firstName} ${lastName}`;
     const htmlBody = `
       <div style="background-color: #0d0d0d; padding: 40px 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #ffffff; text-align: center;">
@@ -199,9 +202,6 @@ app.post('/api/register', upload.single('photo'), async (req, res) => {
         </div>
       </div>
     `;
-
-    // Safe path basename validation
-    const safeAttachmentName = path.basename(file.originalname);
 
     // 3. Dispatch Email
     // Check if SMTP is configured. If not, log a warning and return mock success to prevent blockages
