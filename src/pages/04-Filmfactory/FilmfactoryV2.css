@@ -1335,3 +1335,155 @@
     font-size: 1.5rem;
   }
 }
+
+/* Filmfactory Registration Sidebar Layout & Responsiveness */
+
+.ff-intro-container-custom {
+  max-width: 100%;
+  padding-left: calc((100vw - 1400px) / 2 + 2rem);
+  padding-right: 2rem;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1440px) {
+  .ff-intro-container-custom {
+    padding-left: 2rem;
+  }
+}
+
+.ff-intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 3.5rem;
+  align-items: flex-start;
+}
+
+.ff-intro-sidebar-wrapper {
+  width: 100%;
+  position: sticky;
+  top: 100px;
+}
+
+.ff-intro-registration-card {
+  width: 100%;
+  max-width: 400px;
+  display: block;
+  text-decoration: none;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* Card Visual styling rules common to all desktop sizes */
+.ff-card-cover-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  border-bottom: 2px solid var(--accent);
+}
+
+.ff-card-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.ff-intro-registration-card:hover .ff-card-cover-img {
+  transform: scale(1.05);
+}
+
+.ff-intro-registration-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent);
+}
+
+.ff-card-body {
+  padding: 2.2rem;
+  color: black;
+}
+
+.ff-card-body h3 {
+  font-size: 1.8rem;
+  margin: 0 0 0.2rem 0;
+  color: black;
+  font-weight: 700;
+}
+
+.ff-card-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.8rem;
+}
+
+.ff-card-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding-top: 1.2rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.ff-card-link-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent);
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.ff-intro-registration-card:hover .ff-card-link-text {
+  color: var(--accent-light);
+}
+
+/* Mobile & Tablet views: Under 1024px */
+@media (max-width: 1024px) {
+  .ff-intro-container-custom {
+    padding: 0;
+  }
+
+  .ff-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .ff-intro-text {
+    order: 2;
+    padding: 0 1.5rem; /* keep text content aligned */
+  }
+
+  .ff-pillars-nav-v2 {
+    order: 3;
+    padding: 0 1.5rem;
+  }
+
+  .ff-intro-sidebar-wrapper {
+    order: 1; /* card appears first at the top */
+    width: 100%;
+    padding: 0 0.5rem; /* exactly 0.5rem padding */
+    box-sizing: border-box;
+    margin-bottom: 3rem;
+    position: static;
+  }
+
+  .ff-intro-registration-card {
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .ff-card-body {
+    padding: 1.5rem;
+  }
+
+  .ff-card-body h3 {
+    font-size: 1.5rem;
+  }
+}

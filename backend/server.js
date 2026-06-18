@@ -134,40 +134,69 @@ app.post('/api/register', upload.single('photo'), async (req, res) => {
 
     const subject = `First Take Festival Application: ${firstName} ${lastName}`;
     const htmlBody = `
-      <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; border: 1px solid #c5a022; padding: 20px; border-radius: 8px;">
-        <h2 style="color: #c5a022; border-bottom: 2px solid #c5a022; padding-bottom: 10px;">First Take Festival Entry</h2>
-        <p>A new applicant has registered for the <strong>"First Take"</strong> Tamil Short Film Festival Switzerland.</p>
-        
-        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
-          <tr>
-            <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold; width: 150px;">Full Name</td>
-            <td style="padding: 8px; border-bottom: 1px solid #eee;">${firstName} ${lastName}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Date of Birth</td>
-            <td style="padding: 8px; border-bottom: 1px solid #eee;">${dob}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Address</td>
-            <td style="padding: 8px; border-bottom: 1px solid #eee;">${streetAddress}, ${postalCode} ${city}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Email Address</td>
-            <td style="padding: 8px; border-bottom: 1px solid #eee;"><a href="mailto:${email}">${email}</a></td>
-          </tr>
-          <tr>
-            <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Phone Number</td>
-            <td style="padding: 8px; border-bottom: 1px solid #eee;">${phoneNumber}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Instagram ID</td>
-            <td style="padding: 8px; border-bottom: 1px solid #eee;">${instagramId ? `<a href="https://instagram.com/${instagramId.replace('@', '')}">${instagramId}</a>` : 'N/A'}</td>
-          </tr>
-        </table>
-        
-        <p style="margin-top: 25px; font-size: 0.85em; color: #888; border-top: 1px solid #eee; padding-top: 10px;">
-          This email contains the photo submitted by the applicant as an attachment. The picture will be used for posters and flyers.
-        </p>
+      <div style="background-color: #0d0d0d; padding: 40px 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #ffffff; text-align: center;">
+        <div style="max-width: 600px; margin: 0 auto; background-color: #1a1a1a; border: 1px solid #c5a022; border-radius: 8px; overflow: hidden; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <!-- Header Banner -->
+          <div style="background: linear-gradient(135deg, #1f1d18 0%, #0d0d0d 100%); padding: 30px; border-bottom: 2px solid #c5a022; text-align: center;">
+            <span style="font-family: Georgia, serif; font-size: 28px; font-style: italic; color: #c5a022; letter-spacing: 2px; display: block; margin-bottom: 5px;">First Take</span>
+            <h1 style="font-size: 20px; margin: 0; color: #ffffff; letter-spacing: 3px; text-transform: uppercase; font-weight: 300;">Tamil Short Film Festival</h1>
+            <span style="font-size: 11px; color: #c5a022; text-transform: uppercase; letter-spacing: 2px; display: block; margin-top: 5px;">Switzerland</span>
+          </div>
+          
+          <!-- Body Content -->
+          <div style="padding: 40px 30px;">
+            <h2 style="font-size: 18px; color: #c5a022; margin-top: 0; margin-bottom: 20px; border-bottom: 1px solid rgba(197, 160, 34, 0.2); padding-bottom: 10px; font-weight: 400; text-transform: uppercase; letter-spacing: 1px;">New Application Received</h2>
+            
+            <p style="font-size: 14px; line-height: 1.6; color: #cccccc; margin-bottom: 30px;">
+              A new filmmaker has submitted their registration for the <strong>First Take</strong> Short Film Festival Swiss edition. Below are the registration details:
+            </p>
+
+            <!-- Details Card -->
+            <div style="background-color: #111111; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 6px; padding: 25px; margin-bottom: 30px;">
+              <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                  <td style="padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #c5a022; font-weight: bold; width: 140px;">Applicant Name</td>
+                  <td style="padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 14px; color: #ffffff; font-weight: 500;">${firstName} ${lastName}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #c5a022; font-weight: bold;">Date of Birth</td>
+                  <td style="padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 14px; color: #ffffff;">${dob}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #c5a022; font-weight: bold;">Residential Address</td>
+                  <td style="padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 14px; color: #ffffff; line-height: 1.4;">${streetAddress}<br/>${postalCode} ${city}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #c5a022; font-weight: bold;">Email Address</td>
+                  <td style="padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 14px;"><a href="mailto:${email}" style="color: #c5a022; text-decoration: none; border-bottom: 1px dashed #c5a022;">${email}</a></td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #c5a022; font-weight: bold;">Phone Number</td>
+                  <td style="padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 14px; color: #ffffff;">${phoneNumber}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px 0; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #c5a022; font-weight: bold;">Instagram ID</td>
+                  <td style="padding: 10px 0; font-size: 14px;">
+                    ${instagramId ? `<a href="https://instagram.com/${instagramId.replace('@', '')}" style="color: #c5a022; text-decoration: none; font-weight: 500;">${instagramId}</a>` : '<span style="color: #666666;">N/A</span>'}
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- Action Note -->
+            <div style="background-color: rgba(197, 160, 34, 0.05); border-left: 3px solid #c5a022; padding: 15px; border-radius: 4px;">
+              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #dddddd;">
+                <strong>Photo Attachment:</strong> The applicant's profile picture is attached to this email (Filename: <code>${safeAttachmentName}</code>). This photo will be utilized for festival posters, brochures, and digital promotions.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Footer -->
+          <div style="background-color: #111111; padding: 20px 30px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 11px; color: #666666;">
+            <p style="margin: 0 0 5px 0;">Sent via Plan B Community Management System.</p>
+            <p style="margin: 0;">&copy; 2026 Plan B - The Eventguide. All rights reserved.</p>
+          </div>
+        </div>
       </div>
     `;
 

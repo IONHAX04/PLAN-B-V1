@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Upload, CheckCircle2, AlertTriangle, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import registrationImg from '../../assets/eventReg/registrationImg.png';
 import './Register.css';
 
 const Register = () => {
@@ -232,10 +233,14 @@ const Register = () => {
           ) : (
             <>
               {/* Header section matching First Take */}
-              <div className="register-header">
-                <div className="decor-script-gold">First Take</div>
-                <h1>First Take</h1>
-                <p className="register-subtitle">Tamil Short Film Festival Switzerland</p>
+              <div className="register-header-banner">
+                <img src={registrationImg} alt="First Take Registration Banner" className="register-banner-img" />
+                <div className="register-banner-overlay"></div>
+                <div className="register-banner-text">
+                  <div className="decor-script-gold">First Take</div>
+                  <h1>First Take</h1>
+                  <p className="register-subtitle">Tamil Short Film Festival Switzerland</p>
+                </div>
               </div>
 
               {errorMsg && (

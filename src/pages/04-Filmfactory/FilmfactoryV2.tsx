@@ -23,6 +23,7 @@ import mithranImg from '../../assets/directors/mithran.jpeg';
 import tamizhImg from '../../assets/directors/tamizh.jpeg';
 import ganeshImg from '../../assets/directors/ganesh-k-babu.jpeg';
 import ffHeroPoster from '../../assets/filmFactory/The-film-factory1.jpg';
+import registrationImg from '../../assets/eventReg/registrationImg.png';
 import './FilmfactoryV2.css';
 
 // Import all images from the filmFactory folder for the gallery
@@ -128,7 +129,7 @@ const FilmfactoryV2 = () => {
       <div className="ff-real-content">
         {/* New Intro & Pillars Section - "Next Page" look */}
         <section id="ff-intro" className="ff-intro-section section-padding">
-          <div className="container">
+          <div className="ff-intro-container-custom">
             <div className="ff-intro-grid">
               <motion.div 
                 className="ff-intro-text"
@@ -151,6 +152,23 @@ const FilmfactoryV2 = () => {
                     </div>
                   ))}
                 </div>
+              </div>
+
+              {/* Registration Card on the right */}
+              <div className="ff-intro-sidebar-wrapper">
+                <Link to="/register" className="ff-intro-registration-card">
+                  <div className="ff-card-cover-wrapper">
+                    <img src={registrationImg} alt="Register Now Cover" className="ff-card-cover-img" />
+                  </div>
+                  <div className="ff-card-body">
+                    <h3>Register Now</h3>
+                    <p className="ff-card-subtitle">Tamil Short Film Festival Switzerland</p>
+                    
+                    <div className="ff-card-footer">
+                      <span className="ff-card-link-text">Proceed to Registration &rarr;</span>
+                    </div>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
