@@ -1367,7 +1367,7 @@
 
 .ff-intro-registration-card {
   width: 100%;
-  max-width: 400px;
+  max-width: 100%; /* Fill the grid column width for a larger card display */
   display: block;
   text-decoration: none;
   background: white;
@@ -1382,15 +1382,15 @@
 .ff-card-cover-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/10;
   overflow: hidden;
   border-bottom: 2px solid var(--accent);
 }
 
 .ff-card-cover-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto; /* Display the full image height without cropping */
+  display: block;
+  object-fit: contain;
   transition: transform 0.5s ease;
 }
 

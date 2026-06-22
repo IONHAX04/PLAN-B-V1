@@ -23,7 +23,7 @@ import mithranImg from '../../assets/directors/mithran.jpeg';
 import tamizhImg from '../../assets/directors/tamizh.jpeg';
 import ganeshImg from '../../assets/directors/ganesh-k-babu.jpeg';
 import ffHeroPoster from '../../assets/filmFactory/The-film-factory1.jpg';
-import registrationImg from '../../assets/eventReg/registrationImg.png';
+import registrationImg from '../../assets/eventReg/poseter.jpeg';
 import './FilmfactoryV2.css';
 
 // Import all images from the filmFactory folder for the gallery
