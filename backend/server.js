@@ -21,13 +21,21 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://127.0.0.1:5173',
   'http://localhost:3000',
-  'https://planb-theeventguide.ch'
+  'https://planb-theeventguide.ch',
+  'https://www.planb-theeventguide.ch',
+  'https://version-one.planb-theeventguide.ch'
 ];
 
 app.use(cors({
   origin: (origin, callback) => {
     // Allow requests with no origin (like mobile apps or curl) or if in allowed list
-    if (!origin || allowedOrigins.includes(origin) || origin.startsWith('http://localhost:') || origin.startsWith('http://127.0.0.1:')) {
+    if (
+      !origin || 
+      allowedOrigins.includes(origin) || 
+      origin.startsWith('http://localhost:') || 
+      origin.startsWith('http://127.0.0.1:') ||
+      /^https?:\/\/(?:[a-zA-Z0-9-]+\.)*planb-theeventguide\.ch$/.test(origin)
+    ) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));

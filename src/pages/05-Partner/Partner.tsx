@@ -2,8 +2,8 @@ import { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Award, Users } from 'lucide-react';
 import { partners, partnersIntro } from '../../data/mockData';
-// Import all logos from the partnerlogo folder
-const logoModules = import.meta.glob('../../assets/partnerlogo/*.{png,jpg,jpeg,webp}', { eager: true });
+// Import all logos from the partnerLogo folder
+const logoModules = import.meta.glob('../../assets/partnerLogo/*.{png,jpg,jpeg,webp}', { eager: true });
 // Extract the numbers from the filenames to sort them correctly
 const logoPaths = Object.keys(logoModules);
 const partnerImagesMap = logoPaths.reduce((acc, path) => {
